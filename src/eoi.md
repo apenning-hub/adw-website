@@ -13,13 +13,22 @@ description: Apply to Adelaide Design Week 2026 across five streams — Project,
 
 You can submit an Expression of Interest under any of these streams. The form takes around 10–15 minutes and you can submit more than one EOI — one per project, role or offer.
 
-<ul class="streams">
-  <li><strong>Project</strong>An exhibition, talk, installation, workshop, performance, open studio or other work with a defined outcome.</li>
-  <li><strong>Collaborate</strong>You're a designer or studio looking for collaborators or to join an existing project.</li>
-  <li><strong>Host</strong>You have a venue and want to host an event, exhibition, talk or other ADW activity.</li>
-  <li><strong>Team</strong>You'd like to be part of the ADW team — volunteer, coordinator, or behind-the-scenes contributor.</li>
-  <li><strong>Sponsor</strong>You or your organisation want to support ADW financially or in kind.</li>
-</ul>
+<dl class="streams">
+  <dt>Project</dt>
+  <dd>An exhibition, talk, installation, workshop, performance, open studio or other work with a defined outcome.</dd>
+
+  <dt>Collaborate</dt>
+  <dd>You're a designer or studio looking for collaborators, or to join an existing project.</dd>
+
+  <dt>Host</dt>
+  <dd>You have a venue and want to host an event, exhibition, talk or other ADW activity.</dd>
+
+  <dt>Team</dt>
+  <dd>You'd like to be part of the ADW team — volunteer, coordinator, or behind-the-scenes contributor.</dd>
+
+  <dt>Sponsor</dt>
+  <dd>You or your organisation want to support ADW financially or in kind.</dd>
+</dl>
 
 <div class="cta-wrap">
   <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>

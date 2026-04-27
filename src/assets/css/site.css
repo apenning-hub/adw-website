@@ -21,9 +21,10 @@
 
 :root {
     --yellow: #FEFF35;
-    --ink: #4a4d4f;
-    --ink-soft: #6a6d6f;
-    --line: rgba(74, 77, 79, 0.35);
+    --ink: #8a8d8f;
+    --ink-strong: #4a4d4f;
+    --ink-soft: #8a8d8f;
+    --line: rgba(138, 141, 143, 0.45);
     --font-sans: 'Univers LT Std', 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Egizio', Georgia, serif;
     --transition: 0.25s ease;
@@ -92,7 +93,7 @@ p {
     margin-block-end: var(--space-2);
 }
 
-strong { color: var(--ink); font-weight: 700; }
+strong { color: var(--ink-strong); font-weight: 700; }
 
 hr {
     border: 0;
@@ -234,19 +235,19 @@ hr {
 .cta-tally {
     display: inline-block;
     padding: 1.125rem 2.25rem;
-    background: var(--ink);
+    background: var(--ink-strong);
     color: var(--yellow);
     text-decoration: none;
     text-transform: lowercase;
     font-weight: 700;
     font-size: clamp(1.125rem, 2vw, 1.375rem);
     letter-spacing: 0.02em;
-    border: 2px solid var(--ink);
+    border: 2px solid var(--ink-strong);
     transition: background var(--transition), color var(--transition), transform var(--transition);
 }
 .cta-tally:hover {
     background: var(--yellow);
-    color: var(--ink);
+    color: var(--ink-strong);
     transform: translateY(-1px);
 }
 .cta-meta {
@@ -291,25 +292,49 @@ hr {
     color: var(--ink);
 }
 
-/* Streams (EOI page)
+/* Streams (EOI page) — glossary-style two-column list
    ========================================================================== */
 .streams {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-2);
-    margin-block: var(--space-3);
-    padding: 0;
-    list-style: none;
+    grid-template-columns: max-content 1fr;
+    gap: 0;
+    margin-block: var(--space-3) var(--space-4);
 }
-.streams li {
-    padding: var(--space-2);
-    border: 1px solid var(--line);
-    color: var(--ink);
+.streams dt,
+.streams dd {
+    padding: var(--space-2) 0;
+    border-top: 1px solid var(--line);
+    margin: 0;
 }
-.streams li strong {
-    display: block;
+.streams dt {
     font-weight: 700;
-    margin-block-end: 0.25rem;
+    text-transform: lowercase;
+    color: var(--ink-strong);
+    padding-inline-end: var(--space-4);
+    align-self: start;
+}
+.streams dd {
+    color: var(--ink);
+    line-height: 1.55;
+}
+.streams dt:last-of-type,
+.streams dd:last-of-type {
+    border-bottom: 1px solid var(--line);
+}
+
+@media (max-width: 600px) {
+    .streams { grid-template-columns: 1fr; }
+    .streams dt {
+        padding-block-end: 0;
+        border-top: 1px solid var(--line);
+    }
+    .streams dd {
+        padding-block-start: 0.25rem;
+        padding-block-end: var(--space-2);
+        border-top: 0;
+    }
+    .streams dt:last-of-type { border-bottom: 0; }
+    .streams dd:last-of-type { border-bottom: 1px solid var(--line); }
 }
 
 /* Required checklist
@@ -343,7 +368,7 @@ hr {
     font-size: 0.875rem;
     color: var(--ink-soft);
 }
-.disclaimer strong { color: var(--ink); }
+.disclaimer strong { color: var(--ink-strong); }
 
 /* Gallery
    ========================================================================== */
