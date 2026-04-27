@@ -17,7 +17,13 @@ description: Adelaide Design Week 2026 — Expressions of Interest now open. 14�
 
 ## expressions of interest are open
 
-Adelaide Design Week 2026 is a city-wide, independently curated program — exhibitions, talks, installations, workshops and collaborations across Kaurna/Adelaide. We're looking for projects, venues, collaborators, team and sponsors. EOIs are open now.
+Adelaide Design Week 2026 is a city-wide, independently curated program — exhibitions, talks, installations, workshops and collaborations across Kaurna/Adelaide. We're looking for projects, venues, collaborators, team and sponsors.
+
+<div class="theme">
+
+The theme **every*where [2025]** has evolved into **every*one** — with a focus on people, ergonomics, connection and the power of design to unite and strengthen. We welcome all interpretations, in all forms.
+
+</div>
 
 <section class="key-dates" aria-label="Key dates">
 
@@ -36,21 +42,10 @@ Adelaide Design Week 2026 is a city-wide, independently curated program — exhi
 
 </section>
 
-## theme
-
-<div class="theme-block">
-The theme <strong>every*where [2025]</strong> has evolved into <strong>every*one</strong> — with a focus on people, ergonomics, connection and the power of design to unite and strengthen.
-
-We welcome all interpretations, in all forms.
-</div>
-
-<p style="text-align:center; margin-block: 2rem;">
+<div class="cta-wrap">
   <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-</p>
-
-<p style="text-align:center; margin-block-end: 2rem; font-size: 0.95rem;">
-  See <a href="{{ '/eoi/' | url }}">what we'll ask</a> before you start.
-</p>
+  <p class="cta-meta">See <a href="{{ '/eoi/' | url }}">how to apply</a> before you start.</p>
+</div>
 
 </article>
 
@@ -66,8 +61,6 @@ We welcome all interpretations, in all forms.
   <figure><img src="{{ '/assets/images/gallery/placeholder-5.svg' | url }}" alt="ADW 2025 photo 5"></figure>
   <figure><img src="{{ '/assets/images/gallery/placeholder-6.svg' | url }}" alt="ADW 2025 photo 6"></figure>
 </div>
-
-<p class="gallery-caption">A taste of last year. Drop real photos into <code>src/assets/images/gallery/</code> and update the filenames in <code>src/index.md</code>.</p>
 
 </section>
 
@@ -170,9 +163,9 @@ Minor changes are fine. Major changes need approval.
 
 </section>
 
-<p style="text-align:center; margin-block: 2rem;">
+<div class="cta-wrap">
   <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-</p>
+</div>
 
 <aside class="disclaimer">
 <strong>Disclaimer:</strong> Adelaide Design Week is an independently run and curated, city-wide program. Submitting an EOI does not guarantee inclusion, funding, or support.
