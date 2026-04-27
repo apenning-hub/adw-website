@@ -12,18 +12,18 @@ npm run dev      # http://localhost:8080 with hot reload
 npm run build    # output to _site/
 ```
 
-## Replacing the homepage gallery photos
+## Updating the homepage gallery photos
 
-The homepage gallery currently uses 6 placeholder SVGs at
-`src/assets/images/gallery/placeholder-1.svg` … `placeholder-6.svg`.
-To swap in real photos:
+Six AVIF photos from ADW 2025 live in `src/assets/images/gallery/`
+(currently sourced from adelaidedesignweek.com.au). To swap in
+different shots:
 
-1. Drop your image files into `src/assets/images/gallery/`.
-2. Update the `<img src=...>` paths in `src/index.md` to point at the
-   new filenames (e.g. `placeholder-1.svg` → `photo-1.jpg`).
-3. Update the `alt` text to describe the photo.
+1. Drop new image files into `src/assets/images/gallery/`.
+2. Update the `<img src=...>` paths and `alt` text in `src/index.md`
+   to match.
 
-Recommended: 4:3 aspect ratio, ~1200×900px, JPG or WebP.
+Recommended: 4:3 aspect ratio, AVIF or WebP for size, JPG as a
+fallback.
 
 ## Authoring content
 

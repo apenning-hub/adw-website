@@ -54,12 +54,12 @@ The theme **every*where [2025]** has evolved into **every*one** — with a focus
 ## from adw 2025
 
 <div class="gallery-grid">
-  <figure><img src="{{ '/assets/images/gallery/placeholder-1.svg' | url }}" alt="ADW 2025 photo 1"></figure>
-  <figure><img src="{{ '/assets/images/gallery/placeholder-2.svg' | url }}" alt="ADW 2025 photo 2"></figure>
-  <figure><img src="{{ '/assets/images/gallery/placeholder-3.svg' | url }}" alt="ADW 2025 photo 3"></figure>
-  <figure><img src="{{ '/assets/images/gallery/placeholder-4.svg' | url }}" alt="ADW 2025 photo 4"></figure>
-  <figure><img src="{{ '/assets/images/gallery/placeholder-5.svg' | url }}" alt="ADW 2025 photo 5"></figure>
-  <figure><img src="{{ '/assets/images/gallery/placeholder-6.svg' | url }}" alt="ADW 2025 photo 6"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-1-shokunin.avif' | url }}" alt="Shokunin — ADW 2025" loading="lazy"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-2-frank-bauer.avif' | url }}" alt="Frank Bauer — ADW 2025" loading="lazy"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-3-clockwork.avif' | url }}" alt="Clockwork — ADW 2025" loading="lazy"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-4-gallery-one-jamfactory.avif' | url }}" alt="Gallery One at JamFactory — ADW 2025" loading="lazy"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-5-shopfront-design-sprint-tour.avif' | url }}" alt="Shopfront Design Sprint Tour — ADW 2025" loading="lazy"></figure>
+  <figure><img src="{{ '/assets/images/gallery/adw2025-6-open-talks.avif' | url }}" alt="Open Talks — ADW 2025" loading="lazy"></figure>
 </div>
 
 </section>

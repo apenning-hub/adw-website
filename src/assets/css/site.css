@@ -21,10 +21,10 @@
 
 :root {
     --yellow: #FEFF35;
-    --ink: #8a8d8f;
-    --ink-strong: #4a4d4f;
-    --ink-soft: #8a8d8f;
-    --line: rgba(138, 141, 143, 0.45);
+    --ink: #747474;
+    --ink-strong: #747474;
+    --ink-soft: #747474;
+    --line: rgba(116, 116, 116, 0.4);
     --font-sans: 'Univers LT Std', 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-serif: 'Egizio', Georgia, serif;
     --transition: 0.25s ease;
