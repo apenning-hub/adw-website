@@ -370,10 +370,16 @@ hr {
 }
 .disclaimer strong { color: var(--ink-strong); }
 
-/* 2025 program dropdown (EOI page)
+/* 2025 program section (EOI page) — wider than prose column
    ========================================================================== */
+.program-section {
+    max-width: var(--content-wide);
+    margin: var(--space-3) auto;
+    padding: 0 var(--space-3);
+}
+
 .program-2025 {
-    margin-block: var(--space-4);
+    margin-block: var(--space-3);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     padding: var(--space-2) 0;
@@ -401,33 +407,52 @@ hr {
     margin-block-start: var(--space-2);
 }
 
-.program-list {
+.program-grid {
     list-style: none;
     padding: 0;
-    margin-block: var(--space-2);
+    margin-block: var(--space-3);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-3) var(--space-2);
 }
-.program-list li {
-    padding: var(--space-2) 0;
-    border-bottom: 1px solid var(--line);
+.program-card {
     display: flex;
     flex-direction: column;
-    gap: 0.125rem;
+    gap: var(--space-1);
 }
-.program-list li:first-child { border-top: 1px solid var(--line); }
-.program-title {
+.program-poster {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: rgba(116, 116, 116, 0.06);
+    margin-block-end: 0.25rem;
+}
+.program-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.program-card .program-title {
+    font-size: 0.9375rem;
     font-weight: 700;
+    line-height: 1.25;
+    text-transform: lowercase;
     color: var(--ink);
+    margin: 0;
+    letter-spacing: 0;
 }
-.program-meta {
+.program-card .program-meta {
     font-size: 0.8125rem;
     color: var(--ink);
-    opacity: 0.8;
+    opacity: 0.85;
+    line-height: 1.4;
+    margin: 0;
 }
 .program-meta-source {
-    margin-block-start: var(--space-2);
+    margin-block-start: var(--space-3);
     font-size: 0.8125rem;
     color: var(--ink);
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 /* Footer
