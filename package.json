@@ -1,0 +1,17 @@
+{
+  "name": "adw-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Adelaide Design Week — public static site (v1)",
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

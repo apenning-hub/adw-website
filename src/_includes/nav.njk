@@ -1,0 +1,13 @@
+<nav class="site-nav" aria-label="Primary">
+  <ul>
+    {%- for item in collections.nav -%}
+      {%- set current = (item.url == page.url) -%}
+      <li>
+        <a href="{{ item.url }}"
+           {% if current %}aria-current="page"{% endif %}>
+          {{ item.data.navLabel or item.data.title }}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
