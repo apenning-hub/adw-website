@@ -49,21 +49,6 @@ The theme **every*where [2025]** has evolved into **every*one** — with a focus
 
 </article>
 
-<section class="gallery" aria-label="Adelaide Design Week 2025 gallery">
-
-## from adw 2025
-
-<div class="gallery-grid">
-  <figure><img src="{{ '/assets/images/gallery/adw2025-1-shokunin.avif' | url }}" alt="Shokunin — ADW 2025" loading="lazy"></figure>
-  <figure><img src="{{ '/assets/images/gallery/adw2025-2-frank-bauer.avif' | url }}" alt="Frank Bauer — ADW 2025" loading="lazy"></figure>
-  <figure><img src="{{ '/assets/images/gallery/adw2025-3-clockwork.avif' | url }}" alt="Clockwork — ADW 2025" loading="lazy"></figure>
-  <figure><img src="{{ '/assets/images/gallery/adw2025-4-gallery-one-jamfactory.avif' | url }}" alt="Gallery One at JamFactory — ADW 2025" loading="lazy"></figure>
-  <figure><img src="{{ '/assets/images/gallery/adw2025-5-shopfront-design-sprint-tour.avif' | url }}" alt="Shopfront Design Sprint Tour — ADW 2025" loading="lazy"></figure>
-  <figure><img src="{{ '/assets/images/gallery/adw2025-6-open-talks.avif' | url }}" alt="Open Talks — ADW 2025" loading="lazy"></figure>
-</div>
-
-</section>
-
 <article class="page prose">
 
 ## frequently asked questions

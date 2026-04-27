@@ -370,45 +370,64 @@ hr {
 }
 .disclaimer strong { color: var(--ink-strong); }
 
-/* Gallery
+/* 2025 program dropdown (EOI page)
    ========================================================================== */
-.gallery {
-    max-width: var(--content-wide);
-    margin: var(--space-5) auto;
-    padding: 0 var(--space-3);
+.program-2025 {
+    margin-block: var(--space-4);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: var(--space-2) 0;
 }
-.gallery h2 {
-    margin-block: 0 var(--space-3);
-    text-align: center;
-    font-size: 0.9375rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-soft);
+.program-2025 > summary {
+    cursor: pointer;
     font-weight: 700;
+    color: var(--ink);
+    list-style: none;
+    text-transform: lowercase;
+    position: relative;
+    padding-inline-end: var(--space-3);
 }
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: var(--space-1);
+.program-2025 > summary::-webkit-details-marker { display: none; }
+.program-2025 > summary::after {
+    content: "+";
+    position: absolute;
+    inset-inline-end: 0;
+    top: 0;
+    font-size: 1.25em;
+    line-height: 1;
 }
-.gallery-grid figure {
-    margin: 0;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: rgba(74, 77, 79, 0.05);
+.program-2025[open] > summary::after { content: "−"; }
+.program-2025 > *:not(summary) {
+    margin-block-start: var(--space-2);
 }
-.gallery-grid img,
-.gallery-grid svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+
+.program-list {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-2);
 }
-.gallery-caption {
+.program-list li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+.program-list li:first-child { border-top: 1px solid var(--line); }
+.program-title {
+    font-weight: 700;
+    color: var(--ink);
+}
+.program-meta {
+    font-size: 0.8125rem;
+    color: var(--ink);
+    opacity: 0.8;
+}
+.program-meta-source {
     margin-block-start: var(--space-2);
     font-size: 0.8125rem;
-    color: var(--ink-soft);
-    text-align: center;
+    color: var(--ink);
+    opacity: 0.8;
 }
 
 /* Footer
