@@ -6,14 +6,14 @@
   <meta name="theme-color" content="#FEFF35">
   <title>{% if title %}{{ title }} — {{ site.shortTitle }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
 </head>
 <body>
 
   <header class="site-header">
     <div class="site-header-inner">
-      <a href="/" class="site-brand" aria-label="every*where home">every*where</a>
+      <a href="{{ '/' | url }}" class="site-brand" aria-label="every*where home">every*where</a>
       {% include "nav.njk" %}
     </div>
   </header>

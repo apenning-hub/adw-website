@@ -19,6 +19,7 @@ module.exports = function (eleventyConfig) {
       data: "_data",
       output: "_site",
     },
+    pathPrefix: process.env.PATH_PREFIX || "/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     templateFormats: ["njk", "md", "html"],

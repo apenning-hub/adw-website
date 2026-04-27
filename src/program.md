@@ -12,6 +12,6 @@ layout: base.njk
 
 ## program 2026 — coming soon
 
-The full program for ADW 2026 ({{ site.programDates }}) will be published once selected projects are confirmed. EOIs are open now — see the [EOI page](/eoi/) to submit yours.
+The full program for ADW 2026 ({{ site.programDates }}) will be published once selected projects are confirmed. EOIs are open now — see the [EOI page]({{ '/eoi/' | url }}) to submit yours.
 
 </article>

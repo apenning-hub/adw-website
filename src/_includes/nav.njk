@@ -3,7 +3,7 @@
     {%- for item in collections.nav -%}
       {%- set current = (item.url == page.url) -%}
       <li>
-        <a href="{{ item.url }}"
+        <a href="{{ item.url | url }}"
            {% if current %}aria-current="page"{% endif %}>
           {{ item.data.navLabel or item.data.title }}
         </a>

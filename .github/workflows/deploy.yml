@@ -29,6 +29,8 @@ jobs:
         run: npm ci
 
       - name: Build site
+        env:
+          PATH_PREFIX: /adw-website/
         run: npm run build
 
       - name: Upload artifact
