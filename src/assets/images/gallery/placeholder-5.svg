@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Adelaide Design Week 2025 photo placeholder 5">
+  <rect width="400" height="300" fill="#FEFF35"/>
+  <rect x="8" y="8" width="384" height="284" fill="none" stroke="#8a8d8f" stroke-width="2" stroke-dasharray="6 6"/>
+  <text x="200" y="135" text-anchor="middle" font-family="'Univers LT Std', Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#6a6d6f">adw 2025</text>
+  <text x="200" y="170" text-anchor="middle" font-family="'Univers LT Std', Helvetica, Arial, sans-serif" font-size="16" fill="#8a8d8f">photo 5</text>
+  <text x="200" y="220" text-anchor="middle" font-family="'Univers LT Std', Helvetica, Arial, sans-serif" font-size="11" fill="#8a8d8f">replace with src/assets/images/gallery/photo-5.jpg</text>
+</svg>

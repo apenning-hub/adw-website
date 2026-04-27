@@ -1,51 +1,17 @@
 ---
 title: eoi
 navLabel: eoi
-navOrder: 4
+navOrder: 2
 permalink: /eoi/
 layout: base.njk
+description: What we'll ask in the Adelaide Design Week 2026 EOI form, and what to prepare before you submit.
 ---
 
 <article class="page prose">
 
-# expressions of interest
+# what we'll ask
 
-<p class="hero-tagline">ADW is open to Every + one.</p>
-
-<section class="key-dates" aria-label="Key dates">
-
-## key dates
-
-<dl>
-  <dt>EOIs open</dt>
-  <dd>{{ site.eoiDates.open }}</dd>
-  <dt>EOIs close</dt>
-  <dd>{{ site.eoiDates.close }}</dd>
-  <dt>Applicants notified</dt>
-  <dd>{{ site.eoiDates.notified }}</dd>
-  <dt>ADW 2026</dt>
-  <dd>{{ site.programDates }}</dd>
-</dl>
-
-</section>
-
-## about the EOI process
-
-Adelaide Design Week is a city-wide, independently curated program. The EOI is how you tell us about a project, venue, collaboration or contribution you'd like to be part of ADW 2026.
-
-All EOIs are reviewed by the ADW team. Inclusion in the program is at our discretion and is not guaranteed by submitting — see the disclaimer at the bottom of this page.
-
-## theme
-
-<div class="theme-block">
-The theme <strong>every*where [2025]</strong> has evolved into <strong>every*one</strong> — with a focus on people, ergonomics, connection and the power of design to unite and strengthen.
-
-We welcome all interpretations, in all forms.
-</div>
-
-## eligibility
-
-*Detailed eligibility, the points/selection process, and assessment criteria — coming soon.*
+A preview of the Adelaide Design Week 2026 EOI form, so you can prepare your responses before opening Tally.
 
 ## before you apply
 
@@ -57,9 +23,7 @@ Please review the following requirements before submitting an EOI:
   <li>You have read and understood the terms and conditions.</li>
 </ul>
 
-## what we'll ask
-
-A preview of the form so you can prepare your responses before opening Tally.
+## the form, step by step
 
 <section class="preview" aria-label="Form preview">
 
@@ -151,111 +115,6 @@ Support requested from Design Week: venue matching · promotion / marketing · p
 <p style="text-align:center; margin-block: 2rem;">
   <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
 </p>
-
-## resources & grants
-
-*Information on resources and any available grants — coming soon.*
-
-## faqs
-
-<section class="faq" aria-label="Frequently asked questions">
-
-<details>
-<summary>Who can apply?</summary>
-
-Anyone working in design or related fields — individuals, studios, collectives, venues, organisations.
-
-</details>
-
-<details>
-<summary>Do I need to be based in Adelaide?</summary>
-
-No. But your project must take place in, and have a clear connection to Adelaide.
-
-</details>
-
-<details>
-<summary>What can I submit?</summary>
-
-Projects (exhibitions, talks, installations, etc.), offers to collaborate, venues, team involvement, or sponsorship.
-
-</details>
-
-<details>
-<summary>Do I need a venue?</summary>
-
-No. You can request help with venue matching; however, projects with confirmed venues may be prioritised.
-
-</details>
-
-<details>
-<summary>Can I submit more than one EOI?</summary>
-
-Yes. Submit each one separately.
-
-</details>
-
-<details>
-<summary>What stage does my project / idea need to be at?</summary>
-
-Any stage — concept to complete. It must be viable, and realistically and professionally deliverable by the program dates ({{ site.programDates }}).
-
-</details>
-
-<details>
-<summary>How are projects selected?</summary>
-
-Based on idea, relevance, feasibility, and how it contributes to the overall program. Assessed according to the T&C criteria.
-
-</details>
-
-<details>
-<summary>What support do you provide?</summary>
-
-Program inclusion (listing), promotion, and as needed — connections (venues, collaborators, etc.). Limited production or funding support is available at the discretion of the ADW team.
-
-</details>
-
-<details>
-<summary>Is funding provided?</summary>
-
-Generally, no. This is a platform, not a funding body.
-
-</details>
-
-<details>
-<summary>What am I responsible for?</summary>
-
-Delivering your project, insurance, install/de-install, and being available before, during, and after the event for contact and communications with the ADW team.
-
-</details>
-
-<details>
-<summary>Can I charge for events?</summary>
-
-Yes. You will be in charge of managing your own sales and systems if you choose to do this.
-
-</details>
-
-<details>
-<summary>Does submitting an EOI guarantee a place in the program?</summary>
-
-No. All EOIs are reviewed and assessed according to the T&Cs.
-
-</details>
-
-<details>
-<summary>Can I update my proposal later?</summary>
-
-Minor changes are fine. Major changes need approval.
-
-</details>
-
-</section>
-
-## terms & conditions
-
-*Full terms and conditions — coming soon.*
 
 <aside class="disclaimer">
 <strong>Disclaimer:</strong> Adelaide Design Week is an independently run and curated, city-wide program. Submitting an EOI does not guarantee inclusion, funding, or support.

@@ -12,6 +12,19 @@ npm run dev      # http://localhost:8080 with hot reload
 npm run build    # output to _site/
 ```
 
+## Replacing the homepage gallery photos
+
+The homepage gallery currently uses 6 placeholder SVGs at
+`src/assets/images/gallery/placeholder-1.svg` … `placeholder-6.svg`.
+To swap in real photos:
+
+1. Drop your image files into `src/assets/images/gallery/`.
+2. Update the `<img src=...>` paths in `src/index.md` to point at the
+   new filenames (e.g. `placeholder-1.svg` → `photo-1.jpg`).
+3. Update the `alt` text to describe the photo.
+
+Recommended: 4:3 aspect ratio, ~1200×900px, JPG or WebP.
+
 ## Authoring content
 
 All page copy lives in markdown at `src/`. Front-matter controls title,
