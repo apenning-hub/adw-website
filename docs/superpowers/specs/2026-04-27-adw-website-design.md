@@ -108,10 +108,14 @@ adw-website/
   scale, shadow tokens.
 - Reset, base typography (lowercase headings via `text-transform: lowercase` on
   `h1–h6`, `clamp()`-based responsive sizing), `body { background: var(--yellow) }`.
-- Footer: preserved verbatim from the Ghost theme — `logo-no-tagline.svg`, the
-  tagline row ("adelaide design week" / "thinking. designing. making."), the
-  nav row (links + contact + Instagram), the Kaurna country acknowledgment
-  block, and the asterisk SVG icon.
+- Footer (v1, simplified — generic for now, brand footer deferred):
+  - Kaurna country acknowledgment paragraph (preserved verbatim from the
+    existing theme).
+  - Copyright line: `© Adelaide Design Week {currentYear}` (year auto-rendered
+    from build time so it stays current).
+  - That's it for v1. The fuller branded footer (logo-no-tagline, tagline row
+    "thinking. designing. making.", nav row, asterisk icon) is deferred and
+    can be reinstated by lifting it from the Ghost theme later.
 
 **Drop:**
 - `.post-card*`, `.posts-grid`, `.pagination*`, `.newsletter-*`, `.member-*`,
@@ -196,7 +200,9 @@ The richest page; structure top-to-bottom:
    - 8. Media & documentation
 7. **CTA** — prominent `Submit your EOI` button → `https://tally.so/r/5BllMv`
    (FB tracking params stripped).
-8. **Theme** — placeholder.
+8. **Theme** — "The theme every*where [2025] has evolved into every*one — with
+   a focus on people, ergonomics, connection and the power of design to unite
+   and strengthen. We welcome all interpretations, in all forms."
 9. **Resources & grants** — placeholder.
 10. **FAQs** — the 13 provided Q&As, rendered as `<details>/<summary>`
     accordions.
@@ -311,7 +317,6 @@ These ship as visible "TBD" stubs in v1. They do not block deployment.
 - Press — entries.
 - EOI — Eligibility section (the "EXPLAIN: POINT AND SELECTION PROCESS OF EOI"
   block).
-- EOI — Theme.
 - EOI — Resources & grants.
 - EOI — Terms & conditions (text or link).
 - Program — body beyond "coming soon".
