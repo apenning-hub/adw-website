@@ -8,6 +8,22 @@
   <meta name="description" content="{{ description or site.description }}">
   <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+  {% if tallyPopup %}
+  <script>
+    window.TallyConfig = {
+      "formId": "5BllMv",
+      "popup": {
+        "autoClose": 5000,
+        "formEventsForwarding": true,
+        "open": {
+          "trigger": "scroll",
+          "scrollPercent": 25
+        }
+      }
+    };
+  </script>
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  {% endif %}
 </head>
 <body>
 

@@ -4,6 +4,7 @@ navLabel: eoi
 navOrder: 2
 permalink: /eoi/
 layout: base.njk
+tallyPopup: true
 description: Apply to Adelaide Design Week 2026 across five streams — Project, Collaborate, Host, Team, or Sponsor.
 ---
 
