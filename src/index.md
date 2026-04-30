@@ -10,7 +10,7 @@ description: Adelaide Design Week 2026 — Expressions of Interest now open. 14�
 <section class="hero">
   <h1>adelaide design week 2026</h1>
   <p class="hero-dates">14 – 18 october 2026</p>
-  <p class="hero-tagline">ADW is open to Every + one.</p>
+  <p class="hero-tagline">ADW is open to everyone.</p>
 </section>
 
 <article class="page prose">
