@@ -39,7 +39,7 @@ You can submit an Expression of Interest under any of these streams. The form ta
 
 Please review the following before submitting:
 
-<ul class="checklist">
+<ul>
   <li>You, or a representative for you / your project, will be available and responsible pre, during and post event.</li>
   <li>You have your own insurance.</li>
   <li>You have read and understood the terms and conditions.</li>
