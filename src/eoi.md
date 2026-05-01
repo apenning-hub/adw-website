@@ -31,6 +31,18 @@ You can submit an Expression of Interest under any of these streams. The form ta
   <dd>You or your organisation want to support ADW financially or in kind.</dd>
 </dl>
 
+## what events look and feel like
+
+ADW events are generous, grassroots, and open — celebrations of the profession and the people in it.
+
+The events that worked best in 2025 brought people into a room together: an opening, something to eat or drink, a reason to stay and talk. You don't need a big production — just a moment that makes people feel welcome and design feel close at hand.
+
+<ul class="vibe-grid">
+  <li><a href="{{ '/assets/images/vibe/open-talks.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/open-talks.avif' | url }}" alt="Open Talks, ADW 2025" loading="lazy"></a></li>
+  <li><a href="{{ '/assets/images/vibe/shopfront-tour.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/shopfront-tour.avif' | url }}" alt="Shopfront Design Sprint tour, ADW 2025" loading="lazy"></a></li>
+  <li><a href="{{ '/assets/images/vibe/frank-bauer.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/frank-bauer.avif' | url }}" alt="Frank Bauer exhibition, ADW 2025" loading="lazy"></a></li>
+</ul>
+
 <div class="cta-wrap">
   <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
   <p class="cta-meta">EOIs close {{ site.eoiDates.close }}.</p>

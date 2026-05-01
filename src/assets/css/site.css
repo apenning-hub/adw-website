@@ -292,6 +292,39 @@ hr {
     color: var(--ink);
 }
 
+/* Vibe gallery (EOI page) — 3-up event photos
+   ========================================================================== */
+.vibe-grid {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-3) 0 var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+}
+.vibe-grid li { margin: 0; }
+.vibe-grid a {
+    display: block;
+    line-height: 0;
+}
+.vibe-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: opacity var(--transition);
+}
+.vibe-grid a:hover img,
+.vibe-grid a:focus-visible img {
+    opacity: 0.85;
+}
+@media (max-width: 600px) {
+    .vibe-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Streams (EOI page) — glossary-style two-column list
    ========================================================================== */
 .streams {
