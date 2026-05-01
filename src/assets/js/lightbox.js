@@ -8,10 +8,10 @@
   }
 
   function init() {
-  const grid = document.querySelector(".vibe-grid");
-  if (!grid) return;
+  const grids = document.querySelectorAll("[data-lightbox-grid], .vibe-grid, .bento-grid");
+  if (!grids.length) return;
 
-  const links = Array.from(grid.querySelectorAll("a[href]"));
+  const links = Array.from(grids).flatMap((g) => Array.from(g.querySelectorAll("a[href]")));
   if (!links.length) return;
 
   const items = links.map((a) => ({
