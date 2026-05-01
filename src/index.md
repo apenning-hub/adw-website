@@ -100,7 +100,7 @@ Any stage — concept to complete. It must be viable, and realistically and prof
 <details>
 <summary>How are projects selected?</summary>
 
-Based on idea, relevance, feasibility, and how it contributes to the overall program. Assessed according to the T&C criteria.
+Based on idea, relevance, feasibility, and how it contributes to the overall program. Assessed according to the T&C criteria by the ADW team and selected industry professionals.
 
 </details>
 
