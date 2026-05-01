@@ -5,6 +5,7 @@ navOrder: 2
 permalink: /eoi/
 layout: base.njk
 tallyPopup: true
+lightbox: true
 description: Apply to Adelaide Design Week 2026 across five streams — Project, Collaborate, Host, Team, or Sponsor.
 ---
 
@@ -38,9 +39,9 @@ ADW events are generous, grassroots, and open — celebrations of the profession
 The events that worked best in 2025 brought people into a room together: an opening, something to eat or drink, a reason to stay and talk. You don't need a big production — just a moment that makes people feel welcome and design feel close at hand.
 
 <ul class="vibe-grid">
-  <li><a href="{{ '/assets/images/vibe/open-talks.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/open-talks.avif' | url }}" alt="Open Talks, ADW 2025" loading="lazy"></a></li>
-  <li><a href="{{ '/assets/images/vibe/shopfront-tour.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/shopfront-tour.avif' | url }}" alt="Shopfront Design Sprint tour, ADW 2025" loading="lazy"></a></li>
-  <li><a href="{{ '/assets/images/vibe/frank-bauer.avif' | url }}" target="_blank" rel="noopener noreferrer"><img src="{{ '/assets/images/vibe/frank-bauer.avif' | url }}" alt="Frank Bauer exhibition, ADW 2025" loading="lazy"></a></li>
+{% for item in vibe %}
+  <li><a href="{{ ('/assets/images/vibe/' + item.filename) | url }}" aria-label="View {{ item.alt }}"><img src="{{ ('/assets/images/vibe/' + item.filename) | url }}" alt="{{ item.alt }}, ADW 2025" loading="lazy"></a></li>
+{% endfor %}
 </ul>
 
 <div class="cta-wrap">

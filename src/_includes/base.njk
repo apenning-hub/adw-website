@@ -38,6 +38,10 @@
     {{ content | safe }}
   </main>
 
+  {% if lightbox %}
+  <script src="{{ '/assets/js/lightbox.js' | url }}" defer></script>
+  {% endif %}
+
   <footer class="site-footer">
     <div class="site-footer-inner">
       <p class="acknowledgment">{{ site.acknowledgment }}</p>
