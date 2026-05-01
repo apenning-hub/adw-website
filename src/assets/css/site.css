@@ -292,6 +292,25 @@ hr {
     color: var(--ink);
 }
 
+/* Inline page link (EOI → 2025, 2025 → EOI)
+   ========================================================================== */
+.program-link,
+.back-link {
+    margin-block: var(--space-3);
+    font-weight: 700;
+}
+.program-link a,
+.back-link a {
+    color: var(--ink-strong);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+}
+.program-link a:hover,
+.back-link a:hover {
+    text-decoration-thickness: 2px;
+}
+
 /* Vibe gallery (EOI page) — folder-driven, click to open lightbox
    ========================================================================== */
 .vibe-grid {

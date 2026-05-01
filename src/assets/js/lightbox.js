@@ -1,6 +1,13 @@
 (function () {
   "use strict";
 
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+
+  function init() {
   const grid = document.querySelector(".vibe-grid");
   if (!grid) return;
 
@@ -85,4 +92,5 @@
     if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1));
     touchStartX = null;
   });
+  }
 })();
