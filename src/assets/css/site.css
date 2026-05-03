@@ -175,8 +175,9 @@ hr {
     text-align: center;
     padding: var(--space-3);
     max-width: var(--content-wide);
-    margin: 0 auto;
-    min-height: calc(100svh - 4rem);
+    margin: calc(-1 * var(--space-3)) auto 0;
+    min-height: calc(100vh - 3.5rem);
+    min-height: calc(100svh - 3.5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
