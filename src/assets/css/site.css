@@ -173,9 +173,14 @@ hr {
    ========================================================================== */
 .hero {
     text-align: center;
-    padding: var(--space-5) var(--space-3) var(--space-3);
+    padding: var(--space-3);
     max-width: var(--content-wide);
     margin: 0 auto;
+    min-height: calc(100svh - 4rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .hero h1 {
     margin-block-end: var(--space-2);
