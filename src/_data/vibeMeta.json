@@ -1,0 +1,8 @@
+{
+  "_comment": "Per-image overrides for /gallery/. Keys are exact filenames in src/assets/images/vibe/. Either field is optional. After editing, double-click push-to-github.command.",
+
+  "VDK_1091.jpg": { "exhibition": "Soft" },
+  "VDK_1531.jpg": { "exhibition": "Fab Workshop" },
+  "VDK_3190.jpg": { "exhibition": "Motion" },
+  "VDK_4465.jpg": { "exhibition": "POST(ER) – GRAPHIC" }
+}

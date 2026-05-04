@@ -17,12 +17,30 @@ Adelaide Design Week is run by a small, dedicated team — designers, coordinato
   <dt>Hannah White</dt>
   <dd>event management</dd>
 
-  <dt>Dre Fuzz + Lara Merrington</dt>
+  <dt>Dre Fuzz</dt>
+  <dd>exhibition coordination</dd>
+
+  <dt>Lara Merrington</dt>
   <dd>exhibition coordination</dd>
 
   <dt>Bronwyn Marshall</dt>
   <dd>operations, partnership + sponsorship, communications</dd>
 </dl>
+
+## contributors
+
+ADW exists because of the people who've helped shape it — past and present. Thanks to:
+
+<ul class="contributors">
+  <li>Sami Agostino</li>
+  <li>James Brown</li>
+  <li>Ashley Pinto</li>
+  <li>Andrew Lymn-Penning</li>
+</ul>
+
+## join the team
+
+There are ongoing opportunities to volunteer and contribute to Adelaide Design Week — coordination, comms, on-the-ground support during the program. Submit your interest through the <a href="{{ '/eoi/' | url }}">EOI form</a> under the **Team** stream.
 
 For anything else, see <a href="{{ '/contact/' | url }}">contact</a>.
 

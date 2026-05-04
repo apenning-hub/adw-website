@@ -17,7 +17,8 @@ description: A look at Adelaide Design Week — openings, talks, exhibitions, an
   <li class="bento-item bento-item--{{ item.shape }}">
     <a href="{{ ('/assets/images/vibe/' + item.filename) | url }}"
        aria-label="View {{ item.alt }}"
-       data-exhibition="{{ item.exhibition }}">
+       data-exhibition="{{ item.exhibition }}"
+       data-credit="{{ item.credit }}">
       <img src="{{ ('/assets/images/vibe/' + item.filename) | url }}" alt="{{ item.alt }}, ADW 2025" loading="lazy">
     </a>
   </li>

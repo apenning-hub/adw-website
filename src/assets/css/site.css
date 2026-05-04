@@ -317,32 +317,34 @@ hr {
     text-decoration-thickness: 2px;
 }
 
-/* Bento gallery — folder-driven masonry, mixed 4:3 + 1:1 tiles
+/* Bento gallery — strict grid, per-photo aspect via row spans
    ========================================================================== */
 .bento-grid {
     list-style: none;
     padding: 0;
     margin: var(--space-3) auto var(--space-5);
     max-width: 1400px;
-    column-count: 4;
-    column-gap: var(--space-1);
+    --bento-cols: 4;
+    --bento-gap: var(--space-1);
+    --bento-row: calc((min(100vw, 1400px) - (var(--bento-cols) - 1) * var(--bento-gap) - 2 * var(--space-3)) / var(--bento-cols) / 4);
+    display: grid;
+    grid-template-columns: repeat(var(--bento-cols), 1fr);
+    grid-auto-rows: var(--bento-row);
+    grid-auto-flow: dense;
+    gap: var(--bento-gap);
 }
-.bento-item {
-    margin: 0 0 var(--space-1);
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    page-break-inside: avoid;
-}
+.bento-item { margin: 0; }
+.bento-item--landscape { grid-row: span 3; } /* 4:3, height = 3/4 col width */
+.bento-item--square    { grid-row: span 4; } /* 1:1 */
+.bento-item--portrait  { grid-row: span 5; } /* ~4:5, friendlier than forced 1:1 */
 .bento-item a {
     display: block;
     width: 100%;
+    height: 100%;
     line-height: 0;
     cursor: zoom-in;
     overflow: hidden;
 }
-.bento-item--landscape a { aspect-ratio: 4 / 3; }
-.bento-item--square a    { aspect-ratio: 1 / 1; }
-.bento-item--portrait a  { aspect-ratio: 3 / 4; }
 .bento-item img {
     width: 100%;
     height: 100%;
@@ -367,10 +369,10 @@ hr {
 }
 
 @media (max-width: 900px) {
-    .bento-grid { column-count: 3; }
+    .bento-grid { --bento-cols: 3; }
 }
 @media (max-width: 600px) {
-    .bento-grid { column-count: 2; }
+    .bento-grid { --bento-cols: 2; }
 }
 
 /* Lightbox overlay — fullscreen image viewer with prev/next
@@ -496,6 +498,36 @@ hr {
     }
     .streams dt:last-of-type { border-bottom: 0; }
     .streams dd:last-of-type { border-bottom: 1px solid var(--line); }
+}
+
+/* Contributors list (team page)
+   ========================================================================== */
+.contributors {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-2) var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+}
+.contributors li {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* Contributors list (team page)
+   ========================================================================== */
+.contributors {
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-2) var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+}
+.contributors li {
+    color: var(--ink);
+    font-weight: 700;
 }
 
 /* Required checklist

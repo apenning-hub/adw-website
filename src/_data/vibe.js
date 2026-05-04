@@ -20,6 +20,16 @@ function deriveExhibition(filename) {
     .trim();
 }
 
+function deriveCredit(filename) {
+  if (/_?VDK[_\d]/i.test(filename)) {
+    return "Jonathan VDK Studio (@jonathanvdk_studio)";
+  }
+  if (/DSC\d+/i.test(filename)) {
+    return "Christopher Arblaster (@christopherarblaster)";
+  }
+  return "";
+}
+
 function shapeFor(fullPath) {
   try {
     const { width, height } = imageSize(fs.readFileSync(fullPath));
@@ -44,9 +54,11 @@ module.exports = function () {
     .map((filename) => {
       const o = overrides[filename] || {};
       const exhibition = (o.exhibition !== undefined ? o.exhibition : deriveExhibition(filename)).trim();
+      const credit = (o.credit !== undefined ? o.credit : deriveCredit(filename)).trim();
       return {
         filename,
         exhibition,
+        credit,
         shape: shapeFor(path.join(dir, filename)),
         alt: exhibition || filename.replace(/\.[^.]+$/, ""),
       };
