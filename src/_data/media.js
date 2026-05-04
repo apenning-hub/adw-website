@@ -110,12 +110,42 @@ try {
   imageMap = {};
 }
 
+// Also pick up any hand-dropped images that follow the convention
+// <source-slug>-<YYYY-MM-DD>-<type-slug>.<ext> in src/assets/images/media/.
+// This means you can just save a file named e.g.
+// `broadsheet-2025-08-19-article.jpg` into that folder and it shows up
+// on the matching card automatically — no edits here needed.
+const fs = require("fs");
+const path = require("path");
+const mediaImagesDir = path.join(__dirname, "..", "assets", "images", "media");
+
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+let mediaFiles = [];
+try {
+  mediaFiles = fs.readdirSync(mediaImagesDir);
+} catch (e) {
+  mediaFiles = [];
+}
+
+function imageForItem(it) {
+  if (it.image) return it.image;
+  if (imageMap[it.url]) return imageMap[it.url];
+  const base = `${slugify(it.source)}-${it.date}-${slugify(it.type)}`;
+  const match = mediaFiles.find(
+    (f) => f.startsWith(base + ".") && /\.(avif|webp|jpe?g|png|gif)$/i.test(f)
+  );
+  return match || "";
+}
+
 module.exports = {
   items: items.map((it) => ({
     image: "",
     emailOnly: false,
     ...it,
-    image: it.image || imageMap[it.url] || "",
+    image: imageForItem(it),
     displayDate: displayDate(it.date),
   })),
 };
