@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "eleventy --serve --quiet",
     "build": "eleventy",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "fetch-media-images": "node scripts/fetch-media-images.js"
   },
   "engines": {
     "node": ">=20"

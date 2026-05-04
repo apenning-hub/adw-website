@@ -514,6 +514,14 @@ hr {
     color: var(--ink);
     font-weight: 700;
 }
+.contributors li a {
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    margin-inline-start: 0.4em;
+}
+.contributors li a:hover { color: var(--ink-strong); }
 
 /* Media grid (media page) — press cards with header image
    ========================================================================== */
