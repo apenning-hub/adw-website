@@ -506,8 +506,6 @@ hr {
     list-style: none;
     padding: 0;
     margin-block: var(--space-2) var(--space-4);
-    columns: 2;
-    column-gap: var(--space-4);
 }
 .contributors li {
     color: var(--ink);
@@ -530,9 +528,7 @@ hr {
     white-space: nowrap;
 }
 .contributors li a:hover { color: var(--ink-strong); }
-@media (max-width: 600px) {
-    .contributors { columns: 1; }
-}
+.contributors li:last-child { border-bottom: 1px solid var(--line); }
 
 /* Media grid (media page) — press cards with header image
    ========================================================================== */
