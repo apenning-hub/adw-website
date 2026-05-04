@@ -1,11 +1,22 @@
 const fs = require("fs");
 const path = require("path");
 
-let meta = {};
+let overrides = {};
 try {
-  meta = require("./vibeMeta.json");
+  overrides = require("./vibeMeta.json");
 } catch (e) {
-  meta = {};
+  overrides = {};
+}
+
+function deriveExhibition(filename) {
+  return filename
+    .replace(/\.[^.]+$/, "")
+    .replace(/^\d{8}_DSC\d+_?/i, "")
+    .replace(/^_?VDK_?\d+/, "")
+    .replace(/^adelaide design week\s*-?\s*/i, "")
+    .replace(/\s+\d+$/, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 module.exports = function () {
@@ -17,19 +28,12 @@ module.exports = function () {
     .filter((f) => /\.(avif|webp|jpe?g|png|gif)$/i.test(f))
     .sort()
     .map((filename) => {
-      const m = meta[filename] || {};
-      const exhibition = (m.exhibition || "").trim();
-      const credit = (m.credit || "").trim();
-      const altFromName = filename
-        .replace(/\.[^.]+$/, "")
-        .replace(/^\d+\s*[-_]?\s*/, "")
-        .replace(/[-_]+/g, " ")
-        .trim();
+      const o = overrides[filename] || {};
+      const exhibition = (o.exhibition !== undefined ? o.exhibition : deriveExhibition(filename)).trim();
       return {
         filename,
         exhibition,
-        credit,
-        alt: exhibition || altFromName,
+        alt: exhibition || filename.replace(/\.[^.]+$/, ""),
       };
     });
 };

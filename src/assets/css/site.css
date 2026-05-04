@@ -338,30 +338,16 @@ hr {
     line-height: 0;
     cursor: zoom-in;
     overflow: hidden;
-    position: relative;
 }
-.bento-caption {
-    position: absolute;
-    inset-inline: 0;
-    inset-block-end: 0;
-    padding: var(--space-2) var(--space-2) var(--space-1);
-    background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
-    color: #fff;
-    font-size: 0.8125rem;
-    line-height: 1.35;
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    pointer-events: none;
-}
-.bento-exhibition {
-    font-weight: 700;
-    text-transform: lowercase;
-}
-.bento-credit {
-    font-size: 0.75rem;
-    opacity: 0.85;
+.photo-credits {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
     font-style: italic;
+}
+.photo-credits a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
 }
 .bento-item img {
     width: 100%;

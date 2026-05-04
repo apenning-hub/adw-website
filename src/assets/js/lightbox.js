@@ -18,7 +18,6 @@
     src: a.getAttribute("href"),
     alt: a.querySelector("img") ? a.querySelector("img").getAttribute("alt") || "" : "",
     exhibition: a.getAttribute("data-exhibition") || "",
-    credit: a.getAttribute("data-credit") || "",
   }));
 
   let idx = 0;
@@ -49,7 +48,6 @@
     imgEl.alt = it.alt;
     const parts = [];
     if (it.exhibition) parts.push(it.exhibition);
-    if (it.credit) parts.push("photo: " + it.credit);
     parts.push((idx + 1) + " / " + items.length);
     capEl.textContent = parts.join(" · ");
   }
