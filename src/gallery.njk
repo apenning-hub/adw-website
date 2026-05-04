@@ -14,7 +14,7 @@ description: A look at Adelaide Design Week — openings, talks, exhibitions, an
 
 <ul class="bento-grid" data-lightbox-grid>
 {% for item in vibe %}
-  <li class="bento-item">
+  <li class="bento-item bento-item--{{ item.shape }}">
     <a href="{{ ('/assets/images/vibe/' + item.filename) | url }}"
        aria-label="View {{ item.alt }}"
        data-exhibition="{{ item.exhibition }}">

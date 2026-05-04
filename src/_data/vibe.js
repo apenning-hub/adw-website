@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { imageSize } = require("image-size");
 
 let overrides = {};
 try {
@@ -19,6 +20,16 @@ function deriveExhibition(filename) {
     .trim();
 }
 
+function shapeFor(fullPath) {
+  try {
+    const { width, height } = imageSize(fs.readFileSync(fullPath));
+    if (!width || !height) return "square";
+    return width / height >= 1.1 ? "landscape" : "square";
+  } catch (e) {
+    return "square";
+  }
+}
+
 module.exports = function () {
   const dir = path.join(__dirname, "..", "assets", "images", "vibe");
   if (!fs.existsSync(dir)) return [];
@@ -33,6 +44,7 @@ module.exports = function () {
       return {
         filename,
         exhibition,
+        shape: shapeFor(path.join(dir, filename)),
         alt: exhibition || filename.replace(/\.[^.]+$/, ""),
       };
     });

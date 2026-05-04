@@ -317,26 +317,31 @@ hr {
     text-decoration-thickness: 2px;
 }
 
-/* Bento gallery — folder-driven, uniform 4:3 tiles
+/* Bento gallery — folder-driven masonry, mixed 4:3 + 1:1 tiles
    ========================================================================== */
 .bento-grid {
     list-style: none;
     padding: 0;
     margin: var(--space-3) auto var(--space-5);
     max-width: 1400px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-1);
+    column-count: 4;
+    column-gap: var(--space-1);
 }
-.bento-item { margin: 0; }
+.bento-item {
+    margin: 0 0 var(--space-1);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+}
 .bento-item a {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
     line-height: 0;
     cursor: zoom-in;
     overflow: hidden;
 }
+.bento-item--landscape a { aspect-ratio: 4 / 3; }
+.bento-item--square a    { aspect-ratio: 1 / 1; }
 .bento-item img {
     width: 100%;
     height: 100%;
@@ -361,10 +366,10 @@ hr {
 }
 
 @media (max-width: 900px) {
-    .bento-grid { grid-template-columns: repeat(3, 1fr); }
+    .bento-grid { column-count: 3; }
 }
 @media (max-width: 600px) {
-    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .bento-grid { column-count: 2; }
 }
 
 /* Lightbox overlay — fullscreen image viewer with prev/next
