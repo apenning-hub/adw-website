@@ -17,6 +17,8 @@
   const items = links.map((a) => ({
     src: a.getAttribute("href"),
     alt: a.querySelector("img") ? a.querySelector("img").getAttribute("alt") || "" : "",
+    exhibition: a.getAttribute("data-exhibition") || "",
+    credit: a.getAttribute("data-credit") || "",
   }));
 
   let idx = 0;
@@ -42,9 +44,14 @@
 
   function show(i) {
     idx = (i + items.length) % items.length;
-    imgEl.src = items[idx].src;
-    imgEl.alt = items[idx].alt;
-    capEl.textContent = (idx + 1) + " / " + items.length;
+    const it = items[idx];
+    imgEl.src = it.src;
+    imgEl.alt = it.alt;
+    const parts = [];
+    if (it.exhibition) parts.push(it.exhibition);
+    if (it.credit) parts.push("photo: " + it.credit);
+    parts.push((idx + 1) + " / " + items.length);
+    capEl.textContent = parts.join(" · ");
   }
 
   function open(i) {

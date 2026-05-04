@@ -1,0 +1,37 @@
+---
+title: gallery
+permalink: /gallery/
+layout: base.njk
+lightbox: true
+description: A look at Adelaide Design Week — openings, talks, exhibitions, and the people who showed up.
+---
+
+<article class="page prose">
+  <h1>gallery</h1>
+  <p>A look at Adelaide Design Week — openings, talks, exhibitions, and the people who showed up.</p>
+</article>
+
+<ul class="bento-grid" data-lightbox-grid>
+{% for item in vibe %}
+  <li class="bento-item">
+    <a href="{{ ('/assets/images/vibe/' + item.filename) | url }}"
+       aria-label="View {{ item.alt }}"
+       data-exhibition="{{ item.exhibition }}"
+       data-credit="{{ item.credit }}">
+      <img src="{{ ('/assets/images/vibe/' + item.filename) | url }}" alt="{{ item.alt }}, ADW 2025" loading="lazy">
+      {% if item.exhibition or item.credit %}
+      <figcaption class="bento-caption">
+        {% if item.exhibition %}<span class="bento-exhibition">{{ item.exhibition }}</span>{% endif %}
+        {% if item.credit %}<span class="bento-credit">photo: {{ item.credit }}</span>{% endif %}
+      </figcaption>
+      {% endif %}
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+<article class="page prose">
+
+<p class="back-link"><a href="{{ '/eoi/' | url }}">← back to how to apply</a></p>
+
+</article>
