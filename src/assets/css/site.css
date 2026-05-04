@@ -509,26 +509,15 @@ hr {
 }
 .contributors li {
     color: var(--ink);
-    font-weight: 700;
-    padding: var(--space-1) 0;
-    border-top: 1px solid var(--line);
-    break-inside: avoid;
-    -webkit-column-break-inside: avoid;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: var(--space-2);
+    margin-block-end: var(--space-1);
 }
 .contributors li a {
-    font-weight: 400;
     color: var(--ink-soft);
     text-decoration: underline;
     text-underline-offset: 0.15em;
-    font-size: 0.875rem;
-    white-space: nowrap;
+    margin-inline-start: 0.4em;
 }
 .contributors li a:hover { color: var(--ink-strong); }
-.contributors li:last-child { border-bottom: 1px solid var(--line); }
 
 /* Media grid (media page) — press cards with header image
    ========================================================================== */
