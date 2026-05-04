@@ -317,7 +317,7 @@ hr {
     text-decoration-thickness: 2px;
 }
 
-/* Bento gallery — folder-driven, varied tile sizes
+/* Bento gallery — folder-driven, uniform 4:3 tiles
    ========================================================================== */
 .bento-grid {
     list-style: none;
@@ -326,28 +326,16 @@ hr {
     max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 180px;
-    grid-auto-flow: dense;
     gap: var(--space-1);
 }
 .bento-item { margin: 0; }
 .bento-item a {
     display: block;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4 / 3;
     line-height: 0;
     cursor: zoom-in;
     overflow: hidden;
-}
-.photo-credits {
-    font-size: 0.875rem;
-    color: var(--ink-soft);
-    font-style: italic;
-}
-.photo-credits a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
 }
 .bento-item img {
     width: 100%;
@@ -361,38 +349,22 @@ hr {
     opacity: 0.9;
     transform: scale(1.02);
 }
-
-/* Bento size pattern — repeats every 7 items so larger collections stay rhythmic */
-.bento-item:nth-child(7n+1) { grid-column: span 2; grid-row: span 2; } /* hero */
-.bento-item:nth-child(7n+2) { grid-column: span 1; grid-row: span 1; }
-.bento-item:nth-child(7n+3) { grid-column: span 1; grid-row: span 2; } /* tall */
-.bento-item:nth-child(7n+4) { grid-column: span 2; grid-row: span 1; } /* wide */
-.bento-item:nth-child(7n+5) { grid-column: span 1; grid-row: span 1; }
-.bento-item:nth-child(7n+6) { grid-column: span 1; grid-row: span 1; }
-.bento-item:nth-child(7n+7) { grid-column: span 2; grid-row: span 1; } /* wide */
+.photo-credits {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    font-style: italic;
+}
+.photo-credits a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
 
 @media (max-width: 900px) {
-    .bento-grid {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 150px;
-    }
-    .bento-item:nth-child(7n+4),
-    .bento-item:nth-child(7n+7) { grid-column: span 2; }
+    .bento-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 600px) {
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 140px;
-    }
-    .bento-item,
-    .bento-item:nth-child(n) {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-    .bento-item:nth-child(7n+1) {
-        grid-column: span 2;
-        grid-row: span 2;
-    }
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Lightbox overlay — fullscreen image viewer with prev/next
