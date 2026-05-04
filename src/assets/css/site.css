@@ -506,22 +506,33 @@ hr {
     list-style: none;
     padding: 0;
     margin-block: var(--space-2) var(--space-4);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1) var(--space-3);
+    columns: 2;
+    column-gap: var(--space-4);
 }
 .contributors li {
     color: var(--ink);
     font-weight: 700;
+    padding: var(--space-1) 0;
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2);
 }
 .contributors li a {
     font-weight: 400;
     color: var(--ink-soft);
     text-decoration: underline;
     text-underline-offset: 0.15em;
-    margin-inline-start: 0.4em;
+    font-size: 0.875rem;
+    white-space: nowrap;
 }
 .contributors li a:hover { color: var(--ink-strong); }
+@media (max-width: 600px) {
+    .contributors { columns: 1; }
+}
 
 /* Media grid (media page) — press cards with header image
    ========================================================================== */
