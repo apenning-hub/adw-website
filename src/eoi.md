@@ -48,7 +48,7 @@ The events that worked best in 2025 brought people into a room together: an open
 
 Please review the following before submitting:
 
-<ul class="checklist">
+<ul>
   <li>You, or a representative for you / your project, will be available and responsible pre, during and post event.</li>
   <li>You have your own insurance.</li>
   <li>You have read and understood the <a href="{{ '/terms/' | url }}">terms and conditions</a>.</li>
