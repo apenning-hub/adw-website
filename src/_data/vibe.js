@@ -24,7 +24,10 @@ function shapeFor(fullPath) {
   try {
     const { width, height } = imageSize(fs.readFileSync(fullPath));
     if (!width || !height) return "square";
-    return width / height >= 1.1 ? "landscape" : "square";
+    const r = width / height;
+    if (r >= 1.1) return "landscape";
+    if (r <= 0.9) return "portrait";
+    return "square";
   } catch (e) {
     return "square";
   }

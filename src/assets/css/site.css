@@ -342,6 +342,7 @@ hr {
 }
 .bento-item--landscape a { aspect-ratio: 4 / 3; }
 .bento-item--square a    { aspect-ratio: 1 / 1; }
+.bento-item--portrait a  { aspect-ratio: 3 / 4; }
 .bento-item img {
     width: 100%;
     height: 100%;
