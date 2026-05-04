@@ -1,0 +1,35 @@
+---
+title: media
+navLabel: media
+navOrder: 4
+permalink: /media/
+layout: base.njk
+description: Press, articles and reviews of Adelaide Design Week.
+---
+
+<article class="page prose">
+  <h1>media</h1>
+  <p>Articles, newsletters, social posts and reviews covering Adelaide Design Week 2025. Newsletters marked <em>email only</em> have no live link.</p>
+</article>
+
+<ul class="media-grid">
+{% for item in media.items %}
+  {% set isClickable = item.url and not item.emailOnly %}
+  <li class="media-card{% if not isClickable %} media-card--inert{% endif %}">
+    {% if isClickable %}<a class="media-card-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item.source }} — {{ item.type }} ({{ item.displayDate }})">{% endif %}
+      <div class="media-card-image">
+        {% if item.image %}
+          <img src="{{ ('/assets/images/media/' + item.image) | url }}" alt="{{ item.source }} — {{ item.type }}" loading="lazy">
+        {% else %}
+          <span class="media-card-placeholder">{{ item.source }}</span>
+        {% endif %}
+      </div>
+      <div class="media-card-meta">
+        <span class="media-card-date">{{ item.displayDate }}</span>
+        <span class="media-card-source">{{ item.source }}</span>
+        <span class="media-card-type">{{ item.type }}{% if item.emailOnly %} <em>(email only)</em>{% elif not item.url %} <em>(link to add)</em>{% endif %}</span>
+      </div>
+    {% if isClickable %}</a>{% endif %}
+  </li>
+{% endfor %}
+</ul>
