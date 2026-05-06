@@ -21,7 +21,7 @@ Adelaide Design Week 2026 is a city-wide, independently curated program — exhi
 
 <div class="theme">
 
-The theme **every*where [2025]** has evolved into **every*one** — with a focus on people, ergonomics, connection and the power of design to unite and strengthen. We welcome all interpretations, in all forms.
+The theme **every*where [2025]** has evolved into **every*one** — with a focus on people, movement, connection and the power of design to unite and strengthen. We welcome all interpretations, in all forms.
 
 </div>
 
