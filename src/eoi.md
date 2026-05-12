@@ -40,8 +40,11 @@ The events that worked best in 2025 brought people into a room together: an open
 <p class="program-link"><a href="{{ '/gallery/' | url }}">see the gallery →</a></p>
 
 <div class="cta-wrap">
-  <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-  <p class="cta-meta">EOIs close {{ site.eoiDates.close }}.</p>
+  <div class="cta-pair">
+    <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
+    <a class="cta-secondary" href="{{ '/eoi/questions/' | url }}">preview the questions →</a>
+  </div>
+  <p class="cta-meta">EOIs are submitted via Tally. EOIs close {{ site.eoiDates.close }}.</p>
 </div>
 
 ## before you apply
