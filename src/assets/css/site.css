@@ -823,25 +823,8 @@ hr {
 
 /* every*where 2025 page
    ========================================================================== */
-.location-section {
-    max-width: var(--content-wide);
-    margin: var(--space-4) auto;
-    padding: 0 var(--space-3);
-}
 .section-heading {
     margin-block: var(--space-3) var(--space-2);
-}
-.location-map { margin: var(--space-2) 0 0; }
-.location-map img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 1px solid var(--line);
-}
-.location-map figcaption {
-    margin-block-start: var(--space-1);
-    font-size: 0.8125rem;
-    opacity: 0.85;
 }
 
 /* Richer cards on the full program grid */
