@@ -32,15 +32,9 @@ Adelaide Design Week is run by a small, dedicated team — designers, coordinato
 ADW exists because of the people who've helped shape it — past and present. Thanks to:
 
 <ul class="contributors">
-  <li>Andrew Lymn-Penning <a href="https://instagram.com/apenning_" target="_blank" rel="noopener noreferrer">@apenning_</a></li>
-  <li>Ashleigh Pinto <a href="https://instagram.com/ashleighkpinto" target="_blank" rel="noopener noreferrer">@ashleighkpinto</a></li>
-  <li>Bronwyn Marshall <a href="https://instagram.com/bronwynmarshall" target="_blank" rel="noopener noreferrer">@bronwynmarshall</a></li>
-  <li>Claire Markwick-Smith <a href="https://instagram.com/clairmar" target="_blank" rel="noopener noreferrer">@clairmar</a></li>
-  <li>Dre Fuzz <a href="https://instagram.com/futurejuice.xyz" target="_blank" rel="noopener noreferrer">@futurejuice.xyz</a></li>
-  <li>Hannah White <a href="https://instagram.com/hannahwhite.lecturer" target="_blank" rel="noopener noreferrer">@hannahwhite.lecturer</a></li>
-  <li>James Brown <a href="https://instagram.com/2049.art" target="_blank" rel="noopener noreferrer">@2049.art</a></li>
-  <li>Lara Merrington <a href="https://instagram.com/lara_merrington" target="_blank" rel="noopener noreferrer">@lara_merrington</a></li>
-  <li>Sam Agostino <a href="https://instagram.com/motion.exhibition" target="_blank" rel="noopener noreferrer">@motion.exhibition</a></li>
+{% for c in contributors2025 %}
+  <li>{{ c.name }} <a href="{{ c.url }}" target="_blank" rel="noopener noreferrer">{{ c.handle }}</a></li>
+{% endfor %}
 </ul>
 
 ## join the team

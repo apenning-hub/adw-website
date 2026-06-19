@@ -1,0 +1,71 @@
+---
+title: every*where 2025
+navLabel: 2025
+navOrder: 5
+permalink: /everywhere-2025/
+layout: base.njk
+description: every*where — Adelaide Design Week 2025. The full program of 19 events, all locations, and the people behind it. 20–24 August 2025.
+---
+
+<article class="page prose">
+
+<h1>every*where 2025</h1>
+
+<p>The inaugural every*where: Adelaide Design Week ran <strong>20–24 August 2025</strong> — a city-wide, independently curated program of 19 events. Exhibitions, talks, open studios and installations across Kaurna/Adelaide, celebrating local design and the people who make it.</p>
+
+<p class="program-link"><a href="{{ '/gallery/' | url }}">see the gallery →</a></p>
+
+</article>
+
+<section class="location-section" aria-label="All locations">
+
+<figure class="location-map">
+  <img src="{{ '/assets/images/program-2025/all-locations-map.jpg' | url }}" alt="Map of every*where 2025 event locations across Adelaide, 20–24 August 2025" loading="lazy">
+  <figcaption><a href="{{ '/assets/all-locations-map-2025.pdf' | url }}" target="_blank" rel="noopener noreferrer">download the full map (PDF) →</a></figcaption>
+</figure>
+
+</section>
+
+<section class="program-section" aria-label="2025 program">
+
+<h2 class="section-heading">the program</h2>
+
+<ul class="program-grid program-grid--full">
+{% for e in program2025 %}
+  <li class="program-card">
+    <div class="program-poster"><img src="{{ ('/assets/images/program-2025/' + e.image) | url }}" alt="{{ e.title }} poster" loading="lazy"></div>
+    <h3 class="program-title">{{ e.title }}</h3>
+    <p class="program-meta">{{ e.meta | safe }}</p>
+    {% if e.sponsor %}<p class="program-sponsor">{{ e.sponsor }}</p>{% endif %}
+    {% if e.description %}<p class="program-desc">{{ e.description | safe }}</p>{% endif %}
+    {% if e.people %}
+    <div class="program-people">
+      <span class="program-people-label">{{ e.people.label }}</span>
+      <ul class="program-people-list">
+        {% for n in e.people.names %}<li>{{ n }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
+
+</section>
+
+<article class="page prose">
+
+<h2>the people</h2>
+
+<p>every*where 2025 was made by a small, dedicated team and a wider community of contributors:</p>
+
+<ul class="contributors">
+{% for c in contributors2025 %}
+  <li>{{ c.name }} <a href="{{ c.url }}" target="_blank" rel="noopener noreferrer">{{ c.handle }}</a></li>
+{% endfor %}
+</ul>
+
+<p class="program-link"><a href="{{ '/team/' | url }}">meet the team →</a></p>
+
+<p class="back-link"><a href="{{ '/eoi/' | url }}">← apply for 2026</a></p>
+
+</article>

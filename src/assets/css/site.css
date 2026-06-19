@@ -821,6 +821,66 @@ hr {
     opacity: 0.85;
 }
 
+/* every*where 2025 page
+   ========================================================================== */
+.location-section {
+    max-width: var(--content-wide);
+    margin: var(--space-4) auto;
+    padding: 0 var(--space-3);
+}
+.section-heading {
+    margin-block: var(--space-3) var(--space-2);
+}
+.location-map { margin: var(--space-2) 0 0; }
+.location-map img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid var(--line);
+}
+.location-map figcaption {
+    margin-block-start: var(--space-1);
+    font-size: 0.8125rem;
+    opacity: 0.85;
+}
+
+/* Richer cards on the full program grid */
+.program-grid--full {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4) var(--space-3);
+}
+.program-card .program-sponsor {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.75;
+    margin: 0;
+}
+.program-card .program-desc {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    margin: 0;
+}
+.program-people { margin-block-start: 0.15rem; }
+.program-people-label {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.7;
+    margin-block-end: 0.15rem;
+}
+.program-people-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.45;
+    opacity: 0.9;
+}
+.program-people-list li { margin: 0; }
+
 /* Footer
    ========================================================================== */
 .site-footer {
