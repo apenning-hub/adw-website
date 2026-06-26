@@ -1,25 +1,19 @@
 ---
-title: media
-navLabel: media
+title: awards & media
+navLabel: awards & media
 navOrder: 4
-permalink: /media/
+permalink: /awards-and-media/
 layout: base.njk
-description: Press, articles and reviews of Adelaide Design Week.
+description: Awards, press, articles and reviews of Adelaide Design Week.
 ---
 
-<article class="page prose">
-  <h1>media</h1>
-  <p>Articles, newsletters, social posts and reviews covering Adelaide Design Week 2025. Newsletters marked <em>email only</em> have no live link.</p>
-</article>
-
-<ul class="media-grid">
-{% for item in media.items %}
+{% macro card(item) %}
   {% set isClickable = item.url and not item.emailOnly %}
   <li class="media-card{% if not isClickable %} media-card--inert{% endif %}">
     {% if isClickable %}<a class="media-card-link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item.source }} — {{ item.type }} ({{ item.displayDate }})">{% endif %}
       <div class="media-card-image">
-        {% if item.image %}
-          <img src="{{ ('/assets/images/media/' + item.image) | url }}" alt="{{ item.source }} — {{ item.type }}" loading="lazy">
+        {% if item.imageSrc %}
+          <img src="{{ item.imageSrc | url }}" alt="{{ item.source }} — {{ item.type }}" loading="lazy">
         {% else %}
           <span class="media-card-placeholder">{{ item.source }}</span>
         {% endif %}
@@ -31,5 +25,25 @@ description: Press, articles and reviews of Adelaide Design Week.
       </div>
     {% if isClickable %}</a>{% endif %}
   </li>
-{% endfor %}
+{% endmacro %}
+
+<article class="page prose">
+  <h1>awards &amp; media</h1>
+  <p>Awards, articles, newsletters, social posts and reviews covering Adelaide Design Week. Newsletters marked <em>email only</em> have no live link.</p>
+</article>
+
+<section class="program-section" aria-label="Awards and media">
+
+<h2 class="section-heading">awards</h2>
+
+<ul class="media-grid">
+{% for item in media.awards %}{{ card(item) }}{% endfor %}
 </ul>
+
+<h2 class="section-heading">media</h2>
+
+<ul class="media-grid">
+{% for item in media.items %}{{ card(item) }}{% endfor %}
+</ul>
+
+</section>

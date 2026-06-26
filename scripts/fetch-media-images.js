@@ -103,7 +103,7 @@ function extFromContentType(ct) {
   fs.mkdirSync(imagesDir, { recursive: true });
   let updated = 0, skipped = 0, failed = 0;
 
-  for (const item of media.items) {
+  for (const item of [...media.awards, ...media.items]) {
     const tag = `${item.source} · ${item.type} · ${item.date}`;
     if (item.emailOnly || !item.url) { skipped++; continue; }
     if (mapping[item.url]) {

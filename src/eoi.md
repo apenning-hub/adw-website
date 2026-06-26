@@ -1,18 +1,21 @@
 ---
-title: how to apply
+title: eois are closed
 navLabel: eoi
 navOrder: 2
 permalink: /eoi/
 layout: base.njk
-tallyPopup: true
-description: Apply to Adelaide Design Week 2026 across five streams — Project, Collaborate, Host, Team, or Sponsor.
+description: Adelaide Design Week 2026 — expressions of interest across five streams (Project, Collaborate, Host, Team, or Sponsor). EOIs are now closed.
 ---
 
 <article class="page prose">
 
-# how to apply
+# eois are closed
 
-You can submit an Expression of Interest under any of these streams. The form takes around 10–15 minutes and you can submit more than one EOI — one per project, role or offer.
+Thank you — Adelaide Design Week 2026 received an incredible number of entries. Selected applicants will be notified in mid July 2026.
+
+In the meantime, keep your eyes peeled for the upcoming **Design Mixer** at Honeydripper — where new collaborations can be started over a drink or two. Tickets coming soon.
+
+EOIs were invited under any of these streams:
 
 <dl class="streams">
   <dt>Project</dt>
@@ -39,17 +42,9 @@ The events that worked best in 2025 brought people into a room together: an open
 
 <p class="program-link"><a href="{{ '/gallery/' | url }}">see the gallery →</a></p>
 
-<div class="cta-wrap">
-  <div class="cta-pair">
-    <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-    <a class="cta-secondary" href="{{ '/eoi/questions/' | url }}">preview the questions →</a>
-  </div>
-  <p class="cta-meta">EOIs are submitted via Tally. EOIs close {{ site.eoiDates.close }}.</p>
-</div>
+## what applicants confirmed
 
-## before you apply
-
-Please review the following before submitting:
+Applicants were asked to confirm the following before submitting:
 
 <ul>
   <li>You, or a representative for you / your project, will be available and responsible pre, during and post event.</li>

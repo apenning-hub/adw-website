@@ -1,7 +1,7 @@
 ---
 title: contact
 navLabel: contact
-navOrder: 5
+navOrder: 6
 permalink: /contact/
 layout: base.njk
 ---

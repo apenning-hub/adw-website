@@ -232,6 +232,48 @@ hr {
 }
 .theme p { margin-block-end: var(--space-1); }
 
+/* Design Mixer — featured event band (inverted: yellow on ink)
+   ========================================================================== */
+.mixer {
+    max-width: var(--content-wide);
+    margin: var(--space-4) auto;
+    background: var(--ink-strong);
+    color: var(--yellow);
+    text-align: center;
+    padding: var(--space-5) var(--space-3);
+}
+.mixer-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--yellow);
+    margin-block-end: var(--space-2);
+}
+.mixer-title {
+    color: var(--yellow);
+    font-size: clamp(1.75rem, 4.5vw, 3rem);
+    line-height: 1.1;
+    margin-block: 0 var(--space-2);
+}
+.mixer-meta {
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: clamp(1rem, 1.6vw, 1.1875rem);
+    margin-block-end: var(--space-3);
+}
+.mixer-tickets {
+    display: inline-block;
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+    padding: 0.75rem 1.75rem;
+    text-transform: lowercase;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: clamp(1rem, 1.6vw, 1.1875rem);
+    margin: 0;
+}
+
 /* CTA — prominent
    ========================================================================== */
 .cta-wrap {

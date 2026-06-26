@@ -13,7 +13,7 @@ description: A preview of the questions in the Adelaide Design Week 2026 EOI for
 
 # questions we will ask
 
-<p class="eoi-questions-intro">This is a preview so you can prepare your answers in a working document. <strong>All EOIs must be submitted through the Tally form</strong> — copying answers here doesn't submit anything.</p>
+<p class="eoi-questions-intro">This page previews the questions that were asked in the 2026 EOI form. <strong>Expressions of interest are now closed.</strong></p>
 
 <div class="eoi-questions-actions">
   <button type="button" class="copy-btn" data-copy-target="#eoi-questions-content">copy all questions to clipboard</button>
@@ -75,11 +75,6 @@ description: A preview of the questions in the Adelaide Design Week 2026 EOI for
 - Links to video / documentation (if applicable)
 - Any additional information you would like to add
 
-</div>
-
-<div class="cta-wrap">
-  <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">ready? open the form →</a>
-  <p class="cta-meta">EOIs are submitted via Tally. EOIs close {{ site.eoiDates.close }}.</p>
 </div>
 
 </article>

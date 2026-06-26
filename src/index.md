@@ -4,20 +4,26 @@ navLabel: home
 navOrder: 1
 permalink: /
 layout: base.njk
-description: Adelaide Design Week 2026 — Expressions of Interest now open. 14–18 October 2026.
+description: Adelaide Design Week 2026 — Expressions of Interest are now closed. 14–18 October 2026.
 ---
 
 <section class="hero">
   <h1>adelaide design week 2026</h1>
   <p class="hero-dates">14 – 18 october 2026</p>
-  <p class="hero-tagline">ADW is open to everyone.</p>
+</section>
+
+<section class="mixer" aria-label="Adelaide Design Week Design Mixer">
+  <p class="mixer-kicker">every*one — design mixer</p>
+  <h2 class="mixer-title">adelaide design week design mixer</h2>
+  <p class="mixer-meta">Honeydripper · Wednesday 22 July 2026 · 6–8pm</p>
+  <p class="mixer-tickets">tickets coming soon</p>
 </section>
 
 <article class="page prose">
 
-## expressions of interest are open
+## expressions of interest are closed
 
-Adelaide Design Week 2026 is a city-wide, independently curated program — exhibitions, talks, installations, workshops and collaborations across Kaurna/Adelaide. We're looking for projects, venues, collaborators, team and sponsors.
+Adelaide Design Week 2026 is a city-wide, independently curated program — exhibitions, talks, installations, workshops and collaborations across Kaurna/Adelaide. Expressions of interest have now closed — thank you to everyone who submitted.
 
 <div class="theme">
 
@@ -30,22 +36,15 @@ The theme **every*where [2025]** has evolved into **every*one** — with a focus
 ### key dates
 
 <dl>
-  <dt>EOIs open</dt>
-  <dd>{{ site.eoiDates.open }}</dd>
-  <dt>EOIs close</dt>
-  <dd>{{ site.eoiDates.close }}</dd>
-  <dt>Applicants notified</dt>
-  <dd>{{ site.eoiDates.notified }}</dd>
+  <dt>EOIs notified</dt>
+  <dd>Mid July 2026</dd>
+  <dt>'Design Mixer' event x Honeydripper</dt>
+  <dd>22 July 2026 (6–8pm)</dd>
   <dt>ADW 2026</dt>
   <dd>{{ site.programDates }}</dd>
 </dl>
 
 </section>
-
-<div class="cta-wrap">
-  <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-  <p class="cta-meta">See <a href="{{ '/eoi/' | url }}">how to apply</a> before you start.</p>
-</div>
 
 </article>
 
@@ -147,10 +146,6 @@ Minor changes are fine. Major changes need approval.
 </details>
 
 </section>
-
-<div class="cta-wrap">
-  <a class="cta-tally" href="{{ site.tallyFormUrl }}" target="_blank" rel="noopener noreferrer">submit your eoi →</a>
-</div>
 
 <aside class="disclaimer">
 <strong>Disclaimer:</strong> Adelaide Design Week is an independently run and curated, city-wide program. Submitting an EOI does not guarantee inclusion, funding, or support.

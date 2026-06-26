@@ -6,6 +6,25 @@
 // Only items with live links are listed here; email-only newsletters
 // are excluded.
 
+// Awards ADW has received. Rendered in their own group above the press
+// cards on /awards-and-media/. `type` carries the category + result level.
+const awards = [
+  {
+    date: "2026-06",
+    source: "AIA (SA)",
+    type: "Creative Collaboration Prize — Commendation",
+    url: "https://architectureau.com/articles/2026-south-australian-architecture-awards/",
+    image: "/assets/images/vibe/VDK_0977.jpg",
+  },
+  {
+    date: "2025",
+    source: "AGDA",
+    type: "Brand & Identity, Campaign — Finalist",
+    url: "https://agda.com.au/awards/results/8295/",
+    image: "/assets/images/vibe/20250819_DSC08726_Adelaide design week opening night at motion exhibition.jpg",
+  },
+];
+
 const items = [
   {
     date: "2025-07-24",
@@ -91,12 +110,35 @@ const items = [
     type: "review",
     url: "https://www.habitusliving.com/articles/adelaide-design-week-inside",
   },
+  {
+    date: "2026-06-22",
+    source: "Architecture,AU",
+    type: "awards article",
+    url: "https://architectureau.com/articles/2026-south-australian-architecture-awards/",
+    image: "/assets/images/vibe/20250820_DSC09359_Adelaide design week - the architect's dream at SASA gallery.jpg",
+  },
+  {
+    date: "2026-06-22",
+    source: "InDaily",
+    type: "awards article",
+    url: "https://www.indailysa.com.au/news/business/2026/06/22/first-nations-centre-wins-top-sa-prize-as-cost-pressures-bite-architects",
+    image: "/assets/images/vibe/20250824_DSC01226_Adelaide design week - open talks at longplay.jpg",
+  },
+  {
+    date: "2026-06-22",
+    source: "Glam Adelaide",
+    type: "awards article",
+    url: "https://glamadelaide.com.au/from-aquatic-centres-to-gelaterias-and-footy-ovals-the-architecture-awards-celebrate-the-states-best-new-spaces/",
+    image: "/assets/images/vibe/20250822_DSC09961_Adelaide design week - clockwork exhibition at soda objects.jpg",
+  },
 ];
 
 const monthShort = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"];
 
-function displayDate(iso) {
-  const [y, m, d] = iso.split("-");
+function displayDate(value) {
+  const [y, m, d] = String(value).split("-");
+  if (!m) return y; // year only, e.g. "2025"
+  if (!d) return `${monthShort[parseInt(m, 10) - 1]} ${y}`; // month + year
   return `${parseInt(d, 10)} ${monthShort[parseInt(m, 10) - 1]} ${y}`;
 }
 
@@ -140,12 +182,32 @@ function imageForItem(it) {
   return match || "";
 }
 
+// Turn a stored image value into a usable src. Bare filenames live in the
+// media folder; values starting with "/" are full site paths (e.g. a gallery
+// image reused as a card header) and are used as-is.
+function imageSrc(img) {
+  if (!img) return "";
+  if (img.startsWith("/")) return img;
+  return "/assets/images/media/" + img;
+}
+
+function enrich(list) {
+  return list.map((it) => {
+    const image = imageForItem(it);
+    return {
+      emailOnly: false,
+      ...it,
+      image,
+      imageSrc: imageSrc(image),
+      displayDate: displayDate(it.date),
+    };
+  });
+}
+
+// Newest first.
+const byDateDesc = (a, b) => String(b.date).localeCompare(String(a.date));
+
 module.exports = {
-  items: items.map((it) => ({
-    image: "",
-    emailOnly: false,
-    ...it,
-    image: imageForItem(it),
-    displayDate: displayDate(it.date),
-  })),
+  awards: enrich([...awards].sort(byDateDesc)),
+  items: enrich([...items].sort(byDateDesc)),
 };
