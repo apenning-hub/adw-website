@@ -1,7 +1,12 @@
-# ADW 2026 program — CSV-driven program page + palette refresh
+# ADW 2026 program — CSV-driven program page + brand refresh
 
 **Date:** 2026-09-11
 **Status:** approved, ready for planning
+
+**Project location:** `~/Dropbox/01_active/every*where/2026/adw-website`
+(moved from `every*where/adw-website` on 2026-09-11; git history, remote and
+`push-to-github.command` all unaffected — the script resolves its own directory,
+and GitHub Pages builds server-side).
 
 ## Problem
 
@@ -44,7 +49,10 @@ src/_data/program2026.js     parses + validates; fails the build on bad data
         |
 src/program.njk              /program/ — day sections and an A–Z section
 src/assets/js/program.js     progressive enhancement: tabs + filters
-src/assets/css/site.css      palette tokens + program styles
+src/assets/css/site.css      brand tokens + program styles
+src/assets/fonts/            Chroma ST Bold (woff2/woff)
+src/assets/images/           every*one lockups
+docs/updating-the-program.md plain-English guide for whoever edits the CSV
 ```
 
 One direction of flow. The CSV is the only file that changes when the program
@@ -147,24 +155,120 @@ nothing is hidden behind a script.
 Day tabs scroll horizontally on narrow screens. Event rows stack their time
 beneath the title below ~560px. The category chip stays inline.
 
-## Palette
+## Brand refresh
 
-The site is already fully tokenised — three hex values across 951 lines of CSS,
-all behind `:root` — so this is a token swap, not a restyle.
+Scope: palette, typography and logos — the full 2026 identity, not colours alone.
 
-| token | current | 2026 | source |
-|---|---|---|---|
-| `--paper` | `#FFFFFF` | `#F0F1E7` | poster background |
-| `--ink`, `--ink-strong`, `--ink-soft` | `#747474` | `#4D4D4D` | poster body text |
-| `--yellow` | `#FEFF35` | `#F0F05E` | poster accent |
-| `--line` | `rgba(116,116,116,0.4)` | `rgba(77,77,77,0.35)` | derived from `--ink` |
+### Palette
 
-Sampled directly from the final-art PDF. `--paper` is introduced as a token in
-this change; it is currently hardcoded as `#fff`.
+Authoritative source is `2026/Colours/ADW_Colours.pdf`, **not** colours sampled
+from the program poster. The poster's rendered values (`#F0F1E7`, `#4D4D4D`,
+`#F0F05E`) are rasterisation artefacts and must not be used.
 
-This also resolves an accessibility problem. `#747474` on white is about 4.5:1,
-sitting on the WCAG AA boundary. `#4D4D4D` on `#F0F1E7` is about 7.5:1, clearing
-AA comfortably and meeting AAA for body text.
+| swatch | hex | brand name |
+|---|---|---|
+| off white | `#ECEFE8` | Cool Gray 1U |
+| grey | `#C9C9CB` | 20% black |
+| dark grey | `#747474` | 55% black |
+| dark grey | `#333333` | 80% black |
+| black | `#000000` | 100% black |
+| yellow | `#FEFF35` | PMS 903U |
+
+Two of these are already correct in the stylesheet: `--yellow` is `#FEFF35` and
+`--ink` is `#747474`, both exact brand values. Nothing was wrong with them. What
+is missing is the off-white paper and the rest of the grey scale.
+
+#### Token mapping
+
+| token | current | 2026 |
+|---|---|---|
+| `--paper` | `#FFFFFF` (hardcoded `#fff`) | `#ECEFE8` |
+| `--ink` | `#747474` | `#333333` |
+| `--ink-strong` | `#747474` | `#000000` |
+| `--ink-soft` | `#747474` | `#747474` (unchanged) |
+| `--line` | `rgba(116,116,116,0.4)` | `#C9C9CB` |
+| `--yellow` | `#FEFF35` | `#FEFF35` (unchanged) |
+
+The current stylesheet assigns the same `#747474` to all three ink tokens, so the
+existing hierarchy is flat by accident. Mapping them onto the brand's actual grey
+scale gives real hierarchy at no cost.
+
+This also fixes an accessibility problem. `#747474` on white is about 4.5:1,
+sitting on the WCAG AA boundary. `#333333` on `#ECEFE8` is about 11:1, clearing
+AAA. `--ink-soft` at `#747474` on `#ECEFE8` is about 4.7:1, which holds AA for
+body text and must not be used below 16px.
+
+### Typography
+
+`2026/Fonts/Chroma/` ships **Chroma ST Bold** in OTF, TTF, WOFF and WOFF2. It is
+the display face on the poster.
+
+- **Display and headings:** Chroma ST Bold, served as WOFF2 with WOFF fallback.
+- **Body:** Chroma ships **Bold only** and cannot carry body text. The existing
+  `Univers LT Std` is also Bold-only, and it is currently doing all body copy —
+  which is why the site reads heavy throughout. Setting 217 dense program
+  listings in a bold face would be actively hard to read.
+
+  **Recommendation:** move body copy to a Helvetica-led system stack
+  (`Helvetica Neue, Helvetica, Arial, sans-serif`). It matches the neutral
+  grotesque used for body text on the poster, costs no network request, and
+  gives the regular weight neither brand face provides. `Egizio` stays as
+  `--font-serif` for existing accent use.
+
+Existing OTF `@font-face` sources should move to WOFF2 in the same pass — OTF is
+the wrong delivery format and both current faces ship as raw OTF today.
+
+**Licence check required before deploy.** The fonts are from Source Type, whose
+EULA sells the Web/App licence separately from desktop. The kit including WOFF
+and WOFF2 is a strong signal a web licence was bought, but this has not been
+verified and must be confirmed before the fonts are served from the site.
+
+### Logos
+
+`2026/Logos/` holds six lockups, each in black, yellow and grey (18 files), as
+AI, EPS, PDF and PNG:
+
+1. `every*one` in a rounded pill outline
+2. compact pill with dates and `adelaide design week`
+3. reversed — solid pill, knocked-out wordmark
+4. `adw` monogram
+5. stacked pill with dates below
+6. the asterisk mark alone
+
+These replace the 2025 marks (`adw.svg`, `logo-tagline.svg`, `logo-no-tagline.svg`,
+`dates.svg`) in the masthead and footer. Variant 6 becomes the favicon.
+
+**The kit contains no SVG,** and this machine has no vector converter installed
+(no `inkscape`, `pdf2svg`, `rsvg-convert` or PyMuPDF). The implementation plan
+must resolve this explicitly: either install a converter to produce SVGs from the
+PDF or EPS art, or ship the `@2x` PNGs (4116px wide, so they downscale cleanly).
+SVG is strongly preferred — these are flat two-colour marks, so the files will be
+tiny and stay sharp at every size.
+
+## The editing guide
+
+`docs/updating-the-program.md`, written for someone who has never opened this
+repository and does not write code. It is a deliverable of this work, not an
+afterthought — the entire point of moving to a CSV is that a non-developer can
+change the program, and that only holds if the instructions are good.
+
+It must cover:
+
+- opening `program-2026.csv` in Excel, Numbers or Google Sheets
+- the three rules: blank means not running, text means running at that time,
+  semicolon separates two sessions in one day
+- the six category codes, spelled out in full
+- marking an event ticketed
+- adding an event, removing an event, changing a time
+- **exporting back to CSV** — the step most likely to go wrong, especially in
+  Excel, which will offer several CSV flavours and prefer its own
+- publishing: double-click `push-to-github.command`, wait a couple of minutes
+- what a failed build looks like, what the error message means, and that a
+  rejected change means the site keeps serving the last good program rather than
+  a broken one
+
+Written in plain language with a worked example for each task. No jargon, no
+assumed git knowledge.
 
 ## Populating the CSV
 
@@ -193,9 +297,22 @@ each event exactly once.
   column exists so descriptions can be added later without a schema change.
 - 2026's theme is `every*one`; 2025's was `every*where`. Site copy outside the
   program page has not been audited for this and is out of scope.
+- **Font licensing is unverified.** Source Type sells its Web/App licence
+  separately from desktop. Confirm the web licence covers serving Chroma from
+  adelaidedesignweek.com before deploy.
+- `ADW_Colours.pdf` has a typo: the BLACK swatch lists `RGB 0,0,0` but
+  `HEX #E0E0E0`. The swatch renders black, so RGB is correct and the hex label is
+  wrong. Worth telling the designer so the guidelines get fixed at source.
+- The colour guidelines are headed **"BRAND GUIDELINES 2027"** while sitting in
+  the 2026 asset folder. Probably a typo, but confirm these are the current
+  2026 colours and not a forward-dated revision.
+- `push-to-github.command` tells the user "Cloudflare Pages will redeploy",
+  but `.github/workflows/deploy.yml` deploys to GitHub Pages. One of the two is
+  out of date. Minor, but it will confuse whoever publishes the program.
 
 ## Out of scope
 
 - Generating a print-ready PDF. The designed poster stays a manual job.
 - Changing `/everywhere-2025/`, the EOI page, or the sponsor blocks.
 - Per-event poster artwork.
+- Auditing site-wide copy for the every*where → every*one change.
