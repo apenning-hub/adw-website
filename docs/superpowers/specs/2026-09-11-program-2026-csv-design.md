@@ -14,8 +14,8 @@ The 2025 program lives in `src/_data/program2025.js` as a hand-written JavaScrip
 array. Editing it means editing code, so only one person can safely change the
 program, and a mistake breaks the build in ways that are hard to read.
 
-The 2026 program is roughly five times larger — about 90 events, 217 day-entries,
-across seven dates. It needs to be editable by a non-developer in a spreadsheet,
+The 2026 program is roughly five times larger — 90 events and 196 day-cells (198 sessions, two days
+carrying a second session), across seven dates. It needs to be editable by a non-developer in a spreadsheet,
 and rendered on the site from that spreadsheet.
 
 ## Source of truth
@@ -33,7 +33,7 @@ program, and an A–Z index of events with venues.
   12pm–6pm Friday.
 - **Every entry carries a category code:** `EXH` exhibition, `INST` installation,
   `CONV` conversation, `OPEN` open studio, `TOUR` tour, `WORK` workshop.
-- **A trailing `*` marks a ticketed event.** 69 of the 217 entries.
+- **A trailing `*` marks a ticketed event.** 56 of the 90 events.
 - **Times are free text, not parseable times.** `at 'ADW OPENING'`, `(all day)`,
   `Lunch / Dinner`, `6pm - SUPER LATE`, `opening 5pm - 10pm`, `TOUR 2pm - 5pm`.
 - **Venue belongs to the event, not to the day.** Page 2's A–Z index lists each
@@ -195,8 +195,10 @@ scale gives real hierarchy at no cost.
 
 This also fixes an accessibility problem. `#747474` on white is about 4.5:1,
 sitting on the WCAG AA boundary. `#333333` on `#ECEFE8` is about 11:1, clearing
-AAA. `--ink-soft` at `#747474` on `#ECEFE8` is about 4.7:1, which holds AA for
-body text and must not be used below 16px.
+AAA. **Correction (verified after implementation):** `#747474` on `#ECEFE8` is
+**4.02:1**, not the 4.7:1 estimated here — below the AA threshold at any size.
+`--ink-soft` is therefore `#5F5F5F` (5.50:1), which holds AA at the 11–14px
+sizes the program listings actually use.
 
 ### Typography
 
@@ -272,7 +274,7 @@ assumed git knowledge.
 
 ## Populating the CSV
 
-The 217 day-entries will be extracted from the PDF programmatically, splitting
+The day-entries will be extracted from the PDF programmatically, splitting
 the two-column A2 layout by x-coordinate rather than transcribing by hand.
 
 **This output must be proofread against the poster before it goes live.** Column
@@ -306,9 +308,19 @@ each event exactly once.
 - The colour guidelines are headed **"BRAND GUIDELINES 2027"** while sitting in
   the 2026 asset folder. Probably a typo, but confirm these are the current
   2026 colours and not a forward-dated revision.
-- `push-to-github.command` tells the user "Cloudflare Pages will redeploy",
-  but `.github/workflows/deploy.yml` deploys to GitHub Pages. One of the two is
-  out of date. Minor, but it will confuse whoever publishes the program.
+- **Deploy (corrected after checking the live site).** `adelaidedesignweek.com.au`
+  is served by **Cloudflare Pages**, building this repo's `main` branch at root
+  paths — verified against the live response headers and markup. The
+  `.github/workflows/deploy.yml` GitHub Pages job is the stale one; its copy at
+  `apenning-hub.github.io/adw-website/` was last built 9 July. So
+  `push-to-github.command` is right and the workflow is wrong, not the reverse
+  as first written here.
+
+  Consequence: **pushing `main` publishes to the live site immediately.** A
+  pre-launch subdomain must come from a preview branch, not `main`. Preview
+  builds set `PREVIEW=1`, which emits both a `_headers` rule and a
+  `<meta name="robots">` tag — the meta tag because `_headers` is ignored by the
+  GitHub Pages mirror, which would otherwise expose an indexable copy.
 
 ## Out of scope
 

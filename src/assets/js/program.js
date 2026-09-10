@@ -10,6 +10,7 @@
   var pg = document.querySelector(".pg");
   if (!pg) return;
 
+  var viewBar = pg.querySelector("[data-views]");
   var dayBar = pg.querySelector("[data-days]");
   var filterBar = pg.querySelector("[data-filters]");
   var empty = pg.querySelector("[data-empty]");
@@ -17,7 +18,9 @@
   var daySections = pg.querySelectorAll(".pg-day");
 
   var view = "day";
-  var day = daySections.length ? daySections[0].dataset.day : null;
+  var initial = pg.querySelector(".pg-daybtn.is-on");
+  var day = initial ? initial.dataset.day
+          : (daySections.length ? daySections[0].dataset.day : null);
   var cat = "all";
 
   function setPressed(nodes, isOn) {
@@ -90,6 +93,20 @@
   }
   window.addEventListener("hashchange", openFromHash);
 
+  // Arrow keys move between tabs, as the tablist role promises.
+  viewBar.addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    var tabs = Array.prototype.slice.call(viewBar.querySelectorAll(".pg-view"));
+    var i = tabs.indexOf(document.activeElement);
+    if (i < 0) return;
+    e.preventDefault();
+    var next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+    view = next.dataset.view;
+    render();
+    next.focus();
+  });
+
+  viewBar.hidden = false;
   dayBar.hidden = false;
   filterBar.hidden = false;
   render();

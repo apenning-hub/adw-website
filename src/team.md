@@ -39,7 +39,7 @@ ADW exists because of the people who've helped shape it — past and present. Th
 
 ## join the team
 
-There are ongoing opportunities to volunteer and contribute to Adelaide Design Week on-the-ground support during the program. Submit your interest through the <a href="{{ '/eoi/' | url }}">EOI form</a> under the **Team** stream.
+There are ongoing opportunities to volunteer and contribute to Adelaide Design Week on-the-ground support during the program. Expressions of interest for 2026 have closed — but we still need volunteers during the program. Get in touch via the <a href="{{ '/contact/' | url }}">contact page</a>.
 
 For anything else, see <a href="{{ '/contact/' | url }}">contact</a>.
 

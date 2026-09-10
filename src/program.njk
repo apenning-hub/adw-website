@@ -16,14 +16,18 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
 <section class="pg" aria-label="2026 program">
 
   <div class="pg-controls">
-    <div class="pg-views" role="tablist" aria-label="view">
-      <button class="pg-view is-on" role="tab" aria-selected="true" data-view="day">by day</button>
-      <button class="pg-view" role="tab" aria-selected="false" data-view="az">a–z</button>
+    {#- Hidden until program.js takes over: without it these would be two
+        buttons that do nothing, and the a-z panel would be unreachable. -#}
+    <div class="pg-views" role="tablist" aria-label="view" data-views hidden>
+      <button class="pg-view is-on" role="tab" aria-selected="true"
+              aria-controls="pg-panel-day" data-view="day">by day</button>
+      <button class="pg-view" role="tab" aria-selected="false"
+              aria-controls="pg-panel-az" data-view="az">a–z</button>
     </div>
 
     <div class="pg-days" data-days hidden>
       {% for d in program2026.byDay %}
-      <button class="pg-daybtn{% if loop.first %} is-on{% endif %}" data-day="{{ d.day }}">{{ d.day }}</button>
+      <button class="pg-daybtn{% if d.day == program2026.defaultDay %} is-on{% endif %}" data-day="{{ d.day }}">{{ d.day }}</button>
       {% endfor %}
     </div>
 
@@ -38,7 +42,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
   {#- Every day is rendered as a plain section. JavaScript turns these into
       tab panels; without it the page is simply the whole program, readable
       top to bottom. -#}
-  <div class="pg-panel" data-panel="day">
+  <div class="pg-panel" id="pg-panel-day" role="tabpanel" data-panel="day">
     {% for d in program2026.byDay %}
     <section class="pg-day" data-day="{{ d.day }}">
       <h2 class="pg-dayhead">{{ d.day }}<span class="pg-daycount">{{ d.events | length }}</span></h2>
@@ -73,7 +77,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
     {% endfor %}
   </div>
 
-  <div class="pg-panel" data-panel="az" hidden>
+  <div class="pg-panel" id="pg-panel-az" role="tabpanel" data-panel="az" hidden>
     <h2 class="pg-dayhead">a–z<span class="pg-daycount">{{ program2026.count }}</span></h2>
     <ul class="pg-list">
       {% for e in program2026.az %}
