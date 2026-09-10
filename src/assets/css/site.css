@@ -1068,3 +1068,46 @@ hr {
 /* The masthead stacks and grows taller once the nav wraps. */
 @media (max-width: 760px) { :root { --header-h: 8.5rem; } }
 @media (max-width: 620px) { .pg-controls { position: static; } }
+
+
+/* ── Program launch panel (home) ───────────────────────────────────── */
+.hero-cta { margin-block-start: var(--space-2); }
+.hero-cta a {
+    font-family: var(--font-display); font-size: clamp(1rem, 1.8vw, 1.25rem);
+    text-transform: lowercase; text-decoration: none;
+    color: var(--ink-strong); border-bottom: 3px solid var(--yellow);
+    padding-block-end: 2px; transition: background var(--transition);
+}
+.hero-cta a:hover, .hero-cta a:focus-visible { background: var(--yellow); }
+
+.launch {
+    max-width: var(--content-wide); margin: 0 auto var(--space-5);
+    background: var(--ink-strong); color: var(--paper);
+    padding: var(--space-4) var(--space-3); text-align: center;
+}
+.launch-kicker {
+    font-size: 0.8125rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--yellow); margin: 0 0 var(--space-1);
+}
+.launch-title {
+    font-family: var(--font-display); color: var(--paper);
+    font-size: clamp(1.75rem, 5vw, 3rem); margin: 0 0 var(--space-1);
+}
+.launch-meta {
+    color: var(--paper); opacity: 0.85; max-width: 46ch;
+    margin: 0 auto var(--space-2);
+}
+.launch-link a {
+    display: inline-block; text-decoration: none;
+    font-family: var(--font-display); text-transform: lowercase;
+    background: var(--yellow); color: var(--ink-strong);
+    padding: 0.6rem 1.4rem; font-size: 1.0625rem;
+    transition: transform var(--transition);
+}
+.launch-link a:hover, .launch-link a:focus-visible { transform: translateY(-2px); }
+
+@media (max-width: 620px) {
+    .launch { padding: var(--space-3) var(--space-2); margin-inline: var(--space-2);
+        margin-block-end: var(--space-4); }
+    .launch-link a { display: block; }
+}

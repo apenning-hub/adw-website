@@ -55,6 +55,16 @@
     setPressed(pg.querySelectorAll(".pg-view"), function (n) { return n.dataset.view === view; });
     setPressed(pg.querySelectorAll(".pg-daybtn"), function (n) { return n.dataset.day === day; });
     setPressed(pg.querySelectorAll(".pg-chip"), function (n) { return n.dataset.cat === cat; });
+
+    // The day strip scrolls sideways on narrow screens; keep the active day
+    // visible when it was chosen by a link rather than a tap.
+    var active = pg.querySelector(".pg-daybtn.is-on");
+    if (active && dayBar.scrollWidth > dayBar.clientWidth) {
+      var l = active.offsetLeft, r = l + active.offsetWidth;
+      if (l < dayBar.scrollLeft || r > dayBar.scrollLeft + dayBar.clientWidth) {
+        dayBar.scrollLeft = l - (dayBar.clientWidth - active.offsetWidth) / 2;
+      }
+    }
   }
 
   pg.addEventListener("click", function (e) {
