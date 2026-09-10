@@ -4,6 +4,14 @@
  */
 
 @font-face {
+    font-family: 'Chroma ST';
+    src: url('../fonts/ChromaST_Bold.woff2') format('woff2'),
+         url('../fonts/ChromaST_Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
     font-family: 'Univers LT Std';
     src: url('../fonts/UniversLTStd-Bold.otf') format('opentype');
     font-weight: 700;
@@ -20,13 +28,18 @@
 }
 
 :root {
-    --yellow: #FEFF35;
-    --ink: #747474;
-    --ink-strong: #747474;
-    --ink-soft: #747474;
-    --line: rgba(116, 116, 116, 0.4);
-    --font-sans: 'Univers LT Std', 'Archivo', -apple-system, BlinkMacSystemFont, sans-serif;
+    /* Brand palette — ADW_Colours.pdf. Do not sample these from the program
+       poster; its rendered values are rasterisation artefacts. */
+    --paper: #ECEFE8;        /* off white, Cool Gray 1U */
+    --yellow: #FEFF35;       /* PMS 903U */
+    --ink: #333333;          /* 80% black — body */
+    --ink-strong: #000000;   /* 100% black — display */
+    --ink-soft: #747474;     /* 55% black — secondary, never below 16px */
+    --line: #C9C9CB;         /* 20% black — rules */
+    --font-display: 'Chroma ST', 'Univers LT Std', -apple-system, sans-serif;
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --font-serif: 'Egizio', Georgia, serif;
+    --header-h: 5rem;   /* sticky masthead height; program controls pin below it */
     --transition: 0.25s ease;
     --content-max: 760px;
     --content-wide: 980px;
@@ -44,7 +57,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--yellow);
+    background-color: var(--paper);
     color: var(--ink);
     line-height: 1.6;
     overflow-x: hidden;
@@ -67,10 +80,11 @@ ul, ol { list-style: none; }
 /* Typography
    ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
     font-weight: 700;
     line-height: 1.15;
     text-transform: lowercase;
-    color: var(--ink);
+    color: var(--ink-strong);
     letter-spacing: -0.01em;
 }
 
@@ -130,7 +144,7 @@ hr {
 .site-header {
     border-bottom: 1px solid var(--line);
     padding: var(--space-2) var(--space-3);
-    background: var(--yellow);
+    background: var(--paper);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -556,7 +570,7 @@ hr {
     position: absolute;
     background: transparent;
     border: 0;
-    color: #fff;
+    color: var(--paper);
     font-size: 2.5rem;
     line-height: 1;
     cursor: pointer;
@@ -949,3 +963,108 @@ hr {
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+
+/* ── Program (2026) ─────────────────────────────────────────────────────
+   Driven by src/_data/program-2026.csv. The markup ships as plain day
+   sections; program.js folds them into tabs. Styles must therefore look
+   right both ways. */
+
+/* A class-level `display` beats the UA sheet's [hidden] rule, so say it again. */
+.pg [hidden], .pg-days[hidden], .pg-filters[hidden], .pg-item[hidden] { display: none !important; }
+
+.pg { max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-2); }
+.pg-head { max-width: var(--content-wide); margin-inline: auto;
+    padding: var(--space-4) var(--space-2) 0; }
+.pg-h1 { margin-block-end: var(--space-1); }
+.pg-intro { font-size: 1.0625rem; max-width: 52ch; }
+.pg-note { color: var(--ink-soft); font-size: 1rem; }
+.pg-tick { color: var(--ink-strong); font-weight: 700; }
+
+/* controls */
+.pg-controls { position: sticky; top: var(--header-h); z-index: 5; background: var(--paper);
+    padding-block: var(--space-2) var(--space-1); border-block-end: 1px solid var(--line);
+    margin-block-end: var(--space-3); }
+.pg-views { display: flex; gap: 0; margin-block-end: var(--space-2); }
+.pg-view {
+    font-family: var(--font-display); font-size: 1.0625rem; text-transform: lowercase;
+    background: transparent; border: 1.5px solid var(--ink-strong); color: var(--ink-strong);
+    padding: 0.35rem 1.1rem; transition: background var(--transition), color var(--transition);
+}
+.pg-view + .pg-view { border-inline-start: none; }
+.pg-view.is-on { background: var(--ink-strong); color: var(--paper); }
+.pg-view:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+
+.pg-days, .pg-filters { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pg-days { margin-block-end: var(--space-1); overflow-x: auto; flex-wrap: nowrap;
+    scrollbar-width: none; }
+.pg-days::-webkit-scrollbar { display: none; }
+.pg-daybtn, .pg-chip {
+    font-family: var(--font-sans); font-size: 0.9375rem; white-space: nowrap;
+    background: transparent; border: 1px solid var(--line); color: var(--ink);
+    padding: 0.3rem 0.75rem; border-radius: 999px;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.pg-daybtn.is-on { background: var(--yellow); border-color: var(--ink-strong); color: var(--ink-strong); }
+.pg-chip.is-on { background: var(--ink-strong); border-color: var(--ink-strong); color: var(--paper); }
+.pg-daybtn:focus-visible, .pg-chip:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+
+/* day sections */
+.pg-day + .pg-day { margin-block-start: var(--space-4); }
+.pg-dayhead { display: flex; align-items: baseline; gap: 0.6rem;
+    font-size: clamp(1.5rem, 4vw, 2.25rem); margin-block: 0 var(--space-2); }
+.pg-daycount { font-family: var(--font-sans); font-size: 0.875rem; font-weight: 400;
+    color: var(--ink-soft); text-transform: none; }
+.pg-daycount::before { content: "("; }
+.pg-daycount::after  { content: ")"; }
+
+/* rows */
+.pg-list { list-style: none; margin: 0; padding: 0; border-block-start: 1px solid var(--line); }
+.pg-item { border-block-end: 1px solid var(--line); }
+.pg-event > summary { list-style: none; cursor: pointer; }
+.pg-event > summary::-webkit-details-marker { display: none; }
+.pg-sum {
+    display: grid; grid-template-columns: 3.25rem 1fr auto; gap: 0.75rem;
+    align-items: baseline; padding-block: 0.6rem;
+    transition: background var(--transition);
+}
+.pg-event > summary:hover .pg-sum,
+.pg-event > summary:focus-visible .pg-sum { background: var(--yellow); }
+.pg-event > summary:focus-visible { outline: none; }
+.pg-cat { font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--ink-soft);
+    padding-block-start: 0.15em; }
+.pg-title { font-weight: 700; color: var(--ink-strong); }
+.pg-time { color: var(--ink); font-variant-numeric: tabular-nums; text-align: end;
+    font-size: 0.9375rem; }
+.pg-venue-inline { color: var(--ink-soft); font-weight: 400; }
+.pg-sep { color: var(--ink-soft); }
+
+/* expanded body */
+.pg-body { padding: 0 0 var(--space-2) 4rem; max-width: 60ch; }
+.pg-meta { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
+.pg-meta dt { color: var(--ink-soft); font-size: 0.8125rem; }
+.pg-meta dd { margin: 0; }
+.pg-when { list-style: none; margin: 0; padding: 0; }
+.pg-when li { display: flex; gap: 0.6rem; }
+.pg-when li > span { min-width: 5.5rem; color: var(--ink-soft); }
+.pg-when li.is-today { font-weight: 700; color: var(--ink-strong); }
+.pg-when li.is-today > span { color: var(--ink-strong); }
+.pg-blurb { margin: 0 0 0.5rem; }
+.pg-link a { color: var(--ink-strong); }
+.pg-empty { color: var(--ink-soft); padding-block: var(--space-3); }
+
+@media (max-width: 620px) {
+    .pg-sum { grid-template-columns: 2.75rem 1fr; row-gap: 0.15rem; }
+    .pg-time { grid-column: 2; text-align: start; color: var(--ink-soft); }
+    .pg-body { padding-inline-start: 2.75rem; }
+    .pg-meta { grid-template-columns: 1fr; }
+    .pg-meta dt { margin-block-start: 0.4rem; }
+}
+
+/* every*one masthead lockup */
+.site-brand { display: inline-block; line-height: 0; }
+.site-brand img { width: clamp(150px, 22vw, 230px); height: auto; display: block; }
+
+/* The masthead stacks and grows taller once the nav wraps. */
+@media (max-width: 760px) { :root { --header-h: 8.5rem; } }
+@media (max-width: 620px) { .pg-controls { position: static; } }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FEFF35">
+  <meta name="theme-color" content="#ECEFE8">
   <title>{% if title %}{{ title }} — {{ site.shortTitle }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
   <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
@@ -29,7 +29,9 @@
 
   <header class="site-header">
     <div class="site-header-inner">
-      <a href="{{ '/' | url }}" class="site-brand" aria-label="Adelaide Design Week home">Adelaide Design Week</a>
+      <a href="{{ '/' | url }}" class="site-brand" aria-label="every*one — Adelaide Design Week home">
+        <img src="{{ '/assets/images/everyone-pill.svg' | url }}" alt="every*one" width="2057" height="421">
+      </a>
       {% include "nav.njk" %}
     </div>
   </header>
