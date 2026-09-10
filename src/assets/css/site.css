@@ -34,7 +34,7 @@
     --yellow: #FEFF35;       /* PMS 903U */
     --ink: #333333;          /* 80% black — body */
     --ink-strong: #000000;   /* 100% black — display */
-    --ink-soft: #747474;     /* 55% black — secondary, never below 16px */
+    --ink-soft: #5F5F5F;     /* between 55% and 80% black — 5.5:1 on paper */
     --line: #C9C9CB;         /* 20% black — rules */
     --font-display: 'Chroma ST', 'Univers LT Std', -apple-system, sans-serif;
     --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -986,6 +986,7 @@ hr {
     padding-block: var(--space-2) var(--space-1); border-block-end: 1px solid var(--line);
     margin-block-end: var(--space-3); }
 .pg-views { display: flex; gap: 0; margin-block-end: var(--space-2); }
+.pg-views[hidden] { display: none !important; }
 .pg-view {
     font-family: var(--font-display); font-size: 1.0625rem; text-transform: lowercase;
     background: transparent; border: 1.5px solid var(--ink-strong); color: var(--ink-strong);
