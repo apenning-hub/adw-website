@@ -1,7 +1,6 @@
 ---
 title: eois are closed
 navLabel: eoi
-navOrder: 3
 permalink: /eoi/
 layout: base.njk
 description: Adelaide Design Week 2026 — expressions of interest across five streams (Project, Collaborate, Host, Team, or Sponsor). EOIs are now closed.
