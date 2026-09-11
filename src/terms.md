@@ -112,6 +112,6 @@ Personal information collected by Adelaide Design Week will be used for event ad
 
 These Terms and Conditions are governed by the laws of the State of South Australia, Australia. Adelaide Design Week reserves the right to amend these Terms and Conditions at any time.
 
-<p class="back-link"><a href="{{ '/program/' | url }}">← back to the program</a></p>
+<p class="back-link"><a href="{{ '/eoi/' | url }}">← back to how to apply</a></p>
 
 </article>

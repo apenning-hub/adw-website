@@ -1,13 +1,9 @@
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
-  // This site deploys via Cloudflare Pages, which builds `main` for
-  // production and every other branch to its own preview URL.
-  //
-  // Custom domains are configured in the Cloudflare dashboard, not here.
-  // A committed `CNAME` file is a GitHub Pages mechanism and does nothing
-  // on Cloudflare — there is no file in this repo that can decide which
-  // hostname serves which branch.
+  // To attach a custom domain on GH Pages: create `src/CNAME` containing
+  // only the domain (no comments, no trailing newline added by editors)
+  // and add: addPassthroughCopy({ "src/CNAME": "CNAME" }); above.
 
   eleventyConfig.addCollection("nav", (collectionApi) =>
     collectionApi
