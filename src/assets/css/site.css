@@ -1215,3 +1215,11 @@ hr {
 .theme-2025 .cta-secondary:focus-visible,
 .theme-2025 .copy-btn:hover,
 .theme-2025 .copy-btn:focus-visible { background: var(--paper); color: var(--ink-strong); }
+
+/* The team and support lists are two separate <dl>s, so their name columns
+   size independently and the roles don't line up. Pin the column so the two
+   read as one table. Collapses to a single column under 600px with .streams. */
+@media (min-width: 601px) {
+    .streams.team { grid-template-columns: 13rem 1fr; }
+    .streams.team dt { padding-inline-end: var(--space-2); }
+}
