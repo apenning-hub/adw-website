@@ -1,8 +1,7 @@
 # adw-website
 
-Public static site for **Adelaide Design Week 2026**.
-Built with [Eleventy](https://www.11ty.dev/), deployed to GitHub Pages
-and Cloudflare Pages from the same `main` branch.
+Public static site for **Adelaide Design Week 2026 — every\*one**.
+Built with [Eleventy](https://www.11ty.dev/), deployed by Cloudflare Pages.
 
 ## Local development
 
@@ -14,24 +13,57 @@ npm run build    # output to _site/
 
 ## Authoring content
 
-All page copy lives in markdown at `src/`. Front-matter controls title,
-nav label, and nav order. Edit prose, push to `main`, deploys happen
-automatically on both hosts.
+Page copy lives in markdown at `src/`. Front-matter controls title, nav
+label and nav order. A page appears in the nav only if it has `navOrder`.
 
-Shared values (program dates, EOI form URL, contact email, social links)
-live in `src/_data/site.json` — change once, used everywhere.
+Shared values (program dates, contact email, social links) live in
+`src/_data/site.json` — change once, used everywhere.
+
+### The program
+
+The 2026 program is **not** hand-written. It comes from a spreadsheet:
+
+```
+src/_data/program-2026.csv
+```
+
+See **[docs/updating-the-program.md](docs/updating-the-program.md)** — written
+for someone who doesn't write code. The build validates the file and refuses to
+publish a broken one, so a bad edit leaves the last good program live rather
+than taking the page down.
 
 ## Deployment
 
-- **Cloudflare Pages** owns the custom domain. Build command:
-  `npm run build`, output dir: `_site`, Node 20.
-- **GitHub Pages** mirror via `.github/workflows/deploy.yml` —
-  builds on every push to `main`.
+**Cloudflare Pages builds this repo.** There is no other host.
 
-The custom domain is set in `src/CNAME` (passthrough-copied into
-`_site/CNAME` at build time).
+| branch | builds to | indexed |
+|---|---|---|
+| `main` | the live site — `adelaidedesignweek.com.au` | yes |
+| anything else | `<branch>.adw-website.pages.dev` | no |
+
+**Pushing `main` publishes to the live site immediately.** Pre-launch work
+belongs on its own branch, which Cloudflare builds to a separate preview URL.
+
+Any branch other than `main` serves `noindex` automatically — `src/_data/env.js`
+reads `CF_PAGES_BRANCH`, which Cloudflare sets on every build. Nothing to
+configure, and no way to leave an unreleased program indexable. `PREVIEW=1`
+forces it on locally.
+
+### Custom domains
+
+Configured **in the Cloudflare dashboard**, not in this repo. A committed
+`CNAME` file is a GitHub Pages mechanism and does nothing here — no file in this
+repository can decide which hostname serves which branch.
+
+By default a Pages custom domain serves the *production* branch. Pointing one at
+a preview branch means a proxied `CNAME` to `<branch>.adw-website.pages.dev`.
+
+### Publishing
+
+Double-click `push-to-github.command` — it commits, pulls, pushes, and
+Cloudflare redeploys in a minute or two.
 
 ## Structure
 
-See `docs/superpowers/specs/2026-04-27-adw-website-design.md` for the
-full design spec.
+Design specs live in `docs/superpowers/specs/`. The 2026 program and brand
+refresh is `2026-09-11-program-2026-csv-design.md`.
