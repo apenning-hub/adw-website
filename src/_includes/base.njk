@@ -29,7 +29,7 @@
   <script async src="https://tally.so/widgets/embed.js"></script>
   {% endif %}
 </head>
-<body>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 
   <svg class="brand-sprite" aria-hidden="true" focusable="false" width="0" height="0">
     <symbol id="ast" viewBox="0 0 1560.16 1568.69"><defs>

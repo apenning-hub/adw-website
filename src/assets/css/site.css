@@ -1186,3 +1186,32 @@ hr {
     .pg-event > summary:hover .pg-tickmark { animation: none; }
     .pg-sum::before { transition: none; }
 }
+
+
+/* ── 2025 archive theme ────────────────────────────────────────────────
+   /everywhere-2025/ wears the every*where identity: yellow ground, grey
+   ink, Univers display. Scoped to the page via bodyClass, so it overrides
+   the 2026 tokens without touching anything else.
+
+   One deviation from 2025: body copy is #6A6A6A rather than #747474.
+   The original was 4.36:1 on this yellow — just under AA. #6A6A6A is
+   5.04:1 and visually near-identical. Display type keeps #747474, which
+   clears the 3:1 large-text threshold. */
+
+.theme-2025 {
+    --paper: #FEFF35;
+    --ink: #6A6A6A;
+    --ink-strong: #747474;
+    --ink-soft: #6A6A6A;
+    --line: rgba(116, 116, 116, 0.4);
+    --font-display: 'Univers LT Std', 'Archivo', -apple-system, sans-serif;
+}
+
+/* Yellow-on-yellow would vanish, so accents invert to ink on this page. */
+.theme-2025 .copyright .ast,
+.theme-2025 .ast { color: var(--ink-strong); }
+.theme-2025 .site-header { background: var(--paper); }
+.theme-2025 .cta-tally:hover,
+.theme-2025 .cta-secondary:focus-visible,
+.theme-2025 .copy-btn:hover,
+.theme-2025 .copy-btn:focus-visible { background: var(--paper); color: var(--ink-strong); }
