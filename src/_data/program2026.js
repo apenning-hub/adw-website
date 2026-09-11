@@ -15,7 +15,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link"];
+const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "contributors"];
 const CATEGORIES = {
   EXH: "exhibition",
   INST: "installation",
@@ -172,6 +172,8 @@ module.exports = function () {
       ticketed: ticketed === "yes",
       blurb: get("blurb"),
       link: get("link"),
+      // Semicolon-separated, same rule as two sessions in one day.
+      contributors: get("contributors").split(";").map((n) => n.trim()).filter(Boolean),
       sessions,
       slug,
     };

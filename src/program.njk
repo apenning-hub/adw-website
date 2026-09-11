@@ -55,19 +55,31 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
               <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span>
               <span class="pg-time">{% for t in e.times %}{{ t }}{% if not loop.last %} <span class="pg-sep">/</span> {% endif %}{% endfor %}</span>
             </summary>
-            <div class="pg-body">
-              <dl class="pg-meta">
-                <dt>where</dt><dd>{{ e.venue }}</dd>
-                <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
-                <dt>when</dt>
-                <dd><ul class="pg-when">
-                  {% for s in e.sessions %}
-                  <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>
-                  {% endfor %}
-                </ul></dd>
-              </dl>
-              {% if e.blurb %}<p class="pg-blurb">{{ e.blurb }}</p>{% endif %}
-              {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+            {#- Columns are added only when there is content for them, so an
+                event with no blurb or contributors stays a single tidy column. -#}
+            <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}">
+              <div class="pg-col pg-col--facts">
+                <dl class="pg-meta">
+                  <dt>where</dt><dd>{{ e.venue }}</dd>
+                  <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                  <dt>when</dt>
+                  <dd><ul class="pg-when">
+                    {% for s in e.sessions %}
+                    <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>
+                    {% endfor %}
+                  </ul></dd>
+                </dl>
+                {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+              </div>
+              {% if e.blurb %}
+              <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>
+              {% endif %}
+              {% if e.contributors.length %}
+              <div class="pg-col pg-col--people">
+                <h4 class="pg-people-head">contributors</h4>
+                <ul class="pg-people">{% for n in e.contributors %}<li>{{ n }}</li>{% endfor %}</ul>
+              </div>
+              {% endif %}
             </div>
           </details>
         </li>
@@ -88,17 +100,27 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
             <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span>
             <span class="pg-time pg-venue-inline">{{ e.venue }}</span>
           </summary>
-          <div class="pg-body">
-            <dl class="pg-meta">
-              <dt>where</dt><dd>{{ e.venue }}</dd>
-              <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
-              <dt>when</dt>
-              <dd><ul class="pg-when">
-                {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}
-              </ul></dd>
-            </dl>
-            {% if e.blurb %}<p class="pg-blurb">{{ e.blurb }}</p>{% endif %}
-            {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+          <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}">
+            <div class="pg-col pg-col--facts">
+              <dl class="pg-meta">
+                <dt>where</dt><dd>{{ e.venue }}</dd>
+                <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                <dt>when</dt>
+                <dd><ul class="pg-when">
+                  {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}
+                </ul></dd>
+              </dl>
+              {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+            </div>
+            {% if e.blurb %}
+            <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>
+            {% endif %}
+            {% if e.contributors.length %}
+            <div class="pg-col pg-col--people">
+              <h4 class="pg-people-head">contributors</h4>
+              <ul class="pg-people">{% for n in e.contributors %}<li>{{ n }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
           </div>
         </details>
       </li>

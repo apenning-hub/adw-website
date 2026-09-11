@@ -1039,8 +1039,41 @@ hr {
 .pg-venue-inline { color: var(--ink-soft); font-weight: 400; }
 .pg-sep { color: var(--ink-soft); }
 
-/* expanded body */
+/* expanded body — a column layout that only grows as many columns as it
+   has content for, so a bare event stays one tidy column. */
 .pg-body { padding: 0 0 var(--space-2) 4rem; max-width: 60ch; }
+
+.pg-cols { display: grid; gap: var(--space-2) var(--space-3); align-items: start; }
+.pg-cols.has-blurb { max-width: 76ch; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.pg-cols.has-people { max-width: 76ch; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.pg-cols.has-blurb.has-people {
+    max-width: none; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr) minmax(0, 0.75fr);
+}
+/* Inside a narrow column the facts list was wrapping mid-value — tighten the
+   label gutter and keep each time on one line. */
+.pg-cols .pg-meta { grid-template-columns: 3.25rem 1fr; column-gap: 0.5rem; }
+.pg-cols .pg-when li { gap: 0.4rem; }
+.pg-cols .pg-when li > span { min-width: 4.9rem; }
+.pg-cols .pg-when li { white-space: nowrap; }
+.pg-col { min-width: 0; }
+
+.pg-people-head {
+    font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 400;
+    text-transform: none; color: var(--ink-soft);
+    margin: 0 0 0.15rem; letter-spacing: 0;
+}
+.pg-people { list-style: none; margin: 0; padding: 0; }
+.pg-people li { padding-block: 0.1rem; }
+
+@media (max-width: 900px) {
+    .pg-cols.has-blurb.has-people { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .pg-cols.has-blurb.has-people .pg-col--people { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+    .pg-cols, .pg-cols.has-blurb, .pg-cols.has-people,
+    .pg-cols.has-blurb.has-people { grid-template-columns: 1fr; }
+    .pg-cols.has-blurb.has-people .pg-col--people { grid-column: auto; }
+}
 .pg-meta { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
 .pg-meta dt { color: var(--ink-soft); font-size: 0.8125rem; }
 .pg-meta dd { margin: 0; }
