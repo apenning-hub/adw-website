@@ -20,7 +20,7 @@ then choose **Replace spreadsheet**).
 
 You'll see six columns on the left, then one column for each day of the festival:
 
-| category | title | ticketed | venue | blurb | link | thu 8 oct | tue 13 oct | wed 14 oct | … |
+| category | title | ticketed | venue | blurb | link | contributors | thu 8 oct | tue 13 oct | wed 14 oct | … |
 |---|---|---|---|---|---|---|---|---|---|
 
 **Tip:** freeze the first two columns so the title stays visible as you scroll
@@ -93,6 +93,20 @@ adds the `*` for you.
 
 **blurb** — optional. A sentence or two, shown when someone expands the event.
 Most rows are empty, and that's fine.
+
+**contributors** — optional. The people involved, separated by semicolons:
+
+```
+Martina Beka; Bolaji Teniola; Casey Chong
+```
+
+They appear as a list in their own column when the event is expanded. Leave it
+empty and no contributors column is shown.
+
+The expanded event lays itself out in up to three columns — details, blurb,
+contributors — and only grows as many columns as it has content for. So filling
+in a blurb or some contributors makes an event richer without ever leaving an
+empty gap on the page.
 
 **link** — optional. A web address for tickets or more information. Include the
 `https://`.
