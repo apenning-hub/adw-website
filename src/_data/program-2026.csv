@@ -3,21 +3,21 @@ OPEN,FROM POLICY TO PLACE,yes,"Nearly Bar, ADL CBD",,,,6pm - 8pm,,,,,,
 EXH,IN 'SOFT' COMPANY,yes,"TERRACE FLOORS, EASTWOOD",,,,,6:30PM - LATE,,,,,
 EXH,RF LUX + LOUIS POULSEN,yes,"RF LUX, ADL CBD",,,,,5:30PM - 7:30PM,,,,,
 CONV,JON GOULDER X AGSA,yes,"AGSA, ADL CBD",,,,,12.30PM - 1.30PM,,,,,
-EXH,OBJECT TO MATERIAL,,"19 Twin Street, ADL CBD",,,,,,10am - 4pm,10am - 4pm,12pm - 6pm,10am - 4pm,
+EXH,OBJECT TO MATERIAL,,"19 Twin Street, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",,Ada Arden; Bo Dunne; Cai Gale; Dara Jarvis; Eli Mercer; Fay Pike,,,10am - 4pm,10am - 4pm,12pm - 6pm,10am - 4pm,
 EXH,MOVEMENT ACROSS SCALES,yes,"Woods Bagot, ADL CBD",,,,,,3pm - 6pm,,,,
 EXH,DESIGN FOR CARE,yes,"Dental School, ADL Uni",,,,,,9am - 5pm,9am - 5pm,9am - 7pm,,
 EXH,"YOKE, OBJECTS FOR HUMANS",,"Michi, ADL CBD",,,,,,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm,10am - 6pm
-EXH,GROUNDED,yes,"Fabrikate, ADL CBD",,,,,,4pm - 6pm,3pm - 8pm,3pm - 8pm,10am - 4pm,
+EXH,GROUNDED,yes,"Fabrikate, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",,Ada Arden; Bo Dunne; Cai Gale,,,4pm - 6pm,3pm - 8pm,3pm - 8pm,10am - 4pm,
 EXH,PHOTOSYNTHETIC AGENCY,,"Kaurna Building L3, ADL Uni",,,,,,9am - 5pm,9am - 5pm,9am - 5pm,,
 EXH,SHORT NOTICE,,"The Meeting Hall, ADL CBD",,,,,,6pm - LATE,,,,
 EXH,ADW OPENING PARTY x SHORT NOTICE,,"The Meeting Hall, ADL CBD",,,,,,6pm - SUPER LATE,,,,
 EXH,WASTE RECONSIDERED,,"Plant 3, Bowden",,,,,,10am - 8pm,10am - 8pm,10am - 8pm,10am - 8pm,10am - 8pm
 EXH,X KEULEMANS,,"Jam Factory, ADL CBD",,,,,,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm
 EXH,POWER SURGE: INTO THE GRID,,"Jam Factory, ADL CBD",,,,,,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm
-EXH,TOMORROW TALENT,,"Jam Factory, ADL CBD",,,,,,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm
+EXH,TOMORROW TALENT,,"Jam Factory, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",,Ada Arden; Bo Dunne,,,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm,10am - 5pm
 EXH,TOKEN,,Travelling between events,,,,,,at 'ADW OPENING',at 'SHOP GENERATOR',,at 'BENCHED',
 EXH,3D CERAMIC / CLAY PRINTING,,"Kaurna Building L3, ADL Uni",,,,,,9am - 5pm,9am - 5pm,9am - 5pm,,
-EXH,PUBLIC NOTICE,,"19 Twin Street, ADL CBD",,,,,,10am - 4pm,10am - 4pm,12pm - 6pm,10am - 4pm,
+EXH,PUBLIC NOTICE,,"19 Twin Street, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",,Ada Arden; Bo Dunne; Cai Gale; Dara Jarvis; Eli Mercer; Fay Pike; Gus Stead; Hana Vance; Ivo Arden; Jun Dunne; Kit Gale; Lena Jarvis; Milo Mercer; Nia Pike; Otis Stead; Pia Vance; Quinn Arden; Rhea Dunne; Sami Gale; Tova Jarvis; Uma Mercer; Vik Pike; Wren Stead; Xan Vance,,,10am - 4pm,10am - 4pm,12pm - 6pm,10am - 4pm,
 INST,CARDENING CLUB,,"Various, ADL CBD",,,,,,at 'ADW OPENING',at 'EST OPEN STUDIO',,at 'BENCHED',CARDENING CLUB
 INST,LIVING ON THE CEILING,yes,"Smokelovers, ADL CBD",,,,,,4pm - LATE,5pm - LATE; 5pm opening,4pm - LATE,4pm - LATE,4pm - LATE
 INST,ADW X SHOPFRONT DESIGN CIRCUIT,yes,"East End, ADL, CBD",,,,,,(all day),(all day),(all day),(all day),TOUR 2pm - 5pm
@@ -33,12 +33,12 @@ WORK,MAKE AN IMPRESSION:,,"The Studio, AGSA, ADL CBD",,,Arlon Hall; Billie Justi
 WORK,WAX CARVING: RING MAKING,yes,"Min Jewellery, G14 33 Pirie St, ADL",,,,,,6pm - 8pm,6pm - 8pm,6pm - 8pm,6pm - 8pm,6pm - 8pm
 EXH,SUPER PARTY,yes,"Sans-Arc Studio, West Croydon",,,,,,,6pm - SUPER LATE,,,
 EXH,ANTHO,yes,"Hygge Studios, Hyde Park",,,,,,,5pm - 9pm,,,
-EXH,BLOOM,yes,"Basement Gallery, ADL CBD",,,,,,,10am - 4pm,6pm - 9pm,,10am - 2pm
+EXH,BLOOM,yes,"Basement Gallery, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",,Ada Arden; Bo Dunne; Cai Gale; Dara Jarvis; Eli Mercer; Fay Pike; Gus Stead; Hana Vance; Ivo Arden; Jun Dunne; Kit Gale; Lena Jarvis; Milo Mercer; Nia Pike; Otis Stead; Pia Vance; Quinn Arden; Rhea Dunne; Sami Gale; Tova Jarvis,,,,10am - 4pm,6pm - 9pm,,10am - 2pm
 EXH,SHOP GENERATOR,yes,"Common Uncommon, ADL CBD",,,,,,,8am - 2pm; opening 5pm - 10pm,8am - 2pm,9am - 2pm,9am - 2pm
-EXH,SLOT,,"SODA objects, West Croydon",,,,,,,3pm - 7pm,10am - 4pm,10am - 4pm,
+EXH,SLOT,,"SODA objects, West Croydon","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt..",,Ada Arden; Bo Dunne; Cai Gale; Dara Jarvis; Eli Mercer; Fay Pike; Gus Stead; Hana Vance; Ivo Arden; Jun Dunne; Kit Gale; Lena Jarvis,,,,3pm - 7pm,10am - 4pm,10am - 4pm,
 EXH,SOFT X AGSA,yes,"AGSA, ADL CBD",,,,,,,11am - 5pm,10am - 5pm,10am - 5pm,
 EXH,STARRY STARRY NIGHT,,"Liverpool Street Gallery, ADL CBD",,,,,,,1pm - 6pm,1pm - 6pm,1pm - 6pm,
-EXH,TWO WAY,,"EST Studio, ADL CBD",,,,,,,5pm - 8pm,9.30am - 3.30pm,,
+EXH,TWO WAY,,"EST Studio, ADL CBD","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",,,,,,5pm - 8pm,9.30am - 3.30pm,,
 OPEN,CRAFTED HARDWOODS: FACTORY TOUR,yes,"Crafted Hardwoods, Plympton",,,,,,,12pm - 1:30pm,,12pm - 1:30pm,
 OPEN,EST OPEN STUDIO,,"EST Studio, ADL CBD",,,,,,,5pm - 8pm,,,
 CONV,BESPOKE INTENTION,yes,"Arc Tile Showroom, ADL CBD",,,,,,,12pm - 2pm,,,
@@ -54,7 +54,7 @@ EXH,DESIGNING WITH COUNTRY,yes,"Honeydripper, ADL CBD",,,,,,,,8am - 10am,,
 EXH,AFTER MOOD CAFE & SHOP,,"Studio Gram, Brompton",,,,,,,,4pm - 8pm,10pm - 4pm,10pm - 4pm
 EXH,AFTERLIFE,yes,"Unbuilt, North Adelaide",,,,,,,,7:30pm - 9:30pm,10am - 4pm,10am - 4pm
 EXH,AT THE TABLE,yes,"Reform Distilling, Kent Town",,,,,,,,Lunch / Dinner,,Lunch / Dinner
-EXH,BENCHED,yes,"Queens Theatre, ADL CBD",,,,,,,,11am - 4pm,11am - 8pm,11am - 4pm
+EXH,BENCHED,yes,"Queens Theatre, ADL CBD",,,Ada Arden; Bo Dunne; Cai Gale; Dara Jarvis; Eli Mercer; Fay Pike; Gus Stead; Hana Vance; Ivo Arden,,,,,11am - 4pm,11am - 8pm,11am - 4pm
 EXH,NOW: NEW/OLD WORKS,yes,"Washdog Studios, Kent Town",,,,,,,,4pm - 8pm,12pm - 5pm,12pm - 5pm
 EXH,PROCESSED,yes,"63 Light Sq, ADL CBD",,,,,,,,6pm - 9pm,10am - 4pm,10am - 2pm
 EXH,SKANGAROOVIA,yes,"215 Magill Rd, Maylands",,,,,,,,6pm - 9pm,10am - 5pm,10am - 5pm

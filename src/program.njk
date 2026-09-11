@@ -57,7 +57,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
             </summary>
             {#- Columns are added only when there is content for them, so an
                 event with no blurb or contributors stays a single tidy column. -#}
-            <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}">
+            <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}{% if e.contributors.length > 8 %} many-people{% endif %}">
               <div class="pg-col pg-col--facts">
                 <dl class="pg-meta">
                   <dt>where</dt><dd>{{ e.venue }}</dd>
@@ -100,7 +100,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
             <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span>
             <span class="pg-time pg-venue-inline">{{ e.venue }}</span>
           </summary>
-          <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}">
+          <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}{% if e.contributors.length > 8 %} many-people{% endif %}">
             <div class="pg-col pg-col--facts">
               <dl class="pg-meta">
                 <dt>where</dt><dd>{{ e.venue }}</dd>

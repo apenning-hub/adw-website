@@ -1049,6 +1049,24 @@ hr {
 .pg-cols.has-blurb.has-people {
     max-width: none; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr) minmax(0, 0.75fr);
 }
+/* A long contributor list in a narrow column runs to a tall thin ribbon with
+   dead space beside it. Past 8 names it becomes a full-width band under the
+   other columns and flows into as many sub-columns as fit. */
+.pg-cols.many-people.has-blurb.has-people,
+.pg-cols.many-people.has-people {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr);
+}
+.pg-cols.many-people .pg-col--people {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+    padding-block-start: var(--space-2);
+    margin-block-start: var(--space-1);
+}
+.pg-cols.many-people .pg-people {
+    columns: 11rem; column-gap: var(--space-3);
+}
+.pg-cols.many-people .pg-people li { break-inside: avoid; }
+
 /* Inside a narrow column the facts list was wrapping mid-value — tighten the
    label gutter and keep each time on one line. */
 .pg-cols .pg-meta { grid-template-columns: 3.25rem 1fr; column-gap: 0.5rem; }
@@ -1065,14 +1083,24 @@ hr {
 .pg-people { list-style: none; margin: 0; padding: 0; }
 .pg-people li { padding-block: 0.1rem; }
 
+/* These overrides must out-specify .pg-cols.many-people.has-blurb.has-people
+   above (four classes), or the desktop column counts leak into small screens
+   and the columns overlap. */
 @media (max-width: 900px) {
-    .pg-cols.has-blurb.has-people { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .pg-cols.has-blurb.has-people,
+    .pg-cols.many-people.has-blurb.has-people,
+    .pg-cols.many-people.has-people { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
     .pg-cols.has-blurb.has-people .pg-col--people { grid-column: 1 / -1; }
 }
 @media (max-width: 620px) {
     .pg-cols, .pg-cols.has-blurb, .pg-cols.has-people,
-    .pg-cols.has-blurb.has-people { grid-template-columns: 1fr; }
-    .pg-cols.has-blurb.has-people .pg-col--people { grid-column: auto; }
+    .pg-cols.has-blurb.has-people,
+    .pg-cols.many-people.has-people,
+    .pg-cols.many-people.has-blurb.has-people { grid-template-columns: 1fr; }
+    .pg-cols.has-blurb.has-people .pg-col--people,
+    .pg-cols.many-people .pg-col--people { grid-column: auto; }
+    /* One column of names is right on a phone; two would be cramped. */
+    .pg-cols.many-people .pg-people { columns: auto; }
 }
 .pg-meta { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
 .pg-meta dt { color: var(--ink-soft); font-size: 0.8125rem; }
