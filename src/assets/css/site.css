@@ -979,7 +979,6 @@ hr {
 .pg-h1 { margin-block-end: var(--space-1); }
 .pg-intro { font-size: 1.0625rem; max-width: 52ch; }
 .pg-note { color: var(--ink-soft); font-size: 1rem; }
-.pg-tick { color: var(--ink-strong); font-weight: 700; }
 
 /* controls */
 .pg-controls { position: sticky; top: var(--header-h); z-index: 5; background: var(--paper);
@@ -1111,4 +1110,79 @@ hr {
     .launch { padding: var(--space-3) var(--space-2); margin-inline: var(--space-2);
         margin-block-end: var(--space-4); }
     .launch-link a { display: block; }
+}
+
+/* ── Brand micro-graphics ──────────────────────────────────────────────
+   One <symbol> in base.njk, reused via <use>. Everything inherits
+   currentColor, so a mark takes the colour of whatever it sits in. */
+
+.brand-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.ast {
+    width: 1em; height: 1em; fill: currentColor;
+    vertical-align: -0.12em; flex: none;
+}
+.ast--sm { width: 0.72em; height: 0.72em; vertical-align: -0.02em; }
+
+/* Hero: two marks drifting behind the title, as on the poster. */
+.hero { position: relative; overflow: hidden; }
+.hero > h1, .hero > .hero-dates, .hero > .hero-cta { position: relative; z-index: 1; }
+.hero-ast { position: absolute; color: var(--yellow); z-index: 0; pointer-events: none; }
+/* Kept whole and inside the frame — a clipped asterisk reads as a blob. */
+.hero-ast--a { width: 17vmin; height: 17vmin; top: 11%; left: 5%;
+               animation: ast-drift 22s ease-in-out infinite; }
+.hero-ast--b { width: 10vmin; height: 10vmin; bottom: 14%; right: 7%;
+               animation: ast-drift 17s ease-in-out infinite reverse; }
+
+@keyframes ast-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50%      { transform: translate3d(0, -1.5rem, 0) rotate(40deg); }
+}
+
+/* Launch panel: a yellow mark sitting above the kicker. */
+.launch { position: relative; }
+.launch-ast { width: 2.25rem; height: 2.25rem; color: var(--yellow); margin-block-end: var(--space-1); }
+
+/* The ticketed mark IS the brand mark — the poster uses the same asterisk
+   for both, so the page does too. */
+.pg-tickmark { color: var(--ink-strong); margin-inline-start: 0.35em; }
+.pg-note .pg-tickmark { margin-inline-start: 0; margin-inline-end: 0.2em; }
+.pg-event > summary:hover .pg-tickmark { animation: ast-spin 0.6s ease; }
+
+@keyframes ast-spin { to { transform: rotate(180deg); } }
+
+/* Day headings get a mark that turns as you move between days. */
+.pg-dayast { width: 0.62em; height: 0.62em; color: var(--yellow);
+    margin-inline-end: 0.4em; vertical-align: 0.06em; }
+.pg-empty { display: flex; align-items: center; gap: 0.5rem; }
+.pg-emptyast { width: 1.4em; height: 1.4em; color: var(--line); }
+
+/* A mark blooms in the gutter as you run down the listings. */
+.pg-sum { position: relative; }
+.pg-sum::before {
+    content: ""; position: absolute; inset-inline-start: -1.35rem; top: 0.95rem;
+    width: 0.55rem; height: 0.55rem; background: var(--yellow);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0; transform: scale(0.4) rotate(-30deg);
+    transition: opacity var(--transition), transform var(--transition);
+}
+.pg-event > summary:hover .pg-sum::before,
+.pg-event[open] > summary .pg-sum::before { opacity: 1; transform: scale(1) rotate(0deg); }
+
+/* Footer lockup */
+.footer-lockup { display: inline-block; line-height: 0; margin-block-end: var(--space-2); }
+.footer-lockup img { width: clamp(180px, 26vw, 280px); height: auto; }
+.copyright .ast { color: var(--yellow); margin-inline-end: 0.3em; }
+
+@media (max-width: 620px) {
+    .pg-sum::before { inset-inline-start: -0.9rem; width: 0.45rem; height: 0.45rem; }
+    .hero-ast--a { width: 22vmin; height: 22vmin; top: 8%; left: 4%; }
+    .hero-ast--b { width: 13vmin; height: 13vmin; bottom: 10%; right: 5%; }
+}
+
+/* Motion is decoration here; never impose it. */
+@media (prefers-reduced-motion: reduce) {
+    .hero-ast { animation: none; }
+    .pg-event > summary:hover .pg-tickmark { animation: none; }
+    .pg-sum::before { transition: none; }
 }

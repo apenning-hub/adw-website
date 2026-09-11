@@ -8,12 +8,15 @@ description: "Adelaide Design Week 2026 — every*one. The full program is out: 
 ---
 
 <section class="hero">
+  <svg class="ast hero-ast hero-ast--a" aria-hidden="true"><use href="#ast"></use></svg>
+  <svg class="ast hero-ast hero-ast--b" aria-hidden="true"><use href="#ast"></use></svg>
   <h1>adelaide design week 2026</h1>
   <p class="hero-dates">14 – 18 october 2026</p>
   <p class="hero-cta"><a href="{{ '/program/' | url }}">see the program →</a></p>
 </section>
 
 <section class="launch" aria-label="The 2026 program is out">
+  <svg class="ast launch-ast" aria-hidden="true"><use href="#ast"></use></svg>
   <p class="launch-kicker">every*one — program</p>
   <h2 class="launch-title">the program is out</h2>
   <p class="launch-meta">{{ program2026.count }} events across Adelaide · exhibitions, installations, conversations, open studios, tours and workshops</p>
