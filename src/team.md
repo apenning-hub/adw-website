@@ -17,9 +17,6 @@ Adelaide Design Week is run by a small, dedicated team — designers, coordinato
   <dt>Hannah White</dt>
   <dd>event coordination</dd>
 
-  <dt>Dre Fuzz</dt>
-  <dd>exhibition coordination</dd>
-
   <dt>Lara Merrington</dt>
   <dd>exhibition coordination</dd>
 
