@@ -52,7 +52,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
           <details class="pg-event" id="{{ d.day | replace(' ','-') }}-{{ e.slug }}">
             <summary class="pg-sum">
               <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
-              <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span>
+              <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>
               <span class="pg-time">{% for t in e.times %}{{ t }}{% if not loop.last %} <span class="pg-sep">/</span> {% endif %}{% endfor %}</span>
             </summary>
             {#- Columns are added only when there is content for them, so an
@@ -69,7 +69,14 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                     {% endfor %}
                   </ul></dd>
                 </dl>
-                {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+                {% if e.link %}
+                <p class="pg-link">
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                    <span class="pg-cta-arrow" aria-hidden="true">→</span>
+                  </a>
+                </p>
+                {% endif %}
               </div>
               {% if e.blurb %}
               <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>
@@ -97,7 +104,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
         <details class="pg-event" id="az-{{ e.slug }}">
           <summary class="pg-sum">
             <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
-            <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span>
+            <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>
             <span class="pg-time pg-venue-inline">{{ e.venue }}</span>
           </summary>
           <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}{% if e.contributors.length > 8 %} many-people{% endif %}">
@@ -110,7 +117,14 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                   {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}
                 </ul></dd>
               </dl>
-              {% if e.link %}<p class="pg-link"><a href="{{ e.link }}" target="_blank" rel="noopener noreferrer">more information →</a></p>{% endif %}
+              {% if e.link %}
+                <p class="pg-link">
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                    <span class="pg-cta-arrow" aria-hidden="true">→</span>
+                  </a>
+                </p>
+                {% endif %}
             </div>
             {% if e.blurb %}
             <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>

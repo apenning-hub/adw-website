@@ -1033,7 +1033,8 @@ hr {
 .pg-event > summary:focus-visible { outline: none; }
 .pg-cat { font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--ink-soft);
     padding-block-start: 0.15em; }
-.pg-title { font-weight: 700; color: var(--ink-strong); }
+.pg-title { font-weight: 700; color: var(--ink-strong);
+    display: flex; align-items: baseline; gap: 0.1em; min-width: 0; }
 .pg-time { color: var(--ink); font-variant-numeric: tabular-nums; text-align: end;
     font-size: 0.9375rem; }
 .pg-venue-inline { color: var(--ink-soft); font-weight: 400; }
@@ -1283,4 +1284,39 @@ hr {
 @media (min-width: 601px) {
     .streams.team { grid-template-columns: 13rem 1fr; }
     .streams.team dt { padding-inline-end: var(--space-2); }
+}
+
+
+/* ── ADW-presented mark + event links ──────────────────────────────────
+   The adw monogram marks events Adelaide Design Week puts on itself. */
+.pg-adw {
+    width: 2.1em; height: 0.96em; fill: currentColor;
+    vertical-align: -0.08em; flex: none;
+    margin-inline-start: auto;   /* pushed to the right edge of the title column */
+    padding-inline-start: var(--space-2);
+}
+
+/* A link is an action, so it looks like one. Ticketed events carry the
+   asterisk, the same mark used for "ticketed" everywhere else. */
+.pg-cta {
+    display: inline-flex; align-items: center; gap: 0.4em;
+    text-decoration: none; font-weight: 700;
+    color: var(--ink-strong); background: transparent;
+    border: 1.5px solid var(--ink-strong);
+    border-radius: 999px;              /* matches the day + filter chips above */
+    padding: 0.42rem 1.05rem; font-size: 0.9375rem;
+    transition: background var(--transition), color var(--transition);
+}
+.pg-cta:hover, .pg-cta:focus-visible { background: var(--yellow); }
+.pg-cta:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+.pg-cta.is-ticketed { background: var(--yellow); }
+.pg-cta.is-ticketed:hover, .pg-cta.is-ticketed:focus-visible {
+    background: var(--ink-strong); color: var(--paper);
+}
+.pg-cta-arrow { transition: transform var(--transition); }
+.pg-cta:hover .pg-cta-arrow { transform: translateX(2px); }
+.pg-link { margin-block-start: var(--space-2); }
+
+@media (prefers-reduced-motion: reduce) {
+    .pg-cta:hover .pg-cta-arrow { transform: none; }
 }
