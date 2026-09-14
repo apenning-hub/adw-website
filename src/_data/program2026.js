@@ -186,6 +186,9 @@ module.exports = function () {
       title, venue,
       ticketed: ticketed === "yes",
       blurb: get("blurb"),
+      // A blank line in the cell is a paragraph break. Long blurbs arrive written
+      // as several paragraphs and ran together as one block before this.
+      blurbParas: get("blurb").split(/\n\s*\n/).map((t) => t.replace(/\s*\n\s*/g, " ").trim()).filter(Boolean),
       link: get("link"),
       socials: parseSocials(get("socials")),
       // Semicolon-separated, same rule as two sessions in one day.

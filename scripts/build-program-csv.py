@@ -4,9 +4,25 @@ BASE="/Users/andrew/Dropbox/01_active/every*where/2026/"
 wb=openpyxl.load_workbook(BASE+"program/ADW PROGRAM DETAILS -  Updated 14.09.xlsx",data_only=True)
 ws=wb["PROGRAM"]; tk=wb["TICKET + IMAGE LINKS"]
 
-def g(r,c):
+def g(r,c,keep_lines=False):
     v=ws.cell(row=r,column=ci(c)).value
-    return re.sub(r'\s+',' ',str(v)).strip() if v is not None else ""
+    if v is None: return ""
+    s=str(v)
+    # Newlines carry meaning in the contributors cell, so only spaces are collapsed
+    # there. Everywhere else a cell is a single run of text.
+    return re.sub(r'[ \t]+',' ',s).strip() if keep_lines else re.sub(r'\s+',' ',s).strip()
+
+def unquote(s):
+    # A few blurbs open with a quotation mark that never closes, an artefact of
+    # pasting into the form. A lone one reads as a typo on the page.
+    if s.count('"')==1: s=s.replace('"','').strip()
+    return s
+
+def people(raw):
+    """One name per line where the cell uses lines, else comma-separated.
+    A line ending in ':' is a heading ("Panelists:"), not a person."""
+    parts=raw.split("\n") if "\n" in raw else re.split(r',(?![^(]*\))', raw)
+    return [p.strip(" ,") for p in parts if p.strip(" ,") and not p.strip().endswith(":")]
 
 # Category comes from the section blocks: column K labels a block, blank rows separate them.
 SECTIONS=[(12,59,"EXH"),(61,64,"INST"),(66,72,"OPEN"),(74,74,"CONV"),(76,94,"CONV"),
@@ -76,9 +92,9 @@ for lo,hi,cat in SECTIONS:
         if not title: continue
         sessions=[(lab,g(r,col)) for col,lab in DAYS]
         tickd,link,price=ticket(title)
-        contributors="; ".join(p.strip(" ,") for p in re.split(r',(?![^(]*\))', g(r,'AI')) if p.strip(" ,"))
+        contributors="; ".join(people(g(r,'AI',keep_lines=True)))
         rows.append({"category":cat,"title":title,"ticketed":tickd,"venue":g(r,'M'),
-                     "blurb":g(r,'AK'),"link":link,"socials":"","contributors":contributors,"adw_presented":"",
+                     "blurb":unquote(g(r,'AK')),"link":link,"socials":"","contributors":contributors,"adw_presented":"",
                      **{lab:val for lab,val in sessions},"_row":r,"_price":price})
 
 # SHOPFRONTS is entered twice (row 42 exhibition, row 63 installation) with the same
@@ -116,7 +132,30 @@ for x in rows:
 # carries anything for it beyond the dates and times. Its details were supplied
 # directly by the program team (14 Sep 2026) and are held here so that
 # regenerating from a later spreadsheet does not wipe them.
-OVERRIDES={"SHOPFRONT DESIGN CIRCUIT":{
+OVERRIDES={
+ "CO-DESIGNING YITPI YARTAPUULTIKU":{
+  "venue":"Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD",
+  "ticketed":"yes",
+  "contributors":"Ashley Halliday (Ashley Halliday Architects); Warwick Keates (WAX Design)",
+  "blurb":"\n\n".join([
+   "YITPI YARTAPUULTIKU - Soul of Port Adelaide: The Story Behind an Award-Winning Place",
+   "Discover the remarkable story behind YITPI YARTAPUULTIKU - Soul of Port Adelaide, a "
+   "multi-award-winning public realm project that has transformed the heart of Port Adelaide. "
+   "Join Architect Ashley Halliday and Landscape Architect Warwick Keates as they take the "
+   "audience behind the scenes of the project's conception, design development, and delivery.",
+   "This engaging presentation explores how architecture, landscape architecture, planning, "
+   "culture, history, and community aspirations were woven together to create a place of "
+   "lasting significance. Through insights into the co-design process, working with cultural "
+   "knowledge, key challenges, and moments of innovation, Ashley and Warwick reveal the "
+   "thinking that shaped a project now recognised for its design excellence and contribution "
+   "to public life.",
+   "Whether you are a design professional, student, or community member, this presentation "
+   "offers a unique opportunity to understand how thoughtful, place-based design can celebrate "
+   "identity, strengthen connection, and leave a lasting legacy for future generations.",
+   "A free event, bookings essential. Presented by the School of Architecture and Built "
+   "Environment, Adelaide University."]),
+ },
+ "SHOPFRONT DESIGN CIRCUIT":{
  "venue":"Various Locations, East End, ADL CBD",
  "link":"https://events.humanitix.com/shopfront-design-circuit-tour-and-adw-farewell",
  "ticketed":"yes",
@@ -139,7 +178,11 @@ OVERRIDES={"SHOPFRONT DESIGN CIRCUIT":{
    "Nudie Jeans x Will Cheeseman and Oliver Hyde",
    "Miss Gladys Sim Choon x Claire Markwick-Smith",
    "Aesop x Andrew Carvolth"]),
-}}
+ },
+}
+for x in rows:
+    if x["title"]=="DESIGNING YITPI": x["title"]="CO-DESIGNING YITPI YARTAPUULTIKU"
+
 for x in rows:
     x.update(OVERRIDES.get(x["title"],{}))
 

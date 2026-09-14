@@ -80,7 +80,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 {% endif %}
               </div>
               {% if e.blurb %}
-              <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>
+              <div class="pg-col pg-col--blurb">{% for para in e.blurbParas %}<p class="pg-blurb">{{ para }}</p>{% endfor %}</div>
               {% endif %}
               {% if e.contributors.length %}
               <div class="pg-col pg-col--people">
@@ -129,7 +129,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 {% endif %}
             </div>
             {% if e.blurb %}
-            <div class="pg-col pg-col--blurb"><p class="pg-blurb">{{ e.blurb }}</p></div>
+            <div class="pg-col pg-col--blurb">{% for para in e.blurbParas %}<p class="pg-blurb">{{ para }}</p>{% endfor %}</div>
             {% endif %}
             {% if e.contributors.length %}
             <div class="pg-col pg-col--people">
