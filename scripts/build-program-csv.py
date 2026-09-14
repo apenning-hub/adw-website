@@ -106,6 +106,36 @@ ADW={"ADW OPENING PARTY x SHORT NOTICE","ADW CLOSING PARTY x COMPANY WORKS","SHO
 for x in rows:
     if x["title"] in ADW: x["adw_presented"]="yes"
 
+# The Shopfront Design Circuit never went through the EOI form, so neither sheet
+# carries anything for it beyond the dates and times. Its details were supplied
+# directly by the program team (14 Sep 2026) and are held here so that
+# regenerating from a later spreadsheet does not wipe them.
+OVERRIDES={"SHOPFRONTS":{
+ "venue":"Various Locations, East End, ADL CBD",
+ "link":"https://events.humanitix.com/shopfront-design-circuit-tour-and-adw-farewell",
+ "ticketed":"yes",
+ "blurb":("The annual Shopfront design challenge sees the East End buzz with a number of "
+          "business and designer collaborations for 24/7 viewing. This multi-venue exhibition "
+          "has seen local businesses hand over their shopfronts for quick thinking design "
+          "responses from selected Adelaide based designers and architects. For Adelaide "
+          "Design Week 2026, we have expanded again - with more venues in the East End - "
+          "bringing an intimate and broad range of responses. Join us for a dynamic walking "
+          "tour of the Shopfront Design Circuit exhibitions, finishing at Honeydripper for an "
+          "afternoon to farewell Adelaide Design Week. All are welcome, with additional "
+          "collaborations and the final walking tour route to be announced."),
+ "contributors":"; ".join([
+   "Jewel of Thought Records x Tom Borgas",
+   "Galeria Grafika x Tristan Kerr",
+   "Utopian Creations x Jake Lane",
+   "Naomi Murrel x Sophia Moore",
+   "Shop Pond / Filter Store x Moraene Architecture & Design Collective",
+   "Nudie Jeans x Will Cheeseman and Oliver Hyde",
+   "Miss Gladys Sim Choon x Claire Markwick-Smith",
+   "Aesop x Andrew Carvolth"]),
+}}
+for x in rows:
+    x.update(OVERRIDES.get(x["title"],{}))
+
 HDR=["category","title","ticketed","venue","blurb","link","contributors","adw_presented"]+[l for _,l in DAYS]
 out=io.StringIO()
 w=csv.DictWriter(out,fieldnames=HDR,extrasaction="ignore",lineterminator="\n")
