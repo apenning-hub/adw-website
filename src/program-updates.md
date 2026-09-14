@@ -4,7 +4,7 @@ permalink: /program-updates/
 layout: base.njk
 noindex: true
 updatesForm: true
-description: For Adelaide Design Week participants — tell us about a change or an error in your event listing.
+description: For Adelaide Design Week participants — submit a change to your event listing.
 ---
 
 {#- Deliberately not in the nav and not indexed: the URL is given to
@@ -13,20 +13,24 @@ description: For Adelaide Design Week participants — tell us about a change or
 
 <article class="page prose" data-updates data-form-id="{{ site.updatesFormId }}">
 
-# something to change?
+# changes to your event
 
-Your listing, in your words. If the program has it wrong, or something about
-your event has changed, tell us here rather than by email — it lands in one
-place, in the same shape as the spreadsheet the program is built from.
+If anything about your Adelaide Design Week event has changed, please tell us
+here. Changes are reviewed by the team and updated on the website within 24 to
+48 hours.
 
-**Pick your event first.** You'll see exactly what the site says about it now.
+What you enter goes directly onto the website, so please check it before you
+submit. Each field replaces what is published now, so write the wording in full
+rather than describing the change — anything you leave out will no longer
+appear.
 
-**Send the wording in full.** We replace the whole field, so anything you leave
-out disappears. Copy what's below, change it, paste it back.
+Multiple submissions for the same event can conflict, so please combine your
+changes into one submission where you can.
 
-**Days have a box each.** Fill in only the ones that change.
+We are not able to accept changes by email, due to the volume of submissions we
+receive. Please use this form only.
 
-**Live within 24 – 48 hours.** A person reads every change before it goes up.
+Select your event below. You will see what the website currently has for it.
 
 <p class="pu-field">
   <label for="pu-event">your event</label>
@@ -43,8 +47,8 @@ out disappears. Copy what's below, change it, paste it back.
 <div class="pu-form" data-form></div>
 
 <p class="pu-fallback">
-  Something this form doesn't cover — a question, a withdrawal, a press
-  enquiry? Email <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.
+  For anything this form does not cover, such as a press enquiry, email
+  <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.
 </p>
 
 </article>
