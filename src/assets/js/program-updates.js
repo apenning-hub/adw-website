@@ -21,6 +21,9 @@
   // before-and-after.
   function summarise(e) {
     const lines = [`venue: ${e.venue}`];
+    // The description is the field most often reported wrong, and the one people
+    // most need to see before rewriting it.
+    if (e.blurb) lines.push(`description: ${e.blurb}`);
     e.sessions.forEach((s) => lines.push(`${s.day}: ${s.times.join(" / ")}`));
     lines.push(`ticketed: ${e.ticketed ? "yes" : "no"}`);
     if (e.link) lines.push(`link: ${e.link}`);

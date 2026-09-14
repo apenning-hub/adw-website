@@ -1359,7 +1359,8 @@ hr {
 }
 .pu-current-head { font-family: var(--font-display); font-size: 0.9375rem; margin: 0 0 var(--space-2); }
 .pu-current-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
-.pu-current-list li { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; font-size: 0.9375rem; }
+.pu-current-list li { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; font-size: 0.9375rem; align-items: start; }
+.pu-current-list li > :last-child { min-width: 0; }
 .pu-current-list span { color: var(--ink-soft); }
 
 .pu-frame { display: block; border: 0; margin-block: var(--space-3); }

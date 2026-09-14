@@ -65,6 +65,7 @@ read by a person first, so nothing here changes the public program on its own.
     {
       "title": {{ e.title | dump | safe }},
       "venue": {{ e.venue | dump | safe }},
+      "blurb": {{ e.blurb | dump | safe }},
       "ticketed": {{ "true" if e.ticketed else "false" }},
       "link": {{ e.link | dump | safe }},
       "socials": {{ (e.socials.handle if e.socials else "") | dump | safe }},
