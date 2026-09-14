@@ -15,27 +15,18 @@ description: For Adelaide Design Week participants — tell us about a change or
 
 # something to change?
 
-If your listing on the program is wrong, or something about your event has
-changed, tell us here rather than by email. Everything submitted on this page
-lands in one place, in the same shape as the spreadsheet the program is built
-from — which means it gets fixed quickly, and nothing is lost in a thread.
+Your listing, in your words. If the program has it wrong, or something about
+your event has changed, tell us here rather than by email — it lands in one
+place, in the same shape as the spreadsheet the program is built from.
 
-Please **choose your event first**. That way we know exactly which listing you
-mean, and you can see what the website currently says about it.
+**Pick your event first.** You'll see exactly what the site says about it now.
 
-One thing to know before you write: **send us the corrected wording in full**,
-exactly as it should appear. We replace the whole field with what you give us, so
-"delete the third line" or "change the second time to 4pm" isn't something we can
-act on — and anything you leave out will vanish from the website. Copy what's
-below, change it, and paste the whole thing back. You can report more than one
-thing at once.
+**Send the wording in full.** We replace the whole field, so anything you leave
+out disappears. Copy what's below, change it, paste it back.
 
-Days and times have **a box each**, one per day of the festival, the same way the
-program itself is put together. Fill in only the days that change — so a Thursday
-that now has an opening at 6pm is one box, and the rest stay as they are.
+**Days have a box each.** Fill in only the ones that change.
 
-Changes usually appear on the website **within 24 to 48 hours**. Every update is
-read by a person first, so nothing here changes the public program on its own.
+**Live within 24 – 48 hours.** A person reads every change before it goes up.
 
 <p class="pu-field">
   <label for="pu-event">your event</label>
