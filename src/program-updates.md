@@ -23,6 +23,20 @@ from — which means it gets fixed quickly, and nothing is lost in a thread.
 Please **choose your event first**. That way we know exactly which listing you
 mean, and you can see what the website currently says about it.
 
+One thing to know before you write: **send us the corrected wording in full**,
+exactly as it should appear. We replace the whole field with what you give us, so
+"delete the third line" or "change the second time to 4pm" isn't something we can
+act on — and anything you leave out will vanish from the website. Copy what's
+below, change it, and paste the whole thing back. You can report more than one
+thing at once.
+
+Days and times have **a box each**, one per day of the festival, the same way the
+program itself is put together. Fill in only the days that change — so a Thursday
+that now has an opening at 6pm is one box, and the rest stay as they are.
+
+Changes usually appear on the website **within 24 to 48 hours**. Every update is
+read by a person first, so nothing here changes the public program on its own.
+
 <p class="pu-field">
   <label for="pu-event">your event</label>
   <select id="pu-event">

@@ -49,21 +49,43 @@ in lower case — the page sends these as URL parameters:
 
 **Then the questions:**
 
-1. **What needs changing?** — multiple choice, one answer:
-   days & times · venue · description · contributors · ticket link ·
-   socials · event name · category (exhibition, talk, tour…) ·
-   the event is cancelled · something else
-2. **What should it say?** — long answer. Required.
-   Placeholder: *Write the correct details exactly as they should appear on the
-   website.*
-3. **Your name** — short answer. Required.
-4. **Your email** — email. Required. *So we can check with you if anything is
-   unclear.*
-5. **Anything else?** — long answer. Optional.
+1. **What needs changing? (tick as many as apply)** — multiple choice with
+   **Multiple selection** switched on, in the block menu. One report often covers
+   two or three fields at once, and splitting that across submissions loses the
+   connection between them. Options: days & times · venue · description ·
+   contributors · ticket link · socials · event name ·
+   category (exhibition, talk, tour…) · the event is cancelled · something else
+2. A **text block**, before the next question, carrying the one instruction that
+   decides whether a request can be acted on at all: write the corrected wording
+   out in full. The fields are replaced wholesale, so an instruction like "delete
+   the third line" cannot be applied, and anything omitted disappears. The same
+   wording appears on the page above the form.
+3. **Days and times** — a text block explaining the convention, then **one short
+   answer per festival day**, labelled exactly as the CSV's day columns are:
+   `thu 8 oct`, `tue 13 oct`, `wed 14 oct`, `thu 15 oct`, `fri 16 oct`,
+   `sat 17 oct`, `sun 18 oct`. All seven optional. A participant fills in only
+   the days that change, writing the time exactly as it should read — the same
+   free text the CSV takes, semicolon and all, so "10am - 4pm; opening 6pm - 9pm"
+   arrives ready to paste. One box per day is what makes "Thursday now has an
+   opening at 6pm" expressible at all.
+4. **Everything else - What should it say? Write it out in full.** — long answer.
+   Optional, since a change to times alone is now covered by the day boxes.
+5. **Your name** — short answer. Required.
+6. **Your email** — email. Required.
+7. **Anything else?** — long answer. Optional.
+8. A closing **text block**: changes appear within 24 to 48 hours, and every one
+   is read by a person before it goes live.
 
-Questions are **required by default** in Tally; "Anything else?" is the only one
-turned off. The toggle lives in the block menu, on the drag handle beside the
-question — not the asterisk badge, which only shows the current state.
+Questions are **required by default** in Tally. Only "What needs changing?",
+"Your name" and "Your email" stay required; the seven day boxes, the catch-all
+and "Anything else?" are all optional. Clicking the asterisk badge beside a
+question label toggles it — the badge disappears when the question is optional,
+and the same toggle also sits in the block menu on the drag handle.
+
+**Multiple selection is not enough to allow more than one answer.** The toggle of
+that name appears to work in the editor and does not survive publishing — the
+live form kept rendering radio buttons. Use **Turn into → Checkboxes** on the
+block menu instead, which does.
 
 **Email notifications** are on, under Settings, sending to
 contact@adelaidedesignweek.com.au on every submission.
