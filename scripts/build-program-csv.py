@@ -94,7 +94,7 @@ for lo,hi,cat in SECTIONS:
         tickd,link,price=ticket(title)
         contributors="; ".join(people(g(r,'AI',keep_lines=True)))
         rows.append({"category":cat,"title":title,"ticketed":tickd,"venue":g(r,'M'),
-                     "blurb":unquote(g(r,'AK')),"link":link,"socials":"","contributors":contributors,"adw_presented":"",
+                     "blurb":unquote(g(r,'AK')),"link":link,"socials":"","note":"","contributors":contributors,"adw_presented":"",
                      **{lab:val for lab,val in sessions},"_row":r,"_price":price})
 
 # SHOPFRONTS is entered twice (row 42 exhibition, row 63 installation) with the same
@@ -132,14 +132,28 @@ for x in rows:
 # carries anything for it beyond the dates and times. Its details were supplied
 # directly by the program team (14 Sep 2026) and are held here so that
 # regenerating from a later spreadsheet does not wipe them.
+# ADW's 15 Sep pass over the live program. Ticketing is per day now, so an
+# exhibition that is free all week with one ticketed opening says so.
 OVERRIDES={
+ "GROUNDED":{"ticketed":"wed 14 oct"},
+ "SUPER PARTY":{"note":"Registration link released soon"},
+ "LEARNING FROM YITPI YARTAPUULTIKU":{"note":"Registration link released soon"},
+ # The sheet left a note where the description belongs; tickets are not released.
+ "THE AUSTRALIAN (DESIGN) DREAM":{"blurb":"", "note":"Registration link released soon"},
+ "DESIGNING WITH COUNTRY: Conversations on Place, Practice and Responsibility":{
+   "category":"CONV", "note":"Registration link released soon"},
+ "ADW OPENING PARTY x SHORT NOTICE":{
+   # The sheet left "add short notice description" where the blurb belongs.
+   "blurb":"",
+   "note":"Registration link released soon. WIN: Ukiyo Residency door prize, announced by the Honourable "
+          "Lord Mayor Jane Lomax-Smith"},
  # Supplied by the SLOT team via Hannah, 14 Sep 2026. The Instagram accounts for
  # the host, curator and supporter have nowhere to go: socials is one field per
  # event, and contributors are plain names. Recorded here so they are not lost -
  # SODA Objects @sodaobjects, Table Wines @table.wines, Bronwyn Marshall
  # @marshallstudio_.
  "SLOT":{
-  "ticketed":"yes",
+  "ticketed":"thu 15 oct",
   "thu 15 oct":"opening 4pm - 7pm",
   "link":"https://events.humanitix.com/slot-opening",
   "socials":"@slot_adw",
@@ -149,9 +163,6 @@ OVERRIDES={
     "Supported by Table Wines",
     "Designers & makers to be revealed"]),
  },
- # The sheet left a note where the description belongs. Tickets are not released,
- # so there is nothing to link yet and nothing worth saying in a blurb.
- "THE AUSTRALIAN (DESIGN) DREAM":{"blurb":""},
  "CO-DESIGNING YITPI YARTAPUULTIKU":{
   "venue":"Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD",
   "ticketed":"yes",
@@ -177,7 +188,9 @@ OVERRIDES={
  "SHOPFRONT DESIGN CIRCUIT":{
  "venue":"Various Locations, East End, ADL CBD",
  "link":"https://events.humanitix.com/shopfront-design-circuit-tour-and-adw-farewell",
- "ticketed":"yes",
+ # Only the Sunday walking tour is ticketed; the shopfronts are 24/7 and free.
+ "ticketed":"sun 18 oct",
+ "note":"WIN: Aesop People's Choice Prize - visit to vote, vote to win",
  "blurb":("The annual Shopfront design challenge sees the East End buzz with a number of "
           "business and designer collaborations for 24/7 viewing. This multi-venue exhibition "
           "has seen local businesses hand over their shopfronts for quick thinking design "
@@ -205,7 +218,7 @@ for x in rows:
 for x in rows:
     x.update(OVERRIDES.get(x["title"],{}))
 
-HDR=["category","title","ticketed","venue","blurb","link","socials","contributors","adw_presented"]+[l for _,l in DAYS]
+HDR=["category","title","ticketed","venue","blurb","link","socials","note","contributors","adw_presented"]+[l for _,l in DAYS]
 out=io.StringIO()
 w=csv.DictWriter(out,fieldnames=HDR,extrasaction="ignore",lineterminator="\n")
 w.writeheader()

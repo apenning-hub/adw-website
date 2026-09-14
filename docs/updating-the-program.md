@@ -18,10 +18,10 @@ Double-click `program-2026.csv`. It will open in Excel or Numbers, depending on
 what you have. You can also upload it to Google Sheets (**File → Import → Upload**,
 then choose **Replace spreadsheet**).
 
-You'll see nine columns on the left, then one column for each day of the festival:
+You'll see ten columns on the left, then one column for each day of the festival:
 
-| category | title | ticketed | venue | blurb | link | socials | contributors | adw_presented | thu 8 oct | … |
-|---|---|---|---|---|---|---|---|---|---|---|
+| category | title | ticketed | venue | blurb | link | socials | note | contributors | adw_presented | thu 8 oct | … |
+|---|---|---|---|---|---|---|---|---|---|---|---|
 
 **Tip:** freeze the first two columns so the title stays visible as you scroll
 sideways. In Excel and Sheets that's **View → Freeze → 2 columns**.
@@ -85,8 +85,22 @@ publish and tell you which two rows clash.
 
 **title** — the event name. Leave off the `*`; use the ticketed column instead.
 
-**ticketed** — type `yes` if it's ticketed. Otherwise leave it empty. The website
-adds the `*` for you.
+**ticketed** — type `yes` if every day is ticketed. Otherwise leave it empty.
+The website adds the `*` for you.
+
+Often only part of the run is ticketed — an exhibition that is free all week with
+one ticketed opening. In that case, instead of `yes`, write the days that are
+ticketed, exactly as the day columns are headed, separated by semicolons:
+
+```
+thu 15 oct
+sun 18 oct
+wed 14 oct; sat 17 oct
+```
+
+The `*` and the booking button then appear **only on those days**. Someone
+looking at Friday sees neither. The a–z list still shows the `*`, because it is
+not looking at one day.
 
 **venue** — where it is, written how you want it read:
 `Coldstore, 66 Wyatt St, Adelaide`
@@ -110,6 +124,14 @@ empty gap on the page.
 
 **link** — optional. A web address for tickets or more information. Include the
 `https://`.
+
+**note** — optional. One short line, shown where the booking button sits. Use it
+for a prize, or to say a link isn't out yet:
+
+```
+WIN: Aesop People's Choice Prize - visit to vote, vote to win
+Registration link released soon
+```
 
 **socials** — optional. An Instagram handle, written the way it's written
 everywhere else:

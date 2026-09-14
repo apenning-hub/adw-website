@@ -66,11 +66,12 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                   <dt>when</dt>
                   <dd><ul class="pg-when">
                     {% for s in e.sessions %}
-                    <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>
+                    <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %} <svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</li>
                     {% endfor %}
                   </ul></dd>
                 </dl>
-                {% if e.link %}
+                {% if e.note %}<p class="pg-eventnote">{{ e.note }}</p>{% endif %}
+                {% if e.link and (not e.anyTicketed or e.ticketed) %}
                 <p class="pg-link">
                   <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
                     {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
@@ -116,10 +117,11 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
                 <dt>when</dt>
                 <dd><ul class="pg-when">
-                  {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}
+                  {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %} <svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</li>{% endfor %}
                 </ul></dd>
               </dl>
-              {% if e.link %}
+              {% if e.note %}<p class="pg-eventnote">{{ e.note }}</p>{% endif %}
+              {% if e.link and (not e.anyTicketed or e.ticketed) %}
                 <p class="pg-link">
                   <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
                     {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
