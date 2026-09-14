@@ -133,11 +133,16 @@ for x in rows:
 # directly by the program team (14 Sep 2026) and are held here so that
 # regenerating from a later spreadsheet does not wipe them.
 OVERRIDES={
- # Supplied by the SLOT team via Hannah, 14 Sep 2026. The Humanitix and Instagram
- # links were written as the words "HERE" in that email, so they are still missing.
+ # Supplied by the SLOT team via Hannah, 14 Sep 2026. The Instagram accounts for
+ # the host, curator and supporter have nowhere to go: socials is one field per
+ # event, and contributors are plain names. Recorded here so they are not lost -
+ # SODA Objects @sodaobjects, Table Wines @table.wines, Bronwyn Marshall
+ # @marshallstudio_.
  "SLOT":{
   "ticketed":"yes",
   "thu 15 oct":"opening 4pm - 7pm",
+  "link":"https://events.humanitix.com/slot-opening",
+  "socials":"@slot_adw",
   "contributors":"; ".join([
     "Curated by Bronwyn Marshall",
     "Hosted by SODA Objects",
