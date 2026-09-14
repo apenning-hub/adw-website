@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#ECEFE8">
   <title>{% if title %}{{ title }} — {{ site.shortTitle }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
-  {%- if env.preview %}
-  {# _headers only applies on Cloudflare Pages; this also covers the GitHub Pages mirror. #}
+  {%- if env.preview or noindex %}
+  {# Preview builds, plus pages meant only for people given the URL. #}
   <meta name="robots" content="noindex, nofollow">
   {%- endif %}
   <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
@@ -75,6 +75,11 @@
 
   {% if lightbox %}
   <script src="{{ '/assets/js/lightbox.js' | url }}" defer></script>
+  {% endif %}
+
+  {% if updatesForm %}
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <script src="{{ '/assets/js/program-updates.js' | url }}?v={{ assets.updatesJs }}" defer></script>
   {% endif %}
 
   {% if copyButtons %}

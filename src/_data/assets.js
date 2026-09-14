@@ -19,4 +19,5 @@ const hash = (file) =>
 module.exports = {
   css: hash("assets/css/site.css"),
   programJs: hash("assets/js/program.js"),
+  updatesJs: hash("assets/js/program-updates.js"),
 };
