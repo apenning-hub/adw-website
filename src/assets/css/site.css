@@ -1070,10 +1070,9 @@ hr {
 
 /* Inside a narrow column the facts list was wrapping mid-value — tighten the
    label gutter and keep each time on one line. */
-.pg-cols .pg-meta { grid-template-columns: 3.25rem 1fr; column-gap: 0.5rem; }
+.pg-cols .pg-meta { grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: 0.5rem; }
 .pg-cols .pg-when li { gap: 0.4rem; }
 .pg-cols .pg-when li > span { min-width: 4.9rem; }
-.pg-cols .pg-when li { white-space: nowrap; }
 .pg-col { min-width: 0; }
 
 .pg-people-head {
@@ -1103,12 +1102,15 @@ hr {
     /* One column of names is right on a phone; two would be cramped. */
     .pg-cols.many-people .pg-people { columns: auto; }
 }
-.pg-meta { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
+.pg-meta { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
 .pg-meta dt { color: var(--ink-soft); font-size: 0.8125rem; }
-.pg-meta dd { margin: 0; }
+/* A long venue, a day carrying two sessions, or a pasted URL has to wrap inside
+   this column. Left to itself a grid or flex item will not shrink below its
+   content, so the value runs under the blurb beside it instead. */
+.pg-meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .pg-when { list-style: none; margin: 0; padding: 0; }
-.pg-when li { display: flex; gap: 0.6rem; }
-.pg-when li > span { min-width: 5.5rem; color: var(--ink-soft); }
+.pg-when li { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pg-when li > span { flex: 0 0 auto; min-width: 5.5rem; color: var(--ink-soft); }
 .pg-when li.is-today { font-weight: 700; color: var(--ink-strong); }
 .pg-when li.is-today > span { color: var(--ink-strong); }
 .pg-blurb { margin: 0 0 0.5rem; }
