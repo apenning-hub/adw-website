@@ -1109,7 +1109,7 @@ hr {
    content, so the value runs under the blurb beside it instead. */
 .pg-meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .pg-when { list-style: none; margin: 0; padding: 0; }
-.pg-when li { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.pg-when li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem; }
 .pg-when li > span { flex: 0 0 auto; min-width: 5.5rem; color: var(--ink-soft); }
 .pg-when li.is-today { font-weight: 700; color: var(--ink-strong); }
 .pg-when li.is-today > span { color: var(--ink-strong); }
@@ -1187,6 +1187,10 @@ hr {
     vertical-align: -0.12em; flex: none;
 }
 .ast--sm { width: 0.72em; height: 0.72em; vertical-align: -0.02em; }
+/* These lines are flex rows, so the mark aligns with align-self, not
+   vertical-align — which is ignored on a flex item and left it riding high
+   like a footnote marker. */
+.pg-when .ast--sm { width: 0.62em; height: 0.62em; align-self: center; }
 
 /* Hero: two marks drifting behind the title, as on the poster. */
 .hero { position: relative; overflow: hidden; }
@@ -1372,4 +1376,16 @@ hr {
 @media (max-width: 40rem) {
     .pu-current-list li { grid-template-columns: 1fr; gap: 0; }
     .pu-current-list li span { font-size: 0.8125rem; }
+}
+
+/* A short line where the booking button would sit — a prize to be won, or a
+   ticket link that does not exist yet. Named apart from .pg-note, which is the
+   legend under the page title and carries no panel. */
+.pg-eventnote {
+    margin: 0 0 var(--space-2);
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    padding: 0.35rem 0.6rem;
+    border-inline-start: 3px solid var(--yellow);
+    background: color-mix(in srgb, var(--yellow) 18%, transparent);
 }

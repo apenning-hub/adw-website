@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "socials",
-               "contributors", "adw_presented"];
+               "note", "contributors", "adw_presented"];
 const CATEGORIES = {
   EXH: "exhibition",
   INST: "installation",
@@ -138,7 +138,11 @@ module.exports = function () {
     const category = get("category").toUpperCase();
     const title = get("title");
     const venue = get("venue");
-    const ticketed = get("ticketed").toLowerCase();
+    // Ticketing is often not the whole run: an exhibition can be free all week
+    // with one ticketed opening. So "ticketed" is either "yes" for every day, or
+    // the days that are ticketed, written exactly as the day columns are headed.
+    const ticketedRaw = get("ticketed");
+    const ticketed = ticketedRaw.toLowerCase();
 
     if (!title) fail(`row ${line} has no title.`);
     if (!CATEGORIES[category]) {
@@ -146,10 +150,19 @@ module.exports = function () {
            `It must be one of: ${Object.keys(CATEGORIES).join(", ")}.`);
     }
     if (!venue) fail(`row ${line} ("${title}") has no venue.`);
-    if (ticketed && ticketed !== "yes") {
-      fail(`row ${line} ("${title}") has ticketed "${get("ticketed")}". ` +
-           `Write "yes", or leave it empty.`);
-    }
+    const ticketedDays = ticketed && ticketed !== "yes"
+      ? ticketed.split(";").map((d) => d.trim()).filter(Boolean)
+      : [];
+    ticketedDays.forEach((d) => {
+      if (!days.some((col) => col.label.toLowerCase() === d)) {
+        fail(
+          `row ${line} ("${title}") has ticketed "${ticketedRaw}". Write "yes" if ` +
+          `every day is ticketed, or the days that are — exactly as the day ` +
+          `columns are headed, separated by semicolons, e.g. "wed 14 oct". ` +
+          `There is no day column called "${d}".`
+        );
+      }
+    });
 
     const key = title.toLowerCase().replace(/\s+/g, " ").trim();
     if (seen.has(key)) {
@@ -163,7 +176,11 @@ module.exports = function () {
       .map(({ label, index }) => {
         const cell = (cells[index] || "").trim();
         if (!cell) return null;
-        return { day: label, times: cell.split(";").map((t) => t.trim()).filter(Boolean) };
+        return {
+          day: label,
+          times: cell.split(";").map((t) => t.trim()).filter(Boolean),
+          ticketed: ticketed === "yes" || ticketedDays.includes(label.toLowerCase()),
+        };
       })
       .filter(Boolean);
 
@@ -184,7 +201,10 @@ module.exports = function () {
       category,
       categoryLabel: CATEGORIES[category],
       title, venue,
-      ticketed: ticketed === "yes",
+      // True when any day is ticketed — the a–z list has no day to be specific about.
+      ticketed: Boolean(ticketed),
+      ticketedEveryDay: ticketed === "yes",
+      note: get("note"),
       blurb: get("blurb"),
       // A blank line in the cell is a paragraph break. Long blurbs arrive written
       // as several paragraphs and ran together as one block before this.
@@ -203,7 +223,12 @@ module.exports = function () {
     day: label,
     events: events
       .filter((e) => e.sessions.some((s) => s.day === label))
-      .map((e) => ({ ...e, times: e.sessions.find((s) => s.day === label).times }))
+      .map((e) => {
+        const s = e.sessions.find((x) => x.day === label);
+        // In a day's list, "ticketed" means ticketed *that day* — an exhibition
+        // with one ticketed opening should not wear the asterisk all week.
+        return { ...e, times: s.times, ticketed: s.ticketed, anyTicketed: e.ticketed };
+      })
       .sort((a, b) =>
         a.category === b.category
           ? a.title.localeCompare(b.title)
@@ -224,7 +249,7 @@ module.exports = function () {
     days: days.map((d) => d.label),
     byDay,
     defaultDay,
-    az: [...events].sort(azSort),
+    az: [...events].map((e) => ({ ...e, anyTicketed: e.ticketed })).sort(azSort),
     categories: CATEGORIES,
     count: events.length,
     sessionCount: events.reduce((n, e) => n + e.sessions.length, 0),
