@@ -5,7 +5,10 @@ own listing. It is deliberately **not in the navigation and not indexed by
 search engines** — the URL is given to participants directly, in the email that
 tells them their listing is live.
 
-The page itself is built. It needs one thing to go live: the Tally form.
+**The form is built and connected** — Tally form `Ek2Mqq`, published, in the
+every*where workspace, with email notifications going to
+contact@adelaidedesignweek.com.au. What follows records how it is put together,
+so it can be rebuilt or changed.
 
 ---
 
@@ -31,14 +34,13 @@ selection afterwards would reload the embedded form and discard anything typed.
 
 ---
 
-## Building the Tally form
+## How the Tally form is built
 
-Create a new form in the same Tally account as the EOI form. Its questions
-should mirror the spreadsheet's columns, because that is what makes a request
-something Han can act on rather than interpret.
+Its questions mirror the spreadsheet's columns, because that is what makes a
+request something Han can act on rather than interpret.
 
-**Two hidden fields** (Tally: add a field, choose "Hidden field"). The names
-must match exactly, in lower case:
+**Two hidden fields** (in Tally: type `/hidden`). The names must match exactly,
+in lower case — the page sends these as URL parameters:
 
 | name | receives |
 |---|---|
@@ -59,22 +61,31 @@ must match exactly, in lower case:
    unclear.*
 5. **Anything else?** — long answer. Optional.
 
-Turn on **email notification on submission** in the form's settings, to whoever
-is maintaining the program.
+Questions are **required by default** in Tally; "Anything else?" is the only one
+turned off. The toggle lives in the block menu, on the drag handle beside the
+question — not the asterisk badge, which only shows the current state.
+
+**Email notifications** are on, under Settings, sending to
+contact@adelaidedesignweek.com.au on every submission.
 
 ---
 
 ## Connecting it
 
-Publish the form, take the id out of its URL — in `https://tally.so/r/3xAbC1`
-the id is `3xAbC1` — and put it in `src/_data/site.json`:
+The form id is the tail of its share link — `https://tally.so/r/Ek2Mqq` — and it
+lives in `src/_data/site.json`:
 
 ```json
-"updatesFormId": "3xAbC1",
+"updatesFormId": "Ek2Mqq",
 ```
 
-Publish the site. Until that value is filled in, the page explains itself and
-shows nothing but the event picker, so it is safe to deploy in either state.
+Empty that value and the page still works, showing the picker and explaining
+itself, so the site is safe to deploy in either state.
+
+The embed uses `data-tally-src` rather than `src`. Tally only grows an iframe to
+fit its content for embeds it has adopted itself, and it adopts them by reading
+that attribute; setting `src` directly leaves the form at a fixed height with its
+last questions cut off.
 
 ---
 

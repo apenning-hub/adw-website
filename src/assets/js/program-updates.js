@@ -69,17 +69,29 @@
       event: title,
       current: event ? summarise(event).join(" | ") : "",
     });
+    // Tally grows the iframe to fit its content only for embeds it has adopted
+    // itself, which it does by reading data-tally-src. Setting src directly
+    // leaves the form at a fixed height with its last questions cut off.
     const iframe = document.createElement("iframe");
-    iframe.src = `https://tally.so/embed/${formId}?${params}`;
+    const src = `https://tally.so/embed/${formId}?${params}`;
+    iframe.dataset.tallySrc = src;
+    iframe.loading = "lazy";
     iframe.width = "100%";
-    iframe.height = "500";
+    iframe.height = "320";
     iframe.frameBorder = "0";
     iframe.marginHeight = "0";
     iframe.marginWidth = "0";
     iframe.title = `Report a change to ${title}`;
     iframe.className = "pu-frame";
     mount.appendChild(iframe);
+
+    // If Tally's script is blocked or slow, show the form anyway at a fixed
+    // height rather than an empty box.
     if (window.Tally) window.Tally.loadEmbeds();
+    else setTimeout(() => {
+      if (window.Tally) window.Tally.loadEmbeds();
+      else if (!iframe.src) { iframe.src = src; iframe.height = "900"; }
+    }, 1500);
   }
 
   select.addEventListener("change", () => render(select.value));
