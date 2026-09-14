@@ -133,6 +133,20 @@ for x in rows:
 # directly by the program team (14 Sep 2026) and are held here so that
 # regenerating from a later spreadsheet does not wipe them.
 OVERRIDES={
+ # Supplied by the SLOT team via Hannah, 14 Sep 2026. The Humanitix and Instagram
+ # links were written as the words "HERE" in that email, so they are still missing.
+ "SLOT":{
+  "ticketed":"yes",
+  "thu 15 oct":"opening 4pm - 7pm",
+  "contributors":"; ".join([
+    "Curated by Bronwyn Marshall",
+    "Hosted by SODA Objects",
+    "Supported by Table Wines",
+    "Designers & makers to be revealed"]),
+ },
+ # The sheet left a note where the description belongs. Tickets are not released,
+ # so there is nothing to link yet and nothing worth saying in a blurb.
+ "THE AUSTRALIAN (DESIGN) DREAM":{"blurb":""},
  "CO-DESIGNING YITPI YARTAPUULTIKU":{
   "venue":"Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD",
   "ticketed":"yes",
