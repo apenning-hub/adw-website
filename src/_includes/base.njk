@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FEFF35">
+  <meta name="theme-color" content="#ECEFE8">
   <title>{% if title %}{{ title }} — {{ site.shortTitle }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ description or site.description }}">
+  {%- if env.preview or noindex %}
+  {# Preview builds, plus pages meant only for people given the URL. #}
+  <meta name="robots" content="noindex, nofollow">
+  {%- endif %}
   <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
-  <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}?v={{ assets.css }}">
   {% if tallyPopup %}
   <script>
     window.TallyConfig = {
@@ -25,11 +29,42 @@
   <script async src="https://tally.so/widgets/embed.js"></script>
   {% endif %}
 </head>
-<body>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+  <svg class="brand-sprite" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="ast" viewBox="0 0 1560.16 1568.69"><defs>
+<clipPath id="ast_clip">
+<path transform="matrix(1,0,0,-1,0,1568.69)" d="M0 1568.687H1560.159V0H0Z"/>
+</clipPath>
+</defs>
+<g fill="currentColor">
+<g inkscape:groupmode="layer" inkscape:label="Layer 1">
+<g clip-path="url(#ast_clip)">
+<path transform="matrix(1,0,0,-1,1551.4149,598.7036)" d="M0 0V0C-31.366 99.397-137.763 154.146-236.874 121.891L-562.186 16.022V411.168C-562.186 514.74-646.147 598.701-749.718 598.701H-792.952C-896.523 598.701-980.484 514.74-980.484 411.168V16.022L-1305.796 121.891C-1404.908 154.146-1511.304 99.397-1542.67 0-1573.953-99.131-1518.634-204.793-1419.344-235.564L-1084.405-339.362-1315.532-667.867C-1374.923-752.281-1354.938-868.82-1270.815-928.623L-1261.439-935.288C-1178.944-993.933-1064.797-976.535-1003.521-895.976L-767.711-585.962-541.063-892.492C-480.298-974.675-364.915-993.064-281.613-933.843L-273.759-928.26C-189.839-868.599-169.717-752.434-228.682-668.023L-458.266-339.362-123.327-235.564C-24.036-204.793 31.282-99.131 0 0"/>
+</g>
+</g>
+</g>
+</symbol>
+    <symbol id="adw" viewBox="0 0 1526.09 699.408"><defs>
+<clipPath id="adw_clip">
+<path transform="matrix(1,0,0,-1,0,699.408)" d="M0 699.408H1526.091V0H0Z"/>
+</clipPath>
+</defs>
+<g fill="currentColor">
+<g inkscape:groupmode="layer" inkscape:label="Layer 1">
+<g clip-path="url(#adw_clip)">
+<path transform="matrix(1,0,0,-1,776.1277,249.81772)" d="M0 0C-5.47-26.65-17.906-48.428-37.274-65.162-56.653-81.955-77.926-90.379-101.194-90.379-125.322-90.379-143.582-81.897-155.964-64.876-168.402-47.855-171.933-26.248-166.545 0-160.981 27.108-148.521 49.001-129.188 65.564-109.914 82.127-88.218 90.379-64.09 90.379-40.822 90.379-22.973 82.127-10.441 65.564 2.092 49.001 5.564 27.108 0 0M-392.869-231.816C-399.181-262.566-415.368-286.259-441.346-302.898-467.34-319.623-497.698-327.898-532.368-327.898-556.496-327.898-575.499-323.717-589.078-315.18-602.745-306.643-607.728-293.577-604.116-275.981-601.417-262.827-595.145-253.071-585.268-246.537-575.458-239.917-560.417-235.388-540.281-232.774L-438.736-221.014C-418.116-219.011-400.943-213.436-387.219-204.289ZM639.583 249.818 523.89 29.056 483.984 249.818H371.024L245.274 30.317 218.061 249.818H152.605 104.414 44.803L22.016 138.807C6.231 164.654-24.247 177.549-69.408 177.549-100.012 177.549-129.864 170.328-159.065 155.943-188.278 141.5-213.431 120.868-234.434 93.932-243.424 82.421-251.144 70.125-257.614 57.067-293.357 80.322-343.403 91.97-407.854 91.97-454.981 91.97-500.322 83.695-543.999 66.97-587.659 50.332-625.515 27.596-657.566-1.237-689.687-29.983-712.833-61.691-727.18-96.361H-561.323C-548.439-74.758-530.827-58.555-508.68-47.841-486.514-37.039-460.753-31.638-431.31-31.638-407.094-31.638-388.183-36.691-374.577-46.795-360.902-56.987-355.781-70.228-359.142-86.604-361.019-95.751-365.586-102.72-372.79-107.685-380.063-112.563-390.986-115.699-405.627-117.006L-569.737-132.685C-627.083-137.912-672.998-152.808-707.466-177.285-741.952-201.85-763.557-235.388-772.283-277.897-779.543-313.264-776.515-343.926-763.256-370.146-749.978-396.279-728.689-416.053-699.386-429.468-670.084-442.883-635.832-449.59-596.546-449.59-512.136-449.59-450.937-420.496-412.86-362.306L-428.165-436.872H-272.152L-215.66-161.657C-194.233-173.073-169.451-178.81-141.295-178.81-118.486-178.81-97.602-174.512-78.587-165.915-59.617-157.261-43.345-144.997-29.714-129.121L-38.184-170.385H66.352L124.383 112.329 153.36-87.17H278.641L400.955 122.015 438.71-87.17H564.622L749.963 249.818Z"/>
+</g>
+</g>
+</g>
+</symbol>
+  </svg>
 
   <header class="site-header">
     <div class="site-header-inner">
-      <a href="{{ '/' | url }}" class="site-brand" aria-label="Adelaide Design Week home">Adelaide Design Week</a>
+      <a href="{{ '/' | url }}" class="site-brand" aria-label="every*one — Adelaide Design Week home">
+        <img src="{{ '/assets/images/everyone-pill.svg' | url }}" alt="every*one" width="2057" height="421">
+      </a>
       {% include "nav.njk" %}
     </div>
   </header>
@@ -42,14 +77,25 @@
   <script src="{{ '/assets/js/lightbox.js' | url }}" defer></script>
   {% endif %}
 
+  {% if updatesForm %}
+  <script async src="https://tally.so/widgets/embed.js"></script>
+  <script src="{{ '/assets/js/program-updates.js' | url }}?v={{ assets.updatesJs }}" defer></script>
+  {% endif %}
+
   {% if copyButtons %}
   <script src="{{ '/assets/js/copy-buttons.js' | url }}" defer></script>
   {% endif %}
 
   <footer class="site-footer">
     <div class="site-footer-inner">
+      <a href="{{ '/' | url }}" class="footer-lockup" aria-label="every*one — Adelaide Design Week">
+        <img src="{{ '/assets/images/everyone-stacked.svg' | url }}" alt="" width="2055" height="532">
+      </a>
       <p class="acknowledgment">{{ site.acknowledgment }}</p>
-      <p class="copyright">&copy; Adelaide Design Week {{ site.year }}</p>
+      <p class="copyright">
+        <svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>
+        &copy; Adelaide Design Week {{ site.year }}
+      </p>
     </div>
   </footer>
 

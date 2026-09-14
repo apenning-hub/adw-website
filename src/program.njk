@@ -1,0 +1,150 @@
+---
+title: Program
+navLabel: program
+navOrder: 2
+permalink: /program/
+layout: base.njk
+description: The every*one program — Adelaide Design Week 2026. Exhibitions, installations, conversations, open studios, tours and workshops across Kaurna/Adelaide, 14–18 October 2026.
+---
+
+<header class="pg-head">
+<h1 class="pg-h1">Program</h1>
+<p class="pg-intro">{{ program2026.count }} events across Adelaide, {{ site.programDates | lower }} — plus previews from 8 October. Exhibitions, installations, conversations, open studios, tours and workshops.</p>
+<p class="pg-note"><svg class="ast ast--sm pg-tickmark" aria-hidden="true"><use href="#ast"></use></svg> marks a ticketed event.</p>
+</header>
+
+<section class="pg" aria-label="2026 program">
+
+  <div class="pg-controls">
+    {#- Hidden until program.js takes over: without it these would be two
+        buttons that do nothing, and the a-z panel would be unreachable. -#}
+    <div class="pg-views" role="tablist" aria-label="view" data-views hidden>
+      <button class="pg-view is-on" role="tab" aria-selected="true"
+              aria-controls="pg-panel-day" data-view="day">by day</button>
+      <button class="pg-view" role="tab" aria-selected="false"
+              aria-controls="pg-panel-az" data-view="az">a–z</button>
+    </div>
+
+    <div class="pg-days" data-days hidden>
+      {% for d in program2026.byDay %}
+      <button class="pg-daybtn{% if d.day == program2026.defaultDay %} is-on{% endif %}" data-day="{{ d.day }}">{{ d.day }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="pg-filters" data-filters hidden>
+      <button class="pg-chip is-on" data-cat="all">all</button>
+      {% for code, label in program2026.categories %}
+      <button class="pg-chip" data-cat="{{ code }}">{{ label }}</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  {#- Every day is rendered as a plain section. JavaScript turns these into
+      tab panels; without it the page is simply the whole program, readable
+      top to bottom. -#}
+  <div class="pg-panel" id="pg-panel-day" role="tabpanel" data-panel="day">
+    {% for d in program2026.byDay %}
+    <section class="pg-day" data-day="{{ d.day }}">
+      <h2 class="pg-dayhead"><svg class="ast pg-dayast" aria-hidden="true"><use href="#ast"></use></svg>{{ d.day }}<span class="pg-daycount">{{ d.events | length }}</span></h2>
+      <ul class="pg-list">
+        {% for e in d.events %}
+        <li class="pg-item" data-cat="{{ e.category }}">
+          <details class="pg-event" id="{{ d.day | replace(' ','-') }}-{{ e.slug }}">
+            <summary class="pg-sum">
+              <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
+              <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>
+              <span class="pg-time">{% for t in e.times %}{{ t }}{% if not loop.last %} <span class="pg-sep">/</span> {% endif %}{% endfor %}</span>
+            </summary>
+            {#- Columns are added only when there is content for them, so an
+                event with no blurb or contributors stays a single tidy column. -#}
+            <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}{% if e.contributors.length > 8 %} many-people{% endif %}">
+              <div class="pg-col pg-col--facts">
+                <dl class="pg-meta">
+                  <dt>where</dt><dd>{{ e.venue }}</dd>
+                  <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                  {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
+                  <dt>when</dt>
+                  <dd><ul class="pg-when">
+                    {% for s in e.sessions %}
+                    <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>
+                    {% endfor %}
+                  </ul></dd>
+                </dl>
+                {% if e.link %}
+                <p class="pg-link">
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                    <span class="pg-cta-arrow" aria-hidden="true">→</span>
+                  </a>
+                </p>
+                {% endif %}
+              </div>
+              {% if e.blurb %}
+              <div class="pg-col pg-col--blurb">{% for para in e.blurbParas %}<p class="pg-blurb">{{ para }}</p>{% endfor %}</div>
+              {% endif %}
+              {% if e.contributors.length %}
+              <div class="pg-col pg-col--people">
+                <h4 class="pg-people-head">contributors</h4>
+                <ul class="pg-people">{% for n in e.contributors %}<li>{{ n }}</li>{% endfor %}</ul>
+              </div>
+              {% endif %}
+            </div>
+          </details>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </div>
+
+  <div class="pg-panel" id="pg-panel-az" role="tabpanel" data-panel="az" hidden>
+    <h2 class="pg-dayhead"><svg class="ast pg-dayast" aria-hidden="true"><use href="#ast"></use></svg>a–z<span class="pg-daycount">{{ program2026.count }}</span></h2>
+    <ul class="pg-list">
+      {% for e in program2026.az %}
+      <li class="pg-item" data-cat="{{ e.category }}">
+        <details class="pg-event" id="az-{{ e.slug }}">
+          <summary class="pg-sum">
+            <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
+            <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>
+            <span class="pg-time pg-venue-inline">{{ e.venue }}</span>
+          </summary>
+          <div class="pg-body pg-cols{% if e.blurb %} has-blurb{% endif %}{% if e.contributors.length %} has-people{% endif %}{% if e.contributors.length > 8 %} many-people{% endif %}">
+            <div class="pg-col pg-col--facts">
+              <dl class="pg-meta">
+                <dt>where</dt><dd>{{ e.venue }}</dd>
+                <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
+                <dt>when</dt>
+                <dd><ul class="pg-when">
+                  {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}
+                </ul></dd>
+              </dl>
+              {% if e.link %}
+                <p class="pg-link">
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                    <span class="pg-cta-arrow" aria-hidden="true">→</span>
+                  </a>
+                </p>
+                {% endif %}
+            </div>
+            {% if e.blurb %}
+            <div class="pg-col pg-col--blurb">{% for para in e.blurbParas %}<p class="pg-blurb">{{ para }}</p>{% endfor %}</div>
+            {% endif %}
+            {% if e.contributors.length %}
+            <div class="pg-col pg-col--people">
+              <h4 class="pg-people-head">contributors</h4>
+              <ul class="pg-people">{% for n in e.contributors %}<li>{{ n }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+          </div>
+        </details>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <p class="pg-empty" data-empty hidden><svg class="ast pg-emptyast" aria-hidden="true"><use href="#ast"></use></svg>Nothing in that category on this day.</p>
+</section>
+
+<script src="{{ '/assets/js/program.js' | url }}?v={{ assets.programJs }}" defer></script>

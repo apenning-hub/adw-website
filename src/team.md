@@ -1,7 +1,7 @@
 ---
 title: team
 navLabel: team
-navOrder: 3
+navOrder: 4
 permalink: /team/
 layout: base.njk
 description: The people behind Adelaide Design Week 2026.
