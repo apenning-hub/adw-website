@@ -18,10 +18,10 @@ Double-click `program-2026.csv`. It will open in Excel or Numbers, depending on
 what you have. You can also upload it to Google Sheets (**File → Import → Upload**,
 then choose **Replace spreadsheet**).
 
-You'll see six columns on the left, then one column for each day of the festival:
+You'll see nine columns on the left, then one column for each day of the festival:
 
-| category | title | ticketed | venue | blurb | link | contributors | thu 8 oct | tue 13 oct | wed 14 oct | … |
-|---|---|---|---|---|---|---|---|---|---|
+| category | title | ticketed | venue | blurb | link | socials | contributors | adw_presented | thu 8 oct | … |
+|---|---|---|---|---|---|---|---|---|---|---|
 
 **Tip:** freeze the first two columns so the title stays visible as you scroll
 sideways. In Excel and Sheets that's **View → Freeze → 2 columns**.
@@ -110,6 +110,17 @@ empty gap on the page.
 
 **link** — optional. A web address for tickets or more information. Include the
 `https://`.
+
+**socials** — optional. An Instagram handle, written the way it's written
+everywhere else:
+
+```
+@shopfront_design_sprint
+```
+
+It appears as a **follow** line in the event's details, linking to the account.
+You can paste a full web address instead if the event lives somewhere other than
+Instagram — a Facebook page, say — and that's linked as-is.
 
 ---
 

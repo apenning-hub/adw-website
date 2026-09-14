@@ -62,6 +62,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 <dl class="pg-meta">
                   <dt>where</dt><dd>{{ e.venue }}</dd>
                   <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                  {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
                   <dt>when</dt>
                   <dd><ul class="pg-when">
                     {% for s in e.sessions %}
@@ -112,6 +113,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
               <dl class="pg-meta">
                 <dt>where</dt><dd>{{ e.venue }}</dd>
                 <dt>what</dt><dd>{{ e.categoryLabel }}{% if e.ticketed %} · ticketed{% endif %}</dd>
+                {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
                 <dt>when</dt>
                 <dd><ul class="pg-when">
                   {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}</li>{% endfor %}

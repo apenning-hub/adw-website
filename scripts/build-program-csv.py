@@ -78,12 +78,17 @@ for lo,hi,cat in SECTIONS:
         tickd,link,price=ticket(title)
         contributors="; ".join(p.strip(" ,") for p in re.split(r',(?![^(]*\))', g(r,'AI')) if p.strip(" ,"))
         rows.append({"category":cat,"title":title,"ticketed":tickd,"venue":g(r,'M'),
-                     "blurb":g(r,'AK'),"link":link,"contributors":contributors,"adw_presented":"",
+                     "blurb":g(r,'AK'),"link":link,"socials":"","contributors":contributors,"adw_presented":"",
                      **{lab:val for lab,val in sessions},"_row":r,"_price":price})
 
 # SHOPFRONTS is entered twice (row 42 exhibition, row 63 installation) with the same
 # all-day times; one row carries a Sunday tour. The site needs one row per title.
-sf=[x for x in rows if x["title"]=="SHOPFRONTS"]
+# The sheet abbreviates it to SHOPFRONTS; its published name, on Humanitix and in
+# the team's own copy, is the Shopfront Design Circuit.
+for x in rows:
+    if x["title"]=="SHOPFRONTS": x["title"]="SHOPFRONT DESIGN CIRCUIT"
+
+sf=[x for x in rows if x["title"]=="SHOPFRONT DESIGN CIRCUIT"]
 if len(sf)==2:
     keep,drop=sf[0],sf[1]
     for _,lab in DAYS:
@@ -92,7 +97,7 @@ if len(sf)==2:
         vals.sort(key=lambda v: 0 if v.lower().startswith("(all day") else 1)
         keep[lab]="; ".join(dict.fromkeys(vals))
     rows.remove(drop)
-    notes.append(f"SHOPFRONTS appeared twice (rows {keep['_row']} and {drop['_row']}); merged into one row, "
+    notes.append(f"SHOPFRONT DESIGN CIRCUIT appeared twice (rows {keep['_row']} and {drop['_row']}); merged into one row, "
                  f"sun 18 oct = '{keep['sun 18 oct']}'.")
 
 for x in rows:
@@ -102,7 +107,8 @@ for x in rows:
 # The ADW mark is site metadata the spreadsheet has no column for, so it is carried
 # across by title rather than read from the sheet. SHOPFRONTS was "ADW X SHOPFRONT
 # DESIGN CIRCUIT" when it was flagged.
-ADW={"ADW OPENING PARTY x SHORT NOTICE","ADW CLOSING PARTY x COMPANY WORKS","SHOPFRONTS"}
+ADW={"ADW OPENING PARTY x SHORT NOTICE","ADW CLOSING PARTY x COMPANY WORKS",
+     "SHOPFRONT DESIGN CIRCUIT"}
 for x in rows:
     if x["title"] in ADW: x["adw_presented"]="yes"
 
@@ -110,7 +116,7 @@ for x in rows:
 # carries anything for it beyond the dates and times. Its details were supplied
 # directly by the program team (14 Sep 2026) and are held here so that
 # regenerating from a later spreadsheet does not wipe them.
-OVERRIDES={"SHOPFRONTS":{
+OVERRIDES={"SHOPFRONT DESIGN CIRCUIT":{
  "venue":"Various Locations, East End, ADL CBD",
  "link":"https://events.humanitix.com/shopfront-design-circuit-tour-and-adw-farewell",
  "ticketed":"yes",
@@ -123,6 +129,7 @@ OVERRIDES={"SHOPFRONTS":{
           "tour of the Shopfront Design Circuit exhibitions, finishing at Honeydripper for an "
           "afternoon to farewell Adelaide Design Week. All are welcome, with additional "
           "collaborations and the final walking tour route to be announced."),
+ "socials":"@shopfront_design_sprint",
  "contributors":"; ".join([
    "Jewel of Thought Records x Tom Borgas",
    "Galeria Grafika x Tristan Kerr",
@@ -136,7 +143,7 @@ OVERRIDES={"SHOPFRONTS":{
 for x in rows:
     x.update(OVERRIDES.get(x["title"],{}))
 
-HDR=["category","title","ticketed","venue","blurb","link","contributors","adw_presented"]+[l for _,l in DAYS]
+HDR=["category","title","ticketed","venue","blurb","link","socials","contributors","adw_presented"]+[l for _,l in DAYS]
 out=io.StringIO()
 w=csv.DictWriter(out,fieldnames=HDR,extrasaction="ignore",lineterminator="\n")
 w.writeheader()
