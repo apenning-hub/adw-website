@@ -5,4 +5,8 @@ eleventyExcludeFromCollections: true
 {%- if env.preview %}
 /*
   X-Robots-Tag: noindex, nofollow
+{%- else %}
+{#- Given to participants directly; never to be listed in search results. -#}
+/program-updates/*
+  X-Robots-Tag: noindex, nofollow
 {%- endif %}

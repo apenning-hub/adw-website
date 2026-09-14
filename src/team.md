@@ -13,18 +13,39 @@ description: The people behind Adelaide Design Week 2026.
 
 Adelaide Design Week is run by a small, dedicated team — designers, coordinators and organisers working across the city.
 
+## 2026 team
+
 <dl class="streams team">
   <dt>Hannah White</dt>
-  <dd>event coordination</dd>
-
-  <dt>Dre Fuzz</dt>
-  <dd>exhibition coordination</dd>
+  <dd>co-director</dd>
 
   <dt>Lara Merrington</dt>
-  <dd>exhibition coordination</dd>
+  <dd>co-director</dd>
 
   <dt>Bronwyn Marshall</dt>
-  <dd>operations, partnership + sponsorship, communications</dd>
+  <dd>co-director</dd>
+</dl>
+
+## 2026 support
+
+<dl class="streams team">
+  <dt>Ashleigh Pinto</dt>
+  <dd>sponsorship support</dd>
+
+  <dt>Dre Fuzz</dt>
+  <dd>shopfronts support</dd>
+
+  <dt>Holly Ashworth</dt>
+  <dd>shopfronts support</dd>
+
+  <dt>Penny Fisher</dt>
+  <dd>support</dd>
+
+  <dt>Anastasia Mavrides</dt>
+  <dd>support</dd>
+
+  <dt>Andrew Lymn-Penning</dt>
+  <dd>IT guy</dd>
 </dl>
 
 ## 2025 contributors

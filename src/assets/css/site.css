@@ -1033,14 +1033,76 @@ hr {
 .pg-event > summary:focus-visible { outline: none; }
 .pg-cat { font-size: 0.6875rem; letter-spacing: 0.08em; color: var(--ink-soft);
     padding-block-start: 0.15em; }
-.pg-title { font-weight: 700; color: var(--ink-strong); }
+.pg-title { font-weight: 700; color: var(--ink-strong);
+    display: flex; align-items: baseline; gap: 0.1em; min-width: 0; }
 .pg-time { color: var(--ink); font-variant-numeric: tabular-nums; text-align: end;
     font-size: 0.9375rem; }
 .pg-venue-inline { color: var(--ink-soft); font-weight: 400; }
 .pg-sep { color: var(--ink-soft); }
 
-/* expanded body */
+/* expanded body — a column layout that only grows as many columns as it
+   has content for, so a bare event stays one tidy column. */
 .pg-body { padding: 0 0 var(--space-2) 4rem; max-width: 60ch; }
+
+.pg-cols { display: grid; gap: var(--space-2) var(--space-3); align-items: start; }
+.pg-cols.has-blurb { max-width: 76ch; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.pg-cols.has-people { max-width: 76ch; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.pg-cols.has-blurb.has-people {
+    max-width: none; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr) minmax(0, 0.75fr);
+}
+/* A long contributor list in a narrow column runs to a tall thin ribbon with
+   dead space beside it. Past 8 names it becomes a full-width band under the
+   other columns and flows into as many sub-columns as fit. */
+.pg-cols.many-people.has-blurb.has-people,
+.pg-cols.many-people.has-people {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr);
+}
+.pg-cols.many-people .pg-col--people {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--line);
+    padding-block-start: var(--space-2);
+    margin-block-start: var(--space-1);
+}
+.pg-cols.many-people .pg-people {
+    columns: 11rem; column-gap: var(--space-3);
+}
+.pg-cols.many-people .pg-people li { break-inside: avoid; }
+
+/* Inside a narrow column the facts list was wrapping mid-value — tighten the
+   label gutter and keep each time on one line. */
+.pg-cols .pg-meta { grid-template-columns: 3.25rem 1fr; column-gap: 0.5rem; }
+.pg-cols .pg-when li { gap: 0.4rem; }
+.pg-cols .pg-when li > span { min-width: 4.9rem; }
+.pg-cols .pg-when li { white-space: nowrap; }
+.pg-col { min-width: 0; }
+
+.pg-people-head {
+    font-family: var(--font-sans); font-size: 0.8125rem; font-weight: 400;
+    text-transform: none; color: var(--ink-soft);
+    margin: 0 0 0.15rem; letter-spacing: 0;
+}
+.pg-people { list-style: none; margin: 0; padding: 0; }
+.pg-people li { padding-block: 0.1rem; }
+
+/* These overrides must out-specify .pg-cols.many-people.has-blurb.has-people
+   above (four classes), or the desktop column counts leak into small screens
+   and the columns overlap. */
+@media (max-width: 900px) {
+    .pg-cols.has-blurb.has-people,
+    .pg-cols.many-people.has-blurb.has-people,
+    .pg-cols.many-people.has-people { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .pg-cols.has-blurb.has-people .pg-col--people { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+    .pg-cols, .pg-cols.has-blurb, .pg-cols.has-people,
+    .pg-cols.has-blurb.has-people,
+    .pg-cols.many-people.has-people,
+    .pg-cols.many-people.has-blurb.has-people { grid-template-columns: 1fr; }
+    .pg-cols.has-blurb.has-people .pg-col--people,
+    .pg-cols.many-people .pg-col--people { grid-column: auto; }
+    /* One column of names is right on a phone; two would be cramped. */
+    .pg-cols.many-people .pg-people { columns: auto; }
+}
 .pg-meta { display: grid; grid-template-columns: 4.5rem 1fr; gap: 0.15rem 0.75rem; margin: 0 0 0.75rem; }
 .pg-meta dt { color: var(--ink-soft); font-size: 0.8125rem; }
 .pg-meta dd { margin: 0; }
@@ -1185,4 +1247,127 @@ hr {
     .hero-ast { animation: none; }
     .pg-event > summary:hover .pg-tickmark { animation: none; }
     .pg-sum::before { transition: none; }
+}
+
+
+/* ── 2025 archive theme ────────────────────────────────────────────────
+   /everywhere-2025/ wears the every*where identity: yellow ground, grey
+   ink, Univers display. Scoped to the page via bodyClass, so it overrides
+   the 2026 tokens without touching anything else.
+
+   One deviation from 2025: body copy is #6A6A6A rather than #747474.
+   The original was 4.36:1 on this yellow — just under AA. #6A6A6A is
+   5.04:1 and visually near-identical. Display type keeps #747474, which
+   clears the 3:1 large-text threshold. */
+
+.theme-2025 {
+    --paper: #FEFF35;
+    --ink: #6A6A6A;
+    --ink-strong: #747474;
+    --ink-soft: #6A6A6A;
+    --line: rgba(116, 116, 116, 0.4);
+    --font-display: 'Univers LT Std', 'Archivo', -apple-system, sans-serif;
+}
+
+/* Yellow-on-yellow would vanish, so accents invert to ink on this page. */
+.theme-2025 .copyright .ast,
+.theme-2025 .ast { color: var(--ink-strong); }
+.theme-2025 .site-header { background: var(--paper); }
+.theme-2025 .cta-tally:hover,
+.theme-2025 .cta-secondary:focus-visible,
+.theme-2025 .copy-btn:hover,
+.theme-2025 .copy-btn:focus-visible { background: var(--paper); color: var(--ink-strong); }
+
+/* The team and support lists are two separate <dl>s, so their name columns
+   size independently and the roles don't line up. Pin the column so the two
+   read as one table. Collapses to a single column under 600px with .streams. */
+@media (min-width: 601px) {
+    .streams.team { grid-template-columns: 13rem 1fr; }
+    .streams.team dt { padding-inline-end: var(--space-2); }
+}
+
+
+/* ── ADW-presented mark + event links ──────────────────────────────────
+   The adw monogram marks events Adelaide Design Week puts on itself. */
+.pg-adw {
+    width: 2.1em; height: 0.96em; fill: currentColor;
+    vertical-align: -0.08em; flex: none;
+    margin-inline-start: auto;   /* pushed to the right edge of the title column */
+    padding-inline-start: var(--space-2);
+}
+
+/* A link is an action, so it looks like one. Ticketed events carry the
+   asterisk, the same mark used for "ticketed" everywhere else. */
+.pg-cta {
+    display: inline-flex; align-items: center; gap: 0.4em;
+    text-decoration: none; font-weight: 700;
+    color: var(--ink-strong); background: transparent;
+    border: 1.5px solid var(--ink-strong);
+    border-radius: 999px;              /* matches the day + filter chips above */
+    padding: 0.42rem 1.05rem; font-size: 0.9375rem;
+    transition: background var(--transition), color var(--transition);
+}
+.pg-cta:hover, .pg-cta:focus-visible { background: var(--yellow); }
+.pg-cta:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+.pg-cta.is-ticketed { background: var(--yellow); }
+.pg-cta.is-ticketed:hover, .pg-cta.is-ticketed:focus-visible {
+    background: var(--ink-strong); color: var(--paper);
+}
+.pg-cta-arrow { transition: transform var(--transition); }
+.pg-cta:hover .pg-cta-arrow { transform: translateX(2px); }
+.pg-link { margin-block-start: var(--space-2); }
+
+@media (prefers-reduced-motion: reduce) {
+    .pg-cta:hover .pg-cta-arrow { transform: none; }
+}
+
+
+/* The four-word line — set in the display face, quiet, never shouted. */
+.hero-strap {
+    font-family: var(--font-display);
+    font-size: clamp(0.9375rem, 1.6vw, 1.125rem);
+    color: var(--ink-soft); letter-spacing: 0.01em;
+    margin-block: 0 var(--space-2);
+}
+.closing-line {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    line-height: 1.25; color: var(--ink-strong);
+    margin-block-start: var(--space-5);
+    padding-block-start: var(--space-3);
+    border-block-start: 1px solid var(--line);
+}
+.closing-line span { color: var(--ink-soft); }
+
+/* Program updates — the participant-facing correction page. Unlisted, so these
+   styles are used nowhere else; they borrow the program's own vocabulary so a
+   participant recognises where they are. */
+.pu-field { display: flex; flex-direction: column; gap: var(--space-1); margin-block: var(--space-4) var(--space-3); }
+.pu-field label { font-family: var(--font-display); font-size: 0.9375rem; color: var(--ink-soft); }
+.pu-field select {
+    font: inherit; color: var(--ink-strong); background: var(--paper);
+    border: 1px solid var(--ink-strong); border-radius: 2rem;
+    padding: 0.7rem 1rem; max-width: 100%; cursor: pointer;
+    transition: background var(--transition), border-color var(--transition);
+}
+.pu-field select:hover { background: var(--yellow); }
+.pu-field select:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+
+.pu-current:not(:empty) {
+    margin-block: var(--space-3); padding: var(--space-3);
+    border: 1px solid var(--line); border-radius: 0.75rem;
+}
+.pu-current-head { font-family: var(--font-display); font-size: 0.9375rem; margin: 0 0 var(--space-2); }
+.pu-current-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; }
+.pu-current-list li { display: grid; grid-template-columns: 7rem 1fr; gap: 0.75rem; font-size: 0.9375rem; align-items: start; }
+.pu-current-list li > :last-child { min-width: 0; }
+.pu-current-list span { color: var(--ink-soft); }
+
+.pu-frame { display: block; border: 0; margin-block: var(--space-3); }
+.pu-unset { color: var(--ink-soft); font-size: 0.9375rem; }
+.pu-fallback { margin-block-start: var(--space-4); padding-block-start: var(--space-3); border-block-start: 1px solid var(--line); font-size: 0.9375rem; color: var(--ink-soft); }
+
+@media (max-width: 40rem) {
+    .pu-current-list li { grid-template-columns: 1fr; gap: 0; }
+    .pu-current-list li span { font-size: 0.8125rem; }
 }

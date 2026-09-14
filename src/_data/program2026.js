@@ -15,7 +15,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link"];
+const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "socials",
+               "contributors", "adw_presented"];
 const CATEGORIES = {
   EXH: "exhibition",
   INST: "installation",
@@ -29,6 +30,20 @@ const CATEGORIES = {
 // Landing the day view on one of those shows a near-empty program, so the
 // default day is the first that carries a real share of the largest day.
 const MAIN_DAY_SHARE = 0.25;
+
+// Editors type a handle, not a URL — "@shopfront_design_sprint" is what appears
+// on a poster. A full URL is accepted too, so a Facebook page or a website can
+// go in the same cell without a second column.
+function parseSocials(value) {
+  const raw = value.trim();
+  if (!raw) return null;
+  if (/^https?:\/\//i.test(raw)) {
+    const handle = raw.replace(/^https?:\/\/(www\.)?/i, "").replace(/\/$/, "");
+    return { url: raw, handle };
+  }
+  const handle = raw.replace(/^@/, "").replace(/\/$/, "");
+  return { url: `https://www.instagram.com/${handle}/`, handle: `@${handle}` };
+}
 
 function fail(msg) {
   throw new Error(
@@ -93,7 +108,7 @@ module.exports = function () {
       fail(
         `column ${i + 1} should be "${col}" but is ` +
         `${header[i] ? `"${header[i]}"` : "missing"}. ` +
-        `The first six columns must stay in order.`
+        `The first ${FIXED.length} columns must stay in order.`
       );
     }
   });
@@ -171,7 +186,14 @@ module.exports = function () {
       title, venue,
       ticketed: ticketed === "yes",
       blurb: get("blurb"),
+      // A blank line in the cell is a paragraph break. Long blurbs arrive written
+      // as several paragraphs and ran together as one block before this.
+      blurbParas: get("blurb").split(/\n\s*\n/).map((t) => t.replace(/\s*\n\s*/g, " ").trim()).filter(Boolean),
       link: get("link"),
+      socials: parseSocials(get("socials")),
+      // Semicolon-separated, same rule as two sessions in one day.
+      contributors: get("contributors").split(";").map((n) => n.trim()).filter(Boolean),
+      adwPresented: get("adw_presented").toLowerCase() === "yes",
       sessions,
       slug,
     };
