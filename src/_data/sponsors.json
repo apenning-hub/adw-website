@@ -188,10 +188,10 @@
       {
         "name": "City of Adelaide",
         "file": "city-of-adelaide.png",
-        "w": 205,
-        "h": 233,
-        "dw": 33,
-        "dh": 38
+        "w": 758,
+        "h": 240,
+        "dw": 92,
+        "dh": 29
       },
       {
         "name": "Curated by Tom",
@@ -333,6 +333,22 @@
         "h": 127,
         "dw": 93,
         "dh": 25
+      },
+      {
+        "name": "JamFactory",
+        "file": "jamfactory.png",
+        "w": 292,
+        "h": 156,
+        "dw": 64,
+        "dh": 34
+      },
+      {
+        "name": "Etikette Candles",
+        "file": "etikette-candles.png",
+        "w": 900,
+        "h": 193,
+        "dw": 104,
+        "dh": 22
       },
       {
         "name": "Little Bang Brewing Co",

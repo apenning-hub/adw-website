@@ -54,7 +54,7 @@ TIERS = [
    ("Baukultur",            L+"04_Bronze/01_Baukultur/Baukultur.png"),
    ("Caroma",               L+"04_Bronze/02_Caroma/CAROMA_LOGO_POSITIVE_RGB.png"),
    ("CDK Stone",            W+"poster/cdk-stone.png"),
-   ("City of Adelaide",     W+"poster/city-of-adelaide.png"),
+   ("City of Adelaide",     W+"rasterised/city-of-adelaide.png"),
    ("Curated by Tom",       W+"poster/curated-by-tom.png"),
    ("Daniel Emma",          W+"poster/daniel-emma.png"),
    ("Design by WBL",        L+"04_Bronze/07_Design by WBL/PNG/DESIGN-BY-WBL_LOGO_BLACK.png"),
@@ -74,6 +74,8 @@ TIERS = [
    ("AGSA",                 L+"05_In-Kind/02_AGSA/AGSA_Primary_Black.png"),
    ("Cult",                 L+"05_In-Kind/04_Cult/CULT LOGO.png"),
    ("Guildhouse",           W+"poster/guildhouse.png"),
+   ("JamFactory",           W+"poster/jamfactory.png"),
+   ("Etikette Candles",     W+"rasterised/etikette.png"),
    ("Little Bang Brewing Co", W+"poster/little-bang-brewing-co.png"),
    ("Pundi",                L+"05_In-Kind/10_Pundi/Pundi Logo - SCREEN - Mono Black.png"),
    ("Table Wines",          W+"rasterised/table-wines.png"),
@@ -100,6 +102,20 @@ def load(path):
     return Image.open(path).convert("RGBA")
 
 def monochrome(im):
+    # A logo supplied as white-on-transparent (for use on dark) carries its
+    # shape in the alpha channel, and flattening it onto white would erase it.
+    # Take the alpha as the ink instead, which turns it black.
+    if im.mode == "RGBA":
+        a = im.getchannel("A")
+        vis = [v for v in a.getdata() if v > 8]
+        if vis and len(vis) < a.size[0] * a.size[1] * 0.98:
+            rgb = im.convert("RGB")
+            lum = [sum(px) / 3 for px, av in zip(rgb.getdata(), a.getdata()) if av > 128]
+            if lum and sum(lum) / len(lum) > 190:
+                out = Image.new("RGBA", im.size, (0,0,0,255))
+                out.putalpha(a)
+                return out.crop(out.getbbox() or (0,0,*im.size))
+
     white = Image.new("RGBA", im.size, (255,255,255,255))
     flat = Image.alpha_composite(white, im).convert("L")
     px = list(flat.getdata())
