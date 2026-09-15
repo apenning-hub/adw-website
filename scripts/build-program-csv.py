@@ -82,6 +82,13 @@ def ticket(title):
     price,link=TICK.get(name, TICKN.get(name.strip(),(None,None)))
     link=str(link).strip() if link else ""
     if not re.match(r'^(https?://|www\.)',link): link=""      # "TBC@TBC.com" etc. are not links
+    # A bare "www.example.com" in an href is read as a page on this site, so the
+    # button loops back to the program instead of leaving it.
+    if link.startswith("www."): link = "https://" + link
+    if link.startswith("http://"): link = "https://" + link[7:]
+    # console.humanitix.com is the organiser's back end - a visitor gets a login
+    # screen, not a ticket page. The sheet had one of these.
+    if "console.humanitix.com" in link: link = ""
     priced = bool(price) and not FREE.match(str(price).strip())
     return ("yes" if (link or priced) else ""), link, price
 
@@ -135,7 +142,9 @@ for x in rows:
 # ADW's 15 Sep pass over the live program. Ticketing is per day now, so an
 # exhibition that is free all week with one ticketed opening says so.
 OVERRIDES={
- "GROUNDED":{"ticketed":"wed 14 oct"},
+ # The sheet gave a console.humanitix.com link - the organiser's own admin page.
+ # Dropped until ADW supplies the public one.
+ "GROUNDED":{"ticketed":"wed 14 oct", "note":"Registration link released soon"},
  "SUPER PARTY":{"note":"Registration link released soon"},
  "LEARNING FROM YITPI YARTAPUULTIKU":{"note":"Registration link released soon"},
  # The sheet left a note where the description belongs; tickets are not released.
