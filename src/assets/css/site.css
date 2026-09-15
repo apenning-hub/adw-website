@@ -980,6 +980,14 @@ hr {
    the image fills it, so a logo shrinks rather than pushing the row wider than
    the screen. */
 .sponsors-item { display: block; max-width: 100%; }
+.sponsors-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: opacity var(--transition);
+}
+.sponsors-item a:hover, .sponsors-item a:focus-visible { opacity: 0.55; }
+.sponsors-item a:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 4px; }
 .sponsors-item img {
     display: block;
     width: 100%;

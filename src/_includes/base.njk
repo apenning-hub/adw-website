@@ -110,8 +110,11 @@
           <li class="sponsors-item"
               style="width:calc(var(--logo-scale, 1) * {{ s.dw }}px);
                      height:calc(var(--logo-scale, 1) * {{ s.dh }}px)">
+            {% if s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener"
+               aria-label="{{ s.name }} — opens in a new tab">{% endif %}
             <img src="{{ ('/assets/images/sponsors/' + s.file) | url }}" alt="{{ s.name }}"
                  width="{{ s.dw }}" height="{{ s.dh }}" loading="lazy" decoding="async">
+            {% if s.url %}</a>{% endif %}
           </li>
           {% endfor %}
         </ul>

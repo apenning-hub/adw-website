@@ -134,6 +134,55 @@ def monochrome(im):
     out.putalpha(alpha)
     return out.crop(out.getbbox() or (0,0,*im.size))
 
+# Homepages, each one checked against the page that actually answers. Verified
+# 15 September 2026. Piteo is deliberately absent: piteo.com belongs to an
+# unrelated American author, and the Adelaide firm could not be confirmed, so
+# it shows without a link rather than pointing somewhere wrong.
+SITES = {
+  "2049":                   "https://www.2049.art/",
+  "Print Logistics":        "https://printlogistics.com.au/",
+  "Rockethouse":            "https://www.rockethouse.com.au/",
+  "Gentle Folk Wines":      "https://gentlefolk.com.au/",
+  "Stone Ambassador":       "https://stoneambassador.com.au/",
+  "Signorino Woodcut":      "https://signorino.com.au/",
+  "Bankston":               "https://bankston.com/au/",
+  "Company Works":          "https://www.companyworks.au/",
+  "Delinquente Wine Co":    "https://delinquentewineco.com/",
+  "Estilo":                 "https://estilo.au/",
+  "Jardan":                 "https://www.jardan.com.au/",
+  "Littlehampton":          "https://littlehamptonbrick.com.au/",
+  "New Age Veneers":        "https://www.newageveneers.com.au/",
+  "The Queens Theatre":     "https://www.thequeensadelaide.com.au/",
+  "Tumbled":                "https://tumbled.com.au/",
+  "Remington Matters":      "https://remingtonmatters.com/",
+  "Ukiyo House":            "https://www.ukiyo.house/",
+  "Union Magazine":         "https://unionmagazine.com/",
+  "Baukultur":              "https://baukultur.com.au/",
+  "Caroma":                 "https://www.caroma.com.au/",
+  "CDK Stone":              "https://cdkstone.com.au/",
+  "City of Adelaide":       "https://www.cityofadelaide.com.au/",
+  "Curated by Tom":         "https://curatedbytom.com.au/",
+  "Daniel Emma":            "https://www.daniel-emma.com/",
+  "Design by WBL":          "https://designbywbl.com.au/",
+  "Future Urban":           "https://futureurban.com.au/",
+  "Insight Lighting":       "https://insightlighting.com.au/",
+  "Honeydripper":           "https://www.honeydripper.com.au/",
+  "JamFactory":             "https://www.jamfactory.com.au/",
+  "Place Journal":          "https://www.placejournal.com.au/",
+  "RF Lux":                 "https://www.rflux.au/",
+  "Stylecraft":             "https://stylecraft.com.au/",
+  "Urban Habitats":         "https://urbanhabitats.com.au/",
+  "Walter Brooke":          "https://walterbrooke.com.au/",
+  "AMPA Wines":             "https://www.ampawines.au/",
+  "AGSA":                   "https://www.agsa.sa.gov.au/",
+  "Cult":                   "https://cultdesign.com.au/",
+  "Guildhouse":             "https://guildhouse.org.au/",
+  "Little Bang Brewing Co": "https://www.littlebang.com.au/",
+  "Pundi":                  "https://pundi.au/",
+  "Table Wines":            "https://tablewines.com.au/",
+  "Etikette Candles":       "https://etikette.com.au/",
+}
+
 # Logos are set to equal optical area rather than equal height: a roundel and a
 # long wordmark both end up carrying the same visual weight, which height alone
 # never manages. Clamped so nothing runs away in either direction.
@@ -179,7 +228,7 @@ for tier, items in TIERS:
         f = slug(name) + ".png"
         im.save(os.path.join(OUT, f), optimize=True)
         entries.append({"name": name, "file": f, "w": im.size[0], "h": im.size[1],
-                        "dw": dw, "dh": dh})
+                        "dw": dw, "dh": dh, "url": SITES.get(name)})
         print(f"{tier:10} {name:24} {im.size[0]:4}x{im.size[1]:<4} {os.path.basename(src)[:40]}")
     rows.append({"tier": tier, "sponsors": entries})
 
