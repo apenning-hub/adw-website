@@ -149,6 +149,18 @@ def display_size(w, h, tier):
     if dw > wmax: dw, dh = wmax, wmax * h / w
     return int(round(dw)), int(round(dh))
 
+# Sponsors supply logos cropped hard to the artwork, so at footer size the ink
+# sits flush against its box and reads as if it had been shaved. Give every one
+# the same transparent safe area, sized from its own height, and grow the
+# display box to match so the ink itself stays exactly as large as before.
+PAD = 0.12
+
+def pad(im):
+    p = max(2, int(round(im.size[1] * PAD)))
+    out = Image.new("RGBA", (im.size[0] + 2*p, im.size[1] + 2*p), (0,0,0,0))
+    out.paste(im, (p, p), im)
+    return out, p
+
 rows = []
 for tier, items in TIERS:
     entries = []
@@ -157,9 +169,15 @@ for tier, items in TIERS:
         w,h = im.size
         s = min(MAX_H/h, MAX_W/w, 1)
         if s < 1: im = im.resize((max(1,int(w*s)), max(1,int(h*s))), Image.LANCZOS)
+        # Size the display box from the ink alone, then widen it by the padding,
+        # so the safe area never costs the logo any size.
+        dw, dh = display_size(im.size[0], im.size[1], tier)
+        ink_w, ink_h = im.size
+        im, p = pad(im)
+        dw = int(round(dw * im.size[0] / ink_w))
+        dh = int(round(dh * im.size[1] / ink_h))
         f = slug(name) + ".png"
         im.save(os.path.join(OUT, f), optimize=True)
-        dw, dh = display_size(im.size[0], im.size[1], tier)
         entries.append({"name": name, "file": f, "w": im.size[0], "h": im.size[1],
                         "dw": dw, "dh": dh})
         print(f"{tier:10} {name:24} {im.size[0]:4}x{im.size[1]:<4} {os.path.basename(src)[:40]}")
