@@ -970,6 +970,25 @@ hr {
 }
 .pg-cal-link:hover, .pg-cal-link:focus-visible { color: var(--ink-strong); }
 
+/* Small outlined pills, deliberately quieter than the ticket button: the same
+   shape, so they read as the same kind of thing, without competing with it. */
+.pg-calbtn {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.15rem 0.7rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: border-color var(--transition), color var(--transition);
+}
+.pg-calbtn:hover, .pg-calbtn:focus-visible {
+    border-color: var(--ink-strong);
+    color: var(--ink-strong);
+}
+.pg-calbtn:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+
 /* Sponsors — every*one 2026
    One monochrome PNG per sponsor, black ink on transparency, so the wall reads
    as one set. Tiers follow the printed A2 program. Logos are capped on both
@@ -1171,7 +1190,7 @@ hr {
    label gutter and keep each time on one line. */
 .pg-cols .pg-meta { grid-template-columns: 3.25rem minmax(0, 1fr); column-gap: 0.5rem; }
 .pg-cols .pg-when li { gap: 0.4rem; }
-.pg-cols .pg-when li > span { min-width: 4.9rem; }
+.pg-cols .pg-when li > .pg-when-day { min-width: 4.9rem; }
 .pg-col { min-width: 0; }
 
 .pg-people-head {
@@ -1209,9 +1228,15 @@ hr {
 .pg-meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .pg-when { list-style: none; margin: 0; padding: 0; }
 .pg-when li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.6rem; }
-.pg-when li > span { flex: 0 0 auto; min-width: 5.5rem; color: var(--ink-soft); }
-.pg-when li.is-today { font-weight: 700; color: var(--ink-strong); }
-.pg-when li.is-today > span { color: var(--ink-strong); }
+.pg-when li > .pg-when-day { flex: 0 0 auto; min-width: 5.5rem; color: var(--ink-soft); }
+/* Times and the ticket asterisk share one inline span, so the asterisk stays
+   at the end of the words instead of wrapping onto a line of its own. */
+.pg-when-times { min-width: 0; }
+.pg-when-times .ast--sm { margin-inline-start: 0.4em; vertical-align: -0.02em; }
+/* Bold marks the day that is not like the others — the ticketed opening, the
+   panel — not whichever day happens to be on screen. */
+.pg-when li.is-special { font-weight: 700; color: var(--ink-strong); }
+.pg-when li.is-special > .pg-when-day { color: var(--ink-strong); }
 .pg-blurb { margin: 0 0 0.5rem; }
 .pg-link a { color: var(--ink-strong); }
 .pg-empty { color: var(--ink-soft); padding-block: var(--space-3); }

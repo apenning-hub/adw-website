@@ -27,6 +27,9 @@ const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "socia
 // code ships, in either order, and the build is fine either way.
 const OPTIONAL = ["address"];
 const KNOWN = new Set(FIXED.concat(OPTIONAL));
+// Words in a times cell that mean "this day is not like the others".
+const SPECIAL = /\b(opening|launch|panel|talk|tour|closing|party|performance|preview|after\s*party)\b/i;
+
 const CATEGORIES = {
   EXH: "exhibition",
   INST: "installation",
@@ -90,6 +93,8 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
           allDay: st.allDay,
           start: st.start,
           end: st.end,
+          ticketed: s.ticketed,
+          highlight: s.highlight,
           google: `https://calendar.google.com/calendar/render?${params.toString()}`,
         });
       });
@@ -101,8 +106,12 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
   // A single sitting goes across exactly; a run becomes an all-day span over
   // the whole thing, with each day's real times written into the description
   // so nothing is lost.
-  let google = out[0].google;
-  if (out.length > 1) {
+  // If a day is the one you book — the ticketed opening, the panel — that is
+  // the thing to put in someone's calendar, at its real time. Only a run with
+  // nothing singled out falls back to spanning the whole thing.
+  const bookable = out.find((c) => c.ticketed) || out.find((c) => c.highlight);
+  let google = bookable ? bookable.google : out[0].google;
+  if (!bookable && out.length > 1) {
     const days = out.map((c) => `${c.day}: ${c.label}`).join("\n");
     const first = out[0].start.slice(0, 8);
     const last = out.reduce((a, c) => (c.end.slice(0, 8) > a ? c.end.slice(0, 8) : a),
@@ -356,10 +365,16 @@ module.exports = async function () {
       .map(({ label, index }) => {
         const cell = (cells[index] || "").trim();
         if (!cell) return null;
+        const dayTimes = cell.split(";").map((t) => t.trim()).filter(Boolean);
+        const isTicketed = ticketed === "yes" || ticketedDays.includes(label.toLowerCase());
         return {
           day: label,
-          times: cell.split(";").map((t) => t.trim()).filter(Boolean),
-          ticketed: ticketed === "yes" || ticketedDays.includes(label.toLowerCase()),
+          times: dayTimes,
+          ticketed: isTicketed,
+          // A run of identical open days needs nothing picked out, but the one
+          // night with the opening, the panel or the ticket is the day someone
+          // is deciding about. That is the day to set in bold.
+          highlight: isTicketed || dayTimes.some((t) => SPECIAL.test(t)),
         };
       })
       .filter(Boolean);

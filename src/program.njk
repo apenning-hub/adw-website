@@ -73,7 +73,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                   <dt>when</dt>
                   <dd><ul class="pg-when">
                     {% for s in e.sessions %}
-                    <li{% if s.day == d.day %} class="is-today"{% endif %}><span>{{ s.day }}</span> {{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %} <svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</li>
+                    <li{% if s.highlight %} class="is-special"{% endif %}><span class="pg-when-day">{{ s.day }}</span> <span class="pg-when-times">{{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %}<svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span></li>
                     {% endfor %}
                   </ul></dd>
                 </dl>
@@ -89,8 +89,8 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 {%- if e.calendar.entries.length %}
                 <p class="pg-cal">
                   <span class="pg-cal-label">add to calendar</span>
-                  <a class="pg-cal-link" href="{{ ('/program/' + e.slug + '.ics') | url }}" download>apple / outlook</a>
-                  <a class="pg-cal-link" href="{{ e.calendar.google }}" target="_blank" rel="noopener">google</a>
+                  <a class="pg-calbtn" href="{{ ('/program/' + e.slug + '.ics') | url }}" download>apple / outlook</a>
+                  <a class="pg-calbtn" href="{{ e.calendar.google }}" target="_blank" rel="noopener">google</a>
                 </p>
                 {%- endif %}
               </div>
@@ -131,7 +131,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 {% if e.socials %}<dt>follow</dt><dd><a href="{{ e.socials.url }}" target="_blank" rel="noopener noreferrer">{{ e.socials.handle }}</a></dd>{% endif %}
                 <dt>when</dt>
                 <dd><ul class="pg-when">
-                  {% for s in e.sessions %}<li><span>{{ s.day }}</span> {{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %} <svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</li>{% endfor %}
+                  {% for s in e.sessions %}<li{% if s.highlight %} class="is-special"{% endif %}><span class="pg-when-day">{{ s.day }}</span> <span class="pg-when-times">{{ s.times | join(" / ") }}{% if s.ticketed and not e.ticketedEveryDay %}<svg class="ast ast--sm" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}</span></li>{% endfor %}
                 </ul></dd>
               </dl>
               {% if e.note %}<p class="pg-eventnote">{{ e.note }}</p>{% endif %}
@@ -146,8 +146,8 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
               {%- if e.calendar.entries.length %}
               <p class="pg-cal">
                 <span class="pg-cal-label">add to calendar</span>
-                <a class="pg-cal-link" href="{{ ('/program/' + e.slug + '.ics') | url }}" download>apple / outlook</a>
-                <a class="pg-cal-link" href="{{ e.calendar.google }}" target="_blank" rel="noopener">google</a>
+                <a class="pg-calbtn" href="{{ ('/program/' + e.slug + '.ics') | url }}" download>apple / outlook</a>
+                <a class="pg-calbtn" href="{{ e.calendar.google }}" target="_blank" rel="noopener">google</a>
               </p>
               {%- endif %}
             </div>
