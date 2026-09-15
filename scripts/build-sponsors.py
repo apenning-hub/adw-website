@@ -55,13 +55,13 @@ TIERS = [
    ("Caroma",               L+"04_Bronze/02_Caroma/CAROMA_LOGO_POSITIVE_RGB.png"),
    ("CDK Stone",            W+"poster/cdk-stone.png"),
    ("City of Adelaide",     W+"rasterised/city-of-adelaide.png"),
-   ("Curated by Tom",       W+"poster/curated-by-tom.png"),
+   ("Curated by Tom",       L+"04_Bronze/05_Curated by Tom/Curated By Tom Logo [Black].eps"),
    ("Daniel Emma",          W+"poster/daniel-emma.png"),
    ("Design by WBL",        L+"04_Bronze/07_Design by WBL/PNG/DESIGN-BY-WBL_LOGO_BLACK.png"),
    ("Future Urban",         L+"04_Bronze/08_Future Urban/FutureUrban Logo_Black_White Background.pdf"),
    ("Insight Lighting",     L+"04_Bronze/09_Insight Lighting/insight-RGB-Colour-POS-300dpi.png"),
    ("Honeydripper",         W+"rasterised/honeydripper.png"),
-   ("JamFactory",           W+"poster/jamfactory.png"),
+   ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
    ("Place Journal",        L+"04_Bronze/10_Place Journal/PlaceLogo_Black.png"),
    ("Piteo",                L+"04_Bronze/11_Piteo/PITEO_LockupA.png"),
    ("RF Lux",               W+"rasterised/rf-lux.png"),
@@ -74,15 +74,15 @@ TIERS = [
    ("AGSA",                 L+"05_In-Kind/02_AGSA/AGSA_Primary_Black.png"),
    ("Cult",                 L+"05_In-Kind/04_Cult/CULT LOGO.png"),
    ("Guildhouse",           W+"poster/guildhouse.png"),
-   ("JamFactory",           W+"poster/jamfactory.png"),
+   ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
    ("Etikette Candles",     W+"rasterised/etikette.png"),
-   ("Little Bang Brewing Co", W+"poster/little-bang-brewing-co.png"),
+   ("Little Bang Brewing Co", L+"05_In-Kind/09_Little Bang Brewing/LBBC Logo Stacked Horizontal Black.eps"),
    ("Pundi",                L+"05_In-Kind/10_Pundi/Pundi Logo - SCREEN - Mono Black.png"),
    ("Table Wines",          W+"rasterised/table-wines.png"),
  ]),
 ]
 
-import os, sys, json, subprocess, tempfile
+import os, re, sys, json, subprocess, tempfile
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 
@@ -94,9 +94,27 @@ def slug(name):
     return "".join(c.lower() if c.isalnum() else "-" for c in name).strip("-").replace("--","-")
 
 def load(path):
+    # EPS is PostScript, which nothing on a stock Mac can read. Ghostscript
+    # turns it into PDF and poppler takes it from there, so a sponsor who sends
+    # EPS gets their real artwork rather than a crop of the printed program.
+    #   brew install ghostscript
+    if path.lower().endswith(".eps"):
+        d = tempfile.mkdtemp()
+        pdf = os.path.join(d, "logo.pdf")
+        subprocess.run(["gs","-q","-dNOPAUSE","-dBATCH","-dSAFER","-dEPSCrop",
+                        "-sDEVICE=pdfwrite","-sOutputFile=" + pdf, path], check=True)
+        path = pdf
     if path.lower().endswith(".pdf"):
         d = tempfile.mkdtemp()
-        subprocess.run(["pdftoppm","-png","-r","150","-f","1","-l","1",path,d+"/p"],check=True)
+        # Pick the resolution from the page size so a small logo comes out at a
+        # usable height and a big one doesn't blow up into hundreds of
+        # megapixels — these range from an 80pt mark to a full A4 sheet.
+        pts = 0
+        info = subprocess.run(["pdfinfo", path], capture_output=True, text=True).stdout
+        m = re.search(r"Page size:\s+[\d.]+ x ([\d.]+)", info)
+        if m: pts = float(m.group(1))
+        dpi = min(1200, max(72, int(43200 / pts))) if pts else 200
+        subprocess.run(["pdftoppm","-png","-r",str(dpi),"-f","1","-l","1",path,d+"/p"],check=True)
         f = sorted(os.listdir(d))[0]
         return Image.open(os.path.join(d,f)).convert("RGBA")
     return Image.open(path).convert("RGBA")

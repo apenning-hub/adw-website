@@ -150,7 +150,7 @@
       {
         "name": "Remington Matters",
         "file": "remington-matters.png",
-        "w": 845,
+        "w": 847,
         "h": 298,
         "dw": 115,
         "dh": 41,
@@ -218,7 +218,7 @@
       {
         "name": "Curated by Tom",
         "file": "curated-by-tom.png",
-        "w": 225,
+        "w": 224,
         "h": 298,
         "dw": 35,
         "dh": 47,
@@ -272,8 +272,8 @@
       {
         "name": "JamFactory",
         "file": "jamfactory.png",
-        "w": 330,
-        "h": 194,
+        "w": 506,
+        "h": 298,
         "dw": 80,
         "dh": 47,
         "url": "https://www.jamfactory.com.au/"
@@ -376,9 +376,9 @@
       {
         "name": "JamFactory",
         "file": "jamfactory.png",
-        "w": 330,
-        "h": 194,
-        "dw": 72,
+        "w": 506,
+        "h": 298,
+        "dw": 71,
         "dh": 42,
         "url": "https://www.jamfactory.com.au/"
       },
@@ -394,8 +394,8 @@
       {
         "name": "Little Bang Brewing Co",
         "file": "little-bang-brewing-co.png",
-        "w": 732,
-        "h": 241,
+        "w": 906,
+        "h": 298,
         "dw": 96,
         "dh": 32,
         "url": "https://www.littlebang.com.au/"
