@@ -86,8 +86,18 @@ description: Where every*one is happening — every venue in the Adelaide Design
 
 {% else %}
 
+{# A missing token is the most likely reason this page is not a map, and
+   "it did not work" is not a useful thing for it to say. Name the variable,
+   the place it goes, and the thing people forget — that Cloudflare reads
+   variables at build time, so adding one changes nothing until a rebuild. #}
 <div class="page prose">
-  <p><strong>The map is not switched on yet.</strong> Copy <code>.env.example</code> to <code>.env</code> and put a public Mapbox token (<code>pk.</code>) in <code>MAPBOX_PUBLIC_TOKEN</code>, then restart <code>npm run dev</code>.</p>
+  <p><strong>The map is not switched on yet.</strong> This build had no Mapbox token.</p>
+  <p>Built {% if env.branch %}on Cloudflare, branch <code>{{ env.branch }}</code>{% else %}locally{% endif %}. It needs a public token (starting <code>pk.</code>) in <code>MAPBOX_PUBLIC_TOKEN</code>:</p>
+  <ul>
+    <li><strong>Locally</strong> — copy <code>.env.example</code> to <code>.env</code>, fill it in, restart <code>npm run dev</code>.</li>
+    <li><strong>On Cloudflare Pages</strong> — Settings → Environment variables → <strong>Preview</strong> (a variable set only under Production will not reach this branch) → <code>MAPBOX_PUBLIC_TOKEN</code>. Then <strong>redeploy</strong>: Cloudflare reads variables when it builds, so adding one has no effect until the next build.</li>
+  </ul>
+  <p>The token also has to allow this hostname. In Mapbox, its URL restrictions must include <code>https://{{ env.branch or "localhost" }}{% if env.branch %}.adw-website.pages.dev{% endif %}/*</code>, or tiles come back 403 and the map is blank.</p>
 </div>
 
 {% endif %}
