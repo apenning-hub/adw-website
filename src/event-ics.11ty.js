@@ -18,6 +18,6 @@ module.exports = class {
 
   render({ event, site }) {
     const base = (site.siteUrl || "").replace(/\/$/, "");
-    return ics.calendar([event], base, `${event.title} — Adelaide Design Week`);
+    return ics.calendar([event], base, `${event.title} — Adelaide Design Week`, site.calendarVenues);
   }
 };

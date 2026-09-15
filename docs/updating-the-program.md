@@ -107,6 +107,12 @@ One thing to know when someone asks why their calendar still shows the old time:
   is how calendar files work everywhere; it is not something we can fix from
   here. If a time changes late, say so on Instagram as well.
 
+Calendar entries carry no venue at the moment. The venue column holds the name
+and the address as one string — "Coldstore, 66 Wyatt St, Adelaide" — so it goes
+in whole or not at all, and the addresses are not confirmed yet. When they are,
+set `calendarVenues` to `true` in `src/_data/site.json` and publish; every
+calendar file picks the venue up on the next build.
+
 Renaming an event changes the address of its calendar file, exactly as it
 changes its link.
 

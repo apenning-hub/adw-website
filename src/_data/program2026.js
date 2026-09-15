@@ -77,9 +77,13 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
           text: title,
           dates: `${st.googleStart}/${st.googleEnd}`,
           details,
-          location: venue,
           ctz: times.TZ,
         });
+        // Venues are left off calendar entries until the addresses are
+        // confirmed — see calendarVenues in site.json. The venue column is one
+        // string holding the name and the address together, so it goes in
+        // whole or not at all.
+        if (site.calendarVenues) params.set("location", venue);
         out.push({
           day: s.day,
           label: entry.label,
@@ -111,9 +115,9 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
       text: title,
       dates: `${first}/${endExclusive}`,
       details: `${days}\n\n${details}`,
-      location: venue,
       ctz: times.TZ,
     });
+    if (site.calendarVenues) params.set("location", venue);
     google = `https://calendar.google.com/calendar/render?${params.toString()}`;
   }
 

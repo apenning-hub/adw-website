@@ -49,7 +49,7 @@ const VTIMEZONE = [
 ];
 
 // One VEVENT per sitting of one event.
-function veventsFor(event, base, stamp) {
+function veventsFor(event, base, stamp, withVenue) {
   const url = `${base}/program/#${event.slug}`;
   const blurb = event.blurbParas && event.blurbParas.length ? event.blurbParas[0] : "";
   const description = [blurb, event.link ? `Tickets: ${event.link}` : "", `Details: ${url}`]
@@ -66,7 +66,10 @@ function veventsFor(event, base, stamp) {
       c.allDay ? `DTSTART;VALUE=DATE:${c.start}` : `DTSTART;TZID=${TZ}:${c.start}`,
       c.allDay ? `DTEND;VALUE=DATE:${c.end}` : `DTEND;TZID=${TZ}:${c.end}`,
       fold(`SUMMARY:${esc(event.title)}`),
-      fold(`LOCATION:${esc(event.venue)}`),
+      // No LOCATION until the venue addresses are confirmed — site.json's
+      // calendarVenues. Better an event with no address than one with the
+      // wrong address sitting in someone's calendar.
+      ...(withVenue ? [fold(`LOCATION:${esc(event.venue)}`)] : []),
       fold(`DESCRIPTION:${esc(description)}`),
       fold(`URL:${esc(url)}`),
       // The times column sometimes says more than a clock can — "at 'BENCHED'",
@@ -79,7 +82,7 @@ function veventsFor(event, base, stamp) {
 }
 
 // `name` shows as the calendar's title when someone subscribes.
-function calendar(events, base, name) {
+function calendar(events, base, name, withVenue) {
   const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   const lines = [
     "BEGIN:VCALENDAR",
@@ -95,7 +98,7 @@ function calendar(events, base, name) {
     "X-PUBLISHED-TTL:PT4H",
     ...VTIMEZONE,
   ];
-  events.forEach((e) => lines.push(...veventsFor(e, base, stamp)));
+  events.forEach((e) => lines.push(...veventsFor(e, base, stamp, withVenue)));
   lines.push("END:VCALENDAR");
   return lines.join("\r\n") + "\r\n";
 }

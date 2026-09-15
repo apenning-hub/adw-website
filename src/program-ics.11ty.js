@@ -17,6 +17,6 @@ module.exports = class {
 
   render({ program2026, site }) {
     const base = (site.siteUrl || "").replace(/\/$/, "");
-    return ics.calendar(program2026.az, base, "every*one — Adelaide Design Week 2026");
+    return ics.calendar(program2026.az, base, "every*one — Adelaide Design Week 2026", site.calendarVenues);
   }
 };
