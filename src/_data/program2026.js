@@ -164,6 +164,26 @@ module.exports = function () {
       }
     });
 
+    // A link without a scheme is resolved against this site, so "www.x.com.au"
+    // silently becomes /program/www.x.com.au and the button loops back here.
+    const link = get("link");
+    if (link && !/^https?:\/\//i.test(link)) {
+      fail(
+        `row ${line} ("${title}") has link "${link}", which is missing the ` +
+        `https:// at the front. Without it the button sends people back to the ` +
+        `program instead of out to the ticket page.`
+      );
+    }
+
+    if (/console\.humanitix\.com/i.test(link)) {
+      fail(
+        `row ${line} ("${title}") links to console.humanitix.com, which is the ` +
+        `organiser's own admin page — anyone clicking it gets a login screen. ` +
+        `Use the public ticket page instead, the one starting ` +
+        `events.humanitix.com.`
+      );
+    }
+
     const key = title.toLowerCase().replace(/\s+/g, " ").trim();
     if (seen.has(key)) {
       fail(`row ${line} repeats the title "${title}", already used on row ` +
@@ -209,7 +229,7 @@ module.exports = function () {
       // A blank line in the cell is a paragraph break. Long blurbs arrive written
       // as several paragraphs and ran together as one block before this.
       blurbParas: get("blurb").split(/\n\s*\n/).map((t) => t.replace(/\s*\n\s*/g, " ").trim()).filter(Boolean),
-      link: get("link"),
+      link,
       socials: parseSocials(get("socials")),
       // Semicolon-separated, same rule as two sessions in one day.
       contributors: get("contributors").split(";").map((n) => n.trim()).filter(Boolean),
