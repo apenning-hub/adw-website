@@ -39,7 +39,7 @@ TIERS = [
  ("Silver", [
    ("Bankston",             L+"03_Silver/01_Bankston Architectural/Bankston_Logo_Black.png"),
    ("Company Works",        L+"04_Bronze/04_Company Works/CompanyWorks_Logo.png"),
-   ("Delinquente Wine Co",  W+"poster/delinquente-wine-co.png"),
+   ("Delinquente Wine Co",  L+"03_Silver/02_Delinquente Wine Co/6. Logos/DLQ_1.png"),
    ("Estilo",               W+"rasterised/estilo.png"),
    ("Jardan",               L+"03_Silver/03_Jardan/Jardan_Logo.pdf"),
    ("Littlehampton",        W+"rasterised/littlehampton.png"),
