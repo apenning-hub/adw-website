@@ -49,7 +49,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
       <ul class="pg-list">
         {% for e in d.events %}
         <li class="pg-item" data-cat="{{ e.categoryCodes | join(' ') }}">
-          <details class="pg-event" id="{{ d.day | replace(' ','-') }}-{{ e.slug }}">
+          <details class="pg-event" id="{{ d.day | replace(' ','-') }}-{{ e.slug }}" data-slug="{{ e.slug }}">
             <summary class="pg-sum">
               <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
               <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>
@@ -103,7 +103,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
     <ul class="pg-list">
       {% for e in program2026.az %}
       <li class="pg-item" data-cat="{{ e.categoryCodes | join(' ') }}">
-        <details class="pg-event" id="az-{{ e.slug }}">
+        <details class="pg-event" id="az-{{ e.slug }}" data-slug="{{ e.slug }}">
           <summary class="pg-sum">
             <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
             <span class="pg-title">{{ e.title }}{% if e.ticketed %}<svg class="ast ast--sm pg-tickmark" role="img" aria-label="ticketed"><title>ticketed</title><use href="#ast"></use></svg>{% endif %}{% if e.adwPresented %}<svg class="pg-adw" role="img" aria-label="Presented by Adelaide Design Week"><title>Presented by Adelaide Design Week</title><use href="#adw"></use></svg>{% endif %}</span>

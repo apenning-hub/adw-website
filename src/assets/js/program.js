@@ -81,9 +81,22 @@
   });
 
   // A link to a specific event should open it, whichever view it lives in.
+  //
+  // Every event carries a plain slug — /program/#slot — which is what we hand
+  // out and what people paste into an email. The older day-prefixed ids still
+  // resolve, so links shared before this keep working. An event running over
+  // several days answers to the slug at the first day it runs, which is where
+  // someone following the link most usefully lands.
+  function findTarget(hash) {
+    var el = document.getElementById(hash);
+    if (el) return el;
+    var safe = hash.toLowerCase().replace(/[^a-z0-9-]/g, "");
+    return safe ? pg.querySelector('.pg-event[data-slug="' + safe + '"]') : null;
+  }
+
   function openFromHash() {
     if (!location.hash) return;
-    var el = document.getElementById(location.hash.slice(1));
+    var el = findTarget(decodeURIComponent(location.hash.slice(1)));
     if (!el) return;
     var section = el.closest(".pg-day");
     if (section) { view = "day"; day = section.dataset.day; }
@@ -91,9 +104,44 @@
     cat = "all";
     render();
     el.open = true;
-    el.scrollIntoView({ block: "center" });
+    // A fragment that matches no element id — which "#slot" deliberately does
+    // not — makes the browser scroll to the top of the document, and it does
+    // that after this runs. So place the event, then place it again once the
+    // page has finished loading and had its say.
+    // "instant" matters: the page sets scroll-behavior: smooth, and an animated
+    // scroll here loses a race with the browser's own jump to the top.
+    var controls = pg.querySelector(".pg-controls");
+    var place = function () {
+      // Land the event's own title just below the sticky day tabs, rather than
+      // behind them — scrollIntoView has no notion of what is pinned on top.
+      var gap = (controls ? controls.getBoundingClientRect().height : 0) + 24;
+      var top = el.getBoundingClientRect().top + window.scrollY - gap;
+      try { window.scrollTo({ top: Math.max(0, top), behavior: "instant" }); }
+      catch (err) { window.scrollTo(0, Math.max(0, top)); }
+    };
+    place();
+    requestAnimationFrame(place);
+    if (document.readyState !== "complete") {
+      window.addEventListener("load", function once() {
+        window.removeEventListener("load", once);
+        requestAnimationFrame(place);
+      });
+    }
   }
   window.addEventListener("hashchange", openFromHash);
+
+  // Opening an event puts its slug in the address bar, so the link to share is
+  // simply whatever is on screen. replaceState, so the back button still walks
+  // pages rather than every event someone happened to open.
+  pg.addEventListener("toggle", function (e) {
+    var d = e.target;
+    if (!d.classList || !d.classList.contains("pg-event") || !d.dataset.slug) return;
+    var here = location.pathname + location.search;
+    if (d.open) history.replaceState(null, "", here + "#" + d.dataset.slug);
+    else if (decodeURIComponent(location.hash.slice(1)) === d.dataset.slug) {
+      history.replaceState(null, "", here);
+    }
+  }, true);
 
   // Arrow keys move between tabs, as the tablist role promises.
   viewBar.addEventListener("keydown", function (e) {

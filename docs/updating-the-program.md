@@ -88,6 +88,24 @@ Put both codes in the cell separated by a semicolon, most important first:
 `CONV;EXH`. It stays one row and one entry in the program, but it now turns up
 under both filters. The first code is the one shown beside the title.
 
+## Linking to one event
+
+Every event has its own address. Open it on the program page and the address
+bar updates to match — copy what's there and send it:
+
+    https://everyone.adelaidedesignweek.com.au/program/#slot
+
+The part after the `#` is the event's title, lowercased, with anything that
+isn't a letter or number turned into a dash. "THE FRINGE CONDITION : EXTREME
+DESIGN" becomes `#the-fringe-condition-extreme-design`.
+
+Following a link like that switches to the right day, clears any category
+filter, opens the event and scrolls to it. For an event running several days,
+it lands on the first one.
+
+Renaming an event changes its link, so anything already sent out stops working.
+If a link has gone out widely, that is a reason to leave the title alone.
+
 **title** — the event name. Leave off the `*`; use the ticketed column instead.
 
 **ticketed** — type `yes` if every day is ticketed. Otherwise leave it empty.
