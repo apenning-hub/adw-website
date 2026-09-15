@@ -48,7 +48,9 @@
       : pg.querySelector('[data-panel="az"]');
     if (scope) {
       Array.prototype.forEach.call(scope.querySelectorAll(".pg-item"), function (li) {
-        var show = cat === "all" || li.dataset.cat === cat;
+        // data-cat carries every category the event wears, space separated.
+        var show = cat === "all" ||
+          (" " + li.dataset.cat + " ").indexOf(" " + cat + " ") !== -1;
         li.hidden = !show;
         if (show) shown++;
       });

@@ -48,7 +48,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
       <h2 class="pg-dayhead"><svg class="ast pg-dayast" aria-hidden="true"><use href="#ast"></use></svg>{{ d.day }}<span class="pg-daycount">{{ d.events | length }}</span></h2>
       <ul class="pg-list">
         {% for e in d.events %}
-        <li class="pg-item" data-cat="{{ e.category }}">
+        <li class="pg-item" data-cat="{{ e.categoryCodes | join(' ') }}">
           <details class="pg-event" id="{{ d.day | replace(' ','-') }}-{{ e.slug }}">
             <summary class="pg-sum">
               <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>
@@ -102,7 +102,7 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
     <h2 class="pg-dayhead"><svg class="ast pg-dayast" aria-hidden="true"><use href="#ast"></use></svg>a–z<span class="pg-daycount">{{ program2026.count }}</span></h2>
     <ul class="pg-list">
       {% for e in program2026.az %}
-      <li class="pg-item" data-cat="{{ e.category }}">
+      <li class="pg-item" data-cat="{{ e.categoryCodes | join(' ') }}">
         <details class="pg-event" id="az-{{ e.slug }}">
           <summary class="pg-sum">
             <span class="pg-cat" title="{{ e.categoryLabel }}">{{ e.category }}</span>

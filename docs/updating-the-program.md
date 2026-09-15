@@ -83,6 +83,11 @@ publish and tell you which two rows clash.
 | `TOUR` | tour |
 | `WORK` | workshop |
 
+An event can be two things at once — a panel held inside an exhibition, say.
+Put both codes in the cell separated by a semicolon, most important first:
+`CONV;EXH`. It stays one row and one entry in the program, but it now turns up
+under both filters. The first code is the one shown beside the title.
+
 **title** — the event name. Leave off the `*`; use the ticketed column instead.
 
 **ticketed** — type `yes` if every day is ticketed. Otherwise leave it empty.

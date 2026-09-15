@@ -166,7 +166,14 @@ module.exports = async function () {
   const events = rows.slice(1).map(({ cells, line }) => {
     const get = (name) => (cells[COL[name]] || "").trim();
 
-    const category = get("category").toUpperCase();
+    // An event can wear more than one category: a panel held inside an
+    // exhibition is both, and someone filtering on "exhibition" must still find
+    // it. The first code is the primary one — it sets the short label in the
+    // list and the sort order within a day.
+    const categoryCodes = [...new Set(
+      get("category").toUpperCase().split(/[;/]/).map((c) => c.trim()).filter(Boolean)
+    )];
+    const category = categoryCodes[0];
     const title = get("title");
     const venue = get("venue");
     // Ticketing is often not the whole run: an exhibition can be free all week
@@ -176,10 +183,18 @@ module.exports = async function () {
     const ticketed = ticketedRaw.toLowerCase();
 
     if (!title) fail(`row ${line} has no title.`);
-    if (!CATEGORIES[category]) {
-      fail(`row ${line} ("${title}") has category "${get("category")}". ` +
-           `It must be one of: ${Object.keys(CATEGORIES).join(", ")}.`);
+    if (!categoryCodes.length) {
+      fail(`row ${line} ("${title}") has no category. It must be one of: ` +
+           `${Object.keys(CATEGORIES).join(", ")}.`);
     }
+    categoryCodes.forEach((code) => {
+      if (!CATEGORIES[code]) {
+        fail(`row ${line} ("${title}") has category "${get("category")}". ` +
+             `It must be one of: ${Object.keys(CATEGORIES).join(", ")}. ` +
+             `An event that is two things at once can have both, separated by ` +
+             `a semicolon, e.g. "CONV;EXH".`);
+      }
+    });
     if (!venue) fail(`row ${line} ("${title}") has no venue.`);
     const ticketedDays = ticketed && ticketed !== "yes"
       ? ticketed.split(";").map((d) => d.trim()).filter(Boolean)
@@ -250,7 +265,8 @@ module.exports = async function () {
 
     return {
       category,
-      categoryLabel: CATEGORIES[category],
+      categoryCodes,
+      categoryLabel: categoryCodes.map((c) => CATEGORIES[c]).join(" · "),
       title, venue,
       // True when any day is ticketed — the a–z list has no day to be specific about.
       ticketed: Boolean(ticketed),
