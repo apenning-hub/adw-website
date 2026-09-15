@@ -1239,6 +1239,16 @@ hr {
 .pg-when li.is-special > .pg-when-day { color: var(--ink-strong); }
 .pg-blurb { margin: 0 0 0.5rem; }
 .pg-link a { color: var(--ink-strong); }
+/* More than one thing to book: the buttons sit in a row and wrap, with a small
+   label above so the group still reads as "book tickets". */
+.pg-link { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pg-link-label {
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    margin-block-end: 0.35rem;
+}
 .pg-empty { color: var(--ink-soft); padding-block: var(--space-3); }
 
 @media (max-width: 620px) {

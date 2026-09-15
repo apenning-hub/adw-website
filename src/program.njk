@@ -78,12 +78,18 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                   </ul></dd>
                 </dl>
                 {% if e.note %}<p class="pg-eventnote">{{ e.note }}</p>{% endif %}
-                {% if e.link and (not e.anyTicketed or e.ticketed) %}
+                {% if e.links.length and (not e.anyTicketed or e.ticketed) %}
+                {#- Several links means several things to book — a launch party
+                    and a symposium, say — so each gets its own named button
+                    rather than one button that asks a question. -#}
+                {% if e.links.length > 1 %}<p class="pg-link-label">{% if e.ticketed %}book tickets{% else %}event details{% endif %}</p>{% endif %}
                 <p class="pg-link">
-                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
-                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                  {% for l in e.links %}
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ l.url }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>{% endif %}{% if e.links.length > 1 %}{{ l.label | lower }}{% elif e.ticketed %}book tickets{% else %}event details{% endif %}
                     <span class="pg-cta-arrow" aria-hidden="true">→</span>
                   </a>
+                  {% endfor %}
                 </p>
                 {% endif %}
                 {%- if e.calendar.entries.length %}
@@ -135,12 +141,18 @@ description: The every*one program — Adelaide Design Week 2026. Exhibitions, i
                 </ul></dd>
               </dl>
               {% if e.note %}<p class="pg-eventnote">{{ e.note }}</p>{% endif %}
-              {% if e.link and (not e.anyTicketed or e.ticketed) %}
+              {% if e.links.length and (not e.anyTicketed or e.ticketed) %}
+                {#- Several links means several things to book — a launch party
+                    and a symposium, say — so each gets its own named button
+                    rather than one button that asks a question. -#}
+                {% if e.links.length > 1 %}<p class="pg-link-label">{% if e.ticketed %}book tickets{% else %}event details{% endif %}</p>{% endif %}
                 <p class="pg-link">
-                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ e.link }}" target="_blank" rel="noopener noreferrer">
-                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>book tickets{% else %}event details{% endif %}
+                  {% for l in e.links %}
+                  <a class="pg-cta{% if e.ticketed %} is-ticketed{% endif %}" href="{{ l.url }}" target="_blank" rel="noopener noreferrer">
+                    {% if e.ticketed %}<svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg>{% endif %}{% if e.links.length > 1 %}{{ l.label | lower }}{% elif e.ticketed %}book tickets{% else %}event details{% endif %}
                     <span class="pg-cta-arrow" aria-hidden="true">→</span>
                   </a>
+                  {% endfor %}
                 </p>
                 {% endif %}
               {%- if e.calendar.entries.length %}

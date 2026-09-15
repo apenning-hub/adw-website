@@ -176,6 +176,19 @@ empty gap on the page.
 **link** — optional. A web address for tickets or more information. Include the
 `https://`.
 
+If one event sells more than one thing — a launch party on the Friday and a
+symposium on the Sunday — put each on its own line with a name in front:
+
+```
+LAUNCH PARTY : https://events.humanitix.com/unbuilt-launch-party
+SUNDAY SYMPOSIUM : https://events.humanitix.com/unbuilt-symposium
+```
+
+Each becomes its own button, labelled with the name you gave it. Where the name
+is one of the day columns — `FRI 16 OCT : https://...` — that link is also the
+one that day's calendar entry carries. With several links each needs a name, so
+the button can say which it is.
+
 **note** — optional. One short line, shown where the booking button sits. Use it
 for a prize, or to say a link isn't out yet:
 

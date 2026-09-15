@@ -64,11 +64,14 @@ function parseSocials(value) {
 function calendarFor(sessions, title, venue, link, blurb, slug) {
   const url = `${(site.siteUrl || "").replace(/\/$/, "")}/program/#${slug}`;
   const summary = blurb.split(/\n\s*\n/)[0].replace(/\s*\n\s*/g, " ").trim();
-  const details = [
-    summary.length > 400 ? summary.slice(0, 397).trimEnd() + "…" : summary,
-    link ? `Tickets: ${link}` : "",
+  const blurbText = summary.length > 400 ? summary.slice(0, 397).trimEnd() + "…" : summary;
+  // A day with its own ticket link carries that one; otherwise the event's.
+  const detailsFor = (dayLink) => [
+    blurbText,
+    dayLink || link ? `Tickets: ${dayLink || link}` : "",
     `Details: ${url}`,
   ].filter(Boolean).join("\n\n");
+  const details = detailsFor(null);
 
   const out = [];
   sessions.forEach((s) => {
@@ -79,7 +82,7 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
           action: "TEMPLATE",
           text: title,
           dates: `${st.googleStart}/${st.googleEnd}`,
-          details,
+          details: detailsFor(s.link),
           ctz: times.TZ,
         });
         // Venues are left off calendar entries until the addresses are
@@ -95,6 +98,7 @@ function calendarFor(sessions, title, venue, link, blurb, slug) {
           end: st.end,
           ticketed: s.ticketed,
           highlight: s.highlight,
+          link: s.link || link || null,
           google: `https://calendar.google.com/calendar/render?${params.toString()}`,
         });
       });
@@ -335,23 +339,51 @@ module.exports = async function () {
 
     // A link without a scheme is resolved against this site, so "www.x.com.au"
     // silently becomes /program/www.x.com.au and the button loops back here.
-    const link = get("link");
-    if (link && !/^https?:\/\//i.test(link)) {
+    // One event can sell more than one thing: a launch party on the Friday and
+    // a symposium on the Sunday are booked separately. So the link cell takes
+    // either one bare URL for the whole event, or a labelled one per line:
+    //
+    //   LAUNCH PARTY : https://events.humanitix.com/...
+    //   SUN 18 OCT : https://events.humanitix.com/...
+    //
+    // A label matching one of the day columns attaches that link to the day,
+    // which is what the calendar entry for that day then carries.
+    const links = [];
+    get("link").split(/\r?\n/).map((l) => l.trim()).filter(Boolean).forEach((row) => {
+      const labelled = /^(.+?)\s*:\s*(https?:\/\/\S+)$/i.exec(row);
+      const bare = /^(https?:\/\/\S+)$/i.exec(row);
+      if (!labelled && !bare) {
+        fail(
+          `row ${line} ("${title}") has a link line reading "${row}". A link is ` +
+          `either the web address on its own, or a name and the address ` +
+          `separated by a colon, like "LAUNCH PARTY : https://...". Anything ` +
+          `else sends people back to the program instead of to the ticket page.`
+        );
+      }
+      const url = labelled ? labelled[2] : bare[1];
+      const label = labelled ? labelled[1].trim() : "";
+      if (/console\.humanitix\.com/i.test(url)) {
+        fail(
+          `row ${line} ("${title}") links to console.humanitix.com, which is the ` +
+          `organiser's own admin page — anyone clicking it gets a login screen. ` +
+          `Use the public ticket page instead, the one starting ` +
+          `events.humanitix.com.`
+        );
+      }
+      const day = days.find((d) => d.label.toLowerCase() === label.toLowerCase());
+      links.push({ label, url, day: day ? day.label : null });
+    });
+
+    if (links.length > 1 && links.some((l) => !l.label)) {
       fail(
-        `row ${line} ("${title}") has link "${link}", which is missing the ` +
-        `https:// at the front. Without it the button sends people back to the ` +
-        `program instead of out to the ticket page.`
+        `row ${line} ("${title}") has more than one link but one of them has no ` +
+        `name in front of it. With several links each needs a name, so the ` +
+        `button can say which one it is — "LAUNCH PARTY : https://...".`
       );
     }
 
-    if (/console\.humanitix\.com/i.test(link)) {
-      fail(
-        `row ${line} ("${title}") links to console.humanitix.com, which is the ` +
-        `organiser's own admin page — anyone clicking it gets a login screen. ` +
-        `Use the public ticket page instead, the one starting ` +
-        `events.humanitix.com.`
-      );
-    }
+    // Kept so everything downstream that wants "the link" still works.
+    const link = links.length ? links[0].url : "";
 
     const key = title.toLowerCase().replace(/\s+/g, " ").trim();
     if (seen.has(key)) {
@@ -369,6 +401,7 @@ module.exports = async function () {
         const isTicketed = ticketed === "yes" || ticketedDays.includes(label.toLowerCase());
         return {
           day: label,
+          link: (links.find((l) => l.day === label) || {}).url || null,
           times: dayTimes,
           ticketed: isTicketed,
           // A run of identical open days needs nothing picked out, but the one
@@ -410,6 +443,7 @@ module.exports = async function () {
       // as several paragraphs and ran together as one block before this.
       blurbParas: get("blurb").split(/\n\s*\n/).map((t) => t.replace(/\s*\n\s*/g, " ").trim()).filter(Boolean),
       link,
+      links,
       socials: parseSocials(get("socials")),
       // Semicolon-separated, same rule as two sessions in one day.
       contributors: get("contributors").split(";").map((n) => n.trim()).filter(Boolean),

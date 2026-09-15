@@ -52,12 +52,13 @@ const VTIMEZONE = [
 function veventsFor(event, base, stamp, withVenue) {
   const url = `${base}/program/#${event.slug}`;
   const blurb = event.blurbParas && event.blurbParas.length ? event.blurbParas[0] : "";
-  const description = [blurb, event.link ? `Tickets: ${event.link}` : "", `Details: ${url}`]
-    .filter(Boolean)
-    .join("\n\n");
 
   const lines = [];
   event.calendar.entries.forEach((c, i) => {
+    // Where a day sells its own ticket, that day's entry carries that link.
+    const description = [blurb, c.link ? `Tickets: ${c.link}` : "", `Details: ${url}`]
+      .filter(Boolean)
+      .join("\n\n");
     lines.push(
       "BEGIN:VEVENT",
       fold(`UID:${event.slug}-${i + 1}@everyone.adelaidedesignweek.com.au`),
