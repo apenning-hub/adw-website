@@ -938,6 +938,65 @@ hr {
 }
 .acknowledgment { line-height: 1.6; }
 
+/* Sponsors — every*one 2026
+   One monochrome PNG per sponsor, black ink on transparency, so the wall reads
+   as one set. Tiers follow the printed A2 program. Logos are capped on both
+   axes: a long wordmark is limited by width, a roundel by height, which keeps
+   them optically closer in size than height alone would. */
+.sponsors {
+    max-width: var(--content-wide);
+    margin: 0 auto var(--space-4);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--line);
+}
+.sponsors-heading {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    text-transform: lowercase;
+    color: var(--ink-strong);
+    margin: 0 0 var(--space-2);
+}
+.sponsors-tier + .sponsors-tier { margin-block-start: var(--space-3); }
+.sponsors-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.85rem;
+}
+.sponsors-row {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.6rem 2.4rem;
+}
+/* Width and height come from the data, computed for equal optical area — see
+   scripts/build-sponsors.py. The scale below shrinks the whole wall on small
+   screens without disturbing those relative sizes. The li carries the size and
+   the image fills it, so a logo shrinks rather than pushing the row wider than
+   the screen. */
+.sponsors-item { display: block; max-width: 100%; }
+.sponsors-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: left center;
+}
+
+@media (max-width: 900px) {
+    .sponsors { --logo-scale: 0.85; }
+    .sponsors-row { gap: 1.3rem 2rem; }
+}
+@media (max-width: 600px) {
+    .sponsors { --logo-scale: 0.72; }
+    .sponsors-row { gap: 1rem 1.4rem; }
+}
+
 /* Responsive
    ========================================================================== */
 @media (max-width: 600px) {

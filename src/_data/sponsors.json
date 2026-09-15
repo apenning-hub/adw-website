@@ -1,0 +1,363 @@
+[
+  {
+    "tier": "Platinum",
+    "sponsors": [
+      {
+        "name": "2049",
+        "file": "2049.png",
+        "w": 900,
+        "h": 199,
+        "dw": 170,
+        "dh": 38
+      },
+      {
+        "name": "Print Logistics",
+        "file": "print-logistics.png",
+        "w": 900,
+        "h": 130,
+        "dw": 210,
+        "dh": 30
+      }
+    ]
+  },
+  {
+    "tier": "Gold",
+    "sponsors": [
+      {
+        "name": "Rockethouse",
+        "file": "rockethouse.png",
+        "w": 720,
+        "h": 90,
+        "dw": 196,
+        "dh": 24
+      },
+      {
+        "name": "Gentle Folk Wines",
+        "file": "gentle-folk-wines.png",
+        "w": 734,
+        "h": 240,
+        "dw": 121,
+        "dh": 40
+      },
+      {
+        "name": "Stone Ambassador",
+        "file": "stone-ambassador.png",
+        "w": 900,
+        "h": 173,
+        "dw": 158,
+        "dh": 30
+      },
+      {
+        "name": "Signorino Woodcut",
+        "file": "signorino-woodcut.png",
+        "w": 397,
+        "h": 210,
+        "dw": 95,
+        "dh": 50
+      }
+    ]
+  },
+  {
+    "tier": "Silver",
+    "sponsors": [
+      {
+        "name": "Bankston",
+        "file": "bankston.png",
+        "w": 707,
+        "h": 129,
+        "dw": 138,
+        "dh": 25
+      },
+      {
+        "name": "Company Works",
+        "file": "company-works.png",
+        "w": 883,
+        "h": 240,
+        "dw": 113,
+        "dh": 31
+      },
+      {
+        "name": "Delinquente Wine Co",
+        "file": "delinquente-wine-co.png",
+        "w": 433,
+        "h": 209,
+        "dw": 85,
+        "dh": 41
+      },
+      {
+        "name": "Estilo",
+        "file": "estilo.png",
+        "w": 900,
+        "h": 187,
+        "dw": 130,
+        "dh": 27
+      },
+      {
+        "name": "Jardan",
+        "file": "jardan.png",
+        "w": 900,
+        "h": 162,
+        "dw": 139,
+        "dh": 25
+      },
+      {
+        "name": "Littlehampton",
+        "file": "littlehampton.png",
+        "w": 352,
+        "h": 240,
+        "dw": 65,
+        "dh": 44
+      },
+      {
+        "name": "New Age Veneers",
+        "file": "new-age-veneers.png",
+        "w": 900,
+        "h": 168,
+        "dw": 137,
+        "dh": 26
+      },
+      {
+        "name": "The Queens Theatre",
+        "file": "the-queens-theatre.png",
+        "w": 410,
+        "h": 240,
+        "dw": 75,
+        "dh": 44
+      },
+      {
+        "name": "Tumbled",
+        "file": "tumbled.png",
+        "w": 900,
+        "h": 202,
+        "dw": 125,
+        "dh": 28
+      },
+      {
+        "name": "Remington Matters",
+        "file": "remington-matters.png",
+        "w": 787,
+        "h": 240,
+        "dw": 107,
+        "dh": 33
+      },
+      {
+        "name": "Ukiyo House",
+        "file": "ukiyo-house.png",
+        "w": 240,
+        "h": 240,
+        "dw": 44,
+        "dh": 44
+      },
+      {
+        "name": "Union Magazine",
+        "file": "union-magazine.png",
+        "w": 566,
+        "h": 240,
+        "dw": 91,
+        "dh": 39
+      }
+    ]
+  },
+  {
+    "tier": "Bronze",
+    "sponsors": [
+      {
+        "name": "Baukultur",
+        "file": "baukultur.png",
+        "w": 900,
+        "h": 159,
+        "dw": 124,
+        "dh": 22
+      },
+      {
+        "name": "Caroma",
+        "file": "caroma.png",
+        "w": 900,
+        "h": 127,
+        "dw": 138,
+        "dh": 20
+      },
+      {
+        "name": "CDK Stone",
+        "file": "cdk-stone.png",
+        "w": 279,
+        "h": 191,
+        "dw": 56,
+        "dh": 38
+      },
+      {
+        "name": "City of Adelaide",
+        "file": "city-of-adelaide.png",
+        "w": 205,
+        "h": 233,
+        "dw": 33,
+        "dh": 38
+      },
+      {
+        "name": "Curated by Tom",
+        "file": "curated-by-tom.png",
+        "w": 167,
+        "h": 240,
+        "dw": 26,
+        "dh": 38
+      },
+      {
+        "name": "Daniel Emma",
+        "file": "daniel-emma.png",
+        "w": 513,
+        "h": 179,
+        "dw": 88,
+        "dh": 31
+      },
+      {
+        "name": "Design by WBL",
+        "file": "design-by-wbl.png",
+        "w": 900,
+        "h": 130,
+        "dw": 137,
+        "dh": 20
+      },
+      {
+        "name": "Future Urban",
+        "file": "future-urban.png",
+        "w": 407,
+        "h": 239,
+        "dw": 65,
+        "dh": 38
+      },
+      {
+        "name": "Insight Lighting",
+        "file": "insight-lighting.png",
+        "w": 736,
+        "h": 240,
+        "dw": 91,
+        "dh": 30
+      },
+      {
+        "name": "Honeydripper",
+        "file": "honeydripper.png",
+        "w": 900,
+        "h": 183,
+        "dw": 115,
+        "dh": 23
+      },
+      {
+        "name": "JamFactory",
+        "file": "jamfactory.png",
+        "w": 292,
+        "h": 156,
+        "dw": 71,
+        "dh": 38
+      },
+      {
+        "name": "Place Journal",
+        "file": "place-journal.png",
+        "w": 686,
+        "h": 240,
+        "dw": 88,
+        "dh": 31
+      },
+      {
+        "name": "Piteo",
+        "file": "piteo.png",
+        "w": 784,
+        "h": 182,
+        "dw": 108,
+        "dh": 25
+      },
+      {
+        "name": "RF Lux",
+        "file": "rf-lux.png",
+        "w": 765,
+        "h": 240,
+        "dw": 93,
+        "dh": 29
+      },
+      {
+        "name": "Stylecraft",
+        "file": "stylecraft.png",
+        "w": 900,
+        "h": 209,
+        "dw": 108,
+        "dh": 25
+      },
+      {
+        "name": "Urban Habitats",
+        "file": "urban-habitats.png",
+        "w": 900,
+        "h": 152,
+        "dw": 126,
+        "dh": 21
+      },
+      {
+        "name": "Walter Brooke",
+        "file": "walter-brooke.png",
+        "w": 900,
+        "h": 151,
+        "dw": 127,
+        "dh": 21
+      }
+    ]
+  },
+  {
+    "tier": "Donations",
+    "sponsors": [
+      {
+        "name": "AMPA Wines",
+        "file": "ampa-wines.png",
+        "w": 900,
+        "h": 122,
+        "dw": 130,
+        "dh": 18
+      },
+      {
+        "name": "AGSA",
+        "file": "agsa.png",
+        "w": 542,
+        "h": 239,
+        "dw": 72,
+        "dh": 32
+      },
+      {
+        "name": "Cult",
+        "file": "cult.png",
+        "w": 829,
+        "h": 240,
+        "dw": 89,
+        "dh": 26
+      },
+      {
+        "name": "Guildhouse",
+        "file": "guildhouse.png",
+        "w": 478,
+        "h": 127,
+        "dw": 93,
+        "dh": 25
+      },
+      {
+        "name": "Little Bang Brewing Co",
+        "file": "little-bang-brewing-co.png",
+        "w": 686,
+        "h": 195,
+        "dw": 90,
+        "dh": 26
+      },
+      {
+        "name": "Pundi",
+        "file": "pundi.png",
+        "w": 600,
+        "h": 240,
+        "dw": 76,
+        "dh": 30
+      },
+      {
+        "name": "Table Wines",
+        "file": "table-wines.png",
+        "w": 372,
+        "h": 240,
+        "dw": 53,
+        "dh": 34
+      }
+    ]
+  }
+]

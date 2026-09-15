@@ -99,6 +99,27 @@
   {% endif %}
 
   <footer class="site-footer">
+    {% if sponsors %}
+    <section class="sponsors" aria-labelledby="sponsors-heading">
+      <h2 class="sponsors-heading" id="sponsors-heading">Sponsors</h2>
+      {% for tier in sponsors %}
+      <div class="sponsors-tier" data-tier="{{ tier.tier | lower }}">
+        <h3 class="sponsors-label">{{ tier.tier }}</h3>
+        <ul class="sponsors-row">
+          {% for s in tier.sponsors %}
+          <li class="sponsors-item"
+              style="width:calc(var(--logo-scale, 1) * {{ s.dw }}px);
+                     height:calc(var(--logo-scale, 1) * {{ s.dh }}px)">
+            <img src="{{ ('/assets/images/sponsors/' + s.file) | url }}" alt="{{ s.name }}"
+                 width="{{ s.dw }}" height="{{ s.dh }}" loading="lazy" decoding="async">
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+
     <div class="site-footer-inner">
       <a href="{{ '/' | url }}" class="footer-lockup" aria-label="every*one — Adelaide Design Week">
         <img src="{{ '/assets/images/everyone-stacked.svg' | url }}" alt="" width="2055" height="532">
