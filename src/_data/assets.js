@@ -23,4 +23,9 @@ module.exports = {
   mapCss: hash("assets/css/map.css"),
   mapJs: hash("assets/js/map.js"),
   mapStyleJs: hash("assets/js/map-style.js"),
+  // The library is copied out of node_modules on every build. Without a
+  // fingerprint a browser that fetched it mid-rebuild caches a truncated
+  // copy and keeps using it — which reads as a blank map and a
+  // "mapboxgl is not defined" that survives every reload.
+  mapboxGl: require("mapbox-gl/package.json").version,
 };

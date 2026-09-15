@@ -84,7 +84,7 @@
   {% if map %}
   {# Mapbox GL is served from this origin, pinned by package-lock.json.
      map-style.js must run before map.js, which reads ADWMapStyle on load. #}
-  <script src="{{ '/assets/js/mapbox-gl.js' | url }}" defer></script>
+  <script src="{{ '/assets/js/mapbox-gl.js' | url }}?v={{ assets.mapboxGl }}" defer></script>
   <script src="{{ '/assets/js/map-style.js' | url }}?v={{ assets.mapStyleJs }}" defer></script>
   <script src="{{ '/assets/js/map.js' | url }}?v={{ assets.mapJs }}" defer></script>
   {% endif %}

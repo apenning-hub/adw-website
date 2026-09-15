@@ -22,23 +22,46 @@ description: Where every*one is happening — every venue in the Adelaide Design
 
 <div class="map-wrap">
 
-  {# Mapbox GL draws its markers to a canvas: they cannot be tabbed to and a
-     screen reader sees nothing. This list opens the same panel the markers
-     do, and is the only way in without a mouse. #}
-  <nav id="adw-map-venues" class="map-venues visually-hidden" aria-label="All venues">
-    <h2>All venues</h2>
-    <ul>
-      {%- for v in mapPoints.venues %}
-      <li><button type="button" data-venue="{{ v.slug }}">{{ v.venue }} — {{ v.count }} event{% if v.count != 1 %}s{% endif %}</button></li>
-      {%- endfor %}
-    </ul>
-  </nav>
+  <div id="adw-map" class="map-canvas" role="application" aria-label="Map of Adelaide Design Week venues">
+    {# Shown only if the basemap never arrives. The list beside it is
+       unaffected, so the page is still usable — say that, rather than
+       leaving a blank rectangle to be interpreted. #}
+    <p class="map-stalled">The map could not load. Everything is still listed{% if mapPoints.venues.length %} on the right{% endif %} — and refreshing usually fixes it.</p>
+  </div>
 
-  <div id="adw-map" class="map-canvas" role="application" aria-label="Map of Adelaide Design Week venues"></div>
+  {# The list is the map's equal, not its caption. Mapbox draws its markers to
+     a canvas where they cannot be tabbed to or read aloud, so everything the
+     markers do is also reachable here — which happens to be what most people
+     want anyway: a list they can read down. #}
+  <aside class="map-side" id="adw-map-side" aria-label="Venues and shows">
 
-  <aside id="adw-map-panel" class="map-panel" hidden aria-label="Venue details">
-    <button type="button" class="map-panel-close" aria-label="Close venue details">close</button>
-    <div class="map-panel-body"></div>
+    {# The same controls the program page uses, and the same classes, so the
+       two pages are visibly one system. Inventing a second set of buttons
+       here is what made this look like a different site. #}
+    <div class="map-side-controls">
+      <div class="pg-views" role="tablist" aria-label="Show list of">
+        <button class="pg-view is-on" type="button" role="tab" aria-selected="true"
+                data-mode="venues">venues</button>
+        <button class="pg-view" type="button" role="tab" aria-selected="false"
+                data-mode="shows">shows</button>
+      </div>
+
+      <div class="pg-days map-days" role="group" aria-label="Filter by day">
+        <button class="pg-daybtn is-on" type="button" data-day="" aria-pressed="true">all</button>
+        {%- for d in mapPoints.days %}
+        <button class="pg-daybtn" type="button" data-day="{{ d }}" aria-pressed="false">{{ d }}</button>
+        {%- endfor %}
+      </div>
+    </div>
+
+    <p class="map-side-count" id="adw-map-count" aria-live="polite"></p>
+    <div class="map-side-list" id="adw-map-list"></div>
+
+    <div class="map-side-detail" id="adw-map-detail" hidden>
+      <button type="button" class="map-detail-back">&larr; back to the list</button>
+      <div class="map-detail-body"></div>
+    </div>
+
   </aside>
 
 </div>
@@ -59,7 +82,7 @@ description: Where every*one is happening — every venue in the Adelaide Design
 {# Parsed by map.js. A script tag of type application/json is inert: the
    browser never executes it, so event titles and blurbs cannot escape into
    the page as code. #}
-<script type="application/json" id="adw-map-data">{{ { "token": env.mapboxToken, "style": site.mapboxStyle, "geojson": mapPoints.geojson } | dump | safe }}</script>
+<script type="application/json" id="adw-map-data">{{ { "token": env.mapboxToken, "style": site.mapboxStyle, "geojson": mapPoints.geojson, "circuit": mapPoints.circuit } | dump | safe }}</script>
 
 {% else %}
 

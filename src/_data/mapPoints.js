@@ -103,6 +103,13 @@ function buildFeatures(events, venues) {
         ticketed: Boolean(event.ticketed),
         link: event.link || "",
         sessions: event.sessions,
+        // The sidebar filters the map by day. A Mapbox filter expression
+        // cannot look inside an array of session objects, so the days are
+        // flattened here: `days` for JavaScript to read, `dayKeys` for the
+        // filter to match on. Every key is fenced by the delimiter so one
+        // day's label can never match inside another's.
+        days: event.sessions.map(function (s) { return s.day; }),
+        dayKeys: "|" + event.sessions.map(function (s) { return s.day; }).join("|") + "|",
         iconKey: CATEGORY_ICONS[event.category] || "ast-plain",
       },
     });
@@ -129,6 +136,76 @@ function venueList(geojson) {
   return [...byslug.values()].sort((a, b) => a.venue.localeCompare(b.venue, "en"));
 }
 
+/**
+ * venue string -> slug, for every venue that actually reached the map.
+ *
+ * program.njk uses this to put a locator thumbnail on each event and link
+ * it to /map/?venue=. Venues that were dropped are deliberately absent, so
+ * an unlocatable event shows no thumbnail rather than a broken image and a
+ * panel that cannot open.
+ */
+function slugByVenue(geojson) {
+  const out = {};
+  for (const f of geojson.features) {
+    out[f.properties.venue] = f.properties.venueSlug;
+  }
+  return out;
+}
+
+/**
+ * The Shopfront Design Circuit, as a line and a set of numbered stops.
+ *
+ * The event has a single venue cell — "Various Locations, East End, ADL CBD"
+ * — which is not a place. Its stops are listed in src/_data/circuit.json, in
+ * walking order, and drawn as a path connecting them.
+ *
+ * A stop with no coordinates is returned in `missing` rather than quietly
+ * dropped: a path that silently skips a shopfront is worse than no path,
+ * because it looks correct.
+ */
+function buildCircuit(circuit, coords) {
+  const empty = { line: null, points: { type: "FeatureCollection", features: [] },
+                  missing: [] };
+  if (!circuit || !Array.isArray(circuit.stops)) return empty;
+
+  const features = [];
+  const missing = [];
+  let step = 0;
+
+  for (const stop of circuit.stops) {
+    const place = coords[stop.name];
+    if (!place || typeof place.lat !== "number" || typeof place.lng !== "number") {
+      missing.push(stop.name);
+      continue;
+    }
+    step += 1;
+    features.push({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [place.lng, place.lat] },
+      properties: {
+        name: stop.name,
+        designer: stop.designer || "",
+        step,
+        title: circuit.title || "",
+      },
+    });
+  }
+
+  // Two points make a line; one makes a dot with a misleading tail.
+  const line = features.length >= 2
+    ? {
+        type: "Feature",
+        geometry: {
+          type: "LineString",
+          coordinates: features.map((f) => f.geometry.coordinates),
+        },
+        properties: { title: circuit.title || "" },
+      }
+    : null;
+
+  return { line, points: { type: "FeatureCollection", features }, missing };
+}
+
 async function mapPoints() {
   const file = path.join(__dirname, "venues.json");
 
@@ -146,8 +223,23 @@ async function mapPoints() {
   }
 
   // program2026 reads the Google Sheet, so it resolves asynchronously now.
+  let circuit = null;
+  const circuitFile = path.join(__dirname, "circuit.json");
+  if (fs.existsSync(circuitFile)) {
+    circuit = JSON.parse(fs.readFileSync(circuitFile, "utf8"));
+  }
+
   const program = await require("./program2026.js")();
   const { geojson, dropped } = buildFeatures(program.az, venues);
+  const circuitParts = buildCircuit(circuit, venues);
+
+  if (circuitParts.missing.length) {
+    console.warn(
+      `\n  ${circuitParts.missing.length} circuit stops have no coordinates ` +
+      `and are not on the path:`);
+    for (const name of circuitParts.missing) console.warn(`    ${name}`);
+    console.warn("");
+  }
 
   if (dropped.length) {
     console.warn(`\n  ${dropped.length} events are not on the map:`);
@@ -164,6 +256,14 @@ async function mapPoints() {
     geojson,
     dropped,
     venues: venueList(geojson),
+    slugByVenue: slugByVenue(geojson),
+    days: program.days,
+    circuit: {
+      title: (circuit && circuit.title) || "",
+      line: circuitParts.line,
+      points: circuitParts.points,
+      missing: circuitParts.missing,
+    },
     eventCount: geojson.features.length,
     venueCount,
   };
@@ -172,6 +272,8 @@ async function mapPoints() {
 mapPoints.buildFeatures = buildFeatures;
 mapPoints.venueSlug = venueSlug;
 mapPoints.venueList = venueList;
+mapPoints.slugByVenue = slugByVenue;
+mapPoints.buildCircuit = buildCircuit;
 mapPoints.ICONS = ICONS;
 mapPoints.CATEGORY_ICONS = CATEGORY_ICONS;
 
