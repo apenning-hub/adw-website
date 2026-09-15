@@ -9,4 +9,10 @@ eleventyExcludeFromCollections: true
 {#- Given to participants directly; never to be listed in search results. -#}
 /program-updates/*
   X-Robots-Tag: noindex, nofollow
-{%- endif %}
+{% endif %}
+{#- Calendar files are rebuilt on every publish, and their URLs never change,
+    so they must be revalidated rather than served from cache. A subscriber
+    checking for a corrected time has to actually reach the new file. -#}
+/program/*.ics
+  Content-Type: text/calendar; charset=utf-8
+  Cache-Control: public, max-age=900, must-revalidate

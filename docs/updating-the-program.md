@@ -88,6 +88,28 @@ Put both codes in the cell separated by a semicolon, most important first:
 `CONV;EXH`. It stays one row and one entry in the program, but it now turns up
 under both filters. The first code is the one shown beside the title.
 
+## Calendars
+
+Every event has an "add to calendar" link, and the whole program is published as
+a subscribable feed at `/program/every-one-2026.ics`.
+
+These are built from this spreadsheet, so **they are rebuilt from scratch on
+every publish** — change a time, press Publish, and both the event's own file
+and the whole-program feed carry the new time a minute later. Nothing separate
+to update.
+
+One thing to know when someone asks why their calendar still shows the old time:
+
+- **Subscribed** (the feed) — their calendar app re-reads it, so corrections
+  reach them. The file asks to be checked every four hours.
+- **Downloaded** (the "apple / outlook" link, or Google's "add") — that copies
+  the event into their calendar once. It never hears about a later change. This
+  is how calendar files work everywhere; it is not something we can fix from
+  here. If a time changes late, say so on Instagram as well.
+
+Renaming an event changes the address of its calendar file, exactly as it
+changes its link.
+
 ## Linking to one event
 
 Every event has its own address. Open it on the program page and the address

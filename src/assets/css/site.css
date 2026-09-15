@@ -938,6 +938,38 @@ hr {
 }
 .acknowledgment { line-height: 1.6; }
 
+.pg-subscribe {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 0.5rem;
+    align-items: baseline;
+    font-size: 0.875rem;
+    margin-block-start: 0.35rem;
+}
+
+/* Add to calendar — sits under the ticket button in an opened event. Quiet
+   by default: this is a convenience, not the thing we want people to click. */
+.pg-cal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.9rem;
+    margin-block-start: var(--space-2);
+    font-size: 0.8125rem;
+}
+.pg-cal-label {
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+}
+.pg-cal-link {
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+}
+.pg-cal-link:hover, .pg-cal-link:focus-visible { color: var(--ink-strong); }
+
 /* Sponsors — every*one 2026
    One monochrome PNG per sponsor, black ink on transparency, so the wall reads
    as one set. Tiers follow the printed A2 program. Logos are capped on both

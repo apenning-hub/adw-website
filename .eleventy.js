@@ -43,6 +43,9 @@ module.exports = function (eleventyConfig) {
     pathPrefix: process.env.PATH_PREFIX || "/",
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    templateFormats: ["njk", "md", "html"],
+    // "11ty.js" is here for the per-event calendar files: iCalendar is fussy
+    // about CRLF line endings and folding, which is far easier to get right in
+    // JavaScript than in a template language.
+    templateFormats: ["njk", "md", "html", "11ty.js"],
   };
 };

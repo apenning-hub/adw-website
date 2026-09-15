@@ -15,9 +15,18 @@
 const fs = require("fs");
 const path = require("path");
 const site = require("./site.json");
+const times = require("../_lib/event-times.js");
 
 const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "socials",
                "note", "contributors", "adw_presented"];
+
+// Optional fixed columns. "address" is how a venue gets onto the map in the
+// right place: a geocoder handed "Stylecraft, ADL CBD" can only guess at the
+// middle of the city, and handed "17 Gilbert St, Adelaide" it is exact.
+// Optional on purpose — the sheet can gain the column before or after this
+// code ships, in either order, and the build is fine either way.
+const OPTIONAL = ["address"];
+const KNOWN = new Set(FIXED.concat(OPTIONAL));
 const CATEGORIES = {
   EXH: "exhibition",
   INST: "installation",
@@ -44,6 +53,81 @@ function parseSocials(value) {
   }
   const handle = raw.replace(/^@/, "").replace(/\/$/, "");
   return { url: `https://www.instagram.com/${handle}/`, handle: `@${handle}` };
+}
+
+// One calendar entry per sitting, with everything a .ics file or a Google
+// Calendar link needs already formatted. Times that carry no clock — "(all
+// day)", "at 'BENCHED'" — become all-day entries keeping their own wording.
+function calendarFor(sessions, title, venue, link, blurb, slug) {
+  const url = `${(site.siteUrl || "").replace(/\/$/, "")}/program/#${slug}`;
+  const summary = blurb.split(/\n\s*\n/)[0].replace(/\s*\n\s*/g, " ").trim();
+  const details = [
+    summary.length > 400 ? summary.slice(0, 397).trimEnd() + "…" : summary,
+    link ? `Tickets: ${link}` : "",
+    `Details: ${url}`,
+  ].filter(Boolean).join("\n\n");
+
+  const out = [];
+  sessions.forEach((s) => {
+    s.times.forEach((t) => {
+      times.parseSession(s.day, t, site.year).forEach((entry) => {
+        const st = times.stamps(entry);
+        const params = new URLSearchParams({
+          action: "TEMPLATE",
+          text: title,
+          dates: `${st.googleStart}/${st.googleEnd}`,
+          details,
+          location: venue,
+          ctz: times.TZ,
+        });
+        out.push({
+          day: s.day,
+          label: entry.label,
+          allDay: st.allDay,
+          start: st.start,
+          end: st.end,
+          google: `https://calendar.google.com/calendar/render?${params.toString()}`,
+        });
+      });
+    });
+  });
+  if (!out.length) return { entries: [], google: null };
+
+  // Google's template URL carries one event, but most of these run for days.
+  // A single sitting goes across exactly; a run becomes an all-day span over
+  // the whole thing, with each day's real times written into the description
+  // so nothing is lost.
+  let google = out[0].google;
+  if (out.length > 1) {
+    const days = out.map((c) => `${c.day}: ${c.label}`).join("\n");
+    const first = out[0].start.slice(0, 8);
+    const last = out.reduce((a, c) => (c.end.slice(0, 8) > a ? c.end.slice(0, 8) : a),
+                            out[0].end.slice(0, 8));
+    const endExclusive = out[out.length - 1].allDay
+      ? last
+      : dayAfter(last);
+    const params = new URLSearchParams({
+      action: "TEMPLATE",
+      text: title,
+      dates: `${first}/${endExclusive}`,
+      details: `${days}\n\n${details}`,
+      location: venue,
+      ctz: times.TZ,
+    });
+    google = `https://calendar.google.com/calendar/render?${params.toString()}`;
+  }
+
+  return { entries: out, google };
+}
+
+// "20261017" -> "20261018", which is what an all-day DTEND wants.
+function dayAfter(stamp) {
+  const y = Number(stamp.slice(0, 4));
+  const m = Number(stamp.slice(4, 6)) - 1;
+  const d = Number(stamp.slice(6, 8));
+  const next = new Date(Date.UTC(y, m, d + 1));
+  return `${next.getUTCFullYear()}${String(next.getUTCMonth() + 1).padStart(2, "0")}` +
+         `${String(next.getUTCDate()).padStart(2, "0")}`;
 }
 
 function fail(msg) {
@@ -129,37 +213,63 @@ async function readProgram() {
   }
 }
 
+/**
+ * Work out which column is which.
+ *
+ * Columns are matched by NAME, not position. They used to be positional,
+ * which meant the Google Sheet, the committed CSV and this file all had to
+ * agree exactly — and inserting one column in the sheet failed the build and
+ * froze the program page. Names are what an editor actually sees in the
+ * spreadsheet, so they are what this matches on.
+ *
+ * Anything whose heading is not a known column name is a day.
+ */
+function parseHeader(cells) {
+  const header = cells.map((h) => (h || "").trim());
+  const columns = {};
+  const days = [];
+
+  header.forEach((label, i) => {
+    if (!label) return;
+    const key = label.toLowerCase();
+    if (KNOWN.has(key)) {
+      // A repeated fixed column is a copy-paste in the sheet; the first wins,
+      // which is the one the editor can see furthest left.
+      if (!(key in columns)) columns[key] = i;
+      return;
+    }
+    if (days.some((d) => d.label.toLowerCase() === key)) {
+      fail(`there are two day columns both headed "${label}". ` +
+           `Give each day its own heading.`);
+    }
+    days.push({ label, index: i });
+  });
+
+  const missing = FIXED.filter((col) => !(col in columns));
+  if (missing.length) {
+    fail(
+      `the ${missing.length === 1 ? "column" : "columns"} ` +
+      `${missing.map((c) => `"${c}"`).join(", ")} ` +
+      `${missing.length === 1 ? "is" : "are"} missing from the top row. ` +
+      `Every program needs: ${FIXED.join(", ")}. ` +
+      `They can be in any order, and "address" may be added alongside them.`
+    );
+  }
+
+  if (!days.length) {
+    fail('no day columns found. Add at least one column headed with a date, ' +
+         'like "wed 14 oct".');
+  }
+
+  return { columns, days, hasAddress: "address" in columns };
+}
+
 module.exports = async function () {
   const rows = parseCsv(await readProgram());
   if (rows.length < 2) fail("the file is empty, or has only a header row.");
 
   const header = rows[0].cells.map((h) => (h || "").trim());
-  FIXED.forEach((col, i) => {
-    if (!header[i] || header[i].toLowerCase() !== col) {
-      fail(
-        `column ${i + 1} should be "${col}" but is ` +
-        `${header[i] ? `"${header[i]}"` : "missing"}. ` +
-        `The first ${FIXED.length} columns must stay in order.`
-      );
-    }
-  });
-
-  // Day columns are positional: everything after the fixed columns, in order.
-  // Keep the index alongside the label so two columns sharing a heading can be
-  // caught rather than silently reading the same cell twice.
-  const days = [];
-  header.slice(FIXED.length).forEach((label, i) => {
-    const name = (label || "").trim();
-    if (!name) return;
-    if (days.some((d) => d.label.toLowerCase() === name.toLowerCase())) {
-      fail(`there are two day columns both headed "${name}". Give each day its own heading.`);
-    }
-    days.push({ label: name, index: FIXED.length + i });
-  });
-  if (!days.length) fail('no day columns found. Add at least one column after "link".');
-
-  // Fixed columns were verified to be in order above, so index by position.
-  const COL = Object.fromEntries(FIXED.map((c, i) => [c, i]));
+  const { columns: COL, days } = parseHeader(header);
 
   const seen = new Map();
   const slugs = new Map();
@@ -268,6 +378,10 @@ module.exports = async function () {
       categoryCodes,
       categoryLabel: categoryCodes.map((c) => CATEGORIES[c]).join(" · "),
       title, venue,
+      // Blank until the sheet has the column filled in. The map falls back
+      // to geocoding the venue name, which puts the pin in the right suburb
+      // rather than at the front door.
+      address: get("address"),
       // True when any day is ticketed — the a–z list has no day to be specific about.
       ticketed: Boolean(ticketed),
       ticketedEveryDay: ticketed === "yes",
@@ -283,7 +397,22 @@ module.exports = async function () {
       adwPresented: get("adw_presented").toLowerCase() === "yes",
       sessions,
       slug,
+      // Calendar entries, one per sitting: an exhibition open five days gives
+      // five, and "Lunch 12pm / Dinner 6pm" gives two on the one day. See
+      // src/_lib/event-times.js for what the times column can throw at us.
+      calendar: calendarFor(sessions, title, venue, link, get("blurb"), slug),
     };
+  });
+
+  // The calendar files are generated from this, so an event that produces no
+  // entries would publish as a download that adds nothing. That can only come
+  // from a times cell we failed to read, which is worth stopping for.
+  events.forEach((e) => {
+    if (!e.calendar.entries.length) {
+      fail(`"${e.title}" produced no calendar entries, so its "add to calendar" ` +
+           `link would do nothing. This means its times could not be read at ` +
+           `all — check the day columns for that row.`);
+    }
   });
 
   const byDay = days.map(({ label }) => ({
@@ -322,3 +451,7 @@ module.exports = async function () {
     sessionCount: events.reduce((n, e) => n + e.sessions.length, 0),
   };
 };
+
+module.exports.parseHeader = parseHeader;
+module.exports.FIXED = FIXED;
+module.exports.OPTIONAL = OPTIONAL;
