@@ -135,9 +135,7 @@ def monochrome(im):
     return out.crop(out.getbbox() or (0,0,*im.size))
 
 # Homepages, each one checked against the page that actually answers. Verified
-# 15 September 2026. Piteo is deliberately absent: piteo.com belongs to an
-# unrelated American author, and the Adelaide firm could not be confirmed, so
-# it shows without a link rather than pointing somewhere wrong.
+# 15 September 2026.
 SITES = {
   "2049":                   "https://www.2049.art/",
   "Print Logistics":        "https://printlogistics.com.au/",
@@ -168,6 +166,7 @@ SITES = {
   "Insight Lighting":       "https://insightlighting.com.au/",
   "Honeydripper":           "https://www.honeydripper.com.au/",
   "JamFactory":             "https://www.jamfactory.com.au/",
+  "Piteo":                  "https://piteoarchitects.com.au/",
   "Place Journal":          "https://www.placejournal.com.au/",
   "RF Lux":                 "https://www.rflux.au/",
   "Stylecraft":             "https://stylecraft.com.au/",
