@@ -12,6 +12,10 @@
   {%- endif %}
   <link rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | url }}?v={{ assets.css }}">
+  {%- if map %}
+  <link rel="stylesheet" href="{{ '/assets/css/mapbox-gl.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/map.css' | url }}?v={{ assets.mapCss }}">
+  {%- endif %}
   {% if tallyPopup %}
   <script>
     window.TallyConfig = {
@@ -75,6 +79,14 @@
 
   {% if lightbox %}
   <script src="{{ '/assets/js/lightbox.js' | url }}" defer></script>
+  {% endif %}
+
+  {% if map %}
+  {# Mapbox GL is served from this origin, pinned by package-lock.json.
+     map-style.js must run before map.js, which reads ADWMapStyle on load. #}
+  <script src="{{ '/assets/js/mapbox-gl.js' | url }}" defer></script>
+  <script src="{{ '/assets/js/map-style.js' | url }}?v={{ assets.mapStyleJs }}" defer></script>
+  <script src="{{ '/assets/js/map.js' | url }}?v={{ assets.mapJs }}" defer></script>
   {% endif %}
 
   {% if updatesForm %}

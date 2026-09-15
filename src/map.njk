@@ -1,0 +1,76 @@
+---
+title: Map
+navLabel: map
+navOrder: 3
+permalink: /map/
+layout: base.njk
+map: true
+description: Where every*one is happening — every venue in the Adelaide Design Week 2026 program, on one map of Kaurna/Adelaide.
+---
+
+<header class="pg-head map-head">
+<h1 class="pg-h1">Map</h1>
+<p class="pg-intro">{{ mapPoints.eventCount }} events across {{ mapPoints.venueCount }} places. Tap an <svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg> to see what is on there.</p>
+</header>
+
+{% if site.mapboxToken %}
+
+<div class="map-wrap">
+
+  {# Mapbox GL draws its markers to a canvas: they cannot be tabbed to and a
+     screen reader sees nothing. This list opens the same panel the markers
+     do, and is the only way in without a mouse. #}
+  <nav id="adw-map-venues" class="map-venues visually-hidden" aria-label="All venues">
+    <h2>All venues</h2>
+    <ul>
+      {%- for v in mapPoints.venues %}
+      <li><button type="button" data-venue="{{ v.slug }}">{{ v.venue }} — {{ v.count }} event{% if v.count != 1 %}s{% endif %}</button></li>
+      {%- endfor %}
+    </ul>
+  </nav>
+
+  <div id="adw-map" class="map-canvas" role="application" aria-label="Map of Adelaide Design Week venues"></div>
+
+  <aside id="adw-map-panel" class="map-panel" hidden aria-label="Venue details">
+    <button type="button" class="map-panel-close" aria-label="Close venue details">close</button>
+    <div class="map-panel-body"></div>
+  </aside>
+
+</div>
+
+<div class="map-legend">
+  <h2 class="map-legend-h">the marks</h2>
+  <ul>
+    <li><span class="lg-mark lg-exh" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> exhibition</li>
+    <li><span class="lg-mark lg-conv" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> conversation</li>
+    <li><span class="lg-mark lg-inst" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> installation</li>
+    <li><span class="lg-mark lg-open" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> open studio</li>
+    <li><span class="lg-mark lg-tour" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> tour</li>
+    <li><span class="lg-mark lg-work" aria-hidden="true"><svg class="ast"><use href="#ast"></use></svg></span> workshop</li>
+  </ul>
+  <p class="map-legend-note">A bigger <svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg> with a number is several events together — tap it to open them up.</p>
+</div>
+
+{# Parsed by map.js. A script tag of type application/json is inert: the
+   browser never executes it, so event titles and blurbs cannot escape into
+   the page as code. #}
+<script type="application/json" id="adw-map-data">{{ { "token": site.mapboxToken, "geojson": mapPoints.geojson } | dump | safe }}</script>
+
+{% else %}
+
+<div class="page prose">
+  <p><strong>The map is not switched on yet.</strong> It needs a Mapbox access token in <code>src/_data/site.json</code> as <code>mapboxToken</code> — a public <code>pk.</code> token, restricted to this domain.</p>
+</div>
+
+{% endif %}
+
+{% if mapPoints.dropped.length %}
+{# Visible to editors reading the page source, not to visitors. A venue that
+   quietly fails to appear is the failure mode worth making noisy. #}
+<!--
+  Not on the map ({{ mapPoints.dropped.length }}):
+  {%- for d in mapPoints.dropped %}
+  - {{ d.title }} @ {{ d.venue }} — {{ d.reason }}
+  {%- endfor %}
+-->
+{% endif %}

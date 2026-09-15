@@ -14,6 +14,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const site = require("./site.json");
 
 const FIXED = ["category", "title", "ticketed", "venue", "blurb", "link", "socials",
                "note", "contributors", "adw_presented"];
@@ -97,9 +98,39 @@ function parseCsv(text) {
   return rows.filter((r) => r.cells.some((v) => v.trim() !== ""));
 }
 
-module.exports = function () {
+// The program lives in a Google Sheet so it can be edited by the people who run
+// the festival. The copy committed here is the safety net: if the sheet is
+// unreachable, unpublished or slow, the build uses the last known good program
+// rather than failing or publishing an empty page.
+async function readProgram() {
   const file = path.join(__dirname, "program-2026.csv");
-  const rows = parseCsv(fs.readFileSync(file, "utf8"));
+  const local = fs.readFileSync(file, "utf8");
+  const url = (site.programSheetCsv || "").trim();
+  if (!url) {
+    console.log("[program] no sheet configured — using the committed CSV");
+    return local;
+  }
+  try {
+    const res = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(20000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    // A sheet that has been unpublished answers with an HTML page, not a CSV.
+    if (/^\s*</.test(text) || !/^category\s*,/i.test(text)) {
+      throw new Error("that URL did not return the program as CSV");
+    }
+    console.log(`[program] loaded from the Google Sheet (${text.length} bytes)`);
+    return text;
+  } catch (err) {
+    console.warn(
+      `[program] could not read the Google Sheet (${err.message}) — ` +
+      `publishing the last committed program instead`
+    );
+    return local;
+  }
+}
+
+module.exports = async function () {
+  const rows = parseCsv(await readProgram());
   if (rows.length < 2) fail("the file is empty, or has only a header row.");
 
   const header = rows[0].cells.map((h) => (h || "").trim());

@@ -20,4 +20,7 @@ module.exports = {
   css: hash("assets/css/site.css"),
   programJs: hash("assets/js/program.js"),
   updatesJs: hash("assets/js/program-updates.js"),
+  mapCss: hash("assets/css/map.css"),
+  mapJs: hash("assets/js/map.js"),
+  mapStyleJs: hash("assets/js/map-style.js"),
 };
