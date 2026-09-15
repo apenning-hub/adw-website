@@ -1,10 +1,15 @@
 ---
 title: Map
-navLabel: map
-navOrder: 3
-permalink: /map/
 layout: base.njk
 map: true
+# LOCAL ONLY. The permalink is decided in src/map.11tydata.js, which returns
+# false on a Cloudflare build — so this page is not written, not linked and
+# not deployed. It exists at http://localhost:8080/map/ under `npm run dev`
+# and nowhere else.
+#
+# To publish it when it is ready: add `navLabel: map` and `navOrder: 3` here,
+# then follow the note in src/map.11tydata.js.
+noindex: true
 description: Where every*one is happening — every venue in the Adelaide Design Week 2026 program, on one map of Kaurna/Adelaide.
 ---
 
@@ -13,7 +18,7 @@ description: Where every*one is happening — every venue in the Adelaide Design
 <p class="pg-intro">{{ mapPoints.eventCount }} events across {{ mapPoints.venueCount }} places. Tap an <svg class="ast ast--sm" aria-hidden="true"><use href="#ast"></use></svg> to see what is on there.</p>
 </header>
 
-{% if site.mapboxToken %}
+{% if env.mapboxToken %}
 
 <div class="map-wrap">
 
@@ -54,12 +59,12 @@ description: Where every*one is happening — every venue in the Adelaide Design
 {# Parsed by map.js. A script tag of type application/json is inert: the
    browser never executes it, so event titles and blurbs cannot escape into
    the page as code. #}
-<script type="application/json" id="adw-map-data">{{ { "token": site.mapboxToken, "geojson": mapPoints.geojson } | dump | safe }}</script>
+<script type="application/json" id="adw-map-data">{{ { "token": env.mapboxToken, "style": site.mapboxStyle, "geojson": mapPoints.geojson } | dump | safe }}</script>
 
 {% else %}
 
 <div class="page prose">
-  <p><strong>The map is not switched on yet.</strong> It needs a Mapbox access token in <code>src/_data/site.json</code> as <code>mapboxToken</code> — a public <code>pk.</code> token, restricted to this domain.</p>
+  <p><strong>The map is not switched on yet.</strong> Copy <code>.env.example</code> to <code>.env</code> and put a public Mapbox token (<code>pk.</code>) in <code>MAPBOX_PUBLIC_TOKEN</code>, then restart <code>npm run dev</code>.</p>
 </div>
 
 {% endif %}
