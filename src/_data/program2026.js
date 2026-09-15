@@ -374,6 +374,14 @@ module.exports = async function () {
       links.push({ label, url, day: day ? day.label : null });
     });
 
+    // The same address under two names is one place to buy a ticket, however it
+    // was typed. Keep the first and drop the rest, rather than showing two
+    // buttons that go to the same page.
+    for (let i = links.length - 1; i > 0; i--) {
+      const same = (a, b) => a.replace(/\/+$/, "").toLowerCase() === b.replace(/\/+$/, "").toLowerCase();
+      if (links.slice(0, i).some((earlier) => same(earlier.url, links[i].url))) links.splice(i, 1);
+    }
+
     if (links.length > 1 && links.some((l) => !l.label)) {
       fail(
         `row ${line} ("${title}") has more than one link but one of them has no ` +

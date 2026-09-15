@@ -189,6 +189,10 @@ is one of the day columns — `FRI 16 OCT : https://...` — that link is also t
 one that day's calendar entry carries. With several links each needs a name, so
 the button can say which it is.
 
+Two names pointing at the same address are one place to buy a ticket, so only
+the first is shown. That happens while a second link is still being chased up,
+and it means a half-filled cell reads correctly in the meantime.
+
 **note** — optional. One short line, shown where the booking button sits. Use it
 for a prize, or to say a link isn't out yet:
 
