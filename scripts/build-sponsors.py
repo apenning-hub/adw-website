@@ -56,7 +56,7 @@ TIERS = [
    ("CDK Stone",            W+"poster/cdk-stone.png"),
    ("City of Adelaide",     W+"rasterised/city-of-adelaide.png"),
    ("Curated by Tom",       L+"04_Bronze/05_Curated by Tom/Curated By Tom Logo [Black].eps"),
-   ("Daniel Emma",          W+"poster/daniel-emma.png"),
+   ("Daniel Emma",          L+"04_Bronze/06_Daniel and Emma/Daniel Emma Horizontal Outlines.jpg"),
    ("Design by WBL",        L+"04_Bronze/07_Design by WBL/PNG/DESIGN-BY-WBL_LOGO_BLACK.png"),
    ("Future Urban",         L+"04_Bronze/08_Future Urban/FutureUrban Logo_Black_White Background.pdf"),
    ("Insight Lighting",     L+"04_Bronze/09_Insight Lighting/insight-RGB-Colour-POS-300dpi.png"),
@@ -206,13 +206,22 @@ SITES = {
 AREA = {"Platinum": 6400, "Gold": 4800, "Silver": 3500, "Bronze": 2700, "Donations": 2300}
 CLAMP = {"Platinum": (62, 250), "Gold": (52, 210), "Silver": (44, 180),
          "Bronze": (38, 155), "Donations": (34, 145)}
+# Equal area alone punishes a long, thin wordmark: matching the area of a
+# compact mark leaves it only a dozen pixels tall, and the letterforms are what
+# carry it. So heights have a floor, and a very wide logo is allowed past the
+# usual width in order to reach it.
+HMIN = {"Platinum": 26, "Gold": 23, "Silver": 20, "Bronze": 18, "Donations": 16}
+WIDE = 1.5
 
 def display_size(w, h, tier):
     import math
-    a = AREA[tier]; hmax, wmax = CLAMP[tier]
+    a = AREA[tier]; hmax, wmax = CLAMP[tier]; hmin = HMIN[tier]
     dh = math.sqrt(a * h / w); dw = a / dh
     if dh > hmax: dh, dw = hmax, hmax * w / h
     if dw > wmax: dw, dh = wmax, wmax * h / w
+    if dh < hmin:
+        dh, dw = hmin, hmin * w / h
+        if dw > wmax * WIDE: dw, dh = wmax * WIDE, wmax * WIDE * h / w
     return int(round(dw)), int(round(dh))
 
 # Sponsors supply logos cropped hard to the artwork, so at footer size the ink
