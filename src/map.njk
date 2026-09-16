@@ -1,14 +1,12 @@
 ---
 title: Map
+permalink: /map-testing/
 layout: base.njk
 map: true
-# LOCAL ONLY. The permalink is decided in src/map.11tydata.js, which returns
-# false on a Cloudflare build — so this page is not written, not linked and
-# not deployed. It exists at http://localhost:8080/map/ under `npm run dev`
-# and nowhere else.
-#
-# To publish it when it is ready: add `navLabel: map` and `navOrder: 3` here,
-# then follow the note in src/map.11tydata.js.
+# Published, but unlisted. No navOrder, so it is not in the nav; noindex, so
+# it stays out of search results; and /map-testing/ rather than /map/, so the
+# name says what it is. When it is ready: rename the permalink to /map/, add
+# `navLabel: map` and `navOrder: 3`, and drop the noindex.
 noindex: true
 description: Where every*one is happening — every venue in the Adelaide Design Week 2026 program, on one map of Kaurna/Adelaide.
 ---

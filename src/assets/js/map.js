@@ -268,7 +268,10 @@
         '<span class="map-cat" title="' + esc(ev.categoryLabel) + '">' +
           esc(ev.category) + "</span>" +
         '<span class="map-event-title">' +
-          '<a href="/program/#' + esc(ev.slug) + '">' + esc(ev.title) + "</a>" +
+          // The program page's a-z anchors are "az-<slug>", not "<slug>".
+          // Linking to the bare slug matches nothing and silently drops the
+          // reader at the top of a 88-event page.
+          '<a href="/program/#az-' + esc(ev.slug) + '">' + esc(ev.title) + "</a>" +
           (ev.ticketed ? ASTERISK : "") +
         "</span>" +
       "</p>" +

@@ -18,24 +18,11 @@ module.exports = function (eleventyConfig) {
   // Everything this map uses — clustering, getClusterLeaves, addImage with a
   // pixelRatio, cooperativeGestures — exists in v2. Retry v3 only with that
   // measurement repeated, not on the assumption that newer is better.
-  //
-  // Copied only when the map page itself is built. The map is local-only for
-  // now (see src/map.11tydata.js), and there is no reason to put a megabyte
-  // of library on the live site for a page that is not there.
-  // Same rule as src/_data/env.js: local and preview branches carry the
-  // library, production does not.
-  const { shouldBuildMap } = require("./src/_data/env.js");
-  const buildMap = shouldBuildMap({
-    onCloudflare: process.env.CF_PAGES !== undefined,
-    branch: process.env.CF_PAGES_BRANCH,
-    override: process.env.MAP,
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/mapbox-gl/dist/mapbox-gl.js": "assets/js/mapbox-gl.js",
+    "node_modules/mapbox-gl/dist/mapbox-gl.css": "assets/css/mapbox-gl.css",
   });
-  if (buildMap) {
-    eleventyConfig.addPassthroughCopy({
-      "node_modules/mapbox-gl/dist/mapbox-gl.js": "assets/js/mapbox-gl.js",
-      "node_modules/mapbox-gl/dist/mapbox-gl.css": "assets/css/mapbox-gl.css",
-    });
-  }
+
   // This site deploys via Cloudflare Pages, which builds `main` for
   // production and every other branch to its own preview URL.
   //
