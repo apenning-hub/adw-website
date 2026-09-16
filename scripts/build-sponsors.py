@@ -211,7 +211,7 @@ CLAMP = {"Platinum": (62, 250), "Gold": (52, 210), "Silver": (44, 180),
 # carry it. So heights have a floor, and a very wide logo is allowed past the
 # usual width in order to reach it.
 HMIN = {"Platinum": 26, "Gold": 23, "Silver": 20, "Bronze": 18, "Donations": 16}
-WIDE = 1.5
+WIDE = 1.2
 
 def display_size(w, h, tier):
     import math
