@@ -8,7 +8,7 @@
 
 :root {
     --map-water: #DDE0D9;
-    --map-panel-w: 24rem;
+    --map-panel-w: 25rem;
 }
 
 /* The map
@@ -17,7 +17,8 @@
 .map-head { padding-block-end: var(--space-2); }
 
 .map-wrap {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr var(--map-panel-w);
     width: 100%;
     /* Full viewport below the sticky masthead, less room for the legend. */
     height: clamp(26rem, calc(100vh - var(--header-h) - 16rem), 46rem);
@@ -25,7 +26,22 @@
     background: var(--paper);
 }
 
-.map-canvas { position: absolute; inset: 0; }
+.map-canvas { min-width: 0; position: relative; }
+
+/* Only visible when the basemap has failed — see the load watchdog in map.js. */
+.map-stalled { display: none; }
+.map-canvas.is-stalled .map-stalled {
+    display: block;
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline: 0;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: var(--space-3);
+    text-align: center;
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+}
 
 /* Mapbox's own chrome, pulled back to the brand. */
 .map-wrap .mapboxgl-ctrl-group {
@@ -50,47 +66,166 @@
     background: rgba(51, 51, 51, 0.7);
 }
 
-/* Panel
+/* The map and its list
    ========================================================================== */
 
-.map-panel {
-    position: absolute;
-    inset-block: 0;
-    inset-inline-end: 0;
-    width: min(var(--map-panel-w), 100%);
+.map-side {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;                 /* so the list, not the page, scrolls */
+    /* A grid item will not shrink below its content's min-content width
+       unless told to. The day pills are `nowrap`, so their min-content is
+       the full width of all eight of them — which pushed this column past
+       the edge of the screen and took the toggle and the rows with it. */
+    min-width: 0;
     background: var(--paper);
     border-inline-start: 1px solid var(--line);
+}
+
+.map-side-controls {
+    padding: var(--space-2) var(--space-2) var(--space-1);
+    border-bottom: 1px solid var(--line);
+}
+
+/* The toggle and the day pills are the program page's own components,
+   reused wholesale — see .pg-views / .pg-view and .pg-days / .pg-daybtn in
+   site.css. Nothing is redefined here except the two things that differ in
+   a narrow column: the pills scroll sideways rather than wrapping into a
+   block, and the toggle fills the column. */
+.map-side .pg-views { margin-block-end: var(--space-1); }
+.map-side .pg-view { flex: 1 1 0; text-align: center; padding-inline: 0.5rem; }
+.map-side .map-days {
+    margin-block-end: 0;
+    padding-block-end: 0.25rem;
+    max-width: 100%;
+}
+
+.map-side-count {
+    padding: var(--space-2) var(--space-2) 0;
+    margin: 0;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+
+/* the rows — the program list's rhythm, in a narrower column */
+.map-side-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    flex: 1 1 auto;
+}
+
+.map-rows {
+    list-style: none;
+    margin: var(--space-1) var(--space-2) var(--space-3);
+    padding: 0;
+    border-block-start: 1px solid var(--line);
+}
+.map-rows li { border-block-end: 1px solid var(--line); }
+
+.map-rows button {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 0.75rem;
+    align-items: baseline;
+    width: 100%;
+    text-align: start;
+    background: none;
+    border: 0;
+    padding-block: 0.6rem;
+    font-size: 0.9375rem;
+    color: var(--ink);
+    transition: background var(--transition);
+}
+/* Yellow on hover, exactly as a program row behaves. */
+.map-rows button:hover,
+.map-rows button:focus-visible { background: var(--yellow); }
+.map-rows button:focus-visible { outline: none; }
+.map-rows button.is-selected { background: var(--yellow); }
+
+/* In "shows" mode a category code leads the row, as in the program list.
+   Two columns, not three: the times live under the title rather than in a
+   column of their own, which is what let a four-word title wrap to four
+   lines and pushed a horizontal scrollbar under the list. */
+.map-rows button:has(.row-cat) { grid-template-columns: 2.75rem 1fr; }
+
+.row-cat {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+}
+.row-name {
+    font-weight: 700;
+    color: var(--ink-strong);
+    min-width: 0;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+.row-name .ast { margin-inline-start: 0.3em; }
+.row-venue {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    margin-block-start: 0.1rem;
+}
+.row-meta {
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    margin-block-start: 0.1rem;
+}
+/* In "venues" mode the count keeps its own right-hand column. */
+.map-rows button:not(:has(.row-cat)) .row-meta {
+    display: inline;
+    color: var(--ink-soft);
+    text-align: end;
+}
+
+.map-empty {
+    padding: var(--space-3) var(--space-2);
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+}
+
+.map-side-detail {
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: var(--space-3);
-    z-index: 2;
+    flex: 1 1 auto;
+    padding: var(--space-2);
 }
 
-.map-panel-close {
-    position: sticky;
-    top: 0;
-    float: inline-end;
-    margin-inline-start: var(--space-2);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    color: var(--ink);
-    font-size: 0.8125rem;
-    padding: 0.25rem 0.625rem;
-    text-transform: lowercase;
+.map-detail-back {
+    background: none;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 0.25rem;
+    margin-block-end: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
 }
-.map-panel-close:hover { border-color: var(--ink); color: var(--ink-strong); }
-.map-panel-close:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
+.map-detail-back:hover { color: var(--ink-strong); border-bottom-color: var(--ink); }
+.map-detail-back:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
 
 .map-panel-venue {
-    font-family: var(--font-display);
-    font-size: 1.375rem;
-    text-transform: lowercase;
+    /* site.css lowercases h1-h6 and sets the display face on them. A venue
+       name is the organisers' text, not a heading treatment, so it opts out
+       of both — "Jam Factory" must not render as "jam factory". */
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
     color: var(--ink-strong);
     margin-block-end: 0.125rem;
 }
 
 .map-panel-count {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     color: var(--ink-soft);
     margin-block-end: var(--space-2);
 }
@@ -100,25 +235,50 @@
     padding-block: var(--space-2);
 }
 
+/* Category code then title, the same two-column head the program list uses,
+   so an event looks like itself in both places. */
+.map-event-head {
+    display: grid;
+    grid-template-columns: 2.75rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    margin-block-end: 0.375rem;
+    font-size: 0.9375rem;
+}
+
+.map-cat {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+}
+
 .map-event-title {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    text-transform: lowercase;
-    margin-block: 0 0.125rem;
+    font-weight: 700;
+    color: var(--ink-strong);
+    min-width: 0;
+    line-height: 1.3;
 }
 .map-event-title a { text-decoration-thickness: 1px; }
+.map-event-title .ast { margin-inline-start: 0.3em; }
 
-.map-event-cat {
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    color: var(--ink-soft);
-    margin-block-end: 0.375rem;
+/* Times in their own column, lining up down the list — what makes it
+   scannable when a venue has four events on four days. */
+.map-when {
+    display: grid;
+    /* Wide enough for the longest day label the sheet uses ("Wed 14 Oct").
+       At 2.75rem the day ran straight into the time: "Wed 14 Oct12.15pm". */
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.15rem 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
 }
-
-.map-when { font-size: 0.8125rem; line-height: 1.5; }
-.map-when .map-day { color: var(--ink-strong); font-weight: 700; }
+.map-when li { display: contents; }
+.map-when .map-day { color: var(--ink-soft); white-space: nowrap; }
+.map-when .map-times { color: var(--ink); font-variant-numeric: tabular-nums; }
 
 .map-event-link { font-size: 0.8125rem; margin-block: 0.5rem 0; }
+.map-event-link a { text-decoration: none; border-bottom: 1px solid var(--line); }
+.map-event-link a:hover { border-bottom-color: var(--ink); }
 
 /* Legend
    ========================================================================== */
@@ -188,19 +348,23 @@
 /* Narrow
    ========================================================================== */
 
-@media (max-width: 700px) {
-    .map-wrap { height: clamp(22rem, calc(100vh - var(--header-h) - 12rem), 34rem); }
+@media (max-width: 820px) {
+    /* A side-by-side split on a phone leaves neither half usable. The map
+       keeps a fixed slice at the top and the list runs underneath it, which
+       is the order they are read in anyway. */
+    .map-wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 18rem minmax(0, 24rem);
+        height: auto;
+    }
 
-    /* A right-hand panel on a phone would leave a sliver of map. Bottom
-       sheet instead, so the pin stays visible above it. */
-    .map-panel {
-        inset: auto 0 0 0;
-        width: 100%;
-        max-height: 55%;
+    .map-side {
         border-inline-start: 0;
         border-top: 1px solid var(--ink);
     }
-}
+
+    .map-days { gap: 0.3rem; }
+    }
 
 @media (prefers-reduced-motion: reduce) {
     .map-panel { transition: none; }
@@ -260,3 +424,22 @@
     outline: 2px solid var(--ink-strong);
     outline-offset: -2px;
 }
+
+/* The Shopfront Design Circuit
+   ========================================================================== */
+
+.map-circuit-designer {
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    margin-block: 0.125rem 0;
+}
+
+.map-circuit-all {
+    border-top: 1px solid var(--line);
+    margin-block-start: var(--space-2);
+    padding-block-start: var(--space-2);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+}
+.map-circuit-all strong { color: var(--ink-strong); }

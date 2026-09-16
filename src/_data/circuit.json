@@ -1,0 +1,63 @@
+{
+  "_comment": [
+    "The Shopfront Design Circuit, drawn on the map as a connected path.",
+    "",
+    "The event itself has one venue cell — 'Various Locations, East End, ADL CBD'",
+    "— which is not a place and cannot be pinned. Its stops are named in the",
+    "program's contributors column, as 'business x designer' pairs. The business",
+    "half is the shopfront you walk to, so that is what is listed here.",
+    "",
+    "THE ORDER OF THIS LIST IS THE ORDER OF THE WALK. It started as the order",
+    "the contributors column happens to be in, which is not necessarily the",
+    "route anyone would walk. Reorder these freely — the line on the map",
+    "follows this list and nothing else.",
+    "",
+    "Coordinates come from src/_data/venues.json, the same file the venue pins",
+    "Each stop has an \"address\" — fill it in and the pin is exact. Empty, the shop name is geocoded instead, which for a small East End business usually means a guess at the middle of the city.",
+    "use, filled in by scripts/geocode-venues.py."
+  ],
+  "title": "SHOPFRONT DESIGN CIRCUIT",
+  "eventVenue": "Various Locations, East End, ADL CBD",
+  "stops": [
+    {
+      "name": "Jewels of Thought Records",
+      "designer": "Tom Borgas",
+      "address": "15 Ebenezer Place, Adelaide SA 5000"
+    },
+    {
+      "name": "Galeria Grafika",
+      "designer": "Tristan Kerr",
+      "address": "22 Ebenezer Place, Adelaide SA 5000"
+    },
+    {
+      "name": "Utopian Creations",
+      "designer": "Jake Lane",
+      "address": "20 Ebenezer Place, Adelaide SA 5000"
+    },
+    {
+      "name": "Naomi Murrel",
+      "designer": "Sophia Moore",
+      "address": "5 Ebenezer Place, Adelaide SA 5000"
+    },
+    {
+      "name": "Shop Pond / Filter Store",
+      "designer": "Moraene Architecture & Design Collective",
+      "address": "Shop 4, 4-10 Ebenezer Place, Adelaide SA 5000"
+    },
+    {
+      "name": "Nudie Jeans",
+      "designer": "Will Cheeseman and Oliver Hyde",
+      "address": "Shop 2, 228-230 Rundle Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Miss Gladys Sim Choon",
+      "designer": "Claire Markwick-Smith",
+      "address": "235A Rundle Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Aesop",
+      "designer": "Andrew Carvolth",
+      "address": "232 Rundle Street, Adelaide SA 5000"
+    }
+  ]
+}

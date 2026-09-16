@@ -8,16 +8,21 @@ module.exports = function (eleventyConfig) {
   // pinned by package-lock.json, so a library update can never arrive on the
   // live site without a commit.
   //
-  // Copied only when the map page itself is built. The map is local-only for
-  // now (see src/map.11tydata.js), and there is no reason to put a megabyte
-  // of library on the live site for a page that is not there.
-  const buildMap = process.env.CF_PAGES === undefined || process.env.MAP === "1";
-  if (buildMap) {
-    eleventyConfig.addPassthroughCopy({
-      "node_modules/mapbox-gl/dist/mapbox-gl.js": "assets/js/mapbox-gl.js",
-      "node_modules/mapbox-gl/dist/mapbox-gl.css": "assets/css/mapbox-gl.css",
-    });
-  }
+  // Pinned to v2, deliberately. v3 loads an "iconset.pbf" and then stalls on
+  // this account: the style never finishes loading, no sources load, and the
+  // map renders as blank paper with an empty console. Measured against the
+  // same token and the same style:
+  //     v3.30.0  styleLoaded=false  sourceLoaded=false
+  //     v3.9.0   styleLoaded=false  sourceLoaded=false
+  //     v2.15.0  styleLoaded=true   sourceLoaded=true
+  // Everything this map uses — clustering, getClusterLeaves, addImage with a
+  // pixelRatio, cooperativeGestures — exists in v2. Retry v3 only with that
+  // measurement repeated, not on the assumption that newer is better.
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/mapbox-gl/dist/mapbox-gl.js": "assets/js/mapbox-gl.js",
+    "node_modules/mapbox-gl/dist/mapbox-gl.css": "assets/css/mapbox-gl.css",
+  });
+
   // This site deploys via Cloudflare Pages, which builds `main` for
   // production and every other branch to its own preview URL.
   //

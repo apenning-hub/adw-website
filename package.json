@@ -7,13 +7,18 @@
     "dev": "eleventy --serve --quiet",
     "build": "eleventy",
     "clean": "rm -rf _site",
-    "fetch-media-images": "node scripts/fetch-media-images.js"
+    "fetch-media-images": "node scripts/fetch-media-images.js",
+    "test": "node --test test/*.test.js && python3 scripts/test_geocode_venues.py",
+    "geocode-venues": "python3 scripts/geocode-venues.py",
+    "build-venue-thumbs": "node scripts/build-venue-thumbs.js",
+    "publish-map-style": "node scripts/publish-map-style.js"
   },
   "engines": {
     "node": ">=20"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "image-size": "^2.0.2"
+    "image-size": "^2.0.2",
+    "mapbox-gl": "^2.15.0"
   }
 }
