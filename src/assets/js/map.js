@@ -656,11 +656,10 @@
         "metres of each other, so the map marks the precinct rather than " +
         "each window. Walk the two streets — they are all on them.</p>" +
       stops.map(function (s) {
+        // A shopfront has no category code, so it does not use the two-column
+        // head the program events use — an empty column just indents the name.
         return '<article class="map-event">' +
-          '<p class="map-event-head">' +
-            '<span class="map-cat"></span>' +
-            '<span class="map-event-title">' + esc(s.name) + "</span>" +
-          "</p>" +
+          '<p class="map-shop-name">' + esc(s.name) + "</p>" +
           (s.address ? '<p class="map-circuit-addr">' + esc(s.address) + "</p>" : "") +
           (s.designer ? '<p class="map-circuit-designer">with ' + esc(s.designer) + "</p>" : "") +
           "</article>";

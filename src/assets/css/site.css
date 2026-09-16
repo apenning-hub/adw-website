@@ -1319,6 +1319,12 @@ hr {
 .ast {
     width: 1em; height: 1em; fill: currentColor;
     vertical-align: -0.12em; flex: none;
+    /* The mark's six points sit on the very edge of its viewBox — measured,
+       they span x -4..1564 inside a 1560-wide box — so an SVG clipping to its
+       viewport by default shaves the tips off every asterisk on the site.
+       The overflow is about four units in fifteen hundred: invisible as
+       spacing, the difference between a clean point and a flat one. */
+    overflow: visible;
 }
 .ast--sm { width: 0.72em; height: 0.72em; vertical-align: -0.02em; }
 /* These lines are flex rows, so the mark aligns with align-self, not

@@ -315,8 +315,8 @@
 .lg-mark .ast {
     width: 0.875rem;
     height: 0.875rem;
-    /* The mark's points sit on the edge of its viewBox, and the rotated
-       variant pushes past it. SVG clips to the viewport by default. */
+    /* The rotated installation mark needs more room than the shared rule
+       in site.css gives, since rotation pushes points past the box. */
     overflow: visible;
 }
 
@@ -439,6 +439,14 @@
     line-height: 1.5;
     color: var(--ink-soft);
     margin-block-end: var(--space-2);
+}
+
+.map-shop-name {
+    font-weight: 700;
+    color: var(--ink-strong);
+    font-size: 0.9375rem;
+    line-height: 1.3;
+    margin: 0 0 0.125rem;
 }
 
 .map-circuit-addr {
