@@ -58,8 +58,9 @@
     "ast-plain": { fill: "inkStrong" },
   };
 
-  var ICON_PX = 26;        // logical size of a marker at icon-size 1
-  var CLUSTER_PX = 42;
+  var ICON_PX = 29;        // logical size of a marker at icon-size 1
+                           // (26 before padding; the viewBox grew ~10%)
+  var CLUSTER_PX = 46;
 
   // Rasterise at the display's own pixel density, not at a fixed 4x.
   // Mapbox uploads the icon as a GL texture and filters it linearly with no
@@ -81,9 +82,16 @@
     var box = symbol.getAttribute("viewBox").split(/[\s,]+/).map(Number);
     var w = box[2], h = box[3];
     var cx = w / 2, cy = h / 2;
-    // Strokes are centred on the path, so the viewBox is padded or the
-    // outlined variants lose their outer edge to clipping.
-    var pad = spec.stroke ? 90 : 0;
+
+    // The mark's points reach the very edge of its own viewBox — measured,
+    // the tips span x -4..1564 inside a 1560-wide box. So every variant needs
+    // padding, not just the outlined ones:
+    //   - unpadded, the tips are shaved off by antialiasing
+    //   - rotating 30 degrees puts points where the box has no room at all
+    //   - a stroke is centred on the path, so half of its 110 units sits
+    //     outside the shape
+    // ICON_PX below is sized to match, so the mark does not shrink.
+    var pad = 80 + (spec.stroke ? 60 : 0);
 
     // The sprite was exported from Inkscape and carries inkscape:* attributes.
     // Inline in the page that is harmless — HTML parsing ignores unknown

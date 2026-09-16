@@ -312,7 +312,13 @@
 /* The six marks, matching MARKS in map.js. One shape, six fills — if these
    and the JS ever disagree, the legend is telling a lie about the map. */
 .lg-mark { display: inline-flex; position: relative; }
-.lg-mark .ast { width: 0.875rem; height: 0.875rem; }
+.lg-mark .ast {
+    width: 0.875rem;
+    height: 0.875rem;
+    /* The mark's points sit on the edge of its viewBox, and the rotated
+       variant pushes past it. SVG clips to the viewport by default. */
+    overflow: visible;
+}
 
 .lg-exh  .ast { color: var(--ink-strong); }
 .lg-conv .ast { color: var(--ink-strong); }
