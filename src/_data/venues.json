@@ -8,13 +8,12 @@
     "query": "66 Wyatt Street, Adelaide SA 5000, Australia"
   },
   "Kaurna Building L3, ADL Uni, ADL CBD": {
-    "lat": -34.911425,
-    "lng": 138.614842,
-    "matched_address": "University Street, Hackney South Australia 5069, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Kaurna Building L3, University of Adelaide, Adelaide CBD, SA, Australia",
-    "fallback": true
+    "lat": -34.92304,
+    "lng": 138.591338,
+    "matched_address": "Kaurna Building, 2 Fenn Place, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "manual",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
   },
   "Fab Workshop, Kent Town": {
     "lat": -34.920485,
@@ -25,13 +24,12 @@
     "query": "12 King William Street, Kent Town SA 5067, Australia"
   },
   "Queens Theatre, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Queens Theatre, Adelaide CBD, SA, Australia",
-    "fallback": true
+    "lat": -34.92554,
+    "lng": 138.595592,
+    "matched_address": "The Queens Theatre, Playhouse Lane, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "manual",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
   },
   "The Meeting Hall, ADL CBD": {
     "lat": -34.926009,
@@ -96,13 +94,12 @@
     "source": "manual"
   },
   "Dental School, Adelaide University, ADL CBD": {
-    "lat": -34.911425,
-    "lng": 138.614842,
-    "matched_address": "University Street, Hackney South Australia 5069, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Dental School, University of Adelaide, Adelaide CBD, SA, Australia",
-    "fallback": true
+    "lat": -34.92165,
+    "lng": 138.591369,
+    "matched_address": "AHMS Building, North Terrace, Adelaide SA 5000 (School of Dentistry, Level 10)",
+    "confidence": 1.0,
+    "source": "manual",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
   },
   "Honeydripper, ADL CBD": {
     "lat": -34.921672,
@@ -499,13 +496,9 @@
     "query": "21 Franklin Street, Adelaide SA 5000, Australia"
   },
   "MEET: Sir Douglas Nicholls Bridge, CBD ADL": {
-    "lat": -34.9421,
-    "lng": 138.60873,
-    "matched_address": "Douglas Street, Parkside South Australia 5063, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "MEET: Sir Douglas Nicholls Bridge, CBD Adelaide, SA, Australia",
-    "fallback": true
+    "skip": true,
+    "reason": "meeting point withheld - not published on the map",
+    "source": "manual"
   },
   "The Studio, AGSA, ADL CBD": {
     "lat": -34.920368,
