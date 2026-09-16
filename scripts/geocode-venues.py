@@ -199,9 +199,14 @@ def normalise(venue):
             else:
                 start = i + 1
 
-    # The shorthand rules already append ", SA" where they apply; don't say
-    # it twice.
-    if text.lower().endswith(", sa"):
+    # Don't say the state twice. The shorthand rules append ", SA", and a
+    # researched address already carries "... Norwood SA 5067" — appending
+    # another ", SA" to that produced "Norwood SA 5067, SA, Australia", which
+    # Mapbox answered with a suburb centroid rather than the street number.
+    tail = text.lower().rstrip()
+    has_state = tail.endswith(", sa") or re.search(r"\bsa\b\s*\d{4}$", tail) \
+        or re.search(r"\bsa$", tail)
+    if has_state:
         return text + ", Australia"
     return text + ", SA, Australia"
 
@@ -344,6 +349,27 @@ def unique_venues(csv_path):
 CONFIDENCE_WORDS = {"exact": 1.0, "high": 0.9, "medium": 0.6, "low": 0.3}
 
 
+def fetch_json(url, headers=None, attempts=3):
+    """GET some JSON, retrying transient network failures.
+
+    A run makes ~70 requests over a couple of minutes; one dropped connection
+    should not abandon the whole pass and leave venues.json half-updated.
+    HTTP errors are raised immediately — those are answers, not failures.
+    """
+    last = None
+    for attempt in range(attempts):
+        try:
+            request = urllib.request.Request(url, headers=headers or {})
+            with urllib.request.urlopen(request, timeout=25) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError:
+            raise
+        except Exception as err:                    # noqa: BLE001 - retried
+            last = err
+            time.sleep(1.5 * (attempt + 1))
+    raise last
+
+
 def geocode_mapbox(query, token):
     """Ask Mapbox where this is. Returns an entry dict, or None."""
     params = urllib.parse.urlencode({
@@ -355,8 +381,7 @@ def geocode_mapbox(query, token):
         "access_token": token,
     })
     url = f"https://api.mapbox.com/search/geocode/v6/forward?{params}"
-    with urllib.request.urlopen(url, timeout=20) as resp:
-        data = json.load(resp)
+    data = fetch_json(url)
 
     features = data.get("features") or []
     if not features:
@@ -412,9 +437,7 @@ def geocode_osm(query):
         "accept-language": "en",
     })
     url = f"https://nominatim.openstreetmap.org/search?{params}"
-    request = urllib.request.Request(url, headers={"User-Agent": OSM_UA})
-    with urllib.request.urlopen(request, timeout=25) as resp:
-        results = json.load(resp)
+    results = fetch_json(url, headers={"User-Agent": OSM_UA})
 
     if not results:
         return None

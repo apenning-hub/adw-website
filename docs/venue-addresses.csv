@@ -1,8 +1,10 @@
 venue,address,confidence,evidence
+"SODA, West Croydon","1 Rosetta Street, West Croydon SA 5008",HIGH,sodaobjects.com/contact - sheet corrected the spelling from 'West Croyden'
+"Hygge Studios, Hyde Park","28 Fullarton Road, Norwood SA 5067",HIGH,confirmed by ADW: held at Lo & Co; loandcointeriors.com.au gives 28 Fullarton Rd
 "Coldstore, 66 Wyatt St, Adelaide","66 Wyatt Street, Adelaide SA 5000",HIGH,in venue string; enoki.com.au/the-coldstore
-"Kaurna Building L3, ADL Uni, ADL CBD","Kaurna Building (Level 3), 2 Fenn Place, Adelaide SA 5000",MEDIUM,"UniSA City West campus map - street number ""2"" weak"
+"Kaurna Building L3, ADL Uni, ADL CBD","Kaurna Building, Fenn Place, Adelaide SA 5000",MEDIUM,"UniSA City West campus map - street number ""2"" weak | no confirmed street number"
 "Fab Workshop, Kent Town","12 King William Street, Kent Town SA 5067",HIGH,lookeast.npsp.sa.gov.au; helpmannacademy.com.au
-"Queens Theatre, ADL CBD","Playhouse Lane (cnr Gilles Arcade), Adelaide SA 5000",HIGH,Wikipedia; adelaidefestival.com.au - NO street number exists
+"Queens Theatre, ADL CBD","Queens Theatre, Gilles Arcade, Adelaide SA 5000",HIGH,Wikipedia; adelaidefestival.com.au - NO street number exists | no street number exists - laneway venue
 "The Meeting Hall, ADL CBD","25 Pirie Street, Adelaide SA 5000 (Meeting Hall, Paul Kelly Lane)",HIGH,adelaidetownhall.com.au/room/meeting-hall
 "EST Studio, ADL CBD","94 Gilles Street, Adelaide SA 5000",HIGH,Humanitix after-hours-soft-power confirms creativespaces.net.au
 "Studio Gram, Brompton","68 Chief Street, Brompton SA 5007",HIGH,studio-gram.com.au/contact; Yellowtrace
@@ -11,7 +13,7 @@ venue,address,confidence,evidence
 "Reform Distilling, Kent Town","91 Little Rundle Street, Kent Town SA 5067",HIGH,rfrm.com.au/pages/contact; southaustralia.com
 "Basement Gallery, ADL CBD","12 Kingston Street, Adelaide SA 5000",HIGH,"Humanitix bloom-group-exhibition-adw-2026 (gives 12, not 12-14)"
 Thebarton,UNKNOWN,LOW,"roving vehicle, no fixed address published - pin suburb only"
-"Dental School, Adelaide University, ADL CBD","AHMS Building, cnr North Terrace & George Street, Adelaide SA 5000 (Level 10)",MEDIUM,adelaide.edu.au/about/school/dentistry - no street number published; NOT the old Frome Rd site
+"Dental School, Adelaide University, ADL CBD","Adelaide Health and Medical Sciences Building, North Terrace, Adelaide SA 5000",MEDIUM,adelaide.edu.au/about/school/dentistry - no street number published; NOT the old Frome Rd site | university publishes no street number; NOT the old Frome Rd dental site
 "Honeydripper, ADL CBD","11 Frome Street, Adelaide SA 5000",HIGH,Broadsheet; southaustralia.com
 "Fabrikate, ADL CBD","14/248 Grenfell Street, Adelaide SA 5000",HIGH,fabrikate.com.au/studio; Houzz
 "Terrace Floors, Eastwood","51 Glen Osmond Road, Eastwood SA 5063",HIGH,terracefloors.com.au/contact
@@ -52,7 +54,7 @@ Various ADW Events,NOT A PLACE - program-wide placeholder,HIGH,generic
 "Arc Tile Showroom, ADL CBD","Unit 4, 9-17 Young Street, Adelaide SA 5000",MEDIUM,arctiledesign.com.au/contact
 "Imprints, ADL CBD","107 Hindley Street, Adelaide SA 5000",HIGH,imprints.com.au; White Pages; ABA
 "JPE Design Studio, ADL CBD","Level 4, 19 Gilles Street, Adelaide SA 5000",HIGH,jpe.com.au/contact; D&B
-"The Forum, Jeffrey Smart, ADL CBD","Jeffrey Smart Building, 217-243 Hindley Street, Adelaide SA 5000",MEDIUM,Yelp/Apple Maps; adelaide.edu.au
+"The Forum, Jeffrey Smart, ADL CBD","Jeffrey Smart Building, 217 Hindley Street, Adelaide SA 5000",MEDIUM,Yelp/Apple Maps; adelaide.edu.au | building range 217-243
 "Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD","Hawke Building, 55 North Terrace (cnr Fenn Place), Adelaide SA 5000",HIGH,hawkecentre.adelaide.edu.au/about/location
 "The Light Impact, Norwood","66 The Parade, Norwood SA 5067",HIGH,thelightimpact.com.au/contact-us
 "Stylecraft, ADL CBD","11 Waymouth Street, Adelaide SA 5000",HIGH,stylecraft.com.au/showrooms/adelaide
@@ -63,7 +65,7 @@ Various ADW Events,NOT A PLACE - program-wide placeholder,HIGH,generic
 "Qantas Office, ADL CBD","UNKNOWN - Pirie Street, Adelaide SA 5000 only",LOW,InDaily 15 Sep 2026; no street number published anywhere - DO NOT GUESS
 "MEET: Jewels of Thought Records, Ebenezer Place CBD, ADL","15 Ebenezer Place, Adelaide SA 5000",HIGH,Record Store Day AU; Broadsheet
 "MEET: Faraway House, 21 Franklin Street, CBD, ADL","21 Franklin Street, Adelaide SA 5000",HIGH,Ray White; SA History Festival
-"MEET: Sir Douglas Nicholls Bridge, CBD ADL","Footbridge over the Torrens between Plane Tree Drive (Botanic Park) and War Memorial Drive, Adelaide SA 5000",HIGH,"Adelaide Park Lands Assoc - no street number; ~1.5km E of CBD, NOT the Oval footbridge"
+"MEET: Sir Douglas Nicholls Bridge, CBD ADL","Sir Douglas Nicholls Bridge, War Memorial Drive, North Adelaide SA 5006",HIGH,"Adelaide Park Lands Assoc - no street number; ~1.5km E of CBD, NOT the Oval footbridge | parklands footbridge, no street address"
 "The Studio, AGSA, ADL CBD","490 North Terrace, Adelaide SA 5000 (The Studio, Courtyard Level)",HIGH,agsa.sa.gov.au/whats-on/ongoing-programs/studio
 "Being Studio, 27 Halifax St, CBD, ADL","27 Halifax Street, Adelaide SA 5000",MEDIUM,luma.com/2jg84c32 withholds location until registration; street from ADW's own sheet
 "The Mill, ADL CBD","154 Angas Street, Adelaide SA 5000",HIGH,themilladelaide.com/contact-us

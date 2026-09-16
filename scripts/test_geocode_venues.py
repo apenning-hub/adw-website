@@ -46,6 +46,18 @@ class TestNormalise(unittest.TestCase):
         self.assertEqual(gv.normalise("Hygge Studios, Hyde Park, ADL"),
                          "Hygge Studios, Hyde Park, Adelaide, SA, Australia")
 
+    def test_a_real_address_with_a_postcode_is_not_given_a_second_state(self):
+        # Researched addresses arrive as "28 Fullarton Road, Norwood SA 5067".
+        # Appending ", SA, Australia" made "...Norwood SA 5067, SA, Australia",
+        # which Mapbox answered with a suburb centroid instead of the street.
+        self.assertEqual(
+            gv.normalise("28 Fullarton Road, Norwood SA 5067"),
+            "28 Fullarton Road, Norwood SA 5067, Australia")
+
+    def test_a_state_without_a_postcode_is_also_enough(self):
+        self.assertEqual(gv.normalise("11 Waymouth Street, Adelaide SA"),
+                         "11 Waymouth Street, Adelaide SA, Australia")
+
     def test_australia_is_not_appended_twice(self):
         self.assertEqual(gv.normalise("Somewhere, SA, Australia"),
                          "Somewhere, SA, Australia")
