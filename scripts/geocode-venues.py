@@ -292,6 +292,37 @@ def venue_addresses(csv_text):
     return found
 
 
+def merge_addresses(sheet_text, local_text):
+    """Venue addresses from the sheet, topped up from the committed CSV.
+
+    The sheet is the program's source of truth but has no address column
+    yet; the committed CSV carries the researched addresses. An address in
+    either counts, and the sheet wins where both have one — so the day the
+    column reaches the sheet, this quietly stops mattering.
+
+    Venue order follows the sheet, since that is what the site builds from.
+    """
+    sheet = venue_addresses(sheet_text)
+    local = venue_addresses(local_text)
+
+    # Match on a normalised key, not the raw string. The sheet holds both
+    # "UNBUILT, North Adelaide" and "Unbuilt,  North Adelaide" for one place,
+    # and both "West Croyden" and "West Croydon" — exact matching gave the
+    # address to one spelling and left the other on a suburb centroid.
+    def key(venue):
+        return " ".join(venue.lower().split()).rstrip(".,")
+
+    by_key = {}
+    for venue, address in local.items():
+        if address:
+            by_key[key(venue)] = address
+
+    merged = {}
+    for venue, address in sheet.items():
+        merged[venue] = address or by_key.get(key(venue), "")
+    return merged
+
+
 def lookup_text(venue, address):
     """What actually gets geocoded: the address when there is one."""
     return address.strip() if address and address.strip() else venue
@@ -448,7 +479,8 @@ def main():
         existing = json.loads(OUT_PATH.read_text(encoding="utf-8"))
 
     program = read_program()
-    addresses = venue_addresses(program)
+    addresses = merge_addresses(
+        program, CSV_PATH.read_text(encoding="utf-8"))
     venues = list(addresses.keys())
 
     # The Shopfront Design Circuit's stops are not venues in the program —

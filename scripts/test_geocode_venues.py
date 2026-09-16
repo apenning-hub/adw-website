@@ -178,6 +178,59 @@ class TestAddresses(unittest.TestCase):
                          "Jam Factory, ADL CBD")
 
 
+class TestAddressMerge(unittest.TestCase):
+    """Addresses come from wherever they exist.
+
+    The program is read from the Google Sheet, but the sheet has no address
+    column yet. The committed CSV does. Until the two agree, an address in
+    either one counts — otherwise the researched addresses are silently
+    ignored on every build, which is exactly what happened once.
+    """
+
+    SHEET = ("category,title,ticketed,venue,blurb,link,socials,note,"
+             "contributors,adw_presented,wed 14 oct\n"
+             "EXH,A,,\"Jam Factory, ADL CBD\",,,,,,,10am\n"
+             "EXH,B,,\"AGSA, ADL CBD\",,,,,,,10am\n")
+
+    LOCAL = ("category,title,ticketed,venue,address,blurb,link,socials,note,"
+             "contributors,adw_presented,wed 14 oct\n"
+             "EXH,A,,\"Jam Factory, ADL CBD\",\"19 Morphett St, Adelaide\",,,,,,,10am\n"
+             "EXH,B,,\"AGSA, ADL CBD\",,,,,,,,10am\n")
+
+    def test_the_local_csv_fills_what_the_sheet_lacks(self):
+        got = gv.merge_addresses(self.SHEET, self.LOCAL)
+        self.assertEqual(got["Jam Factory, ADL CBD"], "19 Morphett St, Adelaide")
+
+    def test_a_venue_with_no_address_anywhere_stays_empty(self):
+        got = gv.merge_addresses(self.SHEET, self.LOCAL)
+        self.assertEqual(got["AGSA, ADL CBD"], "")
+
+    def test_the_sheet_wins_when_it_has_one(self):
+        # Once the address column reaches the sheet, the sheet is the source
+        # of truth and the committed copy stops mattering.
+        sheet = self.LOCAL.replace("19 Morphett St, Adelaide", "SHEET VALUE")
+        got = gv.merge_addresses(sheet, self.LOCAL)
+        self.assertEqual(got["Jam Factory, ADL CBD"], "SHEET VALUE")
+
+    def test_case_and_spacing_differences_still_match(self):
+        # The sheet contains both "UNBUILT, North Adelaide" and "Unbuilt,
+        # North Adelaide" for the same place. Exact-string matching gave one
+        # of them its address and left the other on a suburb centroid.
+        sheet = ('category,title,ticketed,venue,blurb,link,socials,note,'
+                 'contributors,adw_presented,wed 14 oct\n'
+                 'EXH,A,,"Unbuilt,  North Adelaide",,,,,,,10am\n')
+        local = ('category,title,ticketed,venue,address,blurb,link,socials,note,'
+                 'contributors,adw_presented,wed 14 oct\n'
+                 'EXH,A,,"UNBUILT, North Adelaide","104 Jeffcott St",,,,,,,10am\n')
+        got = gv.merge_addresses(sheet, local)
+        self.assertEqual(got["Unbuilt,  North Adelaide"], "104 Jeffcott St")
+
+    def test_venues_only_in_the_sheet_are_still_listed(self):
+        sheet = self.SHEET + 'EXH,C,,"New Venue",,,,,,,10am\n'
+        got = gv.merge_addresses(sheet, self.LOCAL)
+        self.assertIn("New Venue", got)
+
+
 class TestSkip(unittest.TestCase):
     """Some venue cells are not places at all."""
 

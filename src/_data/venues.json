@@ -3,62 +3,606 @@
     "lat": -34.926327,
     "lng": 138.604085,
     "matched_address": "66 Wyatt Street, Adelaide South Australia 5000, Australia",
-    "confidence": 0.9,
+    "confidence": 1.0,
     "source": "mapbox",
-    "query": "Coldstore, 66 Wyatt St, Adelaide, SA, Australia"
+    "query": "66 Wyatt Street, Adelaide SA 5000, SA, Australia"
   },
   "Kaurna Building L3, ADL Uni, ADL CBD": {
+    "lat": -34.922609,
+    "lng": 138.591491,
+    "matched_address": "Fenn Place, Adelaide South Australia 5000, Australia",
+    "confidence": 0.5,
+    "source": "mapbox",
+    "query": "Kaurna Building (Level 3), 2 Fenn Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Fab Workshop, Kent Town": {
+    "lat": -34.920485,
+    "lng": 138.616597,
+    "matched_address": "12 King William Street, Kent Town South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "12 King William Street, Kent Town SA 5067, SA, Australia"
+  },
+  "Queens Theatre, ADL CBD": {
+    "lat": -34.908941,
+    "lng": 138.596053,
+    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
+    "confidence": 0.49999999999999994,
+    "source": "mapbox",
+    "query": "Queens Theatre, Adelaide CBD, SA, Australia",
+    "fallback": true
+  },
+  "The Meeting Hall, ADL CBD": {
+    "lat": -34.926009,
+    "lng": 138.600798,
+    "matched_address": "25 Pirie Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "25 Pirie Street, Adelaide SA 5000 (Meeting Hall, Paul Kelly Lane), SA, Australia"
+  },
+  "EST Studio, ADL CBD": {
+    "lat": -34.933942,
+    "lng": 138.603849,
+    "matched_address": "94 Gilles Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "94 Gilles Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Studio Gram, Brompton": {
+    "lat": -34.899409,
+    "lng": 138.577815,
+    "matched_address": "68 Chief Street, Brompton South Australia 5007, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "68 Chief Street, Brompton SA 5007, SA, Australia"
+  },
+  "UNBUILT, North Adelaide": {
+    "lat": -34.909151,
+    "lng": 138.592651,
+    "matched_address": "104 Jeffcott Street, North Adelaide South Australia 5006, Australia",
+    "confidence": 0.9,
+    "source": "mapbox",
+    "query": "Hebart Hall, 104 Jeffcott Street, North Adelaide SA 5006, SA, Australia"
+  },
+  "Lo & Co Interiors, Norwood": {
+    "lat": -34.921288,
+    "lng": 138.632,
+    "matched_address": "Norwood, South Australia, Australia",
+    "confidence": 0.49999999999999994,
+    "source": "mapbox",
+    "query": "Lo & Co Interiors, Norwood, SA, Australia",
+    "fallback": true
+  },
+  "Reform Distilling, Kent Town": {
+    "lat": -34.919335,
+    "lng": 138.61935,
+    "matched_address": "91 Little Rundle Street, Kent Town South Australia 5067, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "91 Little Rundle Street, Kent Town SA 5067, SA, Australia"
+  },
+  "Basement Gallery, ADL CBD": {
+    "lat": -34.924073,
+    "lng": 138.596628,
+    "matched_address": "12 Kingston Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "12 Kingston Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Thebarton": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN",
+    "source": "manual"
+  },
+  "Dental School, Adelaide University, ADL CBD": {
     "lat": -34.911425,
     "lng": 138.614842,
     "matched_address": "University Street, Hackney South Australia 5069, Australia",
     "confidence": 0.49999999999999994,
     "source": "mapbox",
-    "query": "Kaurna Building L3, University of Adelaide, Adelaide CBD, SA, Australia",
+    "query": "Dental School, University of Adelaide, Adelaide CBD, SA, Australia",
     "fallback": true
   },
-  "Fab Workshop, Kent Town": {
-    "lat": -34.92063,
-    "lng": 138.61925,
-    "matched_address": "Kent Town, South Australia, Australia",
+  "Honeydripper, ADL CBD": {
+    "lat": -34.921672,
+    "lng": 138.607576,
+    "matched_address": "11 Frome Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "11 Frome Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Fabrikate, ADL CBD": {
+    "lat": -34.923681,
+    "lng": 138.610294,
+    "matched_address": "248 Grenfell Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "14/248 Grenfell Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Terrace Floors, Eastwood": {
+    "lat": -34.943242,
+    "lng": 138.62057,
+    "matched_address": "51 Glen Osmond Road, Eastwood South Australia 5063, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "51 Glen Osmond Road, Eastwood SA 5063, SA, Australia"
+  },
+  "Yitpi Yartapuultiku, Port Adelaide": {
+    "lat": -34.851487,
+    "lng": 138.500431,
+    "matched_address": "1300 Old Port Road, Port Adelaide South Australia 5015, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "1300 Old Port Road, Port Adelaide SA 5015, SA, Australia"
+  },
+  "4th Floor Elevator, ADL CBD": {
+    "lat": -34.924093,
+    "lng": 138.600247,
+    "matched_address": "14 Grenfell Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 4, 14 Grenfell Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Georgie Shepherd Interior Design, Norwood": {
+    "lat": -34.91887,
+    "lng": 138.626022,
+    "matched_address": "46 Beulah Road, Norwood South Australia 5067, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "46B Beulah Road, Norwood SA 5067, SA, Australia"
+  },
+  "Woods Bagot, ADL CBD": {
+    "lat": -34.926006,
+    "lng": 138.598956,
+    "matched_address": "11 Waymouth Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 14, 11 Waymouth Street, Adelaide SA 5000, SA, Australia"
+  },
+  "AGSA, ADL CBD": {
+    "lat": -34.920368,
+    "lng": 138.603889,
+    "matched_address": "490 North Terrace, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "490 North Terrace, Adelaide SA 5000, SA, Australia"
+  },
+  "Washdog Studios, Kent Town": {
+    "lat": -34.920485,
+    "lng": 138.616597,
+    "matched_address": "12 King William Street, Kent Town South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "12 King William Street, Kent Town SA 5067, SA, Australia"
+  },
+  "19 Twin Street, ADL CBD": {
+    "lat": -34.924024,
+    "lng": 138.604427,
+    "matched_address": "19 Twin Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "19 Twin Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Jam Factory, ADL CBD": {
+    "lat": -34.928897,
+    "lng": 138.593903,
+    "matched_address": "19 Morphett Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "19 Morphett Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Immersive Art and Installation, 63 Light Sq, CBD, ADL": {
+    "lat": -34.925576,
+    "lng": 138.592535,
+    "matched_address": "63 Light Square, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "63 Light Square, Adelaide SA 5000, SA, Australia"
+  },
+  "RF Lux, ADL CBD": {
+    "lat": -34.927062,
+    "lng": 138.606351,
+    "matched_address": "149 Flinders Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "149 Flinders Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Common Uncommon, ADL CBD": {
+    "lat": -34.934327,
+    "lng": 138.596664,
+    "matched_address": "100 Gilbert Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "100 Gilbert Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Various Locations, East End, ADL CBD": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - Shopfront Circuit trail, 8 shops around Ebenezer Pl / Rundle St East",
+    "source": "manual"
+  },
+  "215 Magill Rd, Maylands": {
+    "lat": -34.914682,
+    "lng": 138.636838,
+    "matched_address": "215 Magill Road, Maylands South Australia 5069, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "215 Magill Road, Maylands SA 5069, SA, Australia"
+  },
+  "SODA, West Croydon": {
+    "lat": -34.888954,
+    "lng": 138.55902,
+    "matched_address": "West Croydon, South Australia, Australia",
     "confidence": 0.49999999999999994,
     "source": "mapbox",
-    "query": "Fab Workshop, Kent Town, SA, Australia",
+    "query": "SODA, West Croydon, SA, Australia",
     "fallback": true
   },
-  "Queens Theatre, ADL CBD": {
-    "lat": -34.925542,
-    "lng": 138.595593,
-    "matched_address": "The Queens Theatre, Playhouse Lane, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Queens Theatre, Adelaide, South Australia"
+  "Liverpool Gallery, ADL CBD": {
+    "lat": -34.922802,
+    "lng": 138.590105,
+    "matched_address": "39 Liverpool Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "Liverpool Street Gallery, 39 Liverpool Street, Adelaide SA 5000, SA, Australia"
   },
-  "The Meeting Hall, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
+  "My Cloud Nine, ADL CBD": {
+    "lat": -34.935025,
+    "lng": 138.590554,
+    "matched_address": "263 Gilbert Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "263 Gilbert Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Sans-Arc Studio, West Croydon": {
+    "lat": -34.894066,
+    "lng": 138.55702,
+    "matched_address": "3a Malcolm Street, West Croydon South Australia 5008, Australia",
+    "confidence": 0.9,
+    "source": "mapbox",
+    "query": "3A Malcolm Street, West Croydon SA 5008, SA, Australia"
+  },
+  "Mixed Goods Studio, Kilkenny": {
+    "lat": -34.872913,
+    "lng": 138.555769,
+    "matched_address": "64 Humphries Terrace, Kilkenny South Australia 5009, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "3/64 Humphries Terrace, Kilkenny SA 5009, SA, Australia"
+  },
+  "Design by WBL, ADL CBD": {
+    "lat": -34.926955,
+    "lng": 138.597896,
+    "matched_address": "28 Franklin Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 3, 28 Franklin Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Various ADW Events": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - program-wide placeholder",
+    "source": "manual"
+  },
+  "Hebart Hall, North Adelaide": {
+    "lat": -34.909151,
+    "lng": 138.592651,
+    "matched_address": "104 Jeffcott Street, North Adelaide South Australia 5006, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "104 Jeffcott Street, North Adelaide SA 5006, SA, Australia"
+  },
+  "(Secret Location), ADL CBD": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - undisclosed by design",
+    "source": "manual"
+  },
+  "Plant 3, Bowden": {
+    "lat": -34.90612,
+    "lng": 138.578614,
+    "matched_address": "6-14 Fourth Street, Bowden South Australia 5007, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "6-14 Fourth Street, Bowden SA 5007, SA, Australia"
+  },
+  "Michi, ADL CBD": {
+    "lat": -34.927669,
+    "lng": 138.605373,
+    "matched_address": "223 Pulteney Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "223 Pulteney Street, Adelaide SA 5000, SA, Australia"
+  },
+  "VARIOUS, ADL CBD": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - roving vehicle",
+    "source": "manual"
+  },
+  "Smokelovers, ADL CBD": {
+    "lat": -34.922368,
+    "lng": 138.60866,
+    "matched_address": "244 Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "244 Rundle Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Nudie Jeans, ADL CBD": {
+    "lat": -34.922334,
+    "lng": 138.608093,
+    "matched_address": "230 Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "230 Rundle Street, Adelaide SA 5000 (Shop 2, 228-230), SA, Australia"
+  },
+  "Crafted Hardwoods, Plympton": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN - Plympton SA 5038 only",
+    "source": "manual"
+  },
+  "Estilo, ADL CBD": {
+    "lat": -34.925934,
+    "lng": 138.592428,
+    "matched_address": "192 Waymouth Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 1, 192 Waymouth Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Mid-Century House, Lynton": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "WITHHELD - private home; ticket page shows 'Lynton S.A.' only",
+    "source": "manual"
+  },
+  "Mixed Goods Studios, Kilkenny": {
+    "lat": -34.872913,
+    "lng": 138.555769,
+    "matched_address": "64 Humphries Terrace, Kilkenny South Australia 5009, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "3/64 Humphries Terrace, Kilkenny SA 5009, SA, Australia"
+  },
+  "1/149 Flinders St, ADL CBD": {
+    "lat": -34.927062,
+    "lng": 138.606351,
+    "matched_address": "149 Flinders Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "1/149 Flinders Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Yadura Design Studio, Parkside": {
+    "lat": -34.944796,
+    "lng": 138.609307,
+    "matched_address": "149a Young Street, Parkside South Australia 5063, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "149A Young Street, Parkside SA 5063, SA, Australia"
+  },
+  "Nearly Bar, ADL CBD": {
+    "lat": -34.923515,
+    "lng": 138.592584,
+    "matched_address": "179 Hindley Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "179 Hindley Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Arc Tile Showroom, ADL CBD": {
+    "lat": -34.926519,
+    "lng": 138.595962,
+    "matched_address": "9-17 Young Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Unit 4, 9-17 Young Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Imprints, ADL CBD": {
+    "lat": -34.923428,
+    "lng": 138.59558,
+    "matched_address": "107 Hindley Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "107 Hindley Street, Adelaide SA 5000, SA, Australia"
+  },
+  "JPE Design Studio, ADL CBD": {
+    "lat": -34.934473,
+    "lng": 138.601181,
+    "matched_address": "19 Gilles Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 4, 19 Gilles Street, Adelaide SA 5000, SA, Australia"
+  },
+  "The Forum, Jeffrey Smart, ADL CBD": {
+    "lat": -34.923302,
+    "lng": 138.593407,
+    "matched_address": "Hindley Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.5,
+    "source": "mapbox",
+    "query": "Jeffrey Smart Building, 217-243 Hindley Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD": {
+    "lat": -34.922019,
+    "lng": 138.591493,
+    "matched_address": "55 North Terrace, Adelaide South Australia 5000, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "Hawke Building, 55 North Terrace (cnr Fenn Place), Adelaide SA 5000, SA, Australia"
+  },
+  "The Light Impact, Norwood": {
+    "lat": -34.921863,
+    "lng": 138.629144,
+    "matched_address": "66 The Parade, Norwood South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "66 The Parade, Norwood SA 5067, SA, Australia"
+  },
+  "Stylecraft, ADL CBD": {
+    "lat": -34.926006,
+    "lng": 138.598956,
+    "matched_address": "11 Waymouth Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "11 Waymouth Street, Adelaide SA 5000, SA, Australia"
+  },
+  "WIP Shed, 28A Dew St, Thebarton": {
+    "lat": -34.919287,
+    "lng": 138.573319,
+    "matched_address": "28 Dew Street, Thebarton South Australia 5031, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "28A Dew Street, Thebarton SA 5031, SA, Australia"
+  },
+  "GGA Studio, ADL CBD": {
+    "lat": -34.925568,
+    "lng": 138.608877,
+    "matched_address": "243 Pirie Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "243 Pirie Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Jardan, ADL CBD": {
+    "lat": -34.927103,
+    "lng": 138.60898,
+    "matched_address": "223 Flinders Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "223 Flinders Street, Adelaide SA 5000, SA, Australia"
+  },
+  "MEET: A PLACE coffee, Bowden": {
+    "lat": -34.905656,
+    "lng": 138.575469,
+    "matched_address": "37 Second Street, Bowden South Australia 5007, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "37 Second Street, Bowden SA 5007, SA, Australia"
+  },
+  "Qantas Office, ADL CBD": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN - Pirie Street, Adelaide SA 5000 only",
+    "source": "manual"
+  },
+  "MEET: Jewels of Thought Records, Ebenezer Place CBD, ADL": {
+    "lat": -34.923039,
+    "lng": 138.609087,
+    "matched_address": "15 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "15 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "MEET: Faraway House, 21 Franklin Street, CBD, ADL": {
+    "lat": -34.927614,
+    "lng": 138.598186,
+    "matched_address": "21 Franklin Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "21 Franklin Street, Adelaide SA 5000, SA, Australia"
+  },
+  "MEET: Sir Douglas Nicholls Bridge, CBD ADL": {
+    "lat": -34.9421,
+    "lng": 138.60873,
+    "matched_address": "Douglas Street, Parkside South Australia 5063, Australia",
     "confidence": 0.49999999999999994,
     "source": "mapbox",
-    "query": "The Meeting Hall, Adelaide CBD, SA, Australia",
+    "query": "MEET: Sir Douglas Nicholls Bridge, CBD Adelaide, SA, Australia",
     "fallback": true
   },
-  "EST Studio, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
+  "The Studio, AGSA, ADL CBD": {
+    "lat": -34.920368,
+    "lng": 138.603889,
+    "matched_address": "490 North Terrace, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
     "source": "mapbox",
-    "query": "EST Studio, Adelaide CBD, SA, Australia",
-    "fallback": true
+    "query": "490 North Terrace, Adelaide SA 5000 (The Studio, Courtyard Level), SA, Australia"
   },
-  "Studio Gram, Brompton": {
-    "lat": -34.897224,
-    "lng": 138.57654,
-    "matched_address": "Brompton, South Australia, Australia",
-    "confidence": 0.49999999999999994,
+  "Being Studio, 27 Halifax St, CBD, ADL": {
+    "lat": -34.933291,
+    "lng": 138.601266,
+    "matched_address": "27-29 Halifax Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.3,
     "source": "mapbox",
-    "query": "Studio Gram, Brompton, SA, Australia",
-    "fallback": true
+    "query": "27 Halifax Street, Adelaide SA 5000, SA, Australia"
+  },
+  "The Mill, ADL CBD": {
+    "lat": -34.929357,
+    "lng": 138.606798,
+    "matched_address": "154 Angas Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "154 Angas Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Min Jewellery, g14 33 Pirie St, CBD, ADL": {
+    "lat": -34.926034,
+    "lng": 138.60107,
+    "matched_address": "33 Pirie Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Suite G14, Epworth Building, 33 Pirie Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Jewels of Thought Records": {
+    "lat": -34.923039,
+    "lng": 138.609087,
+    "matched_address": "15 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "15 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Galeria Grafika": {
+    "lat": -34.92295,
+    "lng": 138.608983,
+    "matched_address": "22 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "22 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Utopian Creations": {
+    "lat": -34.92295,
+    "lng": 138.608983,
+    "matched_address": "20 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "20 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Naomi Murrel": {
+    "lat": -34.923093,
+    "lng": 138.60915,
+    "matched_address": "5 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "5 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Shop Pond / Filter Store": {
+    "lat": -34.92295,
+    "lng": 138.608983,
+    "matched_address": "4-10 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Shop 4, 4-10 Ebenezer Place, Adelaide SA 5000, SA, Australia"
+  },
+  "Nudie Jeans": {
+    "lat": -34.922387,
+    "lng": 138.608097,
+    "matched_address": "228 Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "Shop 2, 228-230 Rundle Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Miss Gladys Sim Choon": {
+    "lat": -34.922765,
+    "lng": 138.608425,
+    "matched_address": "235a Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "235A Rundle Street, Adelaide SA 5000, SA, Australia"
+  },
+  "Aesop": {
+    "lat": -34.922329,
+    "lng": 138.608193,
+    "matched_address": "232 Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "232 Rundle Street, Adelaide SA 5000, SA, Australia"
   },
   "Unbuilt, North Adelaide": {
     "lat": -34.90864,
@@ -78,173 +622,6 @@
     "query": "Hygge Studios, Hyde Park, SA, Australia",
     "fallback": true
   },
-  "Reform Distilling, Kent Town": {
-    "lat": -34.92063,
-    "lng": 138.61925,
-    "matched_address": "Kent Town, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Reform Distilling, Kent Town, SA, Australia",
-    "fallback": true
-  },
-  "Basement Gallery, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Basement Gallery, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Thebarton": {
-    "lat": -34.915147,
-    "lng": 138.572492,
-    "matched_address": "Thebarton, Adelaide, South Australia, Australia",
-    "confidence": 0.4,
-    "source": "osm",
-    "query": "Thebarton, South Australia"
-  },
-  "Dental School, Adelaide University, ADL CBD": {
-    "lat": -34.911425,
-    "lng": 138.614842,
-    "matched_address": "University Street, Hackney South Australia 5069, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Dental School, University of Adelaide, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Honeydripper, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Honeydripper, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Fabrikate, ADL CBD": {
-    "lat": -34.923695,
-    "lng": 138.610297,
-    "matched_address": "Fabrikate, 248, Grenfell Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Fabrikate, Adelaide, South Australia"
-  },
-  "Terrace Floors, Eastwood": {
-    "lat": -34.943311,
-    "lng": 138.620537,
-    "matched_address": "Terrace Floors, 51, Glen Osmond Road, Eastwood, Adelaide, South Australia, 5063, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Terrace Floors, Eastwood, South Australia"
-  },
-  "Yitpi Yartapuultiku, Port Adelaide": {
-    "lat": -34.851316,
-    "lng": 138.500501,
-    "matched_address": "Yitpi Yartapuultiku, Old Port Road, Port Adelaide, Adelaide, South Australia, 5015, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Yitpi Yartapuultiku, Port Adelaide, South Australia"
-  },
-  "4th Floor Elevator, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "4th Floor Elevator, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Georgie Shepherd Interior Design, Norwood": {
-    "lat": -34.92141,
-    "lng": 138.636623,
-    "matched_address": "George Street, Norwood South Australia 5067, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Georgie Shepherd Interior Design, Norwood, SA, Australia",
-    "fallback": true
-  },
-  "Woods Bagot, ADL CBD": {
-    "lat": -34.911022,
-    "lng": 138.597013,
-    "matched_address": "Bagot Street, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Woods Bagot, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "AGSA, ADL CBD": {
-    "lat": -34.920631,
-    "lng": 138.603969,
-    "matched_address": "Art Gallery of South Australia, Western Drive, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Art Gallery of South Australia, Adelaide, South Australia"
-  },
-  "Washdog Studios, Kent Town": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Washdog Studios, Kent Town, SA, Australia",
-    "fallback": true
-  },
-  "19 Twin Street, ADL CBD": {
-    "lat": -34.840327,
-    "lng": 138.624703,
-    "matched_address": "19 Twin Street, Northfield South Australia 5085, Australia",
-    "confidence": 0.6,
-    "source": "mapbox",
-    "query": "19 Twin Street, Adelaide CBD, SA, Australia"
-  },
-  "Jam Factory, ADL CBD": {
-    "lat": -34.922812,
-    "lng": 138.593026,
-    "matched_address": "JamFactory, Sia Furler Lane, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "JamFactory, Adelaide, South Australia"
-  },
-  "Immersive Art and Installation, 63 Light Sq, CBD, ADL": {
-    "lat": -34.925576,
-    "lng": 138.592535,
-    "matched_address": "63 Light Square, Adelaide South Australia 5000, Australia",
-    "confidence": 0.6,
-    "source": "mapbox",
-    "query": "Immersive Art and Installation, 63 Light Sq, Adelaide CBD, SA, Australia"
-  },
-  "RF Lux, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "RF Lux, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Common Uncommon, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Common Uncommon, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Various Locations, East End, ADL CBD": {
-    "skip": true,
-    "reason": "not a location",
-    "source": "rule"
-  },
-  "215 Magill Rd, Maylands": {
-    "lat": -34.914682,
-    "lng": 138.636838,
-    "matched_address": "215 Magill Road, Maylands South Australia 5069, Australia",
-    "confidence": 0.9,
-    "source": "mapbox",
-    "query": "215 Magill Rd, Maylands, SA, Australia"
-  },
   "SODA, West Croyden": {
     "lat": -34.888954,
     "lng": 138.55902,
@@ -252,415 +629,6 @@
     "confidence": 0.49999999999999994,
     "source": "mapbox",
     "query": "SODA, West Croyden, SA, Australia",
-    "fallback": true
-  },
-  "Liverpool Gallery, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Liverpool Gallery, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "My Cloud Nine, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "My Cloud Nine, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Sans-Arc Studio, West Croydon": {
-    "lat": -34.888954,
-    "lng": 138.55902,
-    "matched_address": "West Croydon, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Sans-Arc Studio, West Croydon, SA, Australia",
-    "fallback": true
-  },
-  "Mixed Goods Studio, Kilkenny": {
-    "lat": -34.87843,
-    "lng": 138.55359,
-    "matched_address": "Kilkenny, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Mixed Goods Studio, Kilkenny, SA, Australia",
-    "fallback": true
-  },
-  "Design by WBL, ADL CBD": {
-    "lat": -34.930439,
-    "lng": 138.624163,
-    "matched_address": "Bay Road, Rose Park South Australia 5067, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Design by WBL, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Various ADW Events": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Various ADW Events, SA, Australia",
-    "fallback": true
-  },
-  "Hebart Hall, North Adelaide": {
-    "lat": -34.90864,
-    "lng": 138.59677,
-    "matched_address": "North Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Hebart Hall, North Adelaide, SA, Australia",
-    "fallback": true
-  },
-  "(Secret Location), ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "(Secret Location), Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Plant 3, Bowden": {
-    "lat": -34.90612,
-    "lng": 138.578614,
-    "matched_address": "Plant 3 Bowden, 6-14, Fourth Street, Bowden, Adelaide, South Australia, 5007, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Plant 3 Bowden, Bowden, South Australia"
-  },
-  "Michi, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Michi, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "VARIOUS, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "VARIOUS, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Smokelovers, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Smokelovers, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Nudie Jeans, ADL CBD": {
-    "lat": -34.922444,
-    "lng": 138.608206,
-    "matched_address": "Nudie Jeans, Rundle Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Nudie Jeans, Adelaide, South Australia"
-  },
-  "Crafted Hardwoods, Plympton": {
-    "lat": -34.96174,
-    "lng": 138.55469,
-    "matched_address": "Plympton, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Crafted Hardwoods, Plympton, SA, Australia",
-    "fallback": true
-  },
-  "Estilo, ADL CBD": {
-    "lat": -34.926033,
-    "lng": 138.592382,
-    "matched_address": "Estilo Furniture, Ann Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Estilo, Adelaide, South Australia"
-  },
-  "Mid-Century House, Lynton": {
-    "lat": -34.995743,
-    "lng": 138.60945,
-    "matched_address": "Lynton, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Mid-Century House, Lynton, SA, Australia",
-    "fallback": true
-  },
-  "Mixed Goods Studios, Kilkenny": {
-    "lat": -34.87843,
-    "lng": 138.55359,
-    "matched_address": "Kilkenny, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Mixed Goods Studios, Kilkenny, SA, Australia",
-    "fallback": true
-  },
-  "1/149 Flinders St, ADL CBD": {
-    "lat": -34.927062,
-    "lng": 138.606351,
-    "matched_address": "149 Flinders Street, Adelaide South Australia 5000, Australia",
-    "confidence": 0.6,
-    "source": "mapbox",
-    "query": "1/149 Flinders St, Adelaide CBD, SA, Australia"
-  },
-  "Yadura Design Studio, Parkside": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Yadura Design Studio, Parkside, SA, Australia",
-    "fallback": true
-  },
-  "Nearly Bar, ADL CBD": {
-    "lat": -34.923729,
-    "lng": 138.592704,
-    "matched_address": "Nearly a Bar, 179, Hindley Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Nearly Bar, Adelaide, South Australia"
-  },
-  "Arc Tile Showroom, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Arc Tile Showroom, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Imprints, ADL CBD": {
-    "lat": -35.00248,
-    "lng": 138.511532,
-    "matched_address": "Imprints of Time, South Esplanade, North Brighton, Adelaide, South Australia, 5045, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Imprints, Adelaide, South Australia"
-  },
-  "JPE Design Studio, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "JPE Design Studio, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "The Forum, Jeffrey Smart, ADL CBD": {
-    "lat": -34.923812,
-    "lng": 138.590529,
-    "matched_address": "Jeffrey Smart Building, 243, Hindley Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Jeffrey Smart Building, Adelaide, South Australia"
-  },
-  "Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD": {
-    "lat": -34.922101,
-    "lng": 138.591467,
-    "matched_address": "16 Fenn Place, Adelaide South Australia 5000, Australia",
-    "confidence": 0.3,
-    "source": "mapbox",
-    "query": "Allan Scott Auditorium H2-16, Fenn Place, University of Adelaide, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "The Light Impact, Norwood": {
-    "lat": -34.921288,
-    "lng": 138.632,
-    "matched_address": "Norwood, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "The Light Impact, Norwood, SA, Australia",
-    "fallback": true
-  },
-  "Stylecraft, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Stylecraft, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "WIP Shed, 28A Dew St, Thebarton": {
-    "lat": -34.919287,
-    "lng": 138.573319,
-    "matched_address": "28 Dew Street, Thebarton South Australia 5031, Australia",
-    "confidence": 0.3,
-    "source": "mapbox",
-    "query": "WIP Shed, 28A Dew St, Thebarton, SA, Australia"
-  },
-  "GGA Studio, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "GGA Studio, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Jardan, ADL CBD": {
-    "lat": -34.979279,
-    "lng": 138.554854,
-    "matched_address": "Jordan Street, Plympton Park South Australia 5038, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Jardan, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "MEET: A PLACE coffee, Bowden": {
-    "lat": -34.905632,
-    "lng": 138.575454,
-    "matched_address": "A PLACE coffee, 37, Second Street, Bowden, Adelaide, South Australia, 5007, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "A PLACE coffee, Bowden, South Australia"
-  },
-  "Qantas Office, ADL CBD": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Qantas Office, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "MEET: Jewels of Thought Records, Ebenezer Place CBD, ADL": {
-    "lat": -34.922944,
-    "lng": 138.609185,
-    "matched_address": "Ebenezer Place, Adelaide South Australia 5000, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "MEET: Jewels of Thought Records, Ebenezer Place Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "MEET: Faraway House, 21 Franklin Street, CBD, ADL": {
-    "lat": -34.927614,
-    "lng": 138.598186,
-    "matched_address": "21 Franklin Street, Adelaide South Australia 5000, Australia",
-    "confidence": 0.6,
-    "source": "mapbox",
-    "query": "MEET: Faraway House, 21 Franklin Street, Adelaide CBD, SA, Australia"
-  },
-  "MEET: Sir Douglas Nicholls Bridge, CBD ADL": {
-    "lat": -34.9421,
-    "lng": 138.60873,
-    "matched_address": "Douglas Street, Parkside South Australia 5063, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "MEET: Sir Douglas Nicholls Bridge, CBD Adelaide, SA, Australia",
-    "fallback": true
-  },
-  "The Studio, AGSA, ADL CBD": {
-    "lat": -34.924446,
-    "lng": 138.59955,
-    "matched_address": "Adelaide, South Australia, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "The Studio, AGSA, Adelaide CBD, SA, Australia",
-    "fallback": true
-  },
-  "Being Studio, 27 Halifax St, CBD, ADL": {
-    "lat": -34.933291,
-    "lng": 138.601266,
-    "matched_address": "27-29 Halifax Street, Adelaide South Australia 5000, Australia",
-    "confidence": 0.3,
-    "source": "mapbox",
-    "query": "Being Studio, 27 Halifax St, Adelaide CBD, SA, Australia"
-  },
-  "The Mill, ADL CBD": {
-    "lat": -34.851222,
-    "lng": 138.488978,
-    "matched_address": "The Red Mill Bakehouse, 139, Bower Road, Ethelton, Adelaide, South Australia, 5015, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "The Mill, Adelaide, South Australia"
-  },
-  "Min Jewellery, g14 33 Pirie St, CBD, ADL": {
-    "lat": -34.926034,
-    "lng": 138.60107,
-    "matched_address": "33 Pirie Street, Adelaide South Australia 5000, Australia",
-    "confidence": 0.6,
-    "source": "mapbox",
-    "query": "Min Jewellery, g14 33 Pirie St, Adelaide CBD, SA, Australia"
-  },
-  "Jewels of Thought Records": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Jewels of Thought Records, SA, Australia",
-    "fallback": true
-  },
-  "Galeria Grafika": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Galeria Grafika, SA, Australia",
-    "fallback": true
-  },
-  "Utopian Creations": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Utopian Creations, SA, Australia",
-    "fallback": true
-  },
-  "Naomi Murrel": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Naomi Murrel, SA, Australia",
-    "fallback": true
-  },
-  "Shop Pond / Filter Store": {
-    "lat": -34.908941,
-    "lng": 138.596053,
-    "matched_address": "Australia Lane, North Adelaide South Australia 5006, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Shop Pond / Filter Store, SA, Australia",
-    "fallback": true
-  },
-  "Nudie Jeans": {
-    "lat": -34.922444,
-    "lng": 138.608206,
-    "matched_address": "Nudie Jeans, Rundle Street, Adelaide, South Australia, 5000, Australia",
-    "confidence": 0.85,
-    "source": "osm",
-    "query": "Nudie Jeans, South Australia"
-  },
-  "Miss Gladys Sim Choon": {
-    "lat": -34.922934,
-    "lng": 138.608261,
-    "matched_address": "Sym Choon Lane, Adelaide South Australia 5000, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Miss Gladys Sim Choon, SA, Australia",
-    "fallback": true
-  },
-  "Aesop": {
-    "lat": -34.843068,
-    "lng": 138.480549,
-    "matched_address": "Alsop Street, Semaphore South Australia 5019, Australia",
-    "confidence": 0.49999999999999994,
-    "source": "mapbox",
-    "query": "Aesop, SA, Australia",
     "fallback": true
   },
   "Travelling between events!": {
