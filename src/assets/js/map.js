@@ -303,6 +303,16 @@
           '<span class="row-meta">' + v.count + "</span>" +
           "</button></li>";
       }).join("");
+      // The circuit's own venue cell is "Various Locations" and is omitted
+      // from the pins, so without this row it is unreachable from the list.
+      if (DATA.circuit && DATA.circuit.marker) {
+        rows = '<li><button type="button" data-circuit="1">' +
+          '<span class="row-name">' + esc(DATA.circuit.title) +
+            '<span class="row-venue">Ebenezer Place &amp; Rundle Street East</span>' +
+          "</span>" +
+          '<span class="row-meta">' + DATA.circuit.marker.properties.count + "</span>" +
+          "</button></li>" + rows;
+      }
       countEl.textContent = venues.length +
         (venues.length === 1 ? " place" : " places") +
         (day ? " on " + day : "");
@@ -422,6 +432,8 @@
   });
 
   listEl.addEventListener("click", function (e) {
+    var circuit = e.target.closest("button[data-circuit]");
+    if (circuit) { showCircuit(); return; }
     var btn = e.target.closest("button[data-venue]");
     if (btn) showDetail(btn.dataset.venue);
   });
@@ -591,86 +603,86 @@
 
   function addCircuit() {
     var circuit = DATA.circuit;
-    if (!circuit || !circuit.points || !circuit.points.features.length) return;
+    if (!circuit || !circuit.marker) return;
 
-    if (circuit.line) {
-      map.addSource("circuit-line", { type: "geojson", data: circuit.line });
-      map.addLayer({
-        id: "circuit-path",
-        type: "line",
-        source: "circuit-line",
-        layout: { "line-cap": "round", "line-join": "round" },
-        paint: {
-          "line-color": palette.inkStrong,
-          "line-width": ["interpolate", ["linear"], ["zoom"], 12, 1, 16, 2.5],
-          // Dashed, because it is a walk between shops and not a road.
-          "line-dasharray": [1.5, 2],
-          "line-opacity": 0.8,
-        },
-      });
-    }
+    map.addSource("circuit", {
+      type: "geojson",
+      data: { type: "FeatureCollection", features: [circuit.marker] },
+    });
 
-    map.addSource("circuit-stops", { type: "geojson", data: circuit.points });
+    // One mark for the whole trail, drawn in the brand yellow so it reads as
+    // a different kind of thing from a venue without becoming a second mark.
+    // A ring behind it says "several places", which is what it is.
     map.addLayer({
-      id: "circuit-stops",
+      id: "circuit-ring",
+      type: "circle",
+      source: "circuit",
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 12, 16, 20],
+        "circle-color": palette.yellow,
+        "circle-stroke-width": 1,
+        "circle-stroke-color": palette.inkStrong,
+      },
+    });
+
+    map.addLayer({
+      id: "circuit-mark",
       type: "symbol",
-      source: "circuit-stops",
+      source: "circuit",
       layout: {
         "icon-image": "ast-plain",
         "icon-allow-overlap": true,
-        "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.6, 16, 0.85],
-        // The number is the order of the walk, set beside the mark rather
-        // than on it so the asterisk stays the asterisk.
-        "text-field": ["to-string", ["get", "step"]],
-        "text-font": ["DIN Pro Bold", "Arial Unicode MS Bold"],
-        "text-size": 11,
-        "text-offset": [0.95, 0],
-        "text-anchor": "left",
-        "text-allow-overlap": true,
-      },
-      paint: {
-        "text-color": palette.inkStrong,
-        "text-halo-color": palette.paper,
-        "text-halo-width": 1.5,
+        "icon-size": ["interpolate", ["linear"], ["zoom"], 12, 0.55, 16, 0.8],
       },
     });
   }
 
-  function circuitHtml(stop) {
-    return '<article class="map-event">' +
-      '<p class="map-event-head">' +
-        '<span class="map-cat">' + esc(String(stop.step)) + "</span>" +
-        '<span class="map-event-title">' + esc(stop.name) + "</span>" +
-      "</p>" +
-      (stop.designer
-        ? '<p class="map-circuit-designer">with ' + esc(stop.designer) + "</p>"
-        : "") +
-      "</article>";
+  function circuitStops() {
+    var m = DATA.circuit && DATA.circuit.marker;
+    if (!m) return [];
+    try { return JSON.parse(m.properties.stops); } catch (e) { return []; }
   }
 
-  function openCircuitPanel(step) {
-    var stops = DATA.circuit.points.features.map(function (f) { return f.properties; });
-    var here = stops.filter(function (s) { return s.step === step; })[0];
-    if (!here) return;
+  function showCircuit() {
+    var stops = circuitStops();
+    if (!stops.length) return;
+    selectedSlug = null;
 
-    panelBody.innerHTML =
+    detailBody.innerHTML =
       '<h2 class="map-panel-venue">' + esc(DATA.circuit.title) + "</h2>" +
-      '<p class="map-panel-count">stop ' + here.step + " of " + stops.length +
-        " &mdash; the numbered path on the map</p>" +
-      circuitHtml(here) +
-      '<p class="map-circuit-all">' + stops.map(function (s) {
-        return s.step === here.step
-          ? "<strong>" + esc(s.name) + "</strong>"
-          : esc(s.name);
-      }).join(" &middot; ") + "</p>";
+      '<p class="map-panel-count">' + stops.length +
+        " shopfronts around Ebenezer Place and Rundle Street East</p>" +
+      '<p class="map-circuit-note">The shops sit within about a hundred ' +
+        "metres of each other, so the map marks the precinct rather than " +
+        "each window. Walk the two streets — they are all on them.</p>" +
+      stops.map(function (s) {
+        return '<article class="map-event">' +
+          '<p class="map-event-head">' +
+            '<span class="map-cat"></span>' +
+            '<span class="map-event-title">' + esc(s.name) + "</span>" +
+          "</p>" +
+          (s.address ? '<p class="map-circuit-addr">' + esc(s.address) + "</p>" : "") +
+          (s.designer ? '<p class="map-circuit-designer">with ' + esc(s.designer) + "</p>" : "") +
+          "</article>";
+      }).join("");
 
-    panel.hidden = false;
-    root.classList.add("has-panel");
-    closeBtn.focus();
+    detailEl.hidden = false;
+    listEl.hidden = true;
+    countEl.hidden = true;
+    backBtn.focus();
+
+    if (map.getLayer && map.getLayer("venue-selected")) {
+      map.setFilter("venue-selected", ["==", ["get", "venueSlug"], NOTHING]);
+    }
+    map.easeTo({
+      center: DATA.circuit.marker.geometry.coordinates,
+      zoom: Math.max(map.getZoom(), 16),
+      duration: REDUCED ? 0 : 600,
+    });
   }
 
   function wireInteraction() {
-    ["clusters", "venues", "circuit-stops"].forEach(function (id) {
+    ["clusters", "venues", "circuit-ring", "circuit-mark"].forEach(function (id) {
       if (!map.getLayer(id)) return;
       map.on("mouseenter", id, function () {
         map.getCanvas().style.cursor = "pointer";
@@ -680,11 +692,9 @@
       });
     });
 
-    if (map.getLayer("circuit-stops")) {
-      map.on("click", "circuit-stops", function (e) {
-        openCircuitPanel(e.features[0].properties.step);
-      });
-    }
+    ["circuit-ring", "circuit-mark"].forEach(function (id) {
+      if (map.getLayer(id)) map.on("click", id, showCircuit);
+    });
 
     map.on("click", "venues", function (e) {
       showDetail(e.features[0].properties.venueSlug);

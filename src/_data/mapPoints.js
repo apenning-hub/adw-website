@@ -153,57 +153,64 @@ function slugByVenue(geojson) {
 }
 
 /**
- * The Shopfront Design Circuit, as a line and a set of numbered stops.
+ * The Shopfront Design Circuit, as a single mark.
  *
- * The event has a single venue cell — "Various Locations, East End, ADL CBD"
- * — which is not a place. Its stops are listed in src/_data/circuit.json, in
- * walking order, and drawn as a path connecting them.
+ * One event across eight East End shopfronts, whose venue cell reads
+ * "Various Locations, East End, ADL CBD". Neither Mapbox nor OpenStreetMap
+ * can resolve individual shop numbers on Ebenezer Place — both answer with
+ * the street centroid — so three of the eight landed on the *same*
+ * coordinate, and the path drawn between them was 264m of zigzag across a
+ * precinct 96m wide. A drawn route implied a precision the data has not got.
  *
- * A stop with no coordinates is returned in `missing` rather than quietly
- * dropped: a path that silently skips a shopfront is worse than no path,
- * because it looks correct.
+ * So it is one mark over the precinct, and the shops are listed in the
+ * panel with their addresses. That is also what a visitor needs: they walk
+ * two short streets and look in windows.
+ *
+ * Shops that could not be geocoded at all are still listed — they are still
+ * shopfronts on the trail — and reported in `missing`.
  */
 function buildCircuit(circuit, coords) {
-  const empty = { line: null, points: { type: "FeatureCollection", features: [] },
-                  missing: [] };
+  const empty = { marker: null, missing: [] };
   if (!circuit || !Array.isArray(circuit.stops)) return empty;
 
-  const features = [];
+  const located = [];
   const missing = [];
-  let step = 0;
+  const stops = [];
 
   for (const stop of circuit.stops) {
-    const place = coords[stop.name];
-    if (!place || typeof place.lat !== "number" || typeof place.lng !== "number") {
-      missing.push(stop.name);
-      continue;
-    }
-    step += 1;
-    features.push({
-      type: "Feature",
-      geometry: { type: "Point", coordinates: [place.lng, place.lat] },
-      properties: {
-        name: stop.name,
-        designer: stop.designer || "",
-        step,
-        title: circuit.title || "",
-      },
+    stops.push({
+      name: stop.name,
+      designer: stop.designer || "",
+      address: stop.address || "",
     });
+    const place = coords[stop.name];
+    if (place && typeof place.lat === "number" && typeof place.lng === "number") {
+      located.push(place);
+    } else {
+      missing.push(stop.name);
+    }
   }
 
-  // Two points make a line; one makes a dot with a misleading tail.
-  const line = features.length >= 2
-    ? {
-        type: "Feature",
-        geometry: {
-          type: "LineString",
-          coordinates: features.map((f) => f.geometry.coordinates),
-        },
-        properties: { title: circuit.title || "" },
-      }
-    : null;
+  if (!located.length) return { marker: null, missing };
 
-  return { line, points: { type: "FeatureCollection", features }, missing };
+  const lat = located.reduce((n, p) => n + p.lat, 0) / located.length;
+  const lng = located.reduce((n, p) => n + p.lng, 0) / located.length;
+
+  return {
+    marker: {
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [lng, lat] },
+      properties: {
+        title: circuit.title || "",
+        count: stops.length,
+        // Mapbox flattens nested properties to strings on the way into a
+        // vector source, so the list is serialised deliberately rather than
+        // arriving mangled.
+        stops: JSON.stringify(stops),
+      },
+    },
+    missing,
+  };
 }
 
 async function mapPoints() {
@@ -235,8 +242,8 @@ async function mapPoints() {
 
   if (circuitParts.missing.length) {
     console.warn(
-      `\n  ${circuitParts.missing.length} circuit stops have no coordinates ` +
-      `and are not on the path:`);
+      `\n  ${circuitParts.missing.length} circuit stops could not be placed ` +
+      `(still listed in the panel):`);
     for (const name of circuitParts.missing) console.warn(`    ${name}`);
     console.warn("");
   }
@@ -260,8 +267,7 @@ async function mapPoints() {
     days: program.days,
     circuit: {
       title: (circuit && circuit.title) || "",
-      line: circuitParts.line,
-      points: circuitParts.points,
+      marker: circuitParts.marker,
       missing: circuitParts.missing,
     },
     eventCount: geojson.features.length,
