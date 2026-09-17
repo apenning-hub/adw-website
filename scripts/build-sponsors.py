@@ -197,7 +197,7 @@ SITES = {
   "Little Bang Brewing Co": "https://www.littlebang.com.au/",
   "Pundi":                  "https://pundi.au/",
   "Table Wines":            "https://tablewines.com.au/",
-  "Etikette Candles":       "https://etikette.com.au/",
+  "Etikette Candles":       "https://etikettecandles.com/",
 }
 
 # Logos are set to equal optical area rather than equal height: a roundel and a
