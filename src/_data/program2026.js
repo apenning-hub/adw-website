@@ -37,6 +37,9 @@ const CATEGORIES = {
   OPEN: "open studio",
   TOUR: "tour",
   WORK: "workshop",
+  // Added 18 Sep 2026: openings, launches and parties are none of the above.
+  // Last in the list, which is also where it sorts within a day.
+  EVENT: "event",
 };
 
 // Preview days (a single launch event, say) sit before the festival proper.
@@ -507,7 +510,14 @@ module.exports = async function () {
     byDay,
     defaultDay,
     az: [...events].map((e) => ({ ...e, anyTicketed: e.ticketed })).sort(azSort),
-    categories: CATEGORIES,
+    // Only the categories something actually uses. A code added here before
+    // any event carries it would otherwise show a filter chip that always
+    // finds nothing; this way the chip appears the moment one is tagged.
+    categories: Object.fromEntries(
+      Object.entries(CATEGORIES).filter(([code]) =>
+        events.some((e) => e.categoryCodes.includes(code))
+      )
+    ),
     count: events.length,
     sessionCount: events.reduce((n, e) => n + e.sessions.length, 0),
   };

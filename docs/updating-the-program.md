@@ -72,7 +72,7 @@ publish and tell you which two rows clash.
 
 ## The other columns
 
-**category** — must be one of these six. Type the short code:
+**category** — must be one of these seven. Type the short code:
 
 | code | means |
 |---|---|
@@ -82,6 +82,7 @@ publish and tell you which two rows clash.
 | `OPEN` | open studio |
 | `TOUR` | tour |
 | `WORK` | workshop |
+| `EVENT` | event — an opening, launch or party that is none of the above |
 
 An event can be two things at once — a panel held inside an exhibition, say.
 Put both codes in the cell separated by a semicolon, most important first:
@@ -304,7 +305,7 @@ down or half-publishes.
 
 Things it will catch:
 
-- a category code that isn't one of the six
+- a category code that isn't one of the seven
 - a row with no title, or no venue
 - a row with no times in any day column (it would never show up anywhere)
 - the same event title used on two rows
