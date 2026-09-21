@@ -42,12 +42,26 @@ description: Where every*one is happening — every venue in the Adelaide Design
                 data-mode="venues">venues</button>
         <button class="pg-view" type="button" role="tab" aria-selected="false"
                 data-mode="shows">shows</button>
+        <button class="pg-view" type="button" role="tab" aria-selected="false"
+                data-mode="picks">adw picks</button>
+        <button class="pg-view" type="button" role="tab" aria-selected="false"
+                data-mode="afterparty">afterparty</button>
       </div>
 
       <div class="pg-days map-days" role="group" aria-label="Filter by day">
         <button class="pg-daybtn is-on" type="button" data-day="" aria-pressed="true">all</button>
         {%- for d in mapPoints.days %}
         <button class="pg-daybtn" type="button" data-day="{{ d }}" aria-pressed="false">{{ d }}</button>
+        {%- endfor %}
+      </div>
+
+      {# Picks are not on a day, so the day filter is meaningless there and is
+         swapped for this. Same buttons, same classes — one control, two
+         vocabularies, rather than a second set of things to learn. #}
+      <div class="pg-days map-kinds" role="group" aria-label="Filter picks by kind" hidden>
+        <button class="pg-daybtn is-on" type="button" data-kind="" aria-pressed="true">all</button>
+        {%- for k in picks2026.kinds %}
+        <button class="pg-daybtn" type="button" data-kind="{{ k }}" aria-pressed="false">{{ k }}</button>
         {%- endfor %}
       </div>
     </div>
@@ -80,7 +94,15 @@ description: Where every*one is happening — every venue in the Adelaide Design
 {# Parsed by map.js. A script tag of type application/json is inert: the
    browser never executes it, so event titles and blurbs cannot escape into
    the page as code. #}
-<script type="application/json" id="adw-map-data">{{ { "token": env.mapboxToken, "style": site.mapboxStyle, "geojson": mapPoints.geojson, "circuit": mapPoints.circuit } | dump | safe }}</script>
+<script type="application/json" id="adw-map-data">{{ {
+  "token": env.mapboxToken,
+  "style": site.mapboxStyle,
+  "geojson": mapPoints.geojson,
+  "circuit": mapPoints.circuit,
+  "picks": picks2026.picks,
+  "afterparty": picks2026.afterparty,
+  "ballot": site.afterpartyForm
+} | dump | safe }}</script>
 
 {% else %}
 

@@ -2,7 +2,7 @@
   "name": "adw-website",
   "version": "0.1.0",
   "private": true,
-  "description": "Adelaide Design Week — public static site (v1)",
+  "description": "Adelaide Design Week \u2014 public static site (v1)",
   "scripts": {
     "dev": "eleventy --serve --quiet",
     "build": "eleventy",
@@ -11,7 +11,8 @@
     "test": "node --test test/*.test.js && python3 scripts/test_geocode_venues.py",
     "geocode-venues": "python3 scripts/geocode-venues.py",
     "build-venue-thumbs": "node scripts/build-venue-thumbs.js",
-    "publish-map-style": "node scripts/publish-map-style.js"
+    "publish-map-style": "node scripts/publish-map-style.js",
+    "geocode-picks": "python3 scripts/geocode-picks.py"
   },
   "engines": {
     "node": ">=20"

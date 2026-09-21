@@ -56,6 +56,11 @@
     "ast-work":  { fill: "inkSoft" },
     "ast-inst":  { fill: "inkStrong", rotate: 30 },
     "ast-plain": { fill: "inkStrong" },
+    // The picks are not program venues and should not be mistaken for them.
+    // They never share the map with the marks above -- the tabs swap one set
+    // for the other -- but a starred mark says "someone chose this", which is
+    // the whole point of the list.
+    "ast-pick":  { fill: "yellow", stroke: "inkStrong", core: "inkStrong" },
   };
 
   var ICON_PX = 31;        // logical size of a marker at icon-size 1
@@ -199,9 +204,20 @@
   var detailBody = detailEl.querySelector(".map-detail-body");
   var backBtn = detailEl.querySelector(".map-detail-back");
 
-  var mode = "venues";     // or "shows"
+  var mode = "venues";     // or "shows", "picks", "afterparty"
   var day = "";            // "" means every day
+  var kind = "";           // "" means every kind of pick
   var selectedSlug = null;
+  var selectedPick = null;
+
+  // True once the map object exists AND its style is up, which is the point
+  // at which layers can be asked about. The sidebar is rendered before either
+  // is true -- `var map` is hoisted, so touching map.anything before line ~723
+  // throws rather than reading as falsy.
+  function live(layer) {
+    return typeof map !== "undefined" && map && map.getLayer &&
+           (!layer || map.getLayer(layer));
+  }
 
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (ch) {
@@ -232,6 +248,15 @@
       seen[ev.venueSlug].count += 1;
     });
     return out.sort(function (a, b) { return a.venue.localeCompare(b.venue, "en"); });
+  }
+
+  var PICKS = DATA.picks || [];
+  var BALLOT = DATA.afterparty || [];
+  var pickBySlug = {};
+  PICKS.forEach(function (p) { pickBySlug[p.slug] = p; });
+
+  function shownPicks() {
+    return PICKS.filter(function (p) { return !kind || p.kind === kind; });
   }
 
   /* ---- rendering ---------------------------------------------------- */
@@ -297,8 +322,164 @@
       "</article>";
   }
 
+  /**
+   * A pick, opened out.
+   *
+   * Four things can be known about one and usually only some are: who made
+   * it, when, why it is here, and what the person who made it says about it.
+   * Each is omitted rather than rendered empty -- a row of "Designer: --"
+   * three times over says nothing and looks like a bug.
+   */
+  function pickDetailHtml(p) {
+    var meta = [];
+    if (p.designer) meta.push('<span class="pick-by">' + esc(p.designer) + "</span>");
+    if (p.year) meta.push('<span class="pick-year">' + esc(p.year) + "</span>");
+
+    var out =
+      '<h2 class="map-panel-venue">' + esc(p.name) + "</h2>" +
+      '<p class="map-panel-count"><span class="pick-kind">' + esc(p.kind) + "</span>" +
+        (meta.length ? " " + meta.join(" &middot; ") : "") + "</p>" +
+      (p.why ? '<p class="pick-why">' + esc(p.why) + "</p>" : "");
+
+    // The editor's own recommendation, set apart from the research.
+    if (p.note) {
+      out += '<blockquote class="pick-note">' + esc(p.note) + "</blockquote>";
+    }
+    // And the designer on their own work, which is a different voice again.
+    if (p.words) {
+      out += '<blockquote class="pick-words">' + esc(p.words.text) +
+             (p.words.by ? '<cite>' + esc(p.words.by) + "</cite>" : "") +
+             "</blockquote>";
+    }
+    if (!p.designer) {
+      out += '<p class="pick-open">Designer unknown. If this was your work, ' +
+             'we would like to credit it.</p>';
+    }
+
+    var links = [];
+    if (p.address) links.push('<li class="pick-addr">' + esc(p.address) + "</li>");
+    if (p.link) links.push('<li><a href="' + esc(p.link) +
+      '" target="_blank" rel="noopener noreferrer">website ' +
+      '<span aria-hidden="true">&rarr;</span></a></li>');
+    if (p.socials) links.push('<li><a href="' + esc(p.socials.url) +
+      '" target="_blank" rel="noopener noreferrer">' + esc(p.socials.handle) + "</a></li>");
+    if (links.length) out += '<ul class="pick-links">' + links.join("") + "</ul>";
+    if (!p.mapped) {
+      out += '<p class="pick-unmapped">Not on the map yet &mdash; we do not have ' +
+             'an address exact enough to place it honestly.</p>';
+    }
+    return out;
+  }
+
+  function showPickDetail(slug) {
+    var p = pickBySlug[slug];
+    if (!p) return;
+    selectedPick = slug;
+    detailBody.innerHTML = pickDetailHtml(p);
+    detailEl.hidden = false;
+    listEl.hidden = true;
+    countEl.hidden = true;
+    backBtn.focus();
+    if (p.mapped && live()) {
+      map.easeTo({ center: [p.lng, p.lat],
+                   zoom: Math.max(map.getZoom(), 15),
+                   duration: REDUCED ? 0 : 600 });
+    }
+    if (live("pick-selected")) {
+      map.setFilter("pick-selected", ["==", ["get", "slug"], slug]);
+    }
+    history.replaceState(null, "", "?tab=picks&pick=" + encodeURIComponent(slug));
+  }
+
+  /* ---- the afterparty ballot ----------------------------------------- */
+
+  // One vote, kept in this browser. It is a show of hands, not an election:
+  // a static page cannot stop someone voting twice from another browser, and
+  // pretending otherwise would be worse than saying so.
+  var VOTE_KEY = "adw-afterparty-vote";
+
+  function myVote() {
+    try { return localStorage.getItem(VOTE_KEY) || ""; } catch (e) { return ""; }
+  }
+
+  function castVote(slug) {
+    var p = pickBySlug[slug];
+    if (!p) return;
+    try { localStorage.setItem(VOTE_KEY, slug); } catch (e) { /* private mode */ }
+
+    // Posting to a Google Form drops the vote into the same spreadsheet the
+    // rest of this page is built from, so the count is somewhere Hannah can
+    // already read. no-cors means we never see the response -- Forms does not
+    // send CORS headers -- so the vote is recorded locally first and the post
+    // is best-effort on top of it.
+    var b = DATA.ballot;
+    if (b && b.action && b.entry) {
+      var body = new URLSearchParams();
+      body.set(b.entry, p.name);
+      fetch(b.action, { method: "POST", mode: "no-cors", body: body })
+        .catch(function () { /* recorded locally regardless */ });
+    }
+    renderList();
+  }
+
+  function afterpartyHtml() {
+    if (!BALLOT.length) {
+      return '<p class="map-empty">No afterparty venues on the ballot yet. ' +
+             'Put a Y in the afterparty column of the picks spreadsheet.</p>';
+    }
+    var chosen = myVote();
+    var rows = BALLOT.map(function (p) {
+      var on = p.slug === chosen;
+      return '<li><div class="vote-row' + (on ? " is-voted" : "") + '">' +
+        '<button type="button" class="vote-name" data-pick="' + esc(p.slug) + '">' +
+          '<span class="row-name">' + esc(p.name) +
+            '<span class="row-venue">' + esc(p.kind) +
+              (p.designer ? " &middot; " + esc(p.designer) : "") + "</span>" +
+          "</span>" +
+        "</button>" +
+        '<button type="button" class="vote-btn" data-vote="' + esc(p.slug) + '"' +
+          (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' +
+          (on ? "your pick" : "vote") + "</button>" +
+      "</div></li>";
+    }).join("");
+
+    var connected = !!(DATA.ballot && DATA.ballot.action && DATA.ballot.entry);
+    return '<p class="vote-intro">Where should the every*one afterparty be? ' +
+      'One vote each.</p>' +
+      '<ul class="map-rows vote-rows">' + rows + "</ul>" +
+      '<p class="vote-note">' + (connected
+        ? "Votes go straight into the picks spreadsheet."
+        : "Voting is not connected to the spreadsheet yet, so your pick is " +
+          "only remembered in this browser.") +
+      " Tap a name to read about the place.</p>";
+  }
+
   function renderList() {
     var rows;
+    if (mode === "afterparty") {
+      countEl.textContent = BALLOT.length + " on the ballot";
+      listEl.innerHTML = afterpartyHtml();
+      return;
+    }
+    if (mode === "picks") {
+      var picks = shownPicks();
+      rows = picks.map(function (p) {
+        return '<li><button type="button" data-pick="' + esc(p.slug) + '">' +
+          '<span class="row-name">' + esc(p.name) +
+            '<span class="row-venue">' + esc(p.kind) +
+              (p.designer ? " &middot; " + esc(p.designer) : "") + "</span>" +
+          "</span>" +
+          '<span class="row-meta">' + esc(p.year || "") + "</span>" +
+          "</button></li>";
+      }).join("");
+      countEl.textContent = picks.length +
+        (picks.length === 1 ? " place" : " places") +
+        (kind ? " \u2014 " + kind : "");
+      listEl.innerHTML = rows
+        ? '<ul class="map-rows">' + rows + "</ul>"
+        : '<p class="map-empty">Nothing of that kind.</p>';
+      return;
+    }
     if (mode === "venues") {
       var venues = shownVenues();
       rows = venues.map(function (v) {
@@ -378,7 +559,7 @@
     countEl.hidden = true;
     backBtn.focus();
 
-    if (map.getLayer && map.getLayer("venue-selected")) {
+    if (live("venue-selected")) {
       map.setFilter("venue-selected", ["==", ["get", "venueSlug"], slug]);
       map.easeTo({
         center: place.coordinates,
@@ -395,8 +576,16 @@
     detailEl.hidden = true;
     listEl.hidden = false;
     countEl.hidden = false;
+    if (selectedPick) {
+      selectedPick = null;
+      if (live("pick-selected")) {
+        map.setFilter("pick-selected", ["==", ["get", "slug"], NOTHING]);
+      }
+      renderList();
+      return;
+    }
     selectedSlug = null;
-    if (map.getLayer && map.getLayer("venue-selected")) {
+    if (live("venue-selected")) {
       map.setFilter("venue-selected", ["==", ["get", "venueSlug"], NOTHING]);
     }
     history.replaceState(null, "", location.pathname);
@@ -418,9 +607,67 @@
       b.setAttribute("aria-selected", String(b === btn));
       b.classList.toggle("is-on", b === btn);
     });
+    applyMode();
     if (!detailEl.hidden) backToList();
     else renderList();
   });
+
+  var daysEl = side.querySelector(".map-days");
+  var kindsEl = side.querySelector(".map-kinds");
+
+  /**
+   * Days belong to the program; kinds belong to the picks; the afterparty
+   * ballot is short enough to need neither. Only one filter row is ever
+   * visible, so the control under the tabs always applies to what is above it.
+   */
+  function applyMode() {
+    var isPicks = mode === "picks";
+    var isParty = mode === "afterparty";
+    if (daysEl) daysEl.hidden = isPicks || isParty;
+    if (kindsEl) kindsEl.hidden = !isPicks;
+
+    // Program pins and pick pins are two different maps. Swap them with the
+    // tab rather than piling 116 bars on top of 58 venues, which would bury
+    // the thing this site is actually for.
+    if (!live("venues")) return;
+    var showPicks = isPicks || isParty;
+    ["clusters", "venues", "venue-selected", "circuit-ring", "circuit-mark"]
+      .forEach(function (id) {
+        if (map.getLayer(id)) {
+          map.setLayoutProperty(id, "visibility", showPicks ? "none" : "visible");
+        }
+      });
+    ["picks", "pick-selected"].forEach(function (id) {
+      if (map.getLayer(id)) {
+        map.setLayoutProperty(id, "visibility", showPicks ? "visible" : "none");
+      }
+    });
+    if (showPicks) applyKindToMap();
+  }
+
+  if (kindsEl) {
+    kindsEl.addEventListener("click", function (e) {
+      var btn = e.target.closest("button[data-kind]");
+      if (!btn) return;
+      kind = btn.dataset.kind;
+      kindsEl.querySelectorAll("button[data-kind]").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b === btn));
+        b.classList.toggle("is-on", b === btn);
+      });
+      applyKindToMap();
+      if (!detailEl.hidden) backToList();
+      else renderList();
+    });
+  }
+
+  // Filter the source rather than the layer, so a hidden pick cannot be
+  // clicked through and the count under the tabs matches what is drawn.
+  function applyKindToMap() {
+    if (!live()) return;
+    var src = map.getSource && map.getSource("picks-src");
+    if (!src) return;
+    src.setData(pickFeatures(mode === "afterparty" ? BALLOT : shownPicks()));
+  }
 
   side.querySelector(".pg-days").addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-day]");
@@ -436,6 +683,10 @@
   });
 
   listEl.addEventListener("click", function (e) {
+    var vote = e.target.closest("button[data-vote]");
+    if (vote) { castVote(vote.dataset.vote); return; }
+    var pick = e.target.closest("button[data-pick]");
+    if (pick) { showPickDetail(pick.dataset.pick); return; }
     var circuit = e.target.closest("button[data-circuit]");
     if (circuit) { showCircuit(); return; }
     var btn = e.target.closest("button[data-venue]");
@@ -593,6 +844,7 @@
         },
       });
 
+      addPicks();
       wireInteraction();
       // The deep-linked venue is already open in the list; now that the map
       // exists, move it there too.
@@ -604,6 +856,83 @@
                     + "empty.", err);
     });
   });
+
+  /**
+   * The picks, as GeoJSON.
+   *
+   * Only the mapped ones. A pick with no coordinates stays in the list and
+   * out of the map, which is the same rule the program venues follow: an
+   * absent pin is honest, a pin in the middle of the city is a guess wearing
+   * a uniform.
+   */
+  function pickFeatures(list) {
+    return {
+      type: "FeatureCollection",
+      features: list.filter(function (p) { return p.mapped; })
+        .map(function (p) {
+          return {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [p.lng, p.lat] },
+            properties: { slug: p.slug, name: p.name, kind: p.kind },
+          };
+        }),
+    };
+  }
+
+  function addPicks() {
+    if (!PICKS.length) return;
+
+    map.addSource("picks-src", { type: "geojson", data: pickFeatures(PICKS) });
+
+    map.addLayer({
+      id: "pick-selected",
+      type: "circle",
+      source: "picks-src",
+      filter: ["==", ["get", "slug"], NOTHING],
+      layout: { visibility: "none" },
+      paint: {
+        "circle-radius": 22,
+        "circle-color": palette.yellow,
+        "circle-stroke-width": 1,
+        "circle-stroke-color": palette.inkStrong,
+      },
+    });
+
+    map.addLayer({
+      id: "picks",
+      type: "symbol",
+      source: "picks-src",
+      layout: {
+        visibility: "none",
+        "icon-image": "ast-pick",
+        "icon-allow-overlap": true,
+        "icon-size": ["interpolate", ["linear"], ["zoom"], 10, 0.6, 14, 0.9],
+        // The picks are spread from the Barossa to McLaren Vale, so at the
+        // zoom that fits them all the marks alone say nothing. The name does.
+        "text-field": ["step", ["zoom"], "", 13, ["get", "name"]],
+        "text-font": ["DIN Pro Medium", "Arial Unicode MS Regular"],
+        "text-size": 11,
+        "text-offset": [0, 1.3],
+        "text-anchor": "top",
+        "text-optional": true,
+      },
+      paint: {
+        "text-color": palette.inkSoft,
+        "text-halo-color": palette.paper,
+        "text-halo-width": 1.5,
+      },
+    });
+
+    map.on("click", "picks", function (e) {
+      showPickDetail(e.features[0].properties.slug);
+    });
+    map.on("mouseenter", "picks", function () {
+      map.getCanvas().style.cursor = "pointer";
+    });
+    map.on("mouseleave", "picks", function () {
+      map.getCanvas().style.cursor = "";
+    });
+  }
 
   function addCircuit() {
     var circuit = DATA.circuit;
@@ -674,7 +1003,7 @@
     countEl.hidden = true;
     backBtn.focus();
 
-    if (map.getLayer && map.getLayer("venue-selected")) {
+    if (live("venue-selected")) {
       map.setFilter("venue-selected", ["==", ["get", "venueSlug"], NOTHING]);
     }
     map.easeTo({
@@ -737,7 +1066,29 @@
   }
 
   function openFromUrl() {
-    var slug = new URLSearchParams(location.search).get("venue");
+    var q = new URLSearchParams(location.search);
+
+    // ?tab=picks so a tab can be linked to directly. The picks are the half
+    // of this page someone is most likely to want to send to someone else,
+    // and without this the link always lands on the program.
+    var want = q.get("tab");
+    if (want) {
+      var tab = side.querySelector('button[data-mode="' + CSS.escape(want) + '"]');
+      if (tab) {
+        mode = want;
+        side.querySelectorAll("button[data-mode]").forEach(function (b) {
+          b.setAttribute("aria-selected", String(b === tab));
+          b.classList.toggle("is-on", b === tab);
+        });
+        applyMode();
+        renderList();
+      }
+    }
+
+    var pick = q.get("pick");
+    if (pick && pickBySlug[pick]) { showPickDetail(pick); return; }
+
+    var slug = q.get("venue");
     if (slug && byVenue[slug]) showDetail(slug);
   }
 })();

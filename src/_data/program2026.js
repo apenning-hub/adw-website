@@ -526,3 +526,5 @@ module.exports = async function () {
 module.exports.parseHeader = parseHeader;
 module.exports.FIXED = FIXED;
 module.exports.OPTIONAL = OPTIONAL;
+
+module.exports.parseCsv = parseCsv;

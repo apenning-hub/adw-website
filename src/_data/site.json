@@ -18,5 +18,11 @@
   "contactEmail": "contact@adelaidedesignweek.com.au",
   "instagramHandle": "adelaidedesignweek",
   "instagramUrl": "https://www.instagram.com/adelaidedesignweek/",
-  "acknowledgment": "Adelaide Design Week acknowledges we are on Kaurna country, the lands of the Kaurna people. We deeply respect the Traditional Custodians' connection to land, sky and waters, and pay our respects to Elders past, present and future."
+  "acknowledgment": "Adelaide Design Week acknowledges we are on Kaurna country, the lands of the Kaurna people. We deeply respect the Traditional Custodians' connection to land, sky and waters, and pay our respects to Elders past, present and future.",
+  "mapboxStyle": "mapbox://styles/apenning/cmu3li84j003d01r2gb3j2uq0",
+  "picksSheetCsv": "",
+  "afterpartyForm": {
+    "action": "",
+    "entry": ""
+  }
 }
