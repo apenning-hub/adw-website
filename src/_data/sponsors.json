@@ -338,15 +338,6 @@
     "tier": "Donations",
     "sponsors": [
       {
-        "name": "AMPA Wines",
-        "file": "ampa-wines.png",
-        "w": 930,
-        "h": 152,
-        "dw": 134,
-        "dh": 22,
-        "url": "https://www.ampawines.au/"
-      },
-      {
         "name": "AGSA",
         "file": "agsa.png",
         "w": 600,
@@ -354,6 +345,24 @@
         "dw": 80,
         "dh": 40,
         "url": "https://www.agsa.sa.gov.au/"
+      },
+      {
+        "name": "Alpha Box & Dice",
+        "file": "alpha-box-dice.png",
+        "w": 918,
+        "h": 93,
+        "dw": 177,
+        "dh": 17,
+        "url": "https://www.alphaboxdice.com/"
+      },
+      {
+        "name": "AMPA Wines",
+        "file": "ampa-wines.png",
+        "w": 930,
+        "h": 152,
+        "dw": 134,
+        "dh": 22,
+        "url": "https://www.ampawines.au/"
       },
       {
         "name": "Cult",
@@ -365,6 +374,15 @@
         "url": "https://cultdesign.com.au/"
       },
       {
+        "name": "Etikette Candles",
+        "file": "etikette-candles.png",
+        "w": 946,
+        "h": 239,
+        "dw": 109,
+        "dh": 27,
+        "url": "https://etikettecandles.com/"
+      },
+      {
         "name": "Guildhouse",
         "file": "guildhouse.png",
         "w": 508,
@@ -374,6 +392,15 @@
         "url": "https://guildhouse.org.au/"
       },
       {
+        "name": "HoMie",
+        "file": "homie.png",
+        "w": 956,
+        "h": 291,
+        "dw": 100,
+        "dh": 31,
+        "url": "https://homie.com.au/"
+      },
+      {
         "name": "JamFactory",
         "file": "jamfactory.png",
         "w": 506,
@@ -381,15 +408,6 @@
         "dw": 71,
         "dh": 42,
         "url": "https://www.jamfactory.com.au/"
-      },
-      {
-        "name": "Etikette Candles",
-        "file": "etikette-candles.png",
-        "w": 946,
-        "h": 239,
-        "dw": 109,
-        "dh": 27,
-        "url": "https://etikettecandles.com/"
       },
       {
         "name": "Little Bang Brewing Co",

@@ -70,12 +70,15 @@ TIERS = [
    ("Walter Brooke",        L+"04_Bronze/14_Walter Brooke/WBA LOGO stacked + services.pdf"),
  ]),
  ("Donations", [
-   ("AMPA Wines",           L+"05_In-Kind/13_Ampa Wines/Ampa Wines.png"),
+   # A to Z, ignoring case.
    ("AGSA",                 L+"05_In-Kind/02_AGSA/AGSA_Primary_Black.png"),
+   ("Alpha Box & Dice",     L+"05_In-Kind/15_AB&D/PDF/ABD-Logo-Black.pdf"),
+   ("AMPA Wines",           L+"05_In-Kind/13_Ampa Wines/Ampa Wines.png"),
    ("Cult",                 L+"05_In-Kind/04_Cult/CULT LOGO.png"),
-   ("Guildhouse",           W+"poster/guildhouse.png"),
-   ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
    ("Etikette Candles",     W+"rasterised/etikette.png"),
+   ("Guildhouse",           W+"poster/guildhouse.png"),
+   ("HoMie",                L+"05_In-Kind/14_Homie/HoMie_Logo_V2_Black.eps"),
+   ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
    ("Little Bang Brewing Co", L+"05_In-Kind/09_Little Bang Brewing/LBBC Logo Stacked Horizontal Black.eps"),
    ("Pundi",                L+"05_In-Kind/10_Pundi/Pundi Logo - SCREEN - Mono Black.png"),
    ("Table Wines",          W+"rasterised/table-wines.png"),
@@ -91,7 +94,7 @@ os.makedirs(OUT, exist_ok=True)
 MAX_H, MAX_W = 240, 900
 
 def slug(name):
-    return "".join(c.lower() if c.isalnum() else "-" for c in name).strip("-").replace("--","-")
+    return re.sub("-+", "-", "".join(c.lower() if c.isalnum() else "-" for c in name)).strip("-")
 
 def load(path):
     # EPS is PostScript, which nothing on a stock Mac can read. Ghostscript
@@ -198,6 +201,8 @@ SITES = {
   "Pundi":                  "https://pundi.au/",
   "Table Wines":            "https://tablewines.com.au/",
   "Etikette Candles":       "https://etikettecandles.com/",
+  "Alpha Box & Dice":       "https://www.alphaboxdice.com/",
+  "HoMie":                  "https://homie.com.au/",
 }
 
 # Logos are set to equal optical area rather than equal height: a roundel and a
