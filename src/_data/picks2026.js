@@ -20,7 +20,6 @@
 //   designer_name   who said that
 //   link            website
 //   socials         @handle or a URL
-//   afterparty      Y puts it on the afterparty ballot
 //   show            N hides the row without deleting it
 //
 // Coordinates are NOT in the spreadsheet. They live in picks.json, keyed by
@@ -34,7 +33,7 @@ const { parseCsv } = require("./program2026.js");
 
 const COLUMNS = ["name", "address", "kind", "designer", "year", "why",
                  "hannah_note", "designer_words", "designer_name",
-                 "link", "socials", "afterparty", "show"];
+                 "link", "socials", "show"];
 
 // Ordered: this is the order the filter chips appear in.
 const KINDS = ["bar", "pub", "cafe", "restaurant", "fine dining",
@@ -122,7 +121,6 @@ function build() {
       words: words ? { text: words, by: at(row.cells, "designer_name") || null } : null,
       link: at(row.cells, "link") || null,
       socials: parseSocials(at(row.cells, "socials")),
-      afterparty: yes(at(row.cells, "afterparty")),
       lat: place ? place.lat : null,
       lng: place ? place.lng : null,
       // A pick with no coordinates is still listed — it just has no pin. That
@@ -136,7 +134,6 @@ function build() {
   return {
     picks,
     kinds: KINDS.filter((k) => picks.some((p) => p.kind === k)),
-    afterparty: picks.filter((p) => p.afterparty),
     count: picks.length,
     mappedCount: picks.filter((p) => p.mapped).length,
     // What the sheet is still missing, so the gaps are visible rather than
@@ -153,7 +150,7 @@ function readGeo() {
   return Object.fromEntries((raw.venues || []).map((v) => [v.name, v]));
 }
 
-const empty = () => ({ picks: [], kinds: [], afterparty: [], count: 0,
+const empty = () => ({ picks: [], kinds: [], count: 0,
                        mappedCount: 0, openCredits: 0, withWords: 0 });
 
 module.exports = build;

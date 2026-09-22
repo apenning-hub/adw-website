@@ -1,9 +1,21 @@
 # Updating ADW picks
 
 **ADW picks** is the curated list of Adelaide rooms worth being in — the
-best-designed bars, pubs, restaurants, cafes and cellar doors, plus the
-classics that were never designed by anybody in particular and are wonderful
-anyway. It appears as its own tab on the map page, next to the program.
+best-designed pubs, bars and restaurants, plus a few classics that were
+never designed by anybody in particular and are wonderful anyway. It appears
+as its own tab on the map page, next to the program.
+
+**It is deliberately short.** Thirty-seven, not a directory. Two rules keep
+it that way, and both are worth defending when someone asks why their
+favourite is not on it:
+
+1. **Every one of them is excellent.** A long list of good places is less
+   useful than a short list of great ones.
+2. **Every one of them is walkable from the program.** The furthest is
+   about 1.2 km from a program venue; most are under 200 m. That is what
+   makes it usable during Design Week rather than a guide to South
+   Australia. It is why there are no cellar doors on it — the nearest was
+   24 km out.
 
 It works exactly like the program: **one spreadsheet is the whole thing.**
 You do not need to touch any code, and you cannot break the site by getting
@@ -14,7 +26,7 @@ The file is `src/_data/picks-2026.csv`. Open it in Excel or Numbers, or
 upload it to Google Sheets (**File → Import → Upload**, then **Replace
 spreadsheet**).
 
-There are 116 places in it to start with.
+There are 37 places in it to start with.
 
 ---
 
@@ -24,7 +36,7 @@ There are 116 places in it to start with.
 | --- | --- |
 | `name` | What the place is called. **The only column that is required.** |
 | `address` | Street address, with the number. This is how it gets a pin. |
-| `kind` | One of: `bar`, `pub`, `cafe`, `restaurant`, `fine dining`, `cellar door`, `brewery`, `classic` |
+| `kind` | One of: `bar`, `pub`, `restaurant`, `fine dining`, `classic` (also accepted: `cafe`, `cellar door`, `brewery`) |
 | `designer` | The practice or person, if it is known. **Leave blank if it isn't.** |
 | `year` | When it opened, or when it was fitted out |
 | `why` | One line on why it earns a place |
@@ -33,7 +45,6 @@ There are 116 places in it to start with.
 | `designer_name` | Who said that |
 | `link` | Website |
 | `socials` | `@handle`, or a full URL |
-| `afterparty` | `Y` puts it on the afterparty ballot |
 | `show` | `N` hides a row without deleting it |
 
 Everything except `name` can be empty. A row with only a name still
@@ -41,10 +52,10 @@ publishes — it just says less.
 
 ### Blank designers are the point
 
-**61 of the 116 have no designer credit, and that is correct.** Ying Chow,
-Lucia's, the Exeter — most of the classics on this list were never designed
-by anyone with a letterhead, and the ones that were have credits nobody has
-written down yet.
+**10 of the 37 have no designer credit, and that is correct.** Ying Chow,
+Lucia's, the Exeter, Grace Emily — these were never designed by anyone with
+a letterhead, and some of the others have credits nobody has written down
+yet.
 
 A blank shows on the page as *"Designer unknown. If this was your work, we
 would like to credit it."* That is an invitation, and it is how the list is
@@ -80,41 +91,6 @@ Keep it to a few sentences — it sits in a sidebar column, not on a page.
 
 ---
 
-## The afterparty ballot
-
-Put `Y` in the `afterparty` column and the place appears on the
-**afterparty** tab, where people can vote for where it should be held.
-Seventeen are on the ballot to start with, chosen for being able to hold a
-crowd.
-
-**Right now the vote is only remembered in each person's browser.** To
-collect the votes in a spreadsheet you can actually read, make a Google Form:
-
-1. Make a new Google Form with **one question**, multiple choice, listing the
-   venues. Call it whatever you like.
-2. **Responses → Link to Sheets.** That is where the votes land.
-3. Get the two values the site needs:
-   - **Send → `<>` (embed)** and copy the `src` URL. Change the end from
-     `/viewform...` to `/formResponse`. That is the `action`.
-   - On the form page, right-click the question → **Inspect**, and find the
-     `name="entry.123456789"` on the radio buttons. That number is the
-     `entry`.
-4. Put both into `src/_data/site.json`:
-
-   ```json
-   "afterpartyForm": {
-     "action": "https://docs.google.com/forms/d/e/FORM_ID/formResponse",
-     "entry": "entry.123456789"
-   }
-   ```
-
-Votes then go straight into the responses sheet, and the page says so
-instead of saying it is not connected.
-
-**It is a show of hands, not an election.** A page like this cannot stop
-somebody voting twice from a different browser, and the page says as much
-rather than implying a precision it does not have.
-
 ---
 
 ## Getting a pin on the map
@@ -137,8 +113,8 @@ list without one. That is deliberate. A missing pin is honest; a pin dropped
 in the middle of the city because the address was vague is a guess wearing a
 uniform, and nobody can tell the difference by looking.
 
-Four are in that state now — Anvers Wines Cellar Door, Bar Carolina, The
-Angry Penguin and The Lane Vineyard. They need a street number.
+All 37 are placed at the moment. If you add one without a street number,
+expect it to land in this state.
 
 If a pin lands somewhere wrong, fix it by hand in `picks.json` and set
 `"source": "manual"`. **Nothing ever overwrites a manual pin.**

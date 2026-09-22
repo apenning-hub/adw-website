@@ -204,7 +204,7 @@
   var detailBody = detailEl.querySelector(".map-detail-body");
   var backBtn = detailEl.querySelector(".map-detail-back");
 
-  var mode = "venues";     // or "shows", "picks", "afterparty"
+  var mode = "venues";     // or "shows", "picks"
   var day = "";            // "" means every day
   var kind = "";           // "" means every kind of pick
   var selectedSlug = null;
@@ -251,7 +251,6 @@
   }
 
   var PICKS = DATA.picks || [];
-  var BALLOT = DATA.afterparty || [];
   var pickBySlug = {};
   PICKS.forEach(function (p) { pickBySlug[p.slug] = p; });
 
@@ -391,76 +390,8 @@
     history.replaceState(null, "", "?tab=picks&pick=" + encodeURIComponent(slug));
   }
 
-  /* ---- the afterparty ballot ----------------------------------------- */
-
-  // One vote, kept in this browser. It is a show of hands, not an election:
-  // a static page cannot stop someone voting twice from another browser, and
-  // pretending otherwise would be worse than saying so.
-  var VOTE_KEY = "adw-afterparty-vote";
-
-  function myVote() {
-    try { return localStorage.getItem(VOTE_KEY) || ""; } catch (e) { return ""; }
-  }
-
-  function castVote(slug) {
-    var p = pickBySlug[slug];
-    if (!p) return;
-    try { localStorage.setItem(VOTE_KEY, slug); } catch (e) { /* private mode */ }
-
-    // Posting to a Google Form drops the vote into the same spreadsheet the
-    // rest of this page is built from, so the count is somewhere Hannah can
-    // already read. no-cors means we never see the response -- Forms does not
-    // send CORS headers -- so the vote is recorded locally first and the post
-    // is best-effort on top of it.
-    var b = DATA.ballot;
-    if (b && b.action && b.entry) {
-      var body = new URLSearchParams();
-      body.set(b.entry, p.name);
-      fetch(b.action, { method: "POST", mode: "no-cors", body: body })
-        .catch(function () { /* recorded locally regardless */ });
-    }
-    renderList();
-  }
-
-  function afterpartyHtml() {
-    if (!BALLOT.length) {
-      return '<p class="map-empty">No afterparty venues on the ballot yet. ' +
-             'Put a Y in the afterparty column of the picks spreadsheet.</p>';
-    }
-    var chosen = myVote();
-    var rows = BALLOT.map(function (p) {
-      var on = p.slug === chosen;
-      return '<li><div class="vote-row' + (on ? " is-voted" : "") + '">' +
-        '<button type="button" class="vote-name" data-pick="' + esc(p.slug) + '">' +
-          '<span class="row-name">' + esc(p.name) +
-            '<span class="row-venue">' + esc(p.kind) +
-              (p.designer ? " &middot; " + esc(p.designer) : "") + "</span>" +
-          "</span>" +
-        "</button>" +
-        '<button type="button" class="vote-btn" data-vote="' + esc(p.slug) + '"' +
-          (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' +
-          (on ? "your pick" : "vote") + "</button>" +
-      "</div></li>";
-    }).join("");
-
-    var connected = !!(DATA.ballot && DATA.ballot.action && DATA.ballot.entry);
-    return '<p class="vote-intro">Where should the every*one afterparty be? ' +
-      'One vote each.</p>' +
-      '<ul class="map-rows vote-rows">' + rows + "</ul>" +
-      '<p class="vote-note">' + (connected
-        ? "Votes go straight into the picks spreadsheet."
-        : "Voting is not connected to the spreadsheet yet, so your pick is " +
-          "only remembered in this browser.") +
-      " Tap a name to read about the place.</p>";
-  }
-
   function renderList() {
     var rows;
-    if (mode === "afterparty") {
-      countEl.textContent = BALLOT.length + " on the ballot";
-      listEl.innerHTML = afterpartyHtml();
-      return;
-    }
     if (mode === "picks") {
       var picks = shownPicks();
       rows = picks.map(function (p) {
@@ -616,21 +547,20 @@
   var kindsEl = side.querySelector(".map-kinds");
 
   /**
-   * Days belong to the program; kinds belong to the picks; the afterparty
-   * ballot is short enough to need neither. Only one filter row is ever
-   * visible, so the control under the tabs always applies to what is above it.
+   * Days belong to the program; kinds belong to the picks. Only one filter
+   * row is ever visible, so the control under the tabs always applies to
+   * what is above it.
    */
   function applyMode() {
     var isPicks = mode === "picks";
-    var isParty = mode === "afterparty";
-    if (daysEl) daysEl.hidden = isPicks || isParty;
+    if (daysEl) daysEl.hidden = isPicks;
     if (kindsEl) kindsEl.hidden = !isPicks;
 
     // Program pins and pick pins are two different maps. Swap them with the
     // tab rather than piling 116 bars on top of 58 venues, which would bury
     // the thing this site is actually for.
     if (!live("venues")) return;
-    var showPicks = isPicks || isParty;
+    var showPicks = isPicks;
     ["clusters", "venues", "venue-selected", "circuit-ring", "circuit-mark"]
       .forEach(function (id) {
         if (map.getLayer(id)) {
@@ -666,7 +596,7 @@
     if (!live()) return;
     var src = map.getSource && map.getSource("picks-src");
     if (!src) return;
-    src.setData(pickFeatures(mode === "afterparty" ? BALLOT : shownPicks()));
+    src.setData(pickFeatures(shownPicks()));
   }
 
   side.querySelector(".pg-days").addEventListener("click", function (e) {
@@ -683,8 +613,6 @@
   });
 
   listEl.addEventListener("click", function (e) {
-    var vote = e.target.closest("button[data-vote]");
-    if (vote) { castVote(vote.dataset.vote); return; }
     var pick = e.target.closest("button[data-pick]");
     if (pick) { showPickDetail(pick.dataset.pick); return; }
     var circuit = e.target.closest("button[data-circuit]");

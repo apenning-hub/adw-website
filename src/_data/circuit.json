@@ -35,7 +35,7 @@
       "address": "20 Ebenezer Place, Adelaide SA 5000"
     },
     {
-      "name": "Naomi Murrel",
+      "name": "Naomi Murrell",
       "designer": "Sophia Moore",
       "address": "5 Ebenezer Place, Adelaide SA 5000"
     },
@@ -50,7 +50,7 @@
       "address": "Shop 2, 228-230 Rundle Street, Adelaide SA 5000"
     },
     {
-      "name": "Miss Gladys Sim Choon",
+      "name": "Miss Gladys Sym Choon",
       "designer": "Claire Markwick-Smith",
       "address": "235A Rundle Street, Adelaide SA 5000"
     },
@@ -58,6 +58,26 @@
       "name": "Aesop",
       "designer": "Andrew Carvolth",
       "address": "232 Rundle Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Honeydripper",
+      "designer": "Musch",
+      "address": "11 Frome Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Crumpler",
+      "designer": "Future Juice",
+      "address": "171 Rundle Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Sofia",
+      "designer": "Hari",
+      "address": "16 Hutt Street, Adelaide SA 5000"
+    },
+    {
+      "name": "Latteria",
+      "designer": "House of Vnholy",
+      "address": "185 Hutt Street, Adelaide SA 5000"
     }
   ]
 }

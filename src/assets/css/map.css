@@ -464,8 +464,8 @@
 /* ------------------------------------------------------------------ *
    ADW picks
    ------------------------------------------------------------------
-   A curated list of rooms, and a ballot for the afterparty. Both live in
-   the same sidebar as the program, so almost everything here is inherited:
+   A curated list of rooms worth being in. It lives in the same sidebar as
+   the program, so almost everything here is inherited:
    .map-rows, .row-cat, .row-name, .row-venue and .map-panel-* are the same
    components the venues and shows lists use. What follows is only the
    handful of things a pick has that an event does not — a designer, a
@@ -479,14 +479,8 @@
     padding-block-end: 0.25rem;
     max-width: 100%;
 }
-/* Four tabs will not fit on one line in a narrow column at the program
-   page's tab padding, and a tab row that scrolls hides the last tab —
-   which here is the afterparty. Let them wrap instead. */
-/* Four tabs do not fit across a sidebar column, and a row that scrolls
-   would hide the last one -- which here is the afterparty. Two by two, so
-   every tab is visible and the pairs line up. */
-.map-side .pg-views { flex-wrap: wrap; }
-.map-side .pg-view { flex: 1 1 calc(50% - 1px); min-width: 0; }
+/* Three tabs across a sidebar column, evenly. */
+.map-side .pg-view { flex: 1 1 0; min-width: 0; }
 
 .pick-kind {
     text-transform: lowercase;
@@ -548,49 +542,3 @@
 }
 .pick-links li { font-size: 0.8125rem; margin-block-end: 0.3rem; }
 .pick-links .pick-addr { color: var(--ink-soft); }
-
-/* ---- the ballot ---- */
-
-.vote-intro,
-.vote-note {
-    padding: var(--space-2);
-    margin: 0;
-    font-size: 0.8125rem;
-    line-height: 1.45;
-    color: var(--ink-soft);
-}
-.vote-intro { color: var(--ink); font-size: 0.9375rem; }
-.vote-note { border-top: 1px solid var(--line); }
-
-.vote-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: var(--space-1);
-}
-/* The name is a button too — it opens the pick — so it has to lose the row
-   button's own padding on the right or the two targets collide. */
-.vote-rows .vote-name { padding-inline-end: 0; }
-.vote-row.is-voted { background: var(--yellow); }
-
-.vote-btn {
-    flex: none;
-    margin-inline-end: var(--space-2);
-    padding: 0.3rem 0.7rem;
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    letter-spacing: 0.04em;
-    color: var(--ink-strong);
-    background: transparent;
-    border: 1px solid var(--ink-strong);
-    border-radius: 999px;
-    cursor: pointer;
-    white-space: nowrap;
-}
-.vote-btn:hover { background: var(--ink-strong); color: var(--paper); }
-.vote-btn:focus-visible { outline: 2px solid var(--ink-strong); outline-offset: 2px; }
-.vote-btn[aria-pressed="true"] {
-    background: var(--ink-strong);
-    color: var(--paper);
-    border-color: var(--ink-strong);
-}

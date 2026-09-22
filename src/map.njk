@@ -44,8 +44,6 @@ description: Where every*one is happening — every venue in the Adelaide Design
                 data-mode="shows">shows</button>
         <button class="pg-view" type="button" role="tab" aria-selected="false"
                 data-mode="picks">adw picks</button>
-        <button class="pg-view" type="button" role="tab" aria-selected="false"
-                data-mode="afterparty">afterparty</button>
       </div>
 
       <div class="pg-days map-days" role="group" aria-label="Filter by day">
@@ -99,9 +97,7 @@ description: Where every*one is happening — every venue in the Adelaide Design
   "style": site.mapboxStyle,
   "geojson": mapPoints.geojson,
   "circuit": mapPoints.circuit,
-  "picks": picks2026.picks,
-  "afterparty": picks2026.afterparty,
-  "ballot": site.afterpartyForm
+  "picks": picks2026.picks
 } | dump | safe }}</script>
 
 {% else %}

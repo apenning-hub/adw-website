@@ -93,13 +93,13 @@
     "detail": "UNKNOWN",
     "source": "manual"
   },
-  "Dental School, Adelaide University, ADL CBD": {
-    "lat": -34.92165,
-    "lng": 138.591369,
-    "matched_address": "AHMS Building, North Terrace, Adelaide SA 5000 (School of Dentistry, Level 10)",
-    "confidence": 1.0,
-    "source": "manual",
-    "note": "confirmed by ADW; coordinates from OpenStreetMap"
+  "Health and Medical Sciences Building, Adelaide University, 4 North Terrace": {
+    "lat": -34.960744,
+    "lng": 138.620036,
+    "matched_address": "4 North Terrace, Highgate South Australia 5063, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "Health and Medical Sciences Building, University of Adelaide, 4 North Terrace, SA, Australia"
   },
   "Honeydripper, ADL CBD": {
     "lat": -34.921672,
@@ -117,13 +117,14 @@
     "source": "mapbox",
     "query": "14/248 Grenfell Street, Adelaide SA 5000, Australia"
   },
-  "Terrace Floors, Eastwood": {
-    "lat": -34.943242,
-    "lng": 138.62057,
-    "matched_address": "51 Glen Osmond Road, Eastwood South Australia 5063, Australia",
-    "confidence": 1.0,
+  "Terrace Floors + Furnishings, Eastwood": {
+    "lat": -34.9429,
+    "lng": 138.6217,
+    "matched_address": "Eastwood, South Australia, Australia",
+    "confidence": 0.49999999999999994,
     "source": "mapbox",
-    "query": "51 Glen Osmond Road, Eastwood SA 5063, Australia"
+    "query": "Terrace Floors + Furnishings, Eastwood, SA, Australia",
+    "fallback": true
   },
   "Yitpi Yartapuultiku, Port Adelaide": {
     "lat": -34.851487,
@@ -333,11 +334,13 @@
     "source": "mapbox",
     "query": "230 Rundle Street, Adelaide SA 5000 (Shop 2, 228-230), SA, Australia"
   },
-  "Crafted Hardwoods, Plympton": {
-    "skip": true,
-    "reason": "no confirmed address - omitted until ADW supplies one",
-    "detail": "UNKNOWN - Plympton SA 5038 only",
-    "source": "manual"
+  "240 Morphett Road, North Plympton": {
+    "lat": -34.958907,
+    "lng": 138.536538,
+    "matched_address": "240-280 Morphett Road, Novar Gardens South Australia 5037, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "240 Morphett Road, North Plympton, SA, Australia"
   },
   "Estilo, ADL CBD": {
     "lat": -34.925934,
@@ -408,6 +411,14 @@
     "confidence": 1.0,
     "source": "mapbox",
     "query": "Level 4, 19 Gilles Street, Adelaide SA 5000, Australia"
+  },
+  "Health and Medical Sciences Building (Foyer) Adelaide University, 4 North Terrace": {
+    "lat": -34.960744,
+    "lng": 138.620036,
+    "matched_address": "4 North Terrace, Highgate South Australia 5063, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "Health and Medical Sciences Building (Foyer) University of Adelaide, 4 North Terrace, SA, Australia"
   },
   "The Forum, Jeffrey Smart, ADL CBD": {
     "lat": -34.923389,
@@ -556,7 +567,7 @@
     "source": "mapbox",
     "query": "20 Ebenezer Place, Adelaide SA 5000, Australia"
   },
-  "Naomi Murrel": {
+  "Naomi Murrell": {
     "lat": -34.923093,
     "lng": 138.60915,
     "matched_address": "5 Ebenezer Place, Adelaide South Australia 5000, Australia",
@@ -580,7 +591,7 @@
     "source": "mapbox",
     "query": "Shop 2, 228-230 Rundle Street, Adelaide SA 5000, Australia"
   },
-  "Miss Gladys Sim Choon": {
+  "Miss Gladys Sym Choon": {
     "lat": -34.922765,
     "lng": 138.608425,
     "matched_address": "235a Rundle Street, Adelaide South Australia 5000, Australia",
@@ -595,6 +606,76 @@
     "confidence": 1.0,
     "source": "mapbox",
     "query": "232 Rundle Street, Adelaide SA 5000, Australia"
+  },
+  "Honeydripper": {
+    "lat": -34.921672,
+    "lng": 138.607576,
+    "matched_address": "11 Frome Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "11 Frome Street, Adelaide SA 5000, Australia"
+  },
+  "Crumpler": {
+    "lat": -34.922912,
+    "lng": 138.606202,
+    "matched_address": "171 Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "171 Rundle Street, Adelaide SA 5000, Australia"
+  },
+  "Sofia": {
+    "lat": -34.925623,
+    "lng": 138.612213,
+    "matched_address": "16 Hutt Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "16 Hutt Street, Adelaide SA 5000, Australia"
+  },
+  "Latteria": {
+    "lat": -34.93175,
+    "lng": 138.611887,
+    "matched_address": "185 Hutt Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "185 Hutt Street, Adelaide SA 5000, Australia"
+  },
+  "Dental School, Adelaide University, ADL CBD": {
+    "lat": -34.92165,
+    "lng": 138.591369,
+    "matched_address": "AHMS Building, North Terrace, Adelaide SA 5000 (School of Dentistry, Level 10)",
+    "confidence": 1.0,
+    "source": "manual",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
+  },
+  "Terrace Floors, Eastwood": {
+    "lat": -34.943242,
+    "lng": 138.62057,
+    "matched_address": "51 Glen Osmond Road, Eastwood South Australia 5063, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "51 Glen Osmond Road, Eastwood SA 5063, Australia"
+  },
+  "Crafted Hardwoods, Plympton": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN - Plympton SA 5038 only",
+    "source": "manual"
+  },
+  "Naomi Murrel": {
+    "lat": -34.923093,
+    "lng": 138.60915,
+    "matched_address": "5 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "5 Ebenezer Place, Adelaide SA 5000, Australia"
+  },
+  "Miss Gladys Sim Choon": {
+    "lat": -34.922765,
+    "lng": 138.608425,
+    "matched_address": "235a Rundle Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "235A Rundle Street, Adelaide SA 5000, Australia"
   },
   "Unbuilt, North Adelaide": {
     "lat": -34.90864,
