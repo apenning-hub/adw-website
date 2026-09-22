@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="{{ '/assets/css/mapbox-gl.css' | url }}">
   <link rel="stylesheet" href="{{ '/assets/css/map.css' | url }}?v={{ assets.mapCss }}">
   {%- endif %}
+  {%- if guide %}
+  <link rel="stylesheet" href="{{ '/assets/css/guide.css' | url }}?v={{ assets.guideCss }}">
+  {%- endif %}
   {% if tallyPopup %}
   <script>
     window.TallyConfig = {

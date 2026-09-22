@@ -21,6 +21,7 @@ module.exports = {
   programJs: hash("assets/js/program.js"),
   updatesJs: hash("assets/js/program-updates.js"),
   mapCss: hash("assets/css/map.css"),
+  guideCss: hash("assets/css/guide.css"),
   mapJs: hash("assets/js/map.js"),
   mapStyleJs: hash("assets/js/map-style.js"),
   // The library is copied out of node_modules on every build. Without a

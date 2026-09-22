@@ -1,0 +1,300 @@
+/**
+ * Adelaide Design Week — guide.css
+ *
+ * The ADW picks editing guide (/picks-guide/). A document, not a web page:
+ * one column, generous measure, and it prints to A4 without fighting.
+ *
+ * Same palette and same two faces as the rest of the site — Chroma ST for
+ * display, Helvetica for reading. Yellow is the only highlight here too, and
+ * it is spent on exactly two things: the three columns that are Hannah's to
+ * fill in, and her own voice in the quote examples.
+ */
+
+.guide {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: var(--space-5) var(--space-3) var(--space-6);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ---- masthead ---- */
+
+.guide-head {
+    border-block-end: 2px solid var(--ink-strong);
+    padding-block-end: var(--space-3);
+    margin-block-end: var(--space-5);
+}
+.guide-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+}
+.guide-h1 {
+    font-family: var(--font-display);
+    /* Chroma ST is a lowercase-only display face on this site. */
+    text-transform: lowercase;
+    font-size: clamp(2.75rem, 11vw, 4.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--ink-strong);
+    margin-block-end: var(--space-3);
+}
+.guide-lede {
+    font-size: 1.1875rem;
+    line-height: 1.45;
+    color: var(--ink-strong);
+    max-width: 32rem;
+}
+.guide-meta {
+    margin-block-start: var(--space-3);
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+
+/* ---- sections ---- */
+
+.guide-sec { margin-block-end: var(--space-5); }
+
+.guide-h2 {
+    font-family: var(--font-display);
+    text-transform: lowercase;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--ink-strong);
+    margin-block-end: var(--space-2);
+    /* A hairline above each heading does the work a rule would, without
+       carving the page into boxes. */
+    border-block-start: 1px solid var(--line);
+    padding-block-start: var(--space-2);
+}
+.guide-p { margin-block-end: var(--space-2); max-width: 38rem; }
+.guide-p:last-child { margin-block-end: 0; }
+
+/* The one section that is a warning rather than an instruction. */
+.guide-sec--flag .guide-h2 {
+    border-block-start-color: var(--ink-strong);
+    border-block-start-width: 2px;
+}
+
+/* ---- numbered steps ---- */
+
+.guide-steps,
+.guide-rules {
+    list-style: none;
+    counter-reset: step;
+    max-width: 38rem;
+}
+.guide-steps li,
+.guide-rules li {
+    counter-increment: step;
+    position: relative;
+    padding-inline-start: 2.75rem;
+    margin-block-end: var(--space-2);
+}
+.guide-steps li::before,
+.guide-rules li::before {
+    content: counter(step);
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.05em;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--ink-strong);
+    color: var(--paper);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- the column table ---- */
+
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    margin-block-start: var(--space-3);
+}
+.guide-table th,
+.guide-table td {
+    text-align: start;
+    vertical-align: top;
+    padding: 0.7rem 0.75rem;
+    border-block-end: 1px solid var(--line);
+}
+.guide-table thead th {
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-block-end: 1px solid var(--ink-strong);
+    padding-block-end: 0.4rem;
+}
+/* Column names are the literal text of a spreadsheet heading, so they are
+   set as code and never re-cased. */
+.guide-table tbody th {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--ink-strong);
+    white-space: nowrap;
+    width: 11rem;
+}
+/* The three columns that are Hannah's to write. */
+.guide-table .is-yours { background: var(--yellow); }
+.guide-table .is-yours th,
+.guide-table .is-yours td { border-block-end-color: rgba(0, 0, 0, 0.25); }
+
+.guide code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.875em;
+    background: rgba(0, 0, 0, 0.055);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+}
+
+/* ---- quotes and examples ---- */
+
+.guide-quote {
+    font-size: 1.0625rem;
+    line-height: 1.45;
+    color: var(--ink-strong);
+    border-inline-start: 3px solid var(--ink-strong);
+    padding-inline-start: var(--space-2);
+    margin-block: var(--space-2);
+    max-width: 34rem;
+}
+
+.guide-two {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-3);
+    margin-block-start: var(--space-3);
+}
+.guide-card {
+    border: 1px solid var(--line);
+    padding: var(--space-3);
+}
+.guide-card-h {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--ink-strong);
+    margin-block-end: 0.4rem;
+}
+.guide-card-p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin-block-end: var(--space-2);
+}
+/* These two are miniatures of how the map actually renders them, so the
+   difference is visible rather than described. */
+.guide-eg { font-size: 0.9375rem; line-height: 1.45; }
+.guide-eg--note {
+    border-inline-start: 3px solid var(--yellow);
+    padding-inline-start: 0.75rem;
+    color: var(--ink-strong);
+}
+.guide-eg--words {
+    background: rgba(0, 0, 0, 0.035);
+    padding: 0.75rem;
+    font-style: italic;
+}
+.guide-eg--words cite {
+    display: block;
+    margin-block-start: 0.4rem;
+    font-style: normal;
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+.guide-eg--words cite::before { content: "— "; }
+
+.guide-email {
+    border: 1px solid var(--line);
+    border-inline-start: 3px solid var(--ink-strong);
+    background: rgba(0, 0, 0, 0.02);
+    padding: var(--space-3);
+    margin-block: var(--space-3);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    max-width: 36rem;
+}
+
+.guide-code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.9375rem;
+    background: var(--ink-strong);
+    color: var(--paper);
+    padding: 0.7rem 0.9rem;
+    margin-block: var(--space-2);
+    display: inline-block;
+}
+
+.guide-errs {
+    max-width: 38rem;
+    /* site.css sets list-style: none globally, so this asks for it back. */
+    list-style: disc;
+    padding-inline-start: 1.25rem;
+    margin-block-end: var(--space-2);
+}
+.guide-errs li::marker { color: var(--ink-soft); }
+.guide-errs li { margin-block-end: 0.4rem; }
+
+/* ---- foot ---- */
+
+.guide-foot {
+    border-block-start: 2px solid var(--ink-strong);
+    padding-block-start: var(--space-3);
+    margin-block-start: var(--space-5);
+    font-size: 0.9375rem;
+}
+.guide-foot-sm {
+    margin-block-start: var(--space-2);
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+}
+
+/* ---- print ----
+   This gets sent around as a PDF, so it has to lay out on A4 without the
+   site furniture, and no section may be split across a page break. */
+@page { size: A4; margin: 16mm 15mm; }
+
+@media print {
+    body { background: #fff; }
+    .site-header, .site-footer, nav, .skip-link { display: none !important; }
+    .guide {
+        max-width: none;
+        padding: 0;
+        font-size: 10.5pt;
+        line-height: 1.5;
+    }
+    .guide-h1 { font-size: 40pt; }
+    .guide-h2 { font-size: 15pt; }
+    .guide-lede { font-size: 12pt; }
+    .guide-head { margin-block-end: 8mm; }
+    .guide-sec { margin-block-end: 7mm; }
+    /* A heading alone at the foot of a page is the only break worth
+       forbidding outright. */
+    .guide-h2 { break-after: avoid; }
+    .guide-p, .guide-steps li, .guide-rules li,
+    .guide-quote, .guide-email, .guide-card,
+    .guide-table tr, .guide-foot { break-inside: avoid; }
+    .guide-table thead { display: table-header-group; }
+    .guide-table { font-size: 9pt; }
+    .guide-table .is-yours {
+        /* Browsers drop backgrounds when printing unless told not to, and
+           the yellow is the only thing marking Hannah's three columns. */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .guide-two { break-inside: avoid; }
+    .guide-head { break-after: avoid; }
+    .guide-foot { margin-block-start: 8mm; }
+    a { text-decoration: none; color: inherit; }
+}

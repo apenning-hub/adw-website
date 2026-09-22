@@ -1,0 +1,126 @@
+---
+title: ADW picks — how to edit the list
+permalink: /picks-guide/
+layout: base.njk
+guide: true
+noindex: true
+description: How to edit the ADW picks list — the curated venues on the every*one map.
+---
+
+{# Unlisted, like the map it documents: no navOrder, noindex, and nothing
+   links to it. It exists so there is a URL to send Hannah, and so the
+   instructions live in the repo rather than in somebody's inbox.
+   Print to PDF from here and it lays out as an A4 document. #}
+
+<article class="guide">
+
+<header class="guide-head">
+  <p class="guide-eyebrow">every*one <span aria-hidden="true">&middot;</span> Adelaide Design Week 2026</p>
+  <h1 class="guide-h1">adw picks</h1>
+  <p class="guide-lede">A curated list of the Adelaide rooms worth being in, on the festival map. This is how to change it.</p>
+  <p class="guide-meta">For Hannah <span aria-hidden="true">&middot;</span> {{ picks2026.count }} places <span aria-hidden="true">&middot;</span> updated 22 September 2026</p>
+</header>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">The short version</h2>
+  <ol class="guide-steps">
+    <li><strong>Everything lives in one spreadsheet.</strong> Edit it like any spreadsheet. You never touch code.</li>
+    <li><strong>You cannot break the website.</strong> If a row is wrong, the site keeps showing the last good version and says what to fix.</li>
+    <li><strong>Add a row, and tell Andrew.</strong> A new place has no map pin until someone runs one command.</li>
+  </ol>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">The columns</h2>
+  <p class="guide-p">Only <strong>name</strong> is required. Everything else can be empty — a row with just a name still publishes, it just says less.</p>
+
+  <table class="guide-table">
+    <thead><tr><th>Column</th><th>What goes in it</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">name</th><td>What the place is called. <em>The only one you must fill in.</em></td></tr>
+      <tr><th scope="row">address</th><td>Street address <strong>with the number</strong>. This is how it gets a pin.</td></tr>
+      <tr><th scope="row">kind</th><td>One of: <code>pub</code>, <code>bar</code>, <code>restaurant</code>, <code>fine dining</code>, <code>classic</code></td></tr>
+      <tr><th scope="row">designer</th><td>The practice or person — if it is known. <strong>Leave blank if it isn't.</strong></td></tr>
+      <tr><th scope="row">year</th><td>When it opened, or when it was fitted out</td></tr>
+      <tr><th scope="row">why</th><td>One line on why it earns a place</td></tr>
+      <tr class="is-yours"><th scope="row">hannah_note</th><td><strong>Yours.</strong> A recommendation in your own voice. Shown as a pull quote.</td></tr>
+      <tr class="is-yours"><th scope="row">designer_words</th><td><strong>The designer's.</strong> What the project meant to them, in their words.</td></tr>
+      <tr class="is-yours"><th scope="row">designer_name</th><td>Who said that. Fill this in or the quote runs unattributed.</td></tr>
+      <tr><th scope="row">link</th><td>Website</td></tr>
+      <tr><th scope="row">socials</th><td><code>@handle</code>, or a full URL</td></tr>
+      <tr><th scope="row">show</th><td><code>N</code> hides a row without deleting it</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="guide-sec guide-sec--flag">
+  <h2 class="guide-h2">Blank designers are the point</h2>
+  <p class="guide-p"><strong>{{ picks2026.openCredits }} of the {{ picks2026.count }} have no designer credit, and that is correct.</strong> Ying Chow, Lucia's, the Exeter, the Grace Emily — these were never designed by anyone with a letterhead, and some of the others have credits nobody has written down yet.</p>
+  <p class="guide-p">A blank shows on the map as:</p>
+  <p class="guide-quote">Designer unknown. If this was your work, we would like to credit it.</p>
+  <p class="guide-p">That is an invitation, and it is how the list is meant to fill in. <strong>Please don't fill a blank with a guess</strong> — a wrong credit is much worse than an honest gap, and far harder to spot later.</p>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">The two kinds of quote</h2>
+  <p class="guide-p">These are deliberately different voices, and they look different on the page.</p>
+
+  <div class="guide-two">
+    <div class="guide-card">
+      <p class="guide-card-h">hannah_note</p>
+      <p class="guide-card-p">You, recommending the place. Gets a yellow rule down the side.</p>
+      <p class="guide-eg guide-eg--note">Go on a Tuesday, sit at the bar, and order whatever is on the chalkboard.</p>
+    </div>
+    <div class="guide-card">
+      <p class="guide-card-h">designer_words</p>
+      <p class="guide-card-p">The designer on their own project. Gets a shaded block, with their name under it.</p>
+      <p class="guide-eg guide-eg--words">We wanted a room that felt found rather than made.<cite>Matiya Marovich</cite></p>
+    </div>
+  </div>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">Getting a designer to write something</h2>
+  <p class="guide-p">The columns are there to be sent out. This is the ask that works:</p>
+  <blockquote class="guide-email">
+    <p>We're putting [venue] on the ADW picks map for Design Week. Would you write two or three sentences about what the project meant to you? It'll run on the map with your name on it.</p>
+  </blockquote>
+  <p class="guide-p">Their answer goes in <strong>designer_words</strong>, their name in <strong>designer_name</strong>. Keep it to a few sentences — it sits in a narrow column beside the map, not on a page of its own.</p>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">Why the list is short</h2>
+  <p class="guide-p">There are {{ picks2026.count }}, not two hundred. Two rules keep it that way, and both are worth repeating when somebody asks why their favourite isn't on it.</p>
+  <ol class="guide-rules">
+    <li><strong>Every one of them is excellent.</strong> A long list of good places is less useful than a short list of great ones.</li>
+    <li><strong>Every one of them is walkable from the program.</strong> The furthest is about 1.2 km from a festival venue; most are under 200 m. That is what makes it useful during Design Week rather than a guide to South Australia — and it is why there are no cellar doors on it. The nearest was 24 km out.</li>
+  </ol>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">Map pins</h2>
+  <p class="guide-p">Pins are <strong>not</strong> in the spreadsheet, on purpose — that way editing it can never move a pin to the wrong place.</p>
+  <p class="guide-p">A new row has no pin until someone runs one command. Ask Andrew, or if you have the project open:</p>
+  <p class="guide-code">npm run geocode-picks</p>
+  <p class="guide-p">It only looks up rows that don't have a pin yet, so it can never move one that is already right.</p>
+  <p class="guide-p"><strong>A place it can't find confidently gets no pin at all</strong> and stays in the list without one. That's deliberate. A missing pin is honest; a pin dropped in the middle of the city because the address was vague is a guess wearing a uniform, and nobody can tell by looking. <em>All {{ picks2026.count }} are placed right now</em> — a new one without a street number is what would land in that state.</p>
+</section>
+
+<section class="guide-sec">
+  <h2 class="guide-h2">If you get something wrong</h2>
+  <p class="guide-p">Nothing goes live in a broken state. The build stops and says what and where, naming the row, in plain English:</p>
+  <ul class="guide-errs">
+    <li>a place listed twice — it names <em>both</em> row numbers</li>
+    <li>a <strong>kind</strong> that isn't one of the five — it lists the five</li>
+    <li>a misspelled column heading — it names it, and lists the real ones</li>
+    <li>no <strong>name</strong> column at all</li>
+  </ul>
+  <p class="guide-p">Until it's fixed, the site keeps showing the last good version. The worst case is that a change doesn't appear — never that the page breaks.</p>
+</section>
+
+<footer class="guide-foot">
+  <p>The list is at <strong>everyone.adelaidedesignweek.com.au/map-testing/?tab=picks</strong></p>
+  <p class="guide-foot-sm">Unlisted — it isn't in the site menu and search engines are told to skip it. The spreadsheet is <code>src/_data/picks-2026.csv</code>. Questions to Andrew.</p>
+</footer>
+
+</article>
