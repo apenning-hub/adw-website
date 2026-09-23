@@ -95,44 +95,44 @@ Keep it to a few sentences — it sits in a sidebar column, not on a page.
 
 ## Getting a pin on the map
 
-Coordinates are **not** in the spreadsheet, on purpose: that way editing the
-sheet can never move a pin to the wrong place.
+The picks live in the Google Sheet **"ADW 2026 Picks — live map data"**. Add a
+row with a `name` and a street `address`, then use **Publish → Publish map to
+website**. Publishing looks up the address and fills in `lat` and `lng` for
+you, then updates the map about a minute later.
 
-A new row has no pin until somebody runs:
-
-```sh
-npm run geocode-picks
-```
-
-That looks up only the rows that don't have coordinates yet and writes them
-to `src/_data/picks.json`. It never moves a pin that is already right, so it
-is safe to run as often as you like.
-
-**A place it cannot find confidently gets no pin at all** and stays in the
-list without one. That is deliberate. A missing pin is honest; a pin dropped
-in the middle of the city because the address was vague is a guess wearing a
-uniform, and nobody can tell the difference by looking.
-
-All 37 are placed at the moment. If you add one without a street number,
-expect it to land in this state.
-
-If a pin lands somewhere wrong, fix it by hand in `picks.json` and set
-`"source": "manual"`. **Nothing ever overwrites a manual pin.**
+- **Only an exact address match is accepted.** If the address is vague ("Leigh
+  St", "near the Central Market"), the address cell turns red and the place
+  stays in the list with no pin. Add a street number and suburb and publish
+  again, or type the position into `lat` and `lng` yourself. A missing pin is
+  honest; a pin dropped in the middle of the city because the address was
+  vague is a guess, and nobody can tell the difference by looking.
+- **A position already in the sheet is never changed.** To move a pin, clear
+  both `lat` and `lng` and publish again, or type the correct numbers in.
+- Where `lat` and `lng` are blank, the site falls back to
+  `src/_data/picks.json` (written by `npm run geocode-picks`).
 
 ---
 
-## Publishing from a Google Sheet
+## Publishing
 
-Set `picksSheetCsv` in `src/_data/site.json` to the sheet's CSV export URL —
-the same arrangement the program uses:
+The sheet has its own **Publish** menu:
 
-```
-https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/export?format=csv&gid=0
-```
+- **Publish map to website** — places new rows, checks everything, then
+  rebuilds the site. Nothing goes out while any cell is red.
+- **Check the picks** — the same checks, without publishing.
 
-The sheet then becomes the source of truth and the committed CSV is the
-safety net: if Google is unreachable at build time, the site builds from the
-last committed copy rather than publishing an empty list.
+Mistakes turn pale red as you type, with a note saying what's wrong (hover
+over the cell). `kind` and `show` have dropdowns.
+
+The sheet is read at `site.json` → `picksSheetCsv`. It must stay viewable by
+anyone with the link, or the site can't read it and quietly keeps using the
+committed `picks-2026.csv` instead. The script lives in the sheet
+(Extensions → Apps Script → "Publish ADW Map"); a copy is in
+`apps-script/picks-sheet.gs`.
+
+One thing to know: the map and the program are one website, so a publish
+rebuilds both. If the **program** sheet has a red cell at that moment, the
+rebuild stops and neither updates until it's fixed.
 
 ---
 
