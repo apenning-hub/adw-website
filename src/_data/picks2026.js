@@ -22,18 +22,29 @@
 //   socials         @handle or a URL
 //   show            N hides the row without deleting it
 //
-// Coordinates are NOT in the spreadsheet. They live in picks.json, keyed by
-// name, and are written by `npm run geocode-picks`. Editing the sheet can
-// therefore never move a pin to the wrong place, and a new row simply has no
-// pin until someone runs the geocoder.
+//   lat, lng        optional. Filled in by the Google Sheet's Publish button,
+//                   which geocodes any row whose address has no position yet
+//                   and never overwrites one that has. Where they are blank,
+//                   the position comes from picks.json (keyed by name, written
+//                   by `npm run geocode-picks`), and failing that the pick is
+//                   listed with no pin. A pin is never guessed.
+//
+// Since 24 Sep 2026 the Google Sheet (site.json picksSheetCsv) is the source
+// of truth, as it is for the program; this CSV is the fallback when the sheet
+// cannot be read.
 
 const fs = require("fs");
 const path = require("path");
+const site = require("./site.json");
 const { parseCsv } = require("./program2026.js");
 
 const COLUMNS = ["name", "address", "kind", "designer", "year", "why",
                  "hannah_note", "designer_words", "designer_name",
-                 "link", "socials", "show"];
+                 "link", "socials", "show", "lat", "lng"];
+
+// A position outside South Australia is a geocoder that matched the wrong
+// Adelaide, or a typo. Either way it is refused rather than drawn.
+const inSA = (lat, lng) => lat < -26 && lat > -38.5 && lng > 129 && lng < 141.1;
 
 // Ordered: this is the order the filter chips appear in.
 const KINDS = ["bar", "pub", "cafe", "restaurant", "fine dining",
@@ -63,11 +74,38 @@ function parseSocials(value) {
   return { url: `https://www.instagram.com/${handle}/`, handle: `@${handle}` };
 }
 
-function build() {
+// Eleventy's entry point: the sheet if one is configured, else the committed
+// CSV. Same arrangement as readProgram() in program2026.js.
+async function load() {
   const csvPath = path.join(__dirname, "picks-2026.csv");
-  if (!fs.existsSync(csvPath)) return empty();
+  const local = fs.existsSync(csvPath) ? fs.readFileSync(csvPath, "utf8") : null;
+  const url = (site.picksSheetCsv || "").trim();
+  if (url) {
+    try {
+      const res = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(20000) });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      if (/^\s*</.test(text) || !/^\s*name\s*,/i.test(text)) {
+        throw new Error("that URL did not return the picks as CSV");
+      }
+      console.log(`[picks] loaded from the Google Sheet (${text.length} bytes)`);
+      return build(text);
+    } catch (err) {
+      console.warn(`[picks] could not read the Google Sheet (${err.message}) — ` +
+                   `publishing the last committed picks instead`);
+    }
+  }
+  return local === null ? empty() : build(local);
+}
 
-  const rows = parseCsv(fs.readFileSync(csvPath, "utf8"));
+function build(text) {
+  if (text === undefined) {
+    const csvPath = path.join(__dirname, "picks-2026.csv");
+    if (!fs.existsSync(csvPath)) return empty();
+    text = fs.readFileSync(csvPath, "utf8");
+  }
+
+  const rows = parseCsv(text);
   if (!rows.length) fail("the file is empty");
 
   const header = rows[0].cells.map((c) => c.trim().toLowerCase());
@@ -105,7 +143,21 @@ function build() {
            `  ${KINDS.join(", ")}`);
     }
 
-    const place = geo[name] || null;
+    // The sheet's own position wins; picks.json covers rows the sheet has not
+    // placed. Both blank or both half-filled is an honest "no pin".
+    const latRaw = at(row.cells, "lat");
+    const lngRaw = at(row.cells, "lng");
+    let place = geo[name] || null;
+    if (latRaw || lngRaw) {
+      const lat = Number(latRaw);
+      const lng = Number(lngRaw);
+      if (!latRaw || !lngRaw || !Number.isFinite(lat) || !Number.isFinite(lng) || !inSA(lat, lng)) {
+        fail(`row ${row.line} (${name}) has lat "${latRaw}", lng "${lngRaw}", which is ` +
+             `not a place in South Australia.\n  Clear both cells and publish again — ` +
+             `the sheet's Publish button will look the address up.`);
+      }
+      place = { lat, lng };
+    }
     const words = at(row.cells, "designer_words");
 
     picks.push({
@@ -153,6 +205,7 @@ function readGeo() {
 const empty = () => ({ picks: [], kinds: [], count: 0,
                        mappedCount: 0, openCredits: 0, withWords: 0 });
 
-module.exports = build;
+module.exports = load;
+module.exports.build = build;
 module.exports.KINDS = KINDS;
 module.exports.COLUMNS = COLUMNS;

@@ -27,7 +27,7 @@ function withSheet(csv, geo, fn) {
   if (geo !== null) fs.writeFileSync(GEO, JSON.stringify(geo));
   try {
     delete require.cache[require.resolve(MODULE)];
-    return fn(require(MODULE));
+    return fn(require(MODULE).build);
   } finally {
     fs.writeFileSync(CSV, csvWas);
     fs.writeFileSync(GEO, geoWas);
@@ -56,7 +56,7 @@ test("an uncredited pick is counted as an open credit, not an error", () => {
     });
 });
 
-test("coordinates come from picks.json, never from the spreadsheet", () => {
+test("coordinates come from picks.json when the sheet has none", () => {
   const geo = { venues: [{ name: "Ying Chow", lat: -34.93, lng: 138.595 }] };
   withSheet(`${HEAD}\nYing Chow,114 Gouger St,classic,,1994,,,,,,,`, geo, (build) => {
     const p = build().picks[0];
@@ -178,9 +178,32 @@ test("picks are sorted by name", () => {
     });
 });
 
-test("the real spreadsheet parses, and most of it is on the map", () => {
+test("the sheet's own lat/lng wins over picks.json", () => {
+  const geo = { venues: [{ name: "Ying Chow", lat: -34.93, lng: 138.595 }] };
+  withSheet(`${HEAD},lat,lng\nYing Chow,114 Gouger St,classic,,,,,,,,,,-34.9301,138.5952`,
+    geo, (build) => {
+      const p = build().picks[0];
+      assert.strictEqual(p.lat, -34.9301);
+      assert.strictEqual(p.lng, 138.5952);
+      assert.strictEqual(p.mapped, true);
+    });
+});
+
+test("a position outside South Australia is refused, not drawn", () => {
+  withSheet(`${HEAD},lat,lng\nA,,bar,,,,,,,,,,51.5,-0.12`, { venues: [] }, (build) => {
+    assert.throws(() => build(), /not a place in South Australia/);
+  });
+});
+
+test("half a position is refused", () => {
+  withSheet(`${HEAD},lat,lng\nA,,bar,,,,,,,,,,-34.9,`, { venues: [] }, (build) => {
+    assert.throws(() => build(), /not a place in South Australia/);
+  });
+});
+
+test("the real spreadsheet parses, and most of it is on the map", async () => {
   delete require.cache[require.resolve(MODULE)];
-  const out = require(MODULE)();
+  const out = await require(MODULE)();
   // Deliberately a short list: 30-40 excellent rooms, not a directory.
   assert.ok(out.count >= 30 && out.count <= 45,
             `expected 30-45 picks, got ${out.count}`);
