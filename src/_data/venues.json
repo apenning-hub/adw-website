@@ -373,12 +373,10 @@
     "query": "1/149 Flinders Street, Adelaide SA 5000, Australia"
   },
   "Yadura Design Studio, Parkside": {
-    "lat": -34.944796,
-    "lng": 138.609307,
-    "matched_address": "149a Young Street, Parkside South Australia 5063, Australia",
-    "confidence": 1.0,
-    "source": "mapbox",
-    "query": "149A Young Street, Parkside SA 5063, Australia"
+    "skip": true,
+    "reason": "hosts' home - address given to ticket holders, not published on the map",
+    "detail": "WITHHELD - home and studio; ticket page says location TBA",
+    "source": "manual"
   },
   "Nearly Bar, ADL CBD": {
     "lat": -34.923515,
@@ -924,12 +922,10 @@
     "query": "Level 1, 192 Waymouth Street, Adelaide SA 5000, Australia"
   },
   "Yadura Design Studio, Parkside SA 5063": {
-    "lat": -34.944796,
-    "lng": 138.609307,
-    "matched_address": "149a Young Street, Parkside South Australia 5063, Australia",
-    "confidence": 1.0,
-    "source": "mapbox",
-    "query": "149A Young Street, Parkside SA 5063, Australia"
+    "skip": true,
+    "reason": "hosts' home - address given to ticket holders, not published on the map",
+    "detail": "WITHHELD - home and studio; ticket page says location TBA",
+    "source": "manual"
   },
   "JPE Design Studio, Level 4, 19 Gilles St, Adelaide SA 5000": {
     "lat": -34.9345539,
@@ -1243,5 +1239,11 @@
     "lng": 138.5905294,
     "source": "verified-2026-09-24",
     "matched_address": "243 Hindley St, Adelaide SA 5000"
+  },
+  "Moving venue — roving around Adelaide": {
+    "skip": true,
+    "reason": "moving venue - a roving planted car, not a fixed location",
+    "detail": "NOT A PLACE - roving vehicle; its day cells say which events it appears at",
+    "source": "manual"
   }
 }
