@@ -315,6 +315,15 @@
         "url": "https://stylecraft.com.au/"
       },
       {
+        "name": "Table Wines",
+        "file": "table-wines.png",
+        "w": 430,
+        "h": 298,
+        "dw": 68,
+        "dh": 47,
+        "url": "https://tablewines.com.au/"
+      },
+      {
         "name": "Urban Habitats",
         "file": "urban-habitats.png",
         "w": 936,
@@ -426,15 +435,6 @@
         "dw": 83,
         "dh": 37,
         "url": "https://pundi.au/"
-      },
-      {
-        "name": "Table Wines",
-        "file": "table-wines.png",
-        "w": 430,
-        "h": 298,
-        "dw": 61,
-        "dh": 42,
-        "url": "https://tablewines.com.au/"
       }
     ]
   }

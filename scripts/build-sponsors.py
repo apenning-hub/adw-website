@@ -66,6 +66,7 @@ TIERS = [
    ("Piteo",                L+"04_Bronze/11_Piteo/PITEO_LockupA.png"),
    ("RF Lux",               W+"rasterised/rf-lux.png"),
    ("Stylecraft",           L+"04_Bronze/12_Stylecraft/Stylecraft Logo - Magenta.png"),
+   ("Table Wines",          W+"rasterised/table-wines.png"),
    ("Urban Habitats",       L+"04_Bronze/13_Urban Habitats/UHurbanhabitats_Hor_Black.png"),
    ("Walter Brooke",        L+"04_Bronze/14_Walter Brooke/WBA LOGO stacked + services.pdf"),
  ]),
@@ -81,7 +82,6 @@ TIERS = [
    ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
    ("Little Bang Brewing Co", L+"05_In-Kind/09_Little Bang Brewing/LBBC Logo Stacked Horizontal Black.eps"),
    ("Pundi",                L+"05_In-Kind/10_Pundi/Pundi Logo - SCREEN - Mono Black.png"),
-   ("Table Wines",          W+"rasterised/table-wines.png"),
  ]),
 ]
 
