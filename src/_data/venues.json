@@ -708,5 +708,540 @@
     "skip": true,
     "reason": "not a location",
     "source": "rule"
+  },
+  "The Coldstore, 66 Wyatt St, Adelaide SA 5000": {
+    "lat": -34.9263052,
+    "lng": 138.6041105,
+    "matched_address": "66 Wyatt St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "66 Wyatt Street, Adelaide SA 5000, Australia"
+  },
+  "The Meeting Hall, Paul Kelly Ln, 25 Pirie St, Adelaide SA 5000": {
+    "lat": -34.9263136,
+    "lng": 138.6008412,
+    "matched_address": "25 Pirie St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "25 Pirie Street, Adelaide SA 5000 (Meeting Hall, Paul Kelly Lane), SA, Australia"
+  },
+  "Lo & Co Interiors, 28 Fullarton Rd, Norwood SA 5067": {
+    "lat": -34.917574,
+    "lng": 138.623318,
+    "matched_address": "28 Fullarton Road, Norwood South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "28 Fullarton Road, Norwood SA 5067, Australia"
+  },
+  "Adelaide Health and Medical Sciences Building, Adelaide University, 4 North Tce, Adelaide SA 5000": {
+    "lat": -34.9216576,
+    "lng": 138.5913696,
+    "matched_address": "4 North Tce, Adelaide SA 5000",
+    "confidence": 0.6,
+    "source": "verified-2026-09-24",
+    "query": "Health and Medical Sciences Building, University of Adelaide, 4 North Terrace, SA, Australia"
+  },
+  "Yitpi Yartapuultiku, 1300 Old Port Rd, Port Adelaide SA 5015": {
+    "lat": -34.8513162,
+    "lng": 138.5005012,
+    "matched_address": "1300 Old Port Rd, Port Adelaide SA 5015",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "1300 Old Port Road, Port Adelaide SA 5015, Australia"
+  },
+  "Art Gallery of South Australia, 490 North Tce, Adelaide SA 5000": {
+    "lat": -34.9206307,
+    "lng": 138.6039688,
+    "matched_address": "490 North Tce, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "490 North Terrace, Adelaide SA 5000, Australia"
+  },
+  "Immersive Art and Installation, 63 Light Sq, Adelaide SA 5000": {
+    "lat": -34.925576,
+    "lng": 138.592535,
+    "matched_address": "63 Light Square, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "63 Light Square, Adelaide SA 5000, Australia"
+  },
+  "SODA Objects + Studios, 1 Rosetta St, West Croydon SA 5008": {
+    "lat": -34.892672,
+    "lng": 138.554641,
+    "matched_address": "1 Rosetta Street, West Croydon South Australia 5008, Australia",
+    "confidence": 0.9,
+    "source": "mapbox",
+    "query": "1 Rosetta Street, West Croydon SA 5008, Australia"
+  },
+  "Sans-Arc Studio, 3A Malcolm St, West Croydon SA 5008": {
+    "lat": -34.894066,
+    "lng": 138.55702,
+    "matched_address": "3a Malcolm Street, West Croydon South Australia 5008, Australia",
+    "confidence": 0.9,
+    "source": "mapbox",
+    "query": "3A Malcolm Street, West Croydon SA 5008, Australia"
+  },
+  "Something Special Concept Store, Plant 3, 14 Fourth St, Bowden SA 5007": {
+    "lat": -34.9061196,
+    "lng": 138.5786144,
+    "matched_address": "14 Fourth St, Bowden SA 5007",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "6-14 Fourth Street, Bowden SA 5007, Australia"
+  },
+  "Crafted Hardwoods, 240 Morphett Rd, Adelaide Airport SA 5950": {
+    "lat": -34.958907,
+    "lng": 138.536538,
+    "matched_address": "240-280 Morphett Road, Novar Gardens South Australia 5037, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "240 Morphett Road, North Plympton, SA, Australia"
+  },
+  "RF Lux, 1/149 Flinders St, Adelaide SA 5000": {
+    "lat": -34.9270411,
+    "lng": 138.6063512,
+    "matched_address": "1/149 Flinders St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "1/149 Flinders Street, Adelaide SA 5000, Australia"
+  },
+  "Imprints Booksellers, 107 Hindley St, Adelaide SA 5000": {
+    "lat": -34.923428,
+    "lng": 138.59558,
+    "matched_address": "107 Hindley Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "107 Hindley Street, Adelaide SA 5000, Australia"
+  },
+  "Allan Scott Auditorium (H2-16), Hawke Building, Adelaide University City West, 55 North Tce, Adelaide SA 5000": {
+    "lat": -34.9224206,
+    "lng": 138.5912478,
+    "matched_address": "55 North Tce, Adelaide SA 5000",
+    "confidence": 0.6,
+    "source": "verified-2026-09-24",
+    "query": "Hawke Building, 55 North Terrace (cnr Fenn Place), Adelaide SA 5000, Australia"
+  },
+  "GGA Studio (Grieve Gillett Architects), 243 Pirie St, Adelaide SA 5000": {
+    "lat": -34.925568,
+    "lng": 138.608877,
+    "matched_address": "243 Pirie Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "243 Pirie Street, Adelaide SA 5000, Australia"
+  },
+  "Meet at Jewels of Thought Records, 15 Ebenezer Pl, Adelaide SA 5000": {
+    "lat": -34.923039,
+    "lng": 138.609087,
+    "matched_address": "15 Ebenezer Place, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "15 Ebenezer Place, Adelaide SA 5000, Australia"
+  },
+  "Being Studio, 27 Halifax St, Adelaide SA 5000": {
+    "lat": -34.933291,
+    "lng": 138.601266,
+    "matched_address": "27-29 Halifax Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "27 Halifax Street, Adelaide SA 5000, Australia"
+  },
+  "Kaurna Building, Level 3, Adelaide University City West, 2 Fenn Pl, Adelaide SA 5000": {
+    "lat": -34.9230486,
+    "lng": 138.5913381,
+    "matched_address": "2 Fenn Pl, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
+  },
+  "EST Studio, 94 Gilles St, Adelaide SA 5000": {
+    "lat": -34.933942,
+    "lng": 138.603849,
+    "matched_address": "94 Gilles Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "94 Gilles Street, Adelaide SA 5000, Australia"
+  },
+  "Reform Distilling, 91 Little Rundle St, Kent Town SA 5067": {
+    "lat": -34.919335,
+    "lng": 138.61935,
+    "matched_address": "91 Little Rundle Street, Kent Town South Australia 5067, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "91 Little Rundle Street, Kent Town SA 5067, Australia"
+  },
+  "Honeydripper, 11 Frome St, Adelaide SA 5000": {
+    "lat": -34.921672,
+    "lng": 138.607576,
+    "matched_address": "11 Frome Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "11 Frome Street, Adelaide SA 5000, Australia"
+  },
+  "4th Floor Elevator, Level 4, 14 Grenfell St, Adelaide SA 5000": {
+    "lat": -34.9240993,
+    "lng": 138.6002507,
+    "matched_address": "14 Grenfell St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Level 4, 14 Grenfell Street, Adelaide SA 5000, Australia"
+  },
+  "Washdog Studios (inside Fab Workshop), 12 King William St, Kent Town SA 5067": {
+    "lat": -34.920485,
+    "lng": 138.616597,
+    "matched_address": "12 King William Street, Kent Town South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "12 King William Street, Kent Town SA 5067, Australia"
+  },
+  "Art Gallery of South Australia, Donor’s Lounge (via the Courtyard), 490 North Tce, Adelaide SA 5000": {
+    "lat": -34.9206307,
+    "lng": 138.6039688,
+    "source": "verified-2026-09-24",
+    "matched_address": "490 North Tce, Adelaide SA 5000"
+  },
+  "Mixed Goods Studios, Unit 3, 64 Humphries Tce, Kilkenny SA 5009": {
+    "lat": -34.872913,
+    "lng": 138.555769,
+    "matched_address": "64 Humphries Terrace, Kilkenny South Australia 5009, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "3/64 Humphries Terrace, Kilkenny SA 5009, Australia"
+  },
+  "Michi, 223 Pulteney St, Adelaide SA 5000": {
+    "lat": -34.927669,
+    "lng": 138.605373,
+    "matched_address": "223 Pulteney Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "223 Pulteney Street, Adelaide SA 5000, Australia"
+  },
+  "Estilo, Level 1, 192 Waymouth St, Adelaide SA 5000": {
+    "lat": -34.925934,
+    "lng": 138.592428,
+    "matched_address": "192 Waymouth Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Level 1, 192 Waymouth Street, Adelaide SA 5000, Australia"
+  },
+  "Yadura Design Studio, Parkside SA 5063": {
+    "lat": -34.944796,
+    "lng": 138.609307,
+    "matched_address": "149a Young Street, Parkside South Australia 5063, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "149A Young Street, Parkside SA 5063, Australia"
+  },
+  "JPE Design Studio, Level 4, 19 Gilles St, Adelaide SA 5000": {
+    "lat": -34.9345539,
+    "lng": 138.601155,
+    "matched_address": "19 Gilles St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Level 4, 19 Gilles Street, Adelaide SA 5000, Australia"
+  },
+  "The Light Impact Showroom, 66 The Parade, Norwood SA 5067": {
+    "lat": -34.921863,
+    "lng": 138.629144,
+    "matched_address": "66 The Parade, Norwood South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "66 The Parade, Norwood SA 5067, Australia"
+  },
+  "Jardan, 223 Flinders St, Adelaide SA 5000": {
+    "lat": -34.927103,
+    "lng": 138.60898,
+    "matched_address": "223 Flinders Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "223 Flinders Street, Adelaide SA 5000, Australia"
+  },
+  "Meet at Faraway House, 21 Franklin St, Adelaide SA 5000": {
+    "lat": -34.927615,
+    "lng": 138.5981879,
+    "matched_address": "21 Franklin St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "21 Franklin Street, Adelaide SA 5000, Australia"
+  },
+  "The Mill, 154 Angas St, Adelaide SA 5000": {
+    "lat": -34.929357,
+    "lng": 138.606798,
+    "matched_address": "154 Angas Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "154 Angas Street, Adelaide SA 5000, Australia"
+  },
+  "Fab Workshop, 12 Little Rundle St, Kent Town SA 5067": {
+    "lat": -34.920485,
+    "lng": 138.616597,
+    "matched_address": "12 King William Street, Kent Town South Australia 5067, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "12 King William Street, Kent Town SA 5067, Australia"
+  },
+  "Studio Gram, 68 Chief St, Brompton SA 5007": {
+    "lat": -34.899409,
+    "lng": 138.577815,
+    "matched_address": "68 Chief Street, Brompton South Australia 5007, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "68 Chief Street, Brompton SA 5007, Australia"
+  },
+  "The Basement Gallery & Studio, 12 Kingston St, Adelaide SA 5000": {
+    "lat": -34.9240734,
+    "lng": 138.5966284,
+    "matched_address": "12 Kingston St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "12 Kingston Street, Adelaide SA 5000, Australia"
+  },
+  "Fabrikate Studio, 14/248 Grenfell St, Adelaide SA 5000": {
+    "lat": -34.9236948,
+    "lng": 138.6102969,
+    "matched_address": "14/248 Grenfell St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "14/248 Grenfell Street, Adelaide SA 5000, Australia"
+  },
+  "Georgie Shepherd Interior Design, 46B Beulah Rd, Norwood SA 5067": {
+    "lat": -34.91887,
+    "lng": 138.626022,
+    "matched_address": "46 Beulah Road, Norwood South Australia 5067, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "46B Beulah Road, Norwood SA 5067, Australia"
+  },
+  "19 Twin St, Adelaide SA 5000": {
+    "lat": -34.924024,
+    "lng": 138.604427,
+    "matched_address": "19 Twin Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "19 Twin Street, Adelaide SA 5000, Australia"
+  },
+  "Common Uncommon, 100 Gilbert St, Adelaide SA 5000": {
+    "lat": -34.934324,
+    "lng": 138.596656,
+    "matched_address": "100 Gilbert St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "100 Gilbert Street, Adelaide SA 5000, Australia"
+  },
+  "Liverpool Street Gallery, 39 Liverpool St, Adelaide SA 5000": {
+    "lat": -34.922802,
+    "lng": 138.590105,
+    "matched_address": "39 Liverpool Street, Adelaide South Australia 5000, Australia",
+    "confidence": 0.6,
+    "source": "mapbox",
+    "query": "Liverpool Street Gallery, 39 Liverpool Street, Adelaide SA 5000, Australia"
+  },
+  "Design by WBL (Williams Burton Leopardi), Level 3, 28 Franklin St, Adelaide SA 5000": {
+    "lat": -34.9269236,
+    "lng": 138.5978912,
+    "matched_address": "28 Franklin St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Level 3, 28 Franklin Street, Adelaide SA 5000, Australia"
+  },
+  "Smokelovers, 244 Rundle St, Adelaide SA 5000": {
+    "lat": -34.9224184,
+    "lng": 138.6086562,
+    "matched_address": "244 Rundle St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "244 Rundle Street, Adelaide SA 5000, Australia"
+  },
+  "Mid-Century House, Lynton SA 5062": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "WITHHELD - private home; ticket page shows 'Lynton S.A.' only",
+    "source": "manual"
+  },
+  "Nearly Bar, 179 Hindley St, Adelaide SA 5000": {
+    "lat": -34.9237287,
+    "lng": 138.5927045,
+    "matched_address": "179 Hindley St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "179 Hindley Street, Adelaide SA 5000, Australia"
+  },
+  "Adelaide Health and Medical Sciences Building (Foyer), Adelaide University, 4 North Tce, Adelaide SA 5000": {
+    "lat": -34.9216576,
+    "lng": 138.5913696,
+    "matched_address": "4 North Tce, Adelaide SA 5000",
+    "confidence": 0.6,
+    "source": "verified-2026-09-24",
+    "query": "Health and Medical Sciences Building (Foyer) University of Adelaide, 4 North Terrace, SA, Australia"
+  },
+  "Stylecraft, 11 Waymouth St, Adelaide SA 5000": {
+    "lat": -34.9260673,
+    "lng": 138.5988477,
+    "matched_address": "11 Waymouth St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "11 Waymouth Street, Adelaide SA 5000, Australia"
+  },
+  "Meet at A PLACE coffee, 37 Second St, Bowden SA 5007": {
+    "lat": -34.9056318,
+    "lng": 138.5754544,
+    "matched_address": "37 Second St, Bowden SA 5007",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "37 Second Street, Bowden SA 5007, Australia"
+  },
+  "Meet at Sir Douglas Nicholls Bridge (Kainkawirra Waadlakatha), War Memorial Dr, North Adelaide SA 5006": {
+    "skip": true,
+    "reason": "meeting point withheld - not published on the map",
+    "source": "verified-2026-09-24",
+    "lat": -34.91203,
+    "lng": 138.61168,
+    "matched_address": "War Memorial Dr, North Adelaide SA 5006"
+  },
+  "Min Jewellery, Suite G14, Epworth Building, 33 Pirie St, Adelaide SA 5000": {
+    "lat": -34.9259589,
+    "lng": 138.601054,
+    "matched_address": "33 Pirie St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Suite G14, Epworth Building, 33 Pirie Street, Adelaide SA 5000, Australia"
+  },
+  "Queen's Theatre, cnr Playhouse Ln & Gilles Arcade, Adelaide SA 5000": {
+    "lat": -34.925418,
+    "lng": 138.595549,
+    "matched_address": "cnr Playhouse Ln & Gilles Arcade, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "note": "confirmed by ADW; coordinates from OpenStreetMap"
+  },
+  "Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006": {
+    "lat": -34.9091394,
+    "lng": 138.5926768,
+    "matched_address": "104 Jeffcott St, North Adelaide SA 5006",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Hebart Hall, 104 Jeffcott Street, North Adelaide SA 5006, Australia"
+  },
+  "Cardening Clubhouse, Thebarton SA 5031": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN",
+    "source": "manual"
+  },
+  "Terrace Floors + Furnishings, 51 Glen Osmond Rd, Eastwood SA 5063": {
+    "lat": -34.9433106,
+    "lng": 138.6205373,
+    "matched_address": "51 Glen Osmond Rd, Eastwood SA 5063",
+    "confidence": 0.49999999999999994,
+    "source": "verified-2026-09-24",
+    "query": "Terrace Floors + Furnishings, Eastwood, SA, Australia",
+    "fallback": true
+  },
+  "Woods Bagot, Level 14, 11 Waymouth St, Adelaide SA 5000": {
+    "lat": -34.9260673,
+    "lng": 138.5988477,
+    "matched_address": "11 Waymouth St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "Level 14, 11 Waymouth Street, Adelaide SA 5000, Australia"
+  },
+  "JamFactory, 19 Morphett St, Adelaide SA 5000": {
+    "lat": -34.9228125,
+    "lng": 138.593026,
+    "matched_address": "19 Morphett St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "19 Morphett Street, Adelaide SA 5000, Australia"
+  },
+  "Skangaroovia, 215 Magill Rd, Maylands SA 5069": {
+    "lat": -34.914682,
+    "lng": 138.636838,
+    "matched_address": "215 Magill Road, Maylands South Australia 5069, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "215 Magill Road, Maylands SA 5069, Australia"
+  },
+  "My Cloud Nine, 263 Gilbert St, Adelaide SA 5000": {
+    "lat": -34.935025,
+    "lng": 138.590554,
+    "matched_address": "263 Gilbert Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "263 Gilbert Street, Adelaide SA 5000, Australia"
+  },
+  "Nudie Jeans, Shop 2, 228-230 Rundle St, Adelaide SA 5000": {
+    "lat": -34.92244,
+    "lng": 138.6081011,
+    "matched_address": "228-230 Rundle St, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "230 Rundle Street, Adelaide SA 5000 (Shop 2, 228-230), SA, Australia"
+  },
+  "ARC Tile Design, Unit 4, 9-17 Young St, Adelaide SA 5000": {
+    "lat": -34.926519,
+    "lng": 138.595962,
+    "matched_address": "9-17 Young Street, Adelaide South Australia 5000, Australia",
+    "confidence": 1.0,
+    "source": "mapbox",
+    "query": "Unit 4, 9-17 Young Street, Adelaide SA 5000, Australia"
+  },
+  "The Forum, Jeffrey Smart Building, Adelaide University City West, 243 Hindley St, Adelaide SA 5000": {
+    "lat": -34.9238118,
+    "lng": 138.5905294,
+    "matched_address": "243 Hindley St, Adelaide SA 5000",
+    "confidence": 0.6,
+    "source": "verified-2026-09-24",
+    "query": "Jeffrey Smart Building, 217 Hindley Street, Adelaide SA 5000, Australia"
+  },
+  "WIP Shed, 28A Dew St, Thebarton SA 5031": {
+    "lat": -34.919287,
+    "lng": 138.573319,
+    "matched_address": "28 Dew Street, Thebarton South Australia 5031, Australia",
+    "confidence": 0.3,
+    "source": "mapbox",
+    "query": "28A Dew Street, Thebarton SA 5031, Australia"
+  },
+  "Qantas Product Innovation Centre, Pirie St, Adelaide SA 5000": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "UNKNOWN - Pirie Street, Adelaide SA 5000 only",
+    "source": "manual"
+  },
+  "The Studio, Art Gallery of South Australia, 490 North Tce, Adelaide SA 5000": {
+    "lat": -34.9206307,
+    "lng": 138.6039688,
+    "matched_address": "490 North Tce, Adelaide SA 5000",
+    "confidence": 1.0,
+    "source": "verified-2026-09-24",
+    "query": "490 North Terrace, Adelaide SA 5000 (The Studio, Courtyard Level), SA, Australia"
+  },
+  "Adelaide Arcade, Shop 11G, 112-118 Grenfell St, Adelaide SA 5000": {
+    "lat": -34.9235,
+    "lng": 138.6038,
+    "source": "verified-2026-09-24",
+    "matched_address": "112-118 Grenfell St, Adelaide SA 5000"
+  },
+  "Secret location, Adelaide SA 5000": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - undisclosed by design",
+    "source": "manual"
+  },
+  "Various locations, Adelaide SA 5000": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - roving vehicle",
+    "source": "manual"
+  },
+  "Various shopfronts, East End, Adelaide SA 5000": {
+    "skip": true,
+    "reason": "no confirmed address - omitted until ADW supplies one",
+    "detail": "NOT A PLACE - Shopfront Circuit trail, 8 shops around Ebenezer Pl / Rundle St East",
+    "source": "manual"
+  },
+  "Jeffrey Smart Building, Adelaide University City West, 243 Hindley St, Adelaide SA 5000": {
+    "lat": -34.9238118,
+    "lng": 138.5905294,
+    "source": "verified-2026-09-24",
+    "matched_address": "243 Hindley St, Adelaide SA 5000"
   }
 }

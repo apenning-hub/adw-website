@@ -1,0 +1,854 @@
+[
+ {
+  "old": "Coldstore, 66 Wyatt St, Adelaide",
+  "published": "The Coldstore, 66 Wyatt St, Adelaide SA 5000",
+  "researched": "The Coldstore, 66 Wyatt St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.enoki.com.au/contact",
+   "https://www.yellowpages.com.au/sa/adelaide/enoki-pty-ltd-14219347-listing.html",
+   "https://property.ljhooker.com.au/commercial-adelaide-sa-retail-1-66-wyatt-street-89nh94",
+   "https://nominatim.openstreetmap.org (66 Wyatt Street, Adelaide)"
+  ],
+  "notes": "The Coldstore is the name of the 1946 cold-store building at 66 Wyatt St. Host Enoki occupies Unit 7 (7/66 Wyatt St per enoki.com.au/contact and Yellow Pages). The enoki.com.au/the-coldstore page the prior research cited now returns 404. The event has no link, so it isn't clear whether 10x10 is in Enoki's Unit 7 or another tenancy or common space. Organiser should confirm; if it's in Enoki's studio, use 'The Coldstore, Unit 7, 66 Wyatt St'."
+ },
+ {
+  "old": "The Meeting Hall, ADL CBD",
+  "published": "The Meeting Hall, Paul Kelly Ln, 25 Pirie St, Adelaide SA 5000",
+  "researched": "The Meeting Hall (Adelaide Town Hall), rear of 25 Pirie St, via Paul Kelly Ln, Adelaide SA 5000",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://www.adelaidetownhall.com.au/room/meeting-hall/",
+   "https://d31atr86jnqrq2.cloudfront.net/docs/ATH23-019-Meeting-Hall-Location-Map.pdf",
+   "https://feverup.com/en/adelaide/venue/the-meeting-hall",
+   "https://www.experienceadelaide.com.au/heritage-places/old-methodist-meeting-hall-25-pirie-street-adelaide/",
+   "https://photon.komoot.io (OSM 'Meeting Hall', Paul Kelly Lane)"
+  ],
+  "notes": "This is the 1862 former Methodist Meeting Hall, part of the Adelaide Town Hall complex. It sits behind 25 Pirie St (Colonel Light Centre) and you reach it from Paul Kelly Ln (per the ATH location map and Fever). The ATH room page only gives the Town Hall's main address, 128 King William St, which would send people to the wrong door. The coordinates are the hall itself. I couldn't find a public listing for the SHORT NOTICE / opening party, so I couldn't confirm that 'The Meeting Hall' means this hall and not a same-named venue. This is the only Adelaide venue by that name I found. Organiser should confirm. If the program needs a shorter form: 'The Meeting Hall, Paul Kelly Ln, Adelaide SA 5000'."
+ },
+ {
+  "old": "Lo & Co Interiors, Norwood",
+  "published": "Lo & Co Interiors, 28 Fullarton Rd, Norwood SA 5067",
+  "researched": "Lo & Co Interiors, 28 Fullarton Rd, Norwood SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/antho",
+   "https://loandcointeriors.com/pages/contact-us",
+   "https://www.hotfrog.com.au/company/1519372949360640/matte-black-kitchen-handles-lo-amp-co/norwood/retail-stores"
+  ],
+  "notes": "The ANTHO Humanitix page gives 'Lo & Co, 28 Fullarton Rd, Norwood SA 5067'. It matches Lo & Co's head office and showroom address, and directories agree. OSM only resolves this to the street, so lat/lng is null."
+ },
+ {
+  "old": "Health and Medical Sciences Building, Adelaide University, 4 North Terrace",
+  "published": "Adelaide Health and Medical Sciences Building, Adelaide University, 4 North Tce, Adelaide SA 5000",
+  "researched": "Adelaide Health and Medical Sciences Building, Adelaide University, 4 North Tce, Adelaide SA 5000",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://adelaide.edu.au/about/school/medicine/",
+   "https://www.upark.com.au/destinations/university-of-adelaide-health-medical-sciences-building-parking/",
+   "https://nominatim.openstreetmap.org (AHMS Building, North Terrace, Adelaide 5000)"
+  ],
+  "notes": "This is the AHMS building (ex-University of Adelaide) at the corner of North Tce and George St, in the BioMed precinct next to SAHMRI. The university itself gives no street number, only 'Corner of North Terrace & George Street, Adelaide SA 5000'. '4 North Terrace' comes from the ADW program and UPark. Coordinates are the OSM AHMS building. The prior geocode was WRONG: it put 4 North Terrace in Highgate 5063, a different North Terrace in the suburbs. The new string must keep 'Adelaide SA 5000'. The Design for Care event has no link, so the room or floor inside AHMS is unknown (the ground-floor foyer is likely). Organiser should confirm the room. An alternative map-safe form: 'AHMS Building, cnr North Tce & George St, Adelaide SA 5000'."
+ },
+ {
+  "old": "Yitpi Yartapuultiku, Port Adelaide",
+  "published": "Yitpi Yartapuultiku, 1300 Old Port Rd, Port Adelaide SA 5015",
+  "researched": "Yitpi Yartapuultiku, 1300 Old Port Rd, Port Adelaide SA 5015",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/learning-from-yitpi-yartapuultiku",
+   "https://nominatim.openstreetmap.org (Yitpi Yartapuultiku, Old Port Road, Port Adelaide 5015)"
+  ],
+  "notes": "The event's Humanitix page gives '1300 Old Port Rd, Port Adelaide SA 5015'. OSM has a Yitpi Yartapuultiku feature on Old Port Rd at that spot, and 1300 Old Port Rd geocodes within about 20 m. This upgrades the prior MEDIUM. Humanitix misspells the name 'Yipti'; the program spelling 'Yitpi Yartapuultiku' is correct. It's a public-realm precinct, so organisers may want to name a specific meeting spot."
+ },
+ {
+  "old": "AGSA, ADL CBD",
+  "published": "Art Gallery of South Australia, 490 North Tce, Adelaide SA 5000",
+  "researched": "Art Gallery of South Australia (AGSA), 490 North Tce, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.agsa.sa.gov.au/whats-on/event-calendar/neo-october-2026/",
+   "https://photon.komoot.io (OSM Art Gallery of South Australia)"
+  ],
+  "notes": "The AGSA NEO event page gives '490 North Terrace, Adelaide SA 5000', gallery-wide, Sat 17 Oct 6-8:30pm. I couldn't find a published page for the Jon Goulder Tuesday Talk (its link is the generic calendar), so its room inside AGSA is unconfirmed. Earlier Goulder/Evans talks were held in Gallery 15."
+ },
+ {
+  "old": "Immersive Art and Installation, 63 Light Sq, CBD, ADL",
+  "published": "Immersive Art and Installation, 63 Light Sq, Adelaide SA 5000",
+  "researched": "ILA (Immersive Light and Art), 63 Light Sq, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://immersivelightandart.com.au/",
+   "https://southaustralia.com/products/adelaide/attraction/ila",
+   "https://www.adelaidefestival.com.au/whats-on/additional-data/venues/ila-immersive-light-and-art/"
+  ],
+  "notes": "'Immersive Art and Installation' in the program is almost certainly a garbling of ILA, Immersive Light and Art (formerly Light ADL, renamed 2024) at 63 Light Sq, which several sources confirm. IDEA's PROCESSED Substack post hadn't named a venue yet, so ILA as the venue rests on the program's own address. OSM only resolves Light Square as a whole, so lat/lng is null."
+ },
+ {
+  "old": "SODA, West Croydon",
+  "published": "SODA Objects + Studios, 1 Rosetta St, West Croydon SA 5008",
+  "researched": "SODA Objects + Studios, 1 Rosetta St, West Croydon SA 5008",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/slot-opening",
+   "https://sodaobjects.com/contact/",
+   "https://www.indailysa.com.au/citymag/culture/2023/11/30/soda-objects-opens-new-art-gallery-staff-only"
+  ],
+  "notes": "The SLOT Humanitix page gives 'SODA Objects + Studios, 1 Rosetta St, West Croydon SA 5008', and directories agree. OSM only resolves to the street."
+ },
+ {
+  "old": "Sans-Arc Studio, West Croydon",
+  "published": "Sans-Arc Studio, 3A Malcolm St, West Croydon SA 5008",
+  "researched": "Sans-Arc Studio, 3A Malcolm St, West Croydon SA 5008",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/super-party-by-bankston-sans-arc",
+   "https://www.sansarc.studio/"
+  ],
+  "notes": "The Super Party Humanitix page gives 'Sans-Arc Studio, 3A Malcolm St, West Croydon SA 5008', which matches the studio's own site. It's their new studio, as the blurb says. Malcolm St runs into Welland 5007, so keep 'West Croydon SA 5008'."
+ },
+ {
+  "old": "Plant 3, Bowden",
+  "published": "Something Special Concept Store, Plant 3, 14 Fourth St, Bowden SA 5007",
+  "researched": "Something Special Concept Store, Plant 3, 14 Fourth St, Bowden SA 5007",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/waste-reconsidered-a-new-exhibition-for-adelaide-design-week",
+   "https://somethingspecialconceptstore.com/pages/contact",
+   "https://www.plant3bowden.com.au/",
+   "https://nominatim.openstreetmap.org (Plant 3 Bowden, 6-14 Fourth Street)"
+  ],
+  "notes": "The event is inside host Something Special Concept Store, which is in Plant 3. Both Humanitix and the store's contact page give 14 Fourth St. The Plant 3 complex as a whole is 6-14 Fourth St (what the prior research used), which is fine for maps but less exact. Coordinates are the Plant 3 complex. If the organiser wants 'Plant 3' first: 'Plant 3 (Something Special Concept Store), 14 Fourth St, Bowden SA 5007'."
+ },
+ {
+  "old": "240 Morphett Road, North Plympton",
+  "published": "Crafted Hardwoods, 240 Morphett Rd, Adelaide Airport SA 5950",
+  "researched": "Crafted Hardwoods, 240 Morphett Rd, Adelaide Airport SA 5950",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/crafted-hardwoods-factory-tour",
+   "https://www.domain.com.au/property-profile/240-280-morphett-road-adelaide-airport-sa-5950",
+   "https://www.commercialrealestate.com.au/property/2-240-280-morphett-road-north-plympton-sa-5037-17628538"
+  ],
+  "notes": "The suburb is DISPUTED. The event's Humanitix page and Domain's property profile say '240(-280) Morphett Rd, Adelaide Airport SA 5950'. A commercial leasing listing calls the same site '2/240-280 Morphett Rd, North Plympton SA 5037', as does the program. The prior geocode (Novar Gardens 5037) was also off. The site is airport-owned land on Morphett Rd, and I went with the organiser's own ticketing page. Crafted Hardwoods' website gives only a Canberra sales office (Suite 112, 12/13 Provan St, ACT). It says manufacturing is in a 'government owned facility in Adelaide' but gives no factory address. The factory's unit or tenancy number within 240-280 is unknown and could matter on a large estate. Organiser should confirm with Crafted Hardwoods which gate or unit tour guests use. No reliable geocode (OSM has no number here)."
+ },
+ {
+  "old": "1/149 Flinders St, ADL CBD",
+  "published": "RF Lux, 1/149 Flinders St, Adelaide SA 5000",
+  "researched": "RF Lux Lighting, 1/149 Flinders St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.rflux.au/contact",
+   "https://nominatim.openstreetmap.org (149 Flinders Street, Adelaide)"
+  ],
+  "notes": "RF Lux's (Rflux) contact page gives the showroom as '149 Flinders Street, Adelaide 5000', with no unit number. Unit 1 comes from the program and prior research; I kept it because it's the new showroom being launched. Coordinates are 149 Flinders St. The brand writes 'Rflux' on its site; the organiser may prefer that spelling."
+ },
+ {
+  "old": "Imprints, ADL CBD",
+  "published": "Imprints Booksellers, 107 Hindley St, Adelaide SA 5000",
+  "researched": "Imprints Booksellers, 107 Hindley St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/covers-pages-a-publishing-design-chat-presented-by-splinter-journal-pink-shorts-press-adw",
+   "https://imprints.com.au/pages/11661-ContactOpeningHours",
+   "https://adelaidewestend.com.au/business/imprints-booksellers/"
+  ],
+  "notes": "The Humanitix page gives 'Imprints Booksellers, 107 Hindley St, Adelaide SA 5000', and the store's own site and directories agree. OSM only resolves to the street."
+ },
+ {
+  "old": "Allan Scott Auditorium H2-16, Fenn Place, Adelaide University, ADL CBD",
+  "published": "Allan Scott Auditorium (H2-16), Hawke Building, Adelaide University City West, 55 North Tce, Adelaide SA 5000",
+  "researched": "Allan Scott Auditorium (H2-16), Hawke Building, Adelaide University City West, 55 North Tce, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/made-in-adelaide-rgq89n65",
+   "https://hawkecentre.adelaide.edu.au/about/location/",
+   "https://nominatim.openstreetmap.org (Hawke Building, 55 North Terrace)"
+  ],
+  "notes": "Humanitix names the room as 'Allan Scott Auditorium, H2-16, Fenn Place, City West Campus, Adelaide University, Hawke Building' but gives no street number. The Hawke Centre location page gives '55 North Terrace (cnr Fenn Place and North Terrace), Adelaide SA 5000'. Coordinates are the OSM Hawke Building."
+ },
+ {
+  "old": "GGA Studio, ADL CBD",
+  "published": "GGA Studio (Grieve Gillett Architects), 243 Pirie St, Adelaide SA 5000",
+  "researched": "Grieve Gillett Architects (GGA Studio), 243 Pirie St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/art-of-exhibition-behind-the-scenes-of-monet-to-matisse-or-adelaide-design-week-2026",
+   "https://events.humanitix.com/the-fringe-condition",
+   "https://www.ggarc.com.au/contact",
+   "https://www.whereis.com/sa/adelaide-5000/yellowId-13409685"
+  ],
+  "notes": "Both Humanitix pages (Monet to Matisse and The Fringe Condition) give 'Grieve Gillett Architects, 243 Pirie St, Adelaide SA 5000', and GGA's contact details and Whereis agree. Note that the Monet to Matisse talk is at GGA's studio, not at AGSA. OSM has no house number here, so lat/lng is null."
+ },
+ {
+  "old": "MEET: Jewels of Thought Records, Ebenezer Place CBD, ADL",
+  "published": "Meet at Jewels of Thought Records, 15 Ebenezer Pl, Adelaide SA 5000",
+  "researched": "Meet at Jewels of Thought Records, 15 Ebenezer Pl, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/listening-with-architecture",
+   "https://www.broadsheet.com.au/adelaide/entertainment/article/jewel-of-thought-record-cafe-bar-adelaide",
+   "https://recordstoreday.com.au/stores/jewels-of-thought-recordings/"
+  ],
+  "notes": "The Humanitix page gives '15 Ebenezer Pl, Adelaide SA 5000' as the meeting point; Broadsheet and Record Store Day agree. It's a walking tour, so this is only the start point. OSM only resolves to the street."
+ },
+ {
+  "old": "Being Studio, 27 Halifax St, CBD, ADL",
+  "published": "Being Studio, 27 Halifax St, Adelaide SA 5000",
+  "researched": "Being Studio, 27 Halifax St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://beingstudio.au/contact-us/",
+   "https://luma.com/2jg84c32"
+  ],
+  "notes": "Being Studio (office furniture) lists its Adelaide showroom as '27 Halifax St Adelaide SA 5000' on its official contact page, confirming the program address. The Luma event page hides the location until you register. It's a business showroom, not a private address, so it's fine to publish, but I couldn't independently confirm the event is at the showroom rather than elsewhere. Co-host Klaro Industrial Design is Sydney-based, so the Adelaide venue is almost certainly Being's. Prior research had '27-29 Halifax' in the geocode; the official site says 27."
+ },
+ {
+  "old": "Kaurna Building L3, ADL Uni, ADL CBD",
+  "published": "Kaurna Building, Level 3, Adelaide University City West, 2 Fenn Pl, Adelaide SA 5000",
+  "researched": "Kaurna Building, Adelaide University City West, Level 3, 2 Fenn Pl, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.trybooking.com/au/event/1306084",
+   "https://studentvip.com.au/uni-sa/city-west/maps/131568",
+   "https://architectureau.com/articles/creative-classes/",
+   "https://nominatim.openstreetmap.org (Kaurna Building POI on Fenn Place)"
+  ],
+  "notes": "Street number '2 Fenn Place' confirmed on a UniSA student-exhibition TryBooking listing for the Kaurna Building; building location (on Fenn Pl, off North Tce, City West campus) corroborated by ArchitectureAU and OSM. Fenn Pl is a pedestrian lane off North Tce; entrance/foyer opens onto Fenn Pl. Neither event has a link, so the room (Level 3) is taken from the programme string only - organisers should confirm the room. Coordinates are the OSM building POI."
+ },
+ {
+  "old": "EST Studio, ADL CBD",
+  "published": "EST Studio, 94 Gilles St, Adelaide SA 5000",
+  "researched": "EST Studio, 94 Gilles St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/after-hours-soft-power",
+   "https://www.creativespaces.net.au/space/est-studio",
+   "https://www.instagram.com/p/DMg3-KKzrtF/"
+  ],
+  "notes": "Humanitix After Hours page: 'EST Studio, 94 Gilles St, Adelaide SA 5000'. Creative Spaces listing corroborates (street-level studio with roller door, next to Pinco cafe). An Instagram post says 'edit - correct address 94 Gilles st', so an older wrong address may be circulating. TWO WAY and EST OPEN STUDIO have no links; assumed same venue. Nominatim only resolved the street, so lat/lng left null."
+ },
+ {
+  "old": "Reform Distilling, Kent Town",
+  "published": "Reform Distilling, 91 Little Rundle St, Kent Town SA 5067",
+  "researched": "Reform Distilling, 91 Little Rundle St, Kent Town SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/at-the-table-z5u4a5l6",
+   "https://rfrm.com.au/pages/contact"
+  ],
+  "notes": "Event page (venue 'REFORM Distillery') and Reform's contact page both give 91 Little Rundle St, Kent Town SA 5067. Nominatim only resolved the street."
+ },
+ {
+  "old": "Honeydripper, ADL CBD",
+  "published": "Honeydripper, 11 Frome St, Adelaide SA 5000",
+  "researched": "Honeydripper, 11 Frome St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.broadsheet.com.au/adelaide/food-and-drink/article/honeydripper-adelaide-cbd-bar",
+   "https://rundlestreet.com.au/business-directory/honeydripper/",
+   "https://www.experienceadelaide.com.au/business-listings/honeydripper/"
+  ],
+  "notes": "There's no event link. Broadsheet and the Rundle St East / Experience Adelaide directories all give 11 Frome St. The venue is also listed on Apple Maps as 'Honeydripper Hifi'."
+ },
+ {
+  "old": "4th Floor Elevator, ADL CBD",
+  "published": "4th Floor Elevator, Level 4, 14 Grenfell St, Adelaide SA 5000",
+  "researched": "4th Floor Elevator, Level 4, 14 Grenfell St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/4fe-modernist-museum-celebrating-furniture-art-product-and-industrial-design-from-around-the-globe-april-12th-fshwtqnc",
+   "https://www.indailysa.com.au/citymag/archive/2024/01/11/4th-floor-elevator-has-the-cool-homewares-youve-been-coveting",
+   "https://www.experienceadelaide.com.au/business-listings/4th-floor-elevator-modernist-design-museum/"
+  ],
+  "notes": "The programme link is only the Humanitix host page (it shows no address, and no ADW-specific event is listed yet). 4FE's own Humanitix events give 'level 4/14 Grenfell St, Adelaide SA 5000', and CityMag gives '4/14 Grenfell Street' in the Tattersalls Building. Prior research upgraded from MEDIUM. Coordinates are the OSM Tattersalls Building."
+ },
+ {
+  "old": "Washdog Studios, Kent Town",
+  "published": "Washdog Studios (inside Fab Workshop), 12 King William St, Kent Town SA 5067",
+  "researched": "Washdog Studios (inside fab Workshop), 12 King William St, Kent Town SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/now-new-old-works",
+   "https://www.instagram.com/washdog.studio/reel/DCn0LDOzk70/",
+   "https://www.theparadenorwood.com/blog/2026/01/14/inside_adelaides_creative_village_washdog_studio_and_fab"
+  ],
+  "notes": "Event page: 'Washdog Studios & fab Workshop, 12 King William St, Kent Town SA 5067'. Washdog's Instagram says it's inside fab workshop at 12 King William St ('look for the big white...'). This is King William St in Kent Town, not King William St in the city. Say so clearly on maps, because many map searches for 'King William St' jump to the city."
+ },
+ {
+  "old": "RF Lux, ADL CBD",
+  "published": "RF Lux, 1/149 Flinders St, Adelaide SA 5000",
+  "researched": "RF Lux, 149 Flinders St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.rflux.au/contact"
+  ],
+  "notes": "There's no event link. The RF Lux (Rflux Lighting) contact page gives the showroom as 149 Flinders Street, Adelaide 5000, and OSM has 149 Flinders St as an exact address point. Only one primary source, but it is the business's own site."
+ },
+ {
+  "old": "Art Gallery of South Australia, Donor’s Lounge, access via the Courtyard",
+  "published": "Art Gallery of South Australia, Donor’s Lounge (via the Courtyard), 490 North Tce, Adelaide SA 5000",
+  "researched": "Art Gallery of South Australia, Donor’s Lounge (access via the Courtyard), 490 North Tce, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/softadw2026",
+   "https://www.agsa.sa.gov.au/visit/",
+   "https://www.agsa.sa.gov.au/visit/functions-venue-hire/event-spaces/courtyard/"
+  ],
+  "notes": "Event page: 'AGSA - Donor's Lounge, 490 North Terrace, Adelaide SA 5000'. The AGSA visit page confirms 490 North Terrace. The AGSA Courtyard is at the northern end of the grounds, between the restaurant and the Auditorium, reachable from the east and west. The 'Donor's Lounge' room isn't described on AGSA's public pages, so the programme's 'access via the Courtyard' wording is kept as given. Coordinates are the OSM gallery building. There was no prior research for this venue."
+ },
+ {
+  "old": "Mixed Goods Studio, Kilkenny",
+  "published": "Mixed Goods Studios, Unit 3, 64 Humphries Tce, Kilkenny SA 5009",
+  "researched": "Mixed Goods Studios, Unit 3, 64 Humphries Tce, Kilkenny SA 5009",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://helpmannacademy.com.au/emerging-curator-residency-mixed-goods-studios/"
+  ],
+  "notes": "There's no event link, and the Mixed Goods website shows no street address. Only the Helpmann Academy residency page (2026) gives '3/64 Humphries Terrace, Kilkenny SA 5009'; no second independent source was found. Postcode 5009 matches Kilkenny. The programme says 'Mixed Goods Studio', but the business name is 'Mixed Goods Studios'. Ask the Carvolths to confirm the address and the entrance, since the unit sits inside a larger former foundry site."
+ },
+ {
+  "old": "Michi, ADL CBD",
+  "published": "Michi, 223 Pulteney St, Adelaide SA 5000",
+  "researched": "Michi, 223 Pulteney St, Adelaide SA 5000",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://michi.com.au"
+  ],
+  "notes": "There's no event link. The Michi website footer gives '223 Pulteney Street Adelaide' and says the studio is by appointment only. No second source was found: no Google/directory listing surfaced. Confirm with Michi that the YOKE exhibition is at this address and open to the public without an appointment during ADW."
+ },
+ {
+  "old": "Estilo, ADL CBD",
+  "published": "Estilo, Level 1, 192 Waymouth St, Adelaide SA 5000",
+  "researched": "Estilo, Level 1, 192 Waymouth St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://estilo.au/contact/",
+   "https://www.hermanmiller.com/where-to-buy/find-a-store/Estilo%20Commercial%20Pty%20Ltd/0010Z00001wOoPTQA0/",
+   "https://www.yelp.com/biz/estilo-commercial-adelaide"
+  ],
+  "notes": "There's no event link. The Estilo contact page gives 'Level 1, 192 Waymouth Street, Adelaide SA 5000', matched by the Herman Miller dealer locator and Yelp."
+ },
+ {
+  "old": "Yadura Design Studio, Parkside",
+  "published": "Yadura Design Studio, Parkside SA 5063",
+  "researched": "Yadura Design Studio, Parkside SA 5063",
+  "confidence": "MEDIUM",
+  "withheld": true,
+  "sources": [
+   "https://events.humanitix.com/yadura-studio",
+   "https://yadura.com"
+  ],
+  "notes": "WITHHELD. The Humanitix event lists the location as 'To be announced', and the blurb describes Yadura as the hosts' home as well as their studio. The studio's own website footer does show a public studio address in Parkside that matches the prior research, but because the ticketed event deliberately hasn't published it, only the suburb is given here. The organiser should ask Ahmed Elkhalidi and Rua Hashlamoun whether the full address may go in the public programme or will be sent to ticket holders only."
+ },
+ {
+  "old": "JPE Design Studio, ADL CBD",
+  "published": "JPE Design Studio, Level 4, 19 Gilles St, Adelaide SA 5000",
+  "researched": "JPE Design Studio, Level 4, 19 Gilles St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.eventbrite.com.au/e/designing-deeply-the-paradox-of-universal-design-tickets-1997945872889",
+   "https://www.yellowpages.com.au/sa/adelaide/jpe-design-studio-pty-ltd-13853260-listing.html",
+   "https://adelaidefringe.com.au/fringetix/venues/jpe-design-studio"
+  ],
+  "notes": "Eventbrite event: 'Level 4, 19 Gilles street, Adelaide, SA 5000'. Yellow Pages gives the same; some listings give it as 19-21 Gilles St. OSM has 19 Gilles St as an exact building."
+ },
+ {
+  "old": "The Light Impact, Norwood",
+  "published": "The Light Impact Showroom, 66 The Parade, Norwood SA 5067",
+  "researched": "The Light Impact Showroom, 66 The Parade, Norwood SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/adw-thelightimpact",
+   "https://www.thelightimpact.com.au/contact-us"
+  ],
+  "notes": "The event page ('The Light Impact Showroom') and the business contact page both give 66 The Parade, Norwood SA 5067. The showroom is normally by appointment only. Nominatim only resolved the street."
+ },
+ {
+  "old": "Jardan, ADL CBD",
+  "published": "Jardan, 223 Flinders St, Adelaide SA 5000",
+  "researched": "Jardan, 223 Flinders St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.jardan.com.au/pages/adelaide",
+   "https://www.jardan.us/pages/adelaide"
+  ],
+  "notes": "There's no event link. Jardan's Adelaide showroom page gives 223 Flinders Street, Adelaide SA 5000 (East End). Nominatim only resolved the street."
+ },
+ {
+  "old": "MEET: Faraway House, 21 Franklin Street, CBD, ADL",
+  "published": "Meet at Faraway House, 21 Franklin St, Adelaide SA 5000",
+  "researched": "Meet at Faraway House, 21 Franklin St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.eventbrite.com.au/e/modernist-adelaide-walking-tour-18-oct-11am-tickets-1993988285639",
+   "https://www.tectvs.com/faraway-house",
+   "https://www.raywhite.com/sa/adelaide/2593849"
+  ],
+  "notes": "Eventbrite gives the meeting point as 'Faraway House, 21 Franklin Street, Adelaide, SA 5000'. OSM has Faraway House as a named building at 21 Franklin St (the coordinates are that building)."
+ },
+ {
+  "old": "The Mill, ADL CBD",
+  "published": "The Mill, 154 Angas St, Adelaide SA 5000",
+  "researched": "The Mill, 154 Angas St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/threading-stories-workshop",
+   "https://www.themilladelaide.com/contact-us"
+  ],
+  "notes": "The event page and The Mill's contact page both give 154 Angas St, Adelaide SA 5000. The event page doesn't name a room. Nominatim only resolved the street."
+ },
+ {
+  "old": "Fab Workshop, Kent Town",
+  "published": "Fab Workshop, 12 Little Rundle St, Kent Town SA 5067",
+  "researched": "fab workshop, 12 Little Rundle St, Kent Town SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/a-room-of-one-s-own",
+   "https://adelaidefringe.com.au/fringetix/venues/space-f9b35def-2b14-444e-98bc-519b7152f770",
+   "https://lookeast.npsp.sa.gov.au/blog/2026/01/14/inside_adelaides_creative_village_washdog_studio_and_fab"
+  ],
+  "notes": "PRIOR RESEARCH PARTLY WRONG for the event. The event's Humanitix page gives the venue as '12 Little Rundle St, Kent Town SA 5067' and says the front of the building (limited parking) is 12 King William St. Adelaide Fringe venue listing also gives 12 Little Rundle St as the step-free entrance at the back. Look East / Helpmann give the building's street address as 12 King William St. Same building, two frontages; used the event's stated address. Organiser may want to add 'enter via Little Rundle St'. Nominatim resolves only to street level, so lat/lng left null. Business styles its name lower-case 'fab workshop'."
+ },
+ {
+  "old": "Studio Gram, Brompton",
+  "published": "Studio Gram, 68 Chief St, Brompton SA 5007",
+  "researched": "Studio Gram, 68 Chief St, Brompton SA 5007",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://studio-gram.com.au/contact/",
+   "https://www.yellowtrace.com.au/studio-gram-brompton-studio-adelaide-architecture-design-practice/",
+   "https://www.australiandesignreview.com/featured/a-living-breathing-extension-of-our-practice-studio-grams-new-brompton-office/"
+  ],
+  "notes": "Studio Gram's contact page lists 68 Chief Street, Brompton SA 5007; Yellowtrace/ADR coverage of their Brompton HQ agrees. The AFTER MOOD event has no event link and after-mood.com gives no pop-up location, so it's an assumption that the café/shop is at Studio Gram's own premises. Organiser should confirm. Nominatim gives street level only, so lat/lng null."
+ },
+ {
+  "old": "Basement Gallery, ADL CBD",
+  "published": "The Basement Gallery & Studio, 12 Kingston St, Adelaide SA 5000",
+  "researched": "The Basement Gallery & Studio, 12 Kingston St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/bloom-group-exhibition-adw-2026",
+   "https://www.thebasementstudio.com.au/",
+   "https://www.commercialrealestate.com.au/property/basement-12-14-kingston-st-adelaide-sa-5000-14051954"
+  ],
+  "notes": "The Humanitix event page gives 12 Kingston St, Adelaide SA 5000. The lease listing gives 'Basement/12-14 Kingston St'. OSM has 'The Basement Gallery & Studio' at 12 Kingston St, and the coordinates come from it. The full trading name is 'The Basement Gallery & Studio'. Could shorten to 'Basement Gallery' if preferred."
+ },
+ {
+  "old": "Fabrikate, ADL CBD",
+  "published": "Fabrikate Studio, 14/248 Grenfell St, Adelaide SA 5000",
+  "researched": "Fabrikate Studio, 14/248 Grenfell St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/grounded-zfvgp4fq",
+   "https://fabrikate.com.au/studio"
+  ],
+  "notes": "The Humanitix event page and Fabrikate's studio page both give 14/248 Grenfell St. OSM has a Fabrikate point at 248 Grenfell St, and the coordinates come from it. The unit number stays in the street-number form '14/248' because Apple and Google Maps parse it reliably."
+ },
+ {
+  "old": "Georgie Shepherd Interior Design, Norwood",
+  "published": "Georgie Shepherd Interior Design, 46B Beulah Rd, Norwood SA 5067",
+  "researched": "Georgie Shepherd Interior Design, 46B Beulah Rd, Norwood SA 5067",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.georgieshepherd.com.au/contact/"
+  ],
+  "notes": "The current official contact page says '46B Beulah Road Norwood SA 5067'. Search engines and an old mirror of the site still show 242C Magill Rd, Beulah Park, which is the superseded address. The program's 'Norwood' matches Beulah Rd. The MAKING SPACE event has no link, so it's an assumption that the event is at the studio. Only one strong source. Organiser could confirm with the studio. lat/lng null because Nominatim gives street level only."
+ },
+ {
+  "old": "19 Twin Street, ADL CBD",
+  "published": "19 Twin St, Adelaide SA 5000",
+  "researched": "19 Twin St, Adelaide SA 5000",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [],
+  "notes": "The venue string is itself the address, and Twin St, Adelaide 5000 exists. There's no event link for either event, and no business or gallery at no. 19 turned up online (the 'venue collaboration with Marchelle Matthew' doesn't show up in search). There's no venue name to put first. Organiser should confirm the number and supply a venue or host name if there is one. Beware: Nominatim's first hit for 'Twin Street' is in Northfield 5085, so always include 'Adelaide SA 5000'. lat/lng null because the house number isn't mapped in OSM."
+ },
+ {
+  "old": "Common Uncommon, ADL CBD",
+  "published": "Common Uncommon, 100 Gilbert St, Adelaide SA 5000",
+  "researched": "Common Uncommon, 100 Gilbert St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.indailysa.com.au/citymag/food-drink/2026/02/19/hidden-gem-hub-rises-up-in-the-best-street-in-adelaide",
+   "https://glamadelaide.com.au/first-look-a-new-creative-hub-is-bringing-natural-wine-photography-design-and-absolutely-no-matcha-to-adelaide/"
+  ],
+  "notes": "CityMag/InDaily (Feb 2026) and Glam Adelaide both place Common Uncommon at 100 Gilbert St, a shared warehouse. OSM has 100 Gilbert St with co-tenants Idle Hands and Housewarmers, and the coordinates come from that. No event link for SHOP GENERATOR."
+ },
+ {
+  "old": "Liverpool Gallery, ADL CBD",
+  "published": "Liverpool Street Gallery, 39 Liverpool St, Adelaide SA 5000",
+  "researched": "Liverpool Street Gallery, 39 Liverpool St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/starrystarrynight-adw26"
+  ],
+  "notes": "The Humanitix event page gives 'Liverpool Street Gallery, 39 Liverpool St, Adelaide SA 5000'. Web searches mostly return the unrelated Sydney gallery (243a Liverpool St, Darlinghurst). No independent second source for the Adelaide gallery's street number, but the event's own ticket page is authoritative. The program string says 'Liverpool Gallery', so the full name was used. lat/lng null because Nominatim resolves only to Liverpool St, Adelaide."
+ },
+ {
+  "old": "Design by WBL, ADL CBD",
+  "published": "Design by WBL (Williams Burton Leopardi), Level 3, 28 Franklin St, Adelaide SA 5000",
+  "researched": "Williams Burton Leopardi (Design by WBL), Level 3, 28 Franklin St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://designbywbl.com.au/contact/"
+  ],
+  "notes": "The official WBL contact page says 'Level 3, 28 Franklin St Adelaide, SA. 5000'. OSM has the Darling Building at 28 Franklin St, and the coordinates come from it. There's no event link for TO FEEL IN PLACE, so it's an assumption that the exhibition is in WBL's Level 3 office. Could shorten the name to 'Design by WBL' to match the program."
+ },
+ {
+  "old": "Smokelovers, ADL CBD",
+  "published": "Smokelovers, 244 Rundle St, Adelaide SA 5000",
+  "researched": "Smokelovers, 244 Rundle St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.smokelovers.com.au/",
+   "https://www.broadsheet.com.au/adelaide/bars/smokelovers"
+  ],
+  "notes": "The official site header reads 'Wednesday – Sunday: 4pm – Late // 244 Rundle Street // Adelaide', and Broadsheet agrees. Yelp shows 'CLOSED', but that's a stale listing categorised as a tobacco shop. The official site shows current hours. Coordinates are from the OSM bar at 244 Rundle St."
+ },
+ {
+  "old": "Mid-Century House, Lynton",
+  "published": "Mid-Century House, Lynton SA 5062",
+  "researched": "Mid-Century House, Lynton SA 5062",
+  "confidence": "HIGH",
+  "withheld": true,
+  "sources": [
+   "https://events.humanitix.com/emigre-speaker-series-at-lynton-residence"
+  ],
+  "notes": "WITHHELD. This is a private home. The public Humanitix page shows only 'Lynton S.A.' and the address goes to ticket holders only. I didn't search for the street address. OSM gives Lynton postcode 5062. HIGH confidence refers to the suburb and postcode only."
+ },
+ {
+  "old": "Nearly Bar, ADL CBD",
+  "published": "Nearly Bar, 179 Hindley St, Adelaide SA 5000",
+  "researched": "Nearly, 179 Hindley St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.broadsheet.com.au/adelaide/bars/nearly",
+   "https://www.experienceadelaide.com.au/business-listings/nearly/",
+   "https://glamadelaide.com.au/first-look-nearly-bar-opens-on-hindley-street/"
+  ],
+  "notes": "Broadsheet, Experience Adelaide and Star Wine List all give 179 Hindley St. OSM has 'Nearly a Bar' at 179 Hindley St, and the coordinates come from it. The venue trades as 'Nearly' (sometimes 'Nearly a bar'). No event link for FROM POLICY TO PLACE."
+ },
+ {
+  "old": "Health and Medical Sciences Building (Foyer) Adelaide University, 4 North Terrace",
+  "published": "Adelaide Health and Medical Sciences Building (Foyer), Adelaide University, 4 North Tce, Adelaide SA 5000",
+  "researched": "Adelaide Health and Medical Sciences Building (Foyer), Adelaide University, 4 North Tce, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.upark.com.au/destinations/university-of-adelaide-health-medical-sciences-building-parking/",
+   "https://www.lyonsarch.com.au/project/adelaide-health-and-medical-sciences/",
+   "https://studentvip.com.au/adelaide-uni/north-terrace/maps/108637"
+  ],
+  "notes": "The prior geocode was WRONG: it put '4 North Terrace' in Highgate 5063, which is a different North Terrace. The building (AHMS) is on the corner of North Tce and George St in the city, 5000. UPark and Lyons (the architect) give 4 North Terrace, Adelaide. Coordinates are from the OSM 'AHMS Building' node, not a street geocode. Always include 'Adelaide SA 5000' so maps don't send people to Highgate."
+ },
+ {
+  "old": "Stylecraft, ADL CBD",
+  "published": "Stylecraft, 11 Waymouth St, Adelaide SA 5000",
+  "researched": "Stylecraft, 11 Waymouth St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/stylecraft-made-here",
+   "https://www.stylecraft.com.au/showrooms/adelaide"
+  ],
+  "notes": "The Humanitix event page and Stylecraft's Adelaide showroom page both give 11 Waymouth St, Adelaide SA 5000. Coordinates are from OSM (ANZ House, 11 Waymouth St). Neither source gives a level or shop number."
+ },
+ {
+  "old": "MEET: A PLACE coffee, Bowden",
+  "published": "Meet at A PLACE coffee, 37 Second St, Bowden SA 5007",
+  "researched": "Meet at A PLACE coffee, 37 Second St, Bowden SA 5007",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.aplacecoffee.com.au/",
+   "https://glamadelaide.com.au/new-cafe-a-place-coffee-to-brew-up-bowdens-social-scene/",
+   "https://www.instagram.com/p/DAw2AOOTgX8/"
+  ],
+  "notes": "The official site says '37 SECOND STREET, BOWDEN SA 5007', and Glam Adelaide and Instagram agree. Coordinates are from the OSM cafe node. The event link (mood.cx/adw2026) returned no readable content, so I couldn't check the meeting point against the event page."
+ },
+ {
+  "old": "MEET: Sir Douglas Nicholls Bridge, CBD ADL",
+  "published": "Meet at Sir Douglas Nicholls Bridge (Kainkawirra Waadlakatha), War Memorial Dr, North Adelaide SA 5006",
+  "researched": "Meet at Sir Douglas Nicholls Bridge (Kainkawirra Waadlakatha), War Memorial Dr, North Adelaide SA 5006",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/on-the-torrens-an-ai-urban-heritage-river-city-walk",
+   "https://www.adelaide-parklands.asn.au/park-11-north-tour",
+   "https://www.experienceadelaide.com.au/notable-locations/kainkawirra-waadlakatha-sir-douglas-nicholls-bridge-named-after-a-man-of-many-firsts/"
+  ],
+  "notes": "This is a footbridge with no street number. The event page gives 'Sir Douglas Nicholls Bridge, North Adelaide SA 5006' (11:00am, 14 Oct, arrive 15 minutes early) but doesn't say which end. The walk heads west to Hindmarsh Bridge. The Park Lands Association says the bridge sits midway down the embankment between War Memorial Dr (north bank, North Adelaide 5006) and Plane Tree Dr (south bank, Botanic Park, Adelaide 5000). The north-bank road was used because the event page says North Adelaide 5006. The program's 'CBD' is misleading: the bridge is in the NE Park Lands, not the CBD. Coordinates are the bridge midpoint from OSM ('Douglas Nicholls Bridge' cycleway way), not an exact meeting spot. Organiser should confirm which bank or end."
+ },
+ {
+  "old": "Min Jewellery, g14 33 Pirie St, CBD, ADL",
+  "published": "Min Jewellery, Suite G14, Epworth Building, 33 Pirie St, Adelaide SA 5000",
+  "researched": "Min Jewellery, Suite G14, Epworth Building, 33 Pirie St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.epworthbuilding.com.au/tenant-directory/",
+   "https://classbento.com.au/min-jewellery"
+  ],
+  "notes": "The Epworth Building tenant directory lists 'MIN' handmade jewellery (minjewellery.au) in Suite G14 (ground floor), which matches the program's 'g14 33 Pirie St'. The ClassBento listing blocked fetches, but search snippets place Min's classes at 33 Pirie St. Coordinates are from the OSM Epworth Building node."
+ },
+ {
+  "old": "Queens Theatre, ADL CBD",
+  "published": "Queen's Theatre, cnr Playhouse Ln & Gilles Arcade, Adelaide SA 5000",
+  "researched": "Queen's Theatre, cnr Playhouse Ln & Gilles Arcade, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/benched",
+   "https://en.wikipedia.org/wiki/Queen%27s_Theatre,_Adelaide",
+   "https://www.whitepages.com.au/queens-theatre-10146795/adelaide-sa-10146796B",
+   "https://www.yelp.com/biz/queens-theatre-adelaide"
+  ],
+  "notes": "No street number exists (laneway venue). The BENCHED Humanitix page gives 'The Queens Theatre, Playhouse Ln &, Gilles Arcade, Adelaide SA 5000'. White Pages, Wikipedia and Yelp all say 'corner of Playhouse Lane & Gilles Arcade', so that is the form used here, which is both what the public reads and what maps find. The official name has an apostrophe ('Queen's'). Coordinates are from Wikipedia. The closing-party link is a mimecast-wrapped URL and was not fetched, but it is the same venue as BENCHED. Prior research's 'Playhouse Lane' and 'Gilles Arcade' versions were both partly right."
+ },
+ {
+  "old": "UNBUILT, North Adelaide",
+  "published": "Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006",
+  "researched": "Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/unbuilt-launch-party",
+   "https://www.experienceadelaide.com.au/heritage-places/hebart-hall-lutheran-seminary-104-118-jeffcott-street-north-adelaide/"
+  ],
+  "notes": "AFTERLIFE's own links point to the UNBUILT launch party on Humanitix, which gives 'Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006'. The heritage listing covers 104-118 Jeffcott St (Australian Lutheran College). OSM geocodes 104 Jeffcott St to Adelaide Lutheran College. Same venue as the 'Hebart Hall, North Adelaide' rows. Could be written as 'UNBUILT at Hebart Hall, ...' if the organiser wants the exhibition name kept."
+ },
+ {
+  "old": "Thebarton",
+  "published": "Cardening Clubhouse, Thebarton SA 5031",
+  "researched": "Cardening Clubhouse, Thebarton SA 5031",
+  "confidence": "LOW",
+  "withheld": false,
+  "sources": [],
+  "notes": "NOT VERIFIED. The event has no link. Searches for 'Cardening Club/Clubhouse' and Emma Sadie Thomson / Tim Hansford turned up no published address; her Humanitix host page has no events, and her website's SSL certificate has expired. The blurb calls it a 'new collaborative space', so it is a fixed Clubhouse, not only the roving car, and a street address should exist. ORGANISER: ask Emma Thomson / Tim Hansford for the street address. Postcode 5031 is correct for Thebarton."
+ },
+ {
+  "old": "Terrace Floors + Furnishings, Eastwood",
+  "published": "Terrace Floors + Furnishings, 51 Glen Osmond Rd, Eastwood SA 5063",
+  "researched": "Terrace Floors + Furnishings, 51 Glen Osmond Rd, Eastwood SA 5063",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://terracefloors.com.au/contact/",
+   "https://www.whereis.com/sa/eastwood-5063/yellowId-13661792",
+   "https://www.yelp.com/biz/terrace-floors-and-furnishings-eastwood-2"
+  ],
+  "notes": "The official contact page, Whereis/Yellow Pages and Yelp all give 51 Glen Osmond Rd, Eastwood SA 5063, and OSM has 'Terrace Floors' at that address. The event has no link, so it is assumed to be held in the showroom, which houses the Armadillo atelier (a co-presenter). This is consistent."
+ },
+ {
+  "old": "Woods Bagot, ADL CBD",
+  "published": "Woods Bagot, Level 14, 11 Waymouth St, Adelaide SA 5000",
+  "researched": "Woods Bagot, Level 14, 11 Waymouth St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.woodsbagot.com/studios/adelaide/",
+   "https://www.yelp.com/biz/woods-bagot-adelaide-2"
+  ],
+  "notes": "The official studio page gives 'Level 14, 11 Waymouth Street Adelaide SA 5001'. 5001 is the PO-box postcode, so 5000 is used as the street postcode. Checked separately from Stylecraft: Stylecraft's showroom really is also at 11 Waymouth St, but on the mezzanine level (Woods Bagot designed it). Both are correct and are on different floors. The event is an open studio with no link, so it is assumed to be at the Level 14 studio. Visitors may need lobby/lift access, so the organiser could confirm entry arrangements."
+ },
+ {
+  "old": "Jam Factory, ADL CBD",
+  "published": "JamFactory, 19 Morphett St, Adelaide SA 5000",
+  "researched": "JamFactory, 19 Morphett St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.jamfactory.com.au/contact",
+   "https://events.humanitix.com/wednesday-talks-guy-keulemans"
+  ],
+  "notes": "The official contact page gives 19 Morphett Street, Adelaide 5000 (Lion Arts Centre). The coordinates are the OSM JamFactory feature. The three exhibition rows (POWER SURGE, TOMORROW TALENT, X KEULEMANS) are at JamFactory. WARNING, row 69 'JAM FACTORY x GUY KEULEMANS': the Humanitix page puts this Wednesday talk (Wed 14 Oct, 12:15-1pm) at the JEFFREY SMART BUILDING, 243 Hindley St, NOT JamFactory. That row's venue should be 'Jeffrey Smart Building, 243 Hindley St, Adelaide SA 5000'; no room is given on Humanitix. ORGANISER: split that row."
+ },
+ {
+  "old": "215 Magill Rd, Maylands",
+  "published": "Skangaroovia, 215 Magill Rd, Maylands SA 5069",
+  "researched": "Skangaroovia, 215 Magill Rd, Maylands SA 5069",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/skangaroovia"
+  ],
+  "notes": "The Humanitix event page gives 'Skangaroovia, 215 Magill Rd, Maylands SA 5069', which matches the venue string and the prior research. The host name is added in front. OSM has no house-number point (street only), so lat/lng is null."
+ },
+ {
+  "old": "My Cloud Nine, ADL CBD",
+  "published": "My Cloud Nine, 263 Gilbert St, Adelaide SA 5000",
+  "researched": "My Cloud Nine, 263 Gilbert St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/steel-skin",
+   "https://www.mycloudnine.com.au/"
+  ],
+  "notes": "The Humanitix event page and the venue site both give 263 Gilbert St, Adelaide SA 5000, on the corner of Gilbert & Vinrace Sts (south-west city). OSM has no house-number point."
+ },
+ {
+  "old": "Hebart Hall, North Adelaide",
+  "published": "Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006",
+  "researched": "Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/unbuilt-launch-party",
+   "https://events.humanitix.com/unbuilt-symposium-obstacles-remnants",
+   "https://www.experienceadelaide.com.au/heritage-places/hebart-hall-lutheran-seminary-104-118-jeffcott-street-north-adelaide/"
+  ],
+  "notes": "Both the launch-party and symposium Humanitix pages give 'Hebart Hall, 104 Jeffcott St, North Adelaide SA 5006'. The heritage listing (104-118 Jeffcott St) and OSM agree."
+ },
+ {
+  "old": "Nudie Jeans, ADL CBD",
+  "published": "Nudie Jeans, Shop 2, 228-230 Rundle St, Adelaide SA 5000",
+  "researched": "Nudie Jeans, Shop 2, 228-230 Rundle St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.nudiejeans.com/en-US/stores/nudie-jeans-repair-shop-rundle-st",
+   "https://www.instagram.com/p/CGHtal6HA87/"
+  ],
+  "notes": "The official Nudie store page gives '228-230 Rundle Street, Shop 2, Adelaide SA 5000', and the Nudie Instagram agrees. This is Rundle St (East End), not Rundle Mall. The coordinates are the OSM/Photon point for 228 Rundle St. The event has no link, so it is assumed to be in the store."
+ },
+ {
+  "old": "Mixed Goods Studios, Kilkenny",
+  "published": "Mixed Goods Studios, Unit 3, 64 Humphries Tce, Kilkenny SA 5009",
+  "researched": "Mixed Goods Studios, Unit 3, 64 Humphries Tce, Kilkenny SA 5009",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://helpmannacademy.com.au/emerging-curator-residency-mixed-goods-studios/",
+   "https://www.habitusliving.com/articles/mixed-goods"
+  ],
+  "notes": "Helpmann Academy (2026 residency page) gives 3/64 Humphries Terrace, Kilkenny SA 5009, and search listings agree. The Mixed Goods website itself shows only an email address. The coordinates are Photon's match for 64 Humphries Tce and are approximate."
+ },
+ {
+  "old": "Arc Tile Showroom, ADL CBD",
+  "published": "ARC Tile Design, Unit 4, 9-17 Young St, Adelaide SA 5000",
+  "researched": "ARC Tile Design, Unit 4, 9-17 Young St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://arctiledesign.com.au/contact",
+   "https://www.localsearch.com.au/profile/arc-tile-design/cmpsvo2zv00zw02l18hvm2tcn"
+  ],
+  "notes": "The official contact page gives 'Unit 4 9-17 Young Street, Adelaide, 5000, SA', and Localsearch agrees. Upgraded from prior MEDIUM. This is Young St in the south-east city, off Pulteney/Gilles; beware of the other Young Streets in the metro area (Parkside/Wayville 5063/5066) when geocoding. The event has no link, so it is assumed to be in the showroom."
+ },
+ {
+  "old": "The Forum, Jeffrey Smart, ADL CBD",
+  "published": "The Forum, Jeffrey Smart Building, Adelaide University City West, 243 Hindley St, Adelaide SA 5000",
+  "researched": "The Forum, Jeffrey Smart Building, Adelaide University, 243 Hindley St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://members.architecture.com.au/EventDetail?EventKey=SA261015",
+   "https://events.humanitix.com/wednesday-talks-guy-keulemans",
+   "https://www.yelp.com/biz/unisa-jeffrey-smart-building-adelaide"
+  ],
+  "notes": "PRIOR WAS WRONG: it had 217 Hindley St. The AIA event page (DESIGNING FUTURES) says 'The Forum, Jeffrey Smart Building, 243 Hindley St, Adelaide', JamFactory's Humanitix page also uses 243 Hindley St, and OSM tags the Jeffrey Smart Building at 243 Hindley St. The 217-243 range is the whole campus frontage. The other two panels (PhD in design; You're Not Finished Yet) have no links and are assumed to be in the same Forum. The Forum is the glazed ground-floor space."
+ },
+ {
+  "old": "WIP Shed, 28A Dew St, Thebarton",
+  "published": "WIP Shed, 28A Dew St, Thebarton SA 5031",
+  "researched": "WIP Shed, 28A Dew St, Thebarton SA 5031",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://btsactivist.com/metis"
+  ],
+  "notes": "The event page (btsactivist.com/metis) says only 'WIP Shed, Thebarton', described as an emerging creative space. The street address comes only from the program's own venue string, and I found no public listing of a 'WIP Shed' at 28A Dew St (Dew St, Thebarton 5031, does exist). It was not withheld; the organiser already published it. ORGANISER: confirm 28A Dew St with Adelaide Xerri. Maps may drop the 'A' and land at 28 Dew St."
+ },
+ {
+  "old": "Qantas Office, ADL CBD",
+  "published": "Qantas Product Innovation Centre, Pirie St, Adelaide SA 5000",
+  "researched": "Qantas Product Innovation Centre, Pirie St, Adelaide SA 5000",
+  "confidence": "LOW",
+  "withheld": true,
+  "sources": [
+   "https://luma.com/m3tirzy8",
+   "https://www.indailysa.com.au/news/just-in/2026/09/15/city-workforce-boost-at-new-qantas-centre",
+   "https://australianaviation.com.au/2026/09/qantas-adelaide-innovation-centre-open-for-business/"
+  ],
+  "notes": "The Luma page deliberately hides the location: 'Please register to see the exact location of this event'. It shows only 'Adelaide, SA'. InDaily (15 Sep 2026) publicly reports the centre is 'in Pirie Street', with no number, building or level, and Australian Aviation says only 'Adelaide CBD'. I did not look for the exact number, because the host reveals it only to registrants. Street only is given, flagged withheld. ORGANISER: ask Concept CI/Qantas whether the street number can be published. If not, keep this and point people to the Luma registration."
+ },
+ {
+  "old": "The Studio, AGSA, ADL CBD",
+  "published": "The Studio, Art Gallery of South Australia, 490 North Tce, Adelaide SA 5000",
+  "researched": "The Studio, Art Gallery of South Australia, 490 North Tce, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://www.agsa.sa.gov.au/whats-on/ongoing-programs/studio",
+   "https://en.wikipedia.org/wiki/Art_Gallery_of_South_Australia"
+  ],
+  "notes": "AGSA's own Studio page gives the gallery address as '490 North Terrace, Adelaide SA 5000 Australia'. The page does not say which level or wing The Studio is on (prior research said Courtyard Level, not confirmed). Coordinates are the OSM AGSA feature."
+ },
+ {
+  "old": "Shop 11G, Adelaide Arcade, ADL CBD",
+  "published": "Adelaide Arcade, Shop 11G, 112-118 Grenfell St, Adelaide SA 5000",
+  "researched": "Adelaide Arcade, Shop 11G, 112-118 Grenfell St, Adelaide SA 5000",
+  "confidence": "MEDIUM",
+  "withheld": false,
+  "sources": [
+   "https://adelaidearcade.com.au/find-us/",
+   "https://en.wikipedia.org/wiki/Adelaide_Arcade"
+  ],
+  "notes": "Adelaide Arcade has NO numbered Rundle Mall address. Its official address, from both its own Find Us page and Wikipedia, is 112/118 Grenfell St, Adelaide SA 5000. It runs through from Rundle Mall (entrance opposite the Rundle Mall fountain) to Grenfell St, and is also reachable via Gays Arcade off Twin St. The alternative 'Adelaide Arcade, Shop 11G, Rundle Mall, Adelaide SA 5000' also geocodes to the arcade and may suit foot traffic better. I could not verify that shop 11G exists or where it is (probably ground floor; the event has no link). ORGANISER: confirm the shop number and which entrance is closest. Coordinates are from Wikipedia."
+ },
+ {
+  "old": "Jam Factory, ADL CBD (row \"JAM FACTORY x GUY KEULEMANS\" only)",
+  "published": "Jeffrey Smart Building, Adelaide University City West, 243 Hindley St, Adelaide SA 5000",
+  "researched": "Jeffrey Smart Building, 243 Hindley St, Adelaide SA 5000",
+  "confidence": "HIGH",
+  "withheld": false,
+  "sources": [
+   "https://events.humanitix.com/wednesday-talks-guy-keulemans"
+  ],
+  "notes": "The talk is at the Jeffrey Smart Building, not at JamFactory."
+ }
+]
