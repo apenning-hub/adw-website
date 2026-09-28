@@ -4,7 +4,7 @@ navLabel: home
 navOrder: 1
 permalink: /
 layout: base.njk
-description: "Adelaide Design Week 2026 — every*one. The full program is out: 90 events across Kaurna/Adelaide, 14–18 October 2026."
+description: "Adelaide Design Week 2026 — every*one. The full program is out: 88 events across Kaurna/Adelaide, 14–18 October 2026."
 ---
 
 <section class="hero">
@@ -47,8 +47,8 @@ Grounded in South Australia and increasingly connected beyond it, ADW creates sp
 ### key dates
 
 <dl>
-  <dt>Previews</dt>
-  <dd>8 &amp; 13 October 2026</dd>
+  <dt>Preview</dt>
+  <dd>13 October 2026</dd>
   <dt>ADW 2026</dt>
   <dd>{{ site.programDates }}</dd>
 </dl>

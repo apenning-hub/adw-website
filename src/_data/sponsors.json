@@ -60,6 +60,15 @@
         "dw": 107,
         "dh": 62,
         "url": "https://signorino.com.au/"
+      },
+      {
+        "name": "Novatech",
+        "file": "novatech.png",
+        "w": 895,
+        "h": 298,
+        "dw": 138,
+        "dh": 46,
+        "url": "https://ncet.co/"
       }
     ]
   },

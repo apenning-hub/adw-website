@@ -35,6 +35,7 @@ TIERS = [
    ("Gentle Folk Wines",    L+"02_Gold/01_Gentle Folk Wine/Gentle Folk Logo 2.png"),
    ("Stone Ambassador",     L+"02_Gold/04_Stone Ambassador/Stone Ambassador logo 2024 BLACK - PNG.png"),
    ("Signorino Woodcut",    W+"poster/signorino-woodcut.png"),
+   ("Novatech",             L+"02_Gold/06_Novatech/NCET Black on Clear - HiRes.png"),
  ]),
  ("Silver", [
    ("Bankston",             L+"03_Silver/01_Bankston Architectural/Bankston_Logo_Black.png"),
@@ -203,6 +204,7 @@ SITES = {
   "Etikette Candles":       "https://etikettecandles.com/",
   "Alpha Box & Dice":       "https://www.alphaboxdice.com/",
   "HoMie":                  "https://homie.com.au/",
+  "Novatech":               "https://ncet.co/",
 }
 
 # Logos are set to equal optical area rather than equal height: a roundel and a
