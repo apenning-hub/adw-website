@@ -118,15 +118,6 @@
         </ul>
     {%- endmacro %}
 
-    {% if mediaPartners and mediaPartners.length %}
-    <section class="sponsors sponsors--media" aria-labelledby="media-partners-heading">
-      <h2 class="sponsors-heading" id="media-partners-heading">Media partners</h2>
-      <div class="sponsors-tier" data-tier="media-partners">
-        {{ logoRow(mediaPartners) }}
-      </div>
-    </section>
-    {% endif %}
-
     {% if sponsors %}
     <section class="sponsors" aria-labelledby="sponsors-heading">
       <h2 class="sponsors-heading" id="sponsors-heading">Sponsors</h2>
@@ -136,6 +127,15 @@
         {{ logoRow(tier.sponsors) }}
       </div>
       {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if mediaPartners and mediaPartners.length %}
+    <section class="sponsors sponsors--media" aria-labelledby="media-partners-heading">
+      <h2 class="sponsors-heading" id="media-partners-heading">Media partners</h2>
+      <div class="sponsors-tier" data-tier="media-partners">
+        {{ logoRow(mediaPartners) }}
+      </div>
     </section>
     {% endif %}
 
