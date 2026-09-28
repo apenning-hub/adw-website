@@ -102,14 +102,9 @@
   {% endif %}
 
   <footer class="site-footer">
-    {% if sponsors %}
-    <section class="sponsors" aria-labelledby="sponsors-heading">
-      <h2 class="sponsors-heading" id="sponsors-heading">Sponsors</h2>
-      {% for tier in sponsors %}
-      <div class="sponsors-tier" data-tier="{{ tier.tier | lower }}">
-        <h3 class="sponsors-label">{{ tier.tier }}</h3>
+    {%- macro logoRow(items) %}
         <ul class="sponsors-row">
-          {% for s in tier.sponsors %}
+          {% for s in items %}
           <li class="sponsors-item"
               style="width:calc(var(--logo-scale, 1) * {{ s.dw }}px);
                      height:calc(var(--logo-scale, 1) * {{ s.dh }}px)">
@@ -121,6 +116,24 @@
           </li>
           {% endfor %}
         </ul>
+    {%- endmacro %}
+
+    {% if mediaPartners and mediaPartners.length %}
+    <section class="sponsors sponsors--media" aria-labelledby="media-partners-heading">
+      <h2 class="sponsors-heading" id="media-partners-heading">Media partners</h2>
+      <div class="sponsors-tier" data-tier="media-partners">
+        {{ logoRow(mediaPartners) }}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if sponsors %}
+    <section class="sponsors" aria-labelledby="sponsors-heading">
+      <h2 class="sponsors-heading" id="sponsors-heading">Sponsors</h2>
+      {% for tier in sponsors %}
+      <div class="sponsors-tier" data-tier="{{ tier.tier | lower }}">
+        <h3 class="sponsors-label">{{ tier.tier }}</h3>
+        {{ logoRow(tier.sponsors) }}
       </div>
       {% endfor %}
     </section>

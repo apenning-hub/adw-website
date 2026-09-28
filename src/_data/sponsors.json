@@ -173,15 +173,6 @@
         "dw": 55,
         "dh": 55,
         "url": "https://www.ukiyo.house/"
-      },
-      {
-        "name": "Union Magazine",
-        "file": "union-magazine.png",
-        "w": 624,
-        "h": 298,
-        "dw": 100,
-        "dh": 48,
-        "url": "https://unionmagazine.com/"
       }
     ]
   },
@@ -286,15 +277,6 @@
         "dw": 80,
         "dh": 47,
         "url": "https://www.jamfactory.com.au/"
-      },
-      {
-        "name": "Place Journal",
-        "file": "place-journal.png",
-        "w": 744,
-        "h": 298,
-        "dw": 95,
-        "dh": 38,
-        "url": "https://www.placejournal.com.au/"
       },
       {
         "name": "Piteo",

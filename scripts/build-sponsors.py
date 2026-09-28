@@ -49,7 +49,6 @@ TIERS = [
    ("Tumbled",              L+"03_Silver/07_Tumbled/Tumbled_Primary Logo Black.jpg"),
    ("Remington Matters",    L+"05_In-Kind/11_Remington Matters/rem00-logo-2.pdf"),
    ("Ukiyo House",          L+"05_In-Kind/01_Ukiyo House/Ukiyo-Logo-RGB-Transparent.png"),
-   ("Union Magazine",       L+"03_Silver/09_Union Magazine/UNION magazine.png"),
  ]),
  ("Bronze", [
    ("Baukultur",            L+"04_Bronze/01_Baukultur/Baukultur.png"),
@@ -63,7 +62,6 @@ TIERS = [
    ("Insight Lighting",     L+"04_Bronze/09_Insight Lighting/insight-RGB-Colour-POS-300dpi.png"),
    ("Honeydripper",         W+"rasterised/honeydripper.png"),
    ("JamFactory",           L+"05_In-Kind/08_Jam Factory/JamFactory_black.eps"),
-   ("Place Journal",        L+"04_Bronze/10_Place Journal/PlaceLogo_Black.png"),
    ("Piteo",                L+"04_Bronze/11_Piteo/PITEO_LockupA.png"),
    ("RF Lux",               W+"rasterised/rf-lux.png"),
    ("Stylecraft",           L+"04_Bronze/12_Stylecraft/Stylecraft Logo - Magenta.png"),
@@ -84,6 +82,17 @@ TIERS = [
    ("Little Bang Brewing Co", L+"05_In-Kind/09_Little Bang Brewing/LBBC Logo Stacked Horizontal Black.eps"),
    ("Pundi",                L+"05_In-Kind/10_Pundi/Pundi Logo - SCREEN - Mono Black.png"),
  ]),
+]
+
+# Media partners have their own section above the sponsors, in this order
+# (ADW, 28 Sep 2026). They are written to mediaPartners.json, not sponsors.json.
+MEDIA = [
+   ("Union Magazine",       L+"03_Silver/09_Union Magazine/UNION magazine.png"),
+   ("ADR",                  L+"06_Media Partners/02_ADR/ADR23_Logo_Typeface_RGB_b&w.png"),
+   # Not yet supplied: the settled last frame of the animated logo on ADR's own
+   # 30UNDER30 page. Replace with the file ADW is sent.
+   ("30UNDER30",            W+"web/30under30.png"),
+   ("Place Journal",        L+"04_Bronze/10_Place Journal/PlaceLogo_Black.png"),
 ]
 
 import os, re, sys, json, subprocess, tempfile
@@ -205,19 +214,21 @@ SITES = {
   "Alpha Box & Dice":       "https://www.alphaboxdice.com/",
   "HoMie":                  "https://homie.com.au/",
   "Novatech":               "https://ncet.co/",
+  "ADR":                    "https://www.australiandesignreview.com/",
+  "30UNDER30":              "https://www.australiandesignreview.com/30under30/",
 }
 
 # Logos are set to equal optical area rather than equal height: a roundel and a
 # long wordmark both end up carrying the same visual weight, which height alone
 # never manages. Clamped so nothing runs away in either direction.
-AREA = {"Platinum": 6400, "Gold": 4800, "Silver": 3500, "Bronze": 2700, "Donations": 2300}
-CLAMP = {"Platinum": (62, 250), "Gold": (52, 210), "Silver": (44, 180),
+AREA = {"Media partners": 3100, "Platinum": 6400, "Gold": 4800, "Silver": 3500, "Bronze": 2700, "Donations": 2300}
+CLAMP = {"Media partners": (46, 170), "Platinum": (62, 250), "Gold": (52, 210), "Silver": (44, 180),
          "Bronze": (38, 155), "Donations": (34, 145)}
 # Equal area alone punishes a long, thin wordmark: matching the area of a
 # compact mark leaves it only a dozen pixels tall, and the letterforms are what
 # carry it. So heights have a floor, and a very wide logo is allowed past the
 # usual width in order to reach it.
-HMIN = {"Platinum": 26, "Gold": 23, "Silver": 20, "Bronze": 18, "Donations": 16}
+HMIN = {"Media partners": 19, "Platinum": 26, "Gold": 23, "Silver": 20, "Bronze": 18, "Donations": 16}
 WIDE = 1.2
 
 def display_size(w, h, tier):
@@ -243,8 +254,7 @@ def pad(im):
     out.paste(im, (p, p), im)
     return out, p
 
-rows = []
-for tier, items in TIERS:
+def build(tier, items):
     entries = []
     for name, src in items:
         im = monochrome(load(src))
@@ -263,7 +273,12 @@ for tier, items in TIERS:
         entries.append({"name": name, "file": f, "w": im.size[0], "h": im.size[1],
                         "dw": dw, "dh": dh, "url": SITES.get(name)})
         print(f"{tier:10} {name:24} {im.size[0]:4}x{im.size[1]:<4} {os.path.basename(src)[:40]}")
-    rows.append({"tier": tier, "sponsors": entries})
+    return entries
 
+rows = [{"tier": tier, "sponsors": build(tier, items)} for tier, items in TIERS]
 json.dump(rows, open(os.path.join(REPO, "src/_data/sponsors.json"), "w"), indent=2)
 print("\nwrote sponsors.json —", sum(len(r['sponsors']) for r in rows), "logos")
+
+media = build("Media partners", MEDIA)
+json.dump(media, open(os.path.join(REPO, "src/_data/mediaPartners.json"), "w"), indent=2)
+print("wrote mediaPartners.json —", len(media), "logos")

@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Union Magazine",
+    "file": "union-magazine.png",
+    "w": 624,
+    "h": 298,
+    "dw": 95,
+    "dh": 45,
+    "url": "https://unionmagazine.com/"
+  },
+  {
+    "name": "ADR",
+    "file": "adr.png",
+    "w": 572,
+    "h": 63,
+    "dw": 208,
+    "dh": 23,
+    "url": "https://www.australiandesignreview.com/"
+  },
+  {
+    "name": "30UNDER30",
+    "file": "30under30.png",
+    "w": 274,
+    "h": 298,
+    "dw": 52,
+    "dh": 57,
+    "url": "https://www.australiandesignreview.com/30under30/"
+  },
+  {
+    "name": "Place Journal",
+    "file": "place-journal.png",
+    "w": 744,
+    "h": 298,
+    "dw": 102,
+    "dh": 41,
+    "url": "https://www.placejournal.com.au/"
+  }
+]
