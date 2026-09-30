@@ -10,5 +10,6 @@ module.exports = [
   { name: "Hannah White", handle: "@hannahwhite.lecturer", url: "https://instagram.com/hannahwhite.lecturer" },
   { name: "James Brown", handle: "@2049.art", url: "https://instagram.com/2049.art" },
   { name: "Lara Merrington", handle: "@lara_merrington", url: "https://instagram.com/lara_merrington" },
+  { name: "Rachel Leppinus", handle: "@rachelleppinus.stylist", url: "https://instagram.com/rachelleppinus.stylist" },
   { name: "Sam Agostino", handle: "@motion.exhibition", url: "https://instagram.com/motion.exhibition" },
 ];
