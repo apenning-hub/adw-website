@@ -678,6 +678,19 @@
   // with an empty console, which is indistinguishable from a styling bug.
   map.on("error", function (e) {
     console.error("[adw map] mapbox:", (e && e.error && e.error.message) || e);
+    // A refused or failed tile still counts as "loaded", so the watchdog
+    // below never fires and the map is just pins on blank paper. Say so on
+    // the page, with Mapbox's own status, so it can be read off a phone.
+    // The request URL is left out: it carries the access token.
+    if (e && (e.tile || e.sourceId) && !root.querySelector(".map-tile-error")) {
+      var err = e.error || {};
+      var note = document.createElement("p");
+      note.className = "map-tile-error";
+      note.textContent = "The street map did not load (Mapbox: " +
+        (err.status !== undefined ? err.status + " " : "") +
+        (err.message || "no reason given") + ").";
+      root.appendChild(note);
+    }
   });
   // A map that fails to load its style renders as an empty rectangle with a
   // clean console — indistinguishable from a styling bug, and the thing that

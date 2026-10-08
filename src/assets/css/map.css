@@ -28,6 +28,20 @@
 
 .map-canvas { min-width: 0; position: relative; }
 
+/* Basemap tiles refused or failed; the pins still work. See map.js. */
+.map-tile-error {
+    position: absolute;
+    inset-block-end: var(--space-2);
+    inset-inline: var(--space-2);
+    z-index: 2;
+    margin: 0;
+    padding: var(--space-1) var(--space-2);
+    background: var(--paper);
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    text-align: center;
+}
+
 /* Only visible when the basemap has failed — see the load watchdog in map.js. */
 .map-stalled { display: none; }
 .map-canvas.is-stalled .map-stalled {
