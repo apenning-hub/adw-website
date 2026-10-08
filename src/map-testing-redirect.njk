@@ -1,0 +1,20 @@
+---
+permalink: /map-testing/
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <title>moved — map</title>
+    <link rel="canonical" href="{{ '/map/' | url }}">
+    {# The script keeps ?tab=picks on old links; the meta refresh is the
+       fallback for anything that does not run it. #}
+    <script>location.replace({{ ('/map/' | url) | dump | safe }} + location.search + location.hash);</script>
+    <meta http-equiv="refresh" content="0; url={{ '/map/' | url }}">
+  </head>
+  <body>
+    <p>The map has moved to <a href="{{ '/map/' | url }}">/map/</a>.</p>
+  </body>
+</html>

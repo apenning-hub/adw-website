@@ -222,12 +222,13 @@ test("half a position is refused", () => {
 test("the real spreadsheet parses, and most of it is on the map", async () => {
   delete require.cache[require.resolve(MODULE)];
   const out = await require(MODULE)();
-  // Deliberately a short list: 30-40 excellent rooms, not a directory.
-  assert.ok(out.count >= 30 && out.count <= 45,
-            `expected 30-45 picks, got ${out.count}`);
-  // Every one of them is walkable from the program, so they all place.
-  assert.strictEqual(out.mappedCount, out.count,
-            `${out.count - out.mappedCount} picks have no pin`);
+  // The design picks plus friends' recommendations: dozens, not hundreds.
+  assert.ok(out.count >= 30 && out.count <= 120,
+            `expected 30-120 picks, got ${out.count}`);
+  // Every pick with an address has a pin. A pick with no address is listed
+  // without one, which is honest; an address the sheet could not place is not.
+  const unplaced = out.picks.filter((p) => p.address && !p.mapped).map((p) => p.name);
+  assert.deepStrictEqual(unplaced, [], `these have an address but no pin: ${unplaced.join(", ")}`);
   // Every mapped pick must be somewhere in South Australia. A geocoder that
   // silently returns the wrong hemisphere is the failure worth catching.
   for (const p of out.picks.filter((x) => x.mapped)) {

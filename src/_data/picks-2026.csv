@@ -1,72 +1,80 @@
-name,address,kind,designer,year,why,hannah_note,designer_words,designer_name,link,socials,show,recommended
-Adelaide Lebanese Bakery,"67-69 Chapel St, Thebarton SA 5031",cafe,,,,,,,https://adelaidelebanesebakery.com.au,,Y,Adelaide Lebanese Bakery in Thebarton! — Em Frank
-Adelaide Pho,"199 Waymouth St, Adelaide SA 5000",restaurant,,,,,,,,,Y,Adelaide pho — @lara_merrington
-Africola,"4 East Tce, Adelaide SA 5000",fine dining,Studio Gram,2014,Maximalist colour-saturated shebeen that broke Adelaide's beige-and-blonde-timber consensus,,,,,,Y,
-Ajisen Ramen,,restaurant,,,,,,,,,Y,Go to is honestly ajisen ramen on gouger street .... tofu ramen (the yummiest tofu). — Penny Fisher
-Ban Ban,"145 Franklin St, Adelaide SA 5000",restaurant,Genesin Studio,2019,Low-tech K-pop minimalism fusing interior and graphic design into one system,,,,,,Y,
-BBQ City,,restaurant,,,,,,,,,Y,"Bbq city, roast pork with rice 😅😅😅 — @avinashkunjamboo"
-Bloom,"38 Winwood St, Thebarton SA 5031",bar,Sans-Arc Studio,2020,A floating bar and an arched grill organise a heritage carriage-works shed,,,,,,Y,
-Chinatown Cafe,"38-41 Moonta St, Adelaide SA 5000",cafe,,,,,,,,,Y,"Chicken Rice w/ Laksa Broth @ Chinatown Café — @sansarc.studio
+name,address,kind,designer,year,why,hannah_note,designer_words,designer_name,link,socials,show,lat,lng,recommended
+Abbots & Kinney,"78 Pirie St, Adelaide SA 5000",cafe,Studio Gram,2015,"76 m² split on the diagonal, bare timber framing against flush black, with stadium seating; EDDA Best Cafe Design 2015 (joint)",,,,,,Y,-34.925507,138.602707,
+Adelaide Lebanese Bakery,"67-69 Chapel St, Thebarton SA 5031",cafe,,,,,,,https://adelaidelebanesebakery.com.au,,Y,-34.918453,138.573922,Adelaide Lebanese Bakery in Thebarton! — Em Frank
+Adelaide Pho,"199 Waymouth St, Adelaide SA 5000",restaurant,,,,,,,,,Y,-34.926299,138.592125,Adelaide pho — @lara_merrington
+Africola,"4 East Tce, Adelaide SA 5000",fine dining,Studio Gram,2014,Maximalist colour-saturated shebeen that broke Adelaide's beige-and-blonde-timber consensus,,,,,,Y,-34.921379,138.61056,
+Ajisen Ramen,,restaurant,,,,,,,,,Y,,,Go to is honestly ajisen ramen on gouger street .... tofu ramen (the yummiest tofu). — Penny Fisher
+Ban Ban,"145 Franklin St, Adelaide SA 5000",restaurant,Genesin Studio,2019,Low-tech K-pop minimalism fusing interior and graphic design into one system,,,,,,Y,-34.927731,138.593467,
+BBQ City,,restaurant,,,,,,,,,Y,,,"Bbq city, roast pork with rice 😅😅😅 — @avinashkunjamboo"
+Bloom,"38 Winwood St, Thebarton SA 5031",bar,Sans-Arc Studio,2020,A floating bar and an arched grill organise a heritage carriage-works shed,,,,,,Y,-34.910353,138.573441,
+Chinatown Cafe,"38-41 Moonta St, Adelaide SA 5000",cafe,,,,,,,,,Y,-34.92961,138.595931,"Chicken Rice w/ Laksa Broth @ Chinatown Café — @sansarc.studio
 Chinatown Cafe — Calum Hurley"
-Clever Little Tailor,"19 Peel St, Adelaide SA 5000",bar,Adam Johnson Design,2013,"Stacked stone left exposed, leather-clad mezzanine; Best Bar Design, EDDA 2014",,,,,,Y,
-Crown & Anchor Hotel,"233 Currie St, Adelaide SA 5000",pub,,1853,"Pop-up at the Ed Castle, 233 Currie St, while the Grenfell St pub is closed (back about July 2027). The Cranker. The 2024 campaign to save it was the loudest built-environment argument this city has had in decades",,,,,,Y,Formerly cranker (RIP) — @mothgirl69
-Cumberland Arms Hotel,"205 Waymouth St, Adelaide SA 5000",pub,H.C. Richardson,1883,"State Heritage-listed; fine entrance hall and staircase, upstairs rooms largely intact",,,,,,Y,
-Ding Hao,"36 Wright St, Adelaide SA 5000",restaurant,,,,,,,,,Y,Ding Hao lunch! — @naito.interior
-Dolly,"246 Unley Rd, Unley SA 5061",fine dining,Genesin Studio,2023,Acid-washed concrete bar and a mirror-chrome acoustic ceiling in an apartment tenancy,,,,,,Y,
-East Taste,"119 Gouger St, Adelaide SA 5000",restaurant,,,,,,,,,Y,East taste - you know what it is! — @mothgirl69
-Exeter Hotel,"246-248 Rundle St, Adelaide SA 5000",pub,,1851,"Green glazed tiles from 1929, a front bar that has barely moved, music continuous since July 1851. Rebuilt in 1888 in Victorian Italianate, architect unrecorded",,,,,,Y,"Exeter, exeter lager - cheap, simple everyone's invited — @lara_merrington
+Clever Little Tailor,"19 Peel St, Adelaide SA 5000",bar,Adam Johnson Design,2013,"Stacked stone left exposed, leather-clad mezzanine; Best Bar Design, EDDA 2014",,,,,,Y,-34.923452,138.597996,
+Coffee in Common,"7 Bacon St, Hindmarsh SA 5007",cafe,E-Squared Studios (Elias Khoury),2021,A former car detailer's warehouse fitted out with Japanese restraint around a long island bar; roasts on site,,,,,,Y,-34.90557,138.566532,
+Crown & Anchor Hotel,"233 Currie St, Adelaide SA 5000",pub,,1853,"Pop-up at the Ed Castle, 233 Currie St, while the Grenfell St pub is closed (back about July 2027). The Cranker. The 2024 campaign to save it was the loudest built-environment argument this city has had in decades",,,,,,Y,-34.925093,138.589437,Formerly cranker (RIP) — @mothgirl69
+Cumberland Arms Hotel,"205 Waymouth St, Adelaide SA 5000",pub,H.C. Richardson,1883,"State Heritage-listed; fine entrance hall and staircase, upstairs rooms largely intact",,,,,,Y,-34.926421,138.59197,
+Ding Hao,"36 Wright St, Adelaide SA 5000",restaurant,,,,,,,,,Y,-34.931394,138.59853,Ding Hao lunch! — @naito.interior
+Dolly,"246 Unley Rd, Unley SA 5061",fine dining,Genesin Studio,2023,Acid-washed concrete bar and a mirror-chrome acoustic ceiling in an apartment tenancy,,,,,,Y,-34.953127,138.607343,
+East Taste,"119 Gouger St, Adelaide SA 5000",restaurant,,,,,,,,,Y,-34.930641,138.59494,East taste - you know what it is! — @mothgirl69
+Elementary Coffee,"9-17 Young St, Adelaide SA 5000",cafe,Wholegrain Studio (Josh McCallum),2016,"A warehouse roastery that keeps the building's character, in local materials and pine joinery",,,,,,Y,-34.926393,138.595884,
+Elementary Coffee Torrensville,"2 Jervois St, Torrensville SA 5031",cafe,Umoki Studio (Rhea Koumi); furniture by MJP,2022,"Café and roastery in the old Canopy site: the slower, dine-in sibling of the city store",,,,,,Y,-34.923574,138.561561,
+Exeter Hotel,"246-248 Rundle St, Adelaide SA 5000",pub,,1851,"Green glazed tiles from 1929, a front bar that has barely moved, music continuous since July 1851. Rebuilt in 1888 in Victorian Italianate, architect unrecorded",,,,,,Y,-34.922313,138.608766,"Exeter, exeter lager - cheap, simple everyone's invited — @lara_merrington
 Exeter / Dark Ale — @sansarc.studio
 Ice cold dirty martini at smokelovers, followed by ice cold jug of pale ale at Exeter — @mothgirl69
 Also the Exeter steak sandwich for lunch! — Calum Hurley"
-Fino Vino,"82 Flinders St, Adelaide SA 5000",bar,Studio Gram,2019,Stages the collision of country and city for a restaurant group that began in regional SA,,,,,,Y,
-Fugazzi Bar & Dining Room,"27 Leigh St, Adelaide SA 5000",fine dining,Studio Gram,2021,"Velvet, leather, marble and inlaid stone offcuts; a nostalgic New York supper club",,,,,,Y,
-Grace Emily Hotel,"232 Waymouth St, Adelaide SA 5000",pub,,1839,Front bar still carries the sloping counter and trough of the six o'clock swill,,,,,,Y,Grace and Emily pub!!! — @_ailisnolan
-Herringbone,"72-74 Halifax St, Adelaide SA 5000",restaurant,,,,,,,https://herringbonerestaurant.com.au,,Y,"Herringbone or Rosemont Hall — @sarah.leach
+Fino Vino,"82 Flinders St, Adelaide SA 5000",bar,Studio Gram,2019,Stages the collision of country and city for a restaurant group that began in regional SA,,,,,,Y,-34.926708,138.603611,
+Fugazzi Bar & Dining Room,"27 Leigh St, Adelaide SA 5000",fine dining,Studio Gram,2021,"Velvet, leather, marble and inlaid stone offcuts; a nostalgic New York supper club",,,,,,Y,-34.924018,138.597401,
+Grace Emily Hotel,"232 Waymouth St, Adelaide SA 5000",pub,,1839,Front bar still carries the sloping counter and trough of the six o'clock swill,,,,,,Y,-34.926025,138.591007,Grace and Emily pub!!! — @_ailisnolan
+Herringbone,"72-74 Halifax St, Adelaide SA 5000",restaurant,,,,,,,https://herringbonerestaurant.com.au,,Y,-34.932538,138.603048,"Herringbone or Rosemont Hall — @sarah.leach
 Scallops at herringbone — @billiejusticethomson"
-Jasmin Indian Restaurant,"31 Hindmarsh Sq, Adelaide SA 5000",classic,,1981,"Basement room, white cloth, unchanged for forty years and all the better",,,,,,Y,
-Leigh Street Luggage,"22a Leigh St, Adelaide SA 5000",bar,,,,,,,,,Y,Leigh street luggage — @naito.interior
-Leigh Street Wine Room,"9 Leigh St, Adelaide SA 5000",bar,Studio Gram,2019,A 3.4 m former dry cleaner given a five-metre barrel vault and a full-height wall of wine,,,,,,Y,
-Lucia's Pizza & Spaghetti Bar,"Shop 3-4 Western Mall, Adelaide Central Market, 44-60 Gouger St, Adelaide SA 5000",classic,,1957,"Adelaide's first pizza bar, still run by Lucia Rosella's daughters from the same open counter",,,,,,Y,Spaghetti Vongole w/ San Pell (no ice) @ Lucia's — @sansarc.studio
-Madre,"57 Gilbert St, Adelaide SA 5000",fine dining,RADS with Voice Design,2020,EDDA Best Restaurant Design shortlist,,,,,,Y,
-Malt & Juniper,"18 Peel St, Adelaide SA 5000",bar,Sans-Arc Studio,2018,A tiny footprint resolved into one gesture: an oversized back bar with a sliding ladder,,,,,,Y,
-Maybe Mae,"15 Peel St, Adelaide SA 5000",bar,Claire Kneebone,2015,Disused stock cellar rebuilt as an art-deco den; hidden door in the panelling,,,,,,Y,
-Mensa,"44 The Parade West, Kent Town SA 5067",bar,Sans-Arc Studio,2024,A low-intervention warehouse conversion stitched to a house by a timber sunroom,,,,,,Y,
-Nanna Hot Bake,"Shop 30, Market Plaza, Adelaide Central Market, 44-60 Gouger St, Adelaide SA 5000",cafe,,,,,,,,,Y,Nanas buns — Hannah White
-Nano Cafe,"23 Ebenezer Pl, Adelaide SA 5000",cafe,,,,,,,,,Y,Orecchiette verde — Claire Markwick-Smith
-NanYang Cafe,"Shop 26, Renaissance Arcade, 136 Rundle Mall, Adelaide SA 5000",cafe,,,,,,,,,Y,Hor fun — Claire Markwick-Smith
-Nearly,"179 Hindley St, Adelaide SA 5000",bar,,,,,,,,,Y,"Nearly Bar!! — @juzzzzza
+Jasmin Indian Restaurant,"31 Hindmarsh Sq, Adelaide SA 5000",classic,,1981,"Basement room, white cloth, unchanged for forty years and all the better",,,,,,Y,-34.92374,138.60641,
+Jenny's Bakery Keswick,"48 Everard Ave, Keswick SA 5035",cafe,Georgie Shepherd Interior Design,2025,"Timber detailing, track lighting and plants in a neighbourhood bakery; St Ali coffee",,,,,,Y,-34.945892,138.575906,
+Leigh Street Luggage,"22a Leigh St, Adelaide SA 5000",bar,,,,,,,,,Y,-34.923851,138.597815,Leigh street luggage — @naito.interior
+Leigh Street Wine Room,"9 Leigh St, Adelaide SA 5000",bar,Studio Gram,2019,A 3.4 m former dry cleaner given a five-metre barrel vault and a full-height wall of wine,,,,,,Y,-34.923505,138.597568,
+Lucia's Pizza & Spaghetti Bar,"Shop 3-4 Western Mall, Adelaide Central Market, 44-60 Gouger St, Adelaide SA 5000",classic,,1957,"Adelaide's first pizza bar, still run by Lucia Rosella's daughters from the same open counter",,,,,,Y,-34.929133,138.597004,Spaghetti Vongole w/ San Pell (no ice) @ Lucia's — @sansarc.studio
+Madre,"57 Gilbert St, Adelaide SA 5000",fine dining,RADS with Voice Design,2020,EDDA Best Restaurant Design shortlist,,,,,,Y,-34.934593,138.594596,
+Malt & Juniper,"18 Peel St, Adelaide SA 5000",bar,Sans-Arc Studio,2018,A tiny footprint resolved into one gesture: an oversized back bar with a sliding ladder,,,,,,Y,-34.923788,138.598241,
+Mascavado,"175 Hutt St, Adelaide SA 5000",cafe,Sans-Arc Studio,2020,"A former Commonwealth Bank branch; a terrazzo counter stages the pastries under a back-lit, gallery-like ceiling",,,,,,Y,-34.931495,138.611898,
+Maybe Mae,"15 Peel St, Adelaide SA 5000",bar,Claire Kneebone,2015,Disused stock cellar rebuilt as an art-deco den; hidden door in the panelling,,,,,,Y,-34.92366,138.598057,
+Mensa,"44 The Parade West, Kent Town SA 5067",bar,Sans-Arc Studio,2024,A low-intervention warehouse conversion stitched to a house by a timber sunroom,,,,,,Y,-34.921668,138.622099,
+My Kingdom for a Horse (Waymouth St),"11 Waymouth St, Adelaide SA 5000",cafe,Woods Bagot,2020,"A 13 m² espresso bar off Telegraph Lane: the Wright St café's 1970s colour scaled down, with lightboxes by Tony Mead",,,,https://mykingdomforahorse.com.au,,Y,-34.926353,138.599124,
+Nanna Hot Bake,"Shop 30, Market Plaza, Adelaide Central Market, 44-60 Gouger St, Adelaide SA 5000",cafe,,,,,,,,,Y,-34.929133,138.597004,Nanas buns — Hannah White
+Nano Cafe,"23 Ebenezer Pl, Adelaide SA 5000",cafe,,,,,,,,,Y,-34.923069,138.609548,Orecchiette verde — Claire Markwick-Smith
+NanYang Cafe,"136 Rundle Mall, Adelaide SA 5000",cafe,,,,,,,,,Y,-34.922492,138.604423,Hor fun — Claire Markwick-Smith
+Nearly,"179 Hindley St, Adelaide SA 5000",bar,,,,,,,,,Y,-34.923513,138.592461,"Nearly Bar!! — @juzzzzza
 Nearly — Calum Hurley"
-Omada Bar & Grill,"46 Currie St, Adelaide SA 5000",fine dining,Studio Gram with J.AR Office,2026,AIDA Hospitality Design JOINT NATIONAL WINNER,,,,,,Y,
-Osteria Oggi,"76 Pirie St, Adelaide SA 5000",fine dining,Studio Gram,2016,"Vaulted archways and a 21 m poured-concrete bar; World Interiors News Best Restaurant Interior, SA Robert Dickson Award",,,,,,Y,
-Paloma Bar & Pantry,"20 Peel St, Adelaide SA 5000",bar,Claire Kneebone,2019,EDDA Best Bar Design shortlist,,,,,,Y,
-Part Time Lover,"Paul Kelly Lane, Adelaide SA 5000",bar,Sans-Arc Studio,2019,A timber pavilion in the courtyard between the Town Hall and Pilgrim Uniting Church,,,,,,Y,"Steak and chips or Bug Rolls & Bubbles @ PTL — @sansarc.studio
+Omada Bar & Grill,"46 Currie St, Adelaide SA 5000",fine dining,Studio Gram with J.AR Office,2026,AIDA Hospitality Design JOINT NATIONAL WINNER,,,,,,Y,-34.924198,138.597832,
+Osteria Oggi,"76 Pirie St, Adelaide SA 5000",fine dining,Studio Gram,2016,"Vaulted archways and a 21 m poured-concrete bar; World Interiors News Best Restaurant Interior, SA Robert Dickson Award",,,,,,Y,-34.925464,138.602695,
+Paloma Bar & Pantry,"20 Peel St, Adelaide SA 5000",bar,Claire Kneebone,2019,EDDA Best Bar Design shortlist,,,,,,Y,-34.923701,138.598224,
+Part Time Lover,"Paul Kelly Lane, Adelaide SA 5000",bar,Sans-Arc Studio,2019,A timber pavilion in the courtyard between the Town Hall and Pilgrim Uniting Church,,,,,,Y,-34.926643,138.600743,"Steak and chips or Bug Rolls & Bubbles @ PTL — @sansarc.studio
 Corn ribs — Ashleigh Pinto"
-Parwana Afghan Kitchen,"124B Henley Beach Rd, Torrensville SA 5031",restaurant,,,,,,,,,Y,"Parwana and their mantu 😩 — @printlogisticsau
+Parwana Afghan Kitchen,"124B Henley Beach Rd, Torrensville SA 5031",restaurant,,,,,,,,,Y,-34.923607,138.567399,"Parwana and their mantu 😩 — @printlogisticsau
 Parwana — Calum Hurley"
-Peel St,"9 Peel St, Adelaide SA 5000",restaurant,,2012,The laneway restaurant the rest of Peel Street grew around,,,,,,Y,
-Pink Moon Saloon,"21 Leigh St, Adelaide SA 5000",bar,Sans-Arc Studio (Matiya Marovich),2015,Two timber gable huts in a 4 m bin alley; the best argument in the city for laneway infill,,,,,,Y,
-Press* Food & Wine,"40 Waymouth St, Adelaide SA 5000",restaurant,Claire Kneebone,2022,"Rendered walls, banquettes and a curved Italian-marble bar; EDDA 2022 shortlist",,,,,,Y,
-Restaurant Botanic,"Friends Gate, Plane Tree Dr, Adelaide Botanic Garden SA 5000",fine dining,Williams Burton Leopardi,2021,Heritage rotunda reopened around an arched-timber bar and 12-seat chef's table,,,,,,Y,
-Rob Roy Hotel,"106-110 Halifax St, Adelaide SA 5000",pub,English & Soward (1881 addition),1838,One of SA's oldest licences; the 1840s western section still legible inside later fabric,,,,,,Y,
-Rosemont Hall,"106 Prospect Rd, Prospect SA 5082",restaurant,,,,,,,,,Y,Herringbone or Rosemont Hall — @sarah.leach
-Shobosho,"17 Leigh St, Adelaide SA 5000",fine dining,Studio Gram,2017,"The name means fire house, delivered literally in shou sugi ban charred Baltic pine",,,,,,Y,"Raw Tuna, Edamame, Black Rice, Bonito Cream — Sophia Leopardi"
-Smokelovers,"244 Rundle St, Adelaide SA 5000",bar,,,,,,,https://smokelovers.com.au,,Y,"Ice cold dirty martini at smokelovers, followed by ice cold jug of pale ale at Exeter — @mothgirl69
+Peel St,"9 Peel St, Adelaide SA 5000",restaurant,,2012,The laneway restaurant the rest of Peel Street grew around,,,,,,Y,-34.92345,138.598011,
+Pink Moon Saloon,"21 Leigh St, Adelaide SA 5000",bar,Sans-Arc Studio (Matiya Marovich),2015,Two timber gable huts in a 4 m bin alley; the best argument in the city for laneway infill,,,,,,Y,-34.923869,138.597385,
+Press* Food & Wine,"40 Waymouth St, Adelaide SA 5000",restaurant,Claire Kneebone,2022,"Rendered walls, banquettes and a curved Italian-marble bar; EDDA 2022 shortlist",,,,,,Y,-34.925637,138.598203,
+Restaurant Botanic,"Friends Gate, Plane Tree Dr, Adelaide Botanic Garden SA 5000",fine dining,Williams Burton Leopardi,2021,Heritage rotunda reopened around an arched-timber bar and 12-seat chef's table,,,,,,Y,-34.91778,138.60993,
+Rob Roy Hotel,"106-110 Halifax St, Adelaide SA 5000",pub,English & Soward (1881 addition),1838,One of SA's oldest licences; the 1840s western section still legible inside later fabric,,,,,,Y,-34.932412,138.604333,
+Room 19,"256 Rundle St, Adelaide SA 5000",cafe,Soko,2022,"A former chocolatier's shop turned to face away from the street, with folding windows and plants; Seven Seeds coffee",,,,https://room19.com.au,,Y,-34.922408,138.609088,
+Rosemont Hall,"106 Prospect Rd, Prospect SA 5082",restaurant,,,,,,,,,Y,-34.887719,138.59389,Herringbone or Rosemont Hall — @sarah.leach
+Shobosho,"17 Leigh St, Adelaide SA 5000",fine dining,Studio Gram,2017,"The name means fire house, delivered literally in shou sugi ban charred Baltic pine",,,,,,Y,-34.923618,138.597368,"Raw Tuna, Edamame, Black Rice, Bonito Cream — Sophia Leopardi"
+Smokelovers,"244 Rundle St, Adelaide SA 5000",bar,,,,,,,https://smokelovers.com.au,,Y,-34.922368,138.60868,"Ice cold dirty martini at smokelovers, followed by ice cold jug of pale ale at Exeter — @mothgirl69
 Smokelovers — Calum Hurley"
-Sofia,"16 Hutt St, Adelaide SA 5000",fine dining,Sans-Arc Studio,2024,"Cork, terrazzo and hand-formed concrete under a new bullnose verandah; 2025 Marjorie Simpson Award",,,,,,Y,"Gotta have Fire Roasted Capsicum, bread and Haloumi w/ honey — Matiya"
-Soi 38,"74 Pirie St, Adelaide SA 5000",restaurant,Walter Brooke with Simon Lobianco,2021,A former Subway reworked around a barrel vault and Thai prayer-flag curtains,,,,,,Y,
-Southern Noodle Bar,,restaurant,,,,,,,,,Y,The best fucking hangover noodle house - cold dry noodles with their special sauce / extra large bowl — Andy TT
-The Austral Hotel,"205-207 Rundle St, Adelaide SA 5000",pub,W. McMinn,1882,State Heritage-listed; projecting cast-iron verandah and balcony essentially untouched,,,,,,Y,
-The Duke of York,"82 Currie St, Adelaide SA 5000",pub,,1839,"One of the oldest licences in the city, still a front bar",,,,,,Y,
-The Gov,"59 Port Rd, Hindmarsh SA 5007",pub,,,,,,,https://thegov.com.au,,Y,The gov — @naito.interior
-The Light Room,"63 Light Sq, Adelaide SA 5000",bar,Georgie Shepherd Interior Design,2023,"EDDA Best Restaurant Design shortlist; bar, gallery and studio in one",,,,,,Y,
-The Old Bush Inn,"51 High St, Willunga SA 5172",pub,,,,,,,https://oldbushinn.com,,Y,Chicken parmy add pepper gravy on the side — Jock
-The Stag Hotel,"299 Rundle St, Adelaide SA 5000",pub,,1849,State Heritage-listed turret-and-balcony corner; trading over 175 years,,,,,,Y,
-The Wheatsheaf Hotel,"39 George St, Thebarton SA 5031",pub,,1878,"Plain retro front bar, no pokies, on-site brewery; SA Music Hall of Fame",,,,,,Y,"Wheatsheaf — @lara_merrington
+Sofia,"16 Hutt St, Adelaide SA 5000",fine dining,Sans-Arc Studio,2024,"Cork, terrazzo and hand-formed concrete under a new bullnose verandah; 2025 Marjorie Simpson Award",,,,,,Y,-34.925623,138.612213,"Gotta have Fire Roasted Capsicum, bread and Haloumi w/ honey — Matiya"
+Soi 38,"74 Pirie St, Adelaide SA 5000",restaurant,Walter Brooke with Simon Lobianco,2021,A former Subway reworked around a barrel vault and Thai prayer-flag curtains,,,,,,Y,-34.925425,138.602565,
+Southern Noodle Bar,,restaurant,,,,,,,,,Y,,,The best fucking hangover noodle house - cold dry noodles with their special sauce / extra large bowl — Andy TT
+The Austral Hotel,"205-207 Rundle St, Adelaide SA 5000",pub,W. McMinn,1882,State Heritage-listed; projecting cast-iron verandah and balcony essentially untouched,,,,,,Y,-34.922853,138.607372,
+The Duke of York,"82 Currie St, Adelaide SA 5000",pub,,1839,"One of the oldest licences in the city, still a front bar",,,,,,Y,-34.924185,138.596437,
+The Gov,"59 Port Rd, Hindmarsh SA 5007",pub,,,,,,,https://thegov.com.au,,Y,-34.907145,138.575595,The gov — @naito.interior
+The Light Room,"63 Light Sq, Adelaide SA 5000",bar,Georgie Shepherd Interior Design,2023,"EDDA Best Restaurant Design shortlist; bar, gallery and studio in one",,,,,,Y,-34.925576,138.592535,
+The Old Bush Inn,"51 High St, Willunga SA 5172",pub,,,,,,,https://oldbushinn.com,,Y,-35.27412,138.55871,Chicken parmy add pepper gravy on the side — Jock
+The Stag Hotel,"299 Rundle St, Adelaide SA 5000",pub,,1849,State Heritage-listed turret-and-balcony corner; trading over 175 years,,,,,,Y,-34.92263,138.610598,
+The Wheatsheaf Hotel,"39 George St, Thebarton SA 5031",pub,,1878,"Plain retro front bar, no pokies, on-site brewery; SA Music Hall of Fame",,,,,,Y,-34.918973,138.575415,"Wheatsheaf — @lara_merrington
 Probably the Wheatie — Em Frank"
-Thelma,"176 Piccadilly Rd, Piccadilly SA 5151",restaurant,,,,,,,https://thelmapiccadilly.com.au,,Y,I loved going to Thelma in Piccadilly recently. All the dishes were amazing and used local produce grown at Common Acre. — Lauren Murphy
-Udaberri,"11 Leigh St, Adelaide SA 5000",bar,,2011,The bar that started Leigh Street; pintxos and a long timber counter,,,,,,Y,
-Wasai Japanese Kitchen,"15 Field St, Adelaide SA 5000",restaurant,,,,,,,,,Y,Wasai Japanese Restaurant! — @naito.interior
-Willmott's Gastronomia,"36 Kensington Rd, Rose Park SA 5067",bar,,,,,,,,,Y,Willmotts - Andre's OG beef carpaccio — Hannah White
-Yakisan,"Level 2, 88 O'Connell St, North Adelaide SA 5006",restaurant,,,,,,,https://yakisan.com.au,,Y,Yakisan. Those devilled eggs...!!! — @adelaidearchitect
-Ying Chow,"114 Gouger St, Adelaide SA 5000",classic,,1994,"Unchanged in three decades: laminate tables, walls papered with awards, a queue for the BBC",,,,,,Y,"Ying Chow BBC and Crispy Beef — @juzzzzza
+Thelma,"176 Piccadilly Rd, Piccadilly SA 5151",restaurant,,,,,,,https://thelmapiccadilly.com.au,,Y,-34.982709,138.726244,I loved going to Thelma in Piccadilly recently. All the dishes were amazing and used local produce grown at Common Acre. — Lauren Murphy
+Udaberri,"11 Leigh St, Adelaide SA 5000",bar,,2011,The bar that started Leigh Street; pintxos and a long timber counter,,,,,,Y,-34.923618,138.597368,
+Wasai Japanese Kitchen,"15 Field St, Adelaide SA 5000",restaurant,,,,,,,,,Y,-34.930852,138.595752,Wasai Japanese Restaurant! — @naito.interior
+Willmott's Gastronomia,"36 Kensington Rd, Rose Park SA 5067",bar,,,,,,,,,Y,-34.927862,138.62784,Willmotts - Andre's OG beef carpaccio — Hannah White
+Yakisan,"Level 2, 88 O'Connell St, North Adelaide SA 5006",restaurant,,,,,,,https://yakisan.com.au,,Y,-34.906349,138.59634,Yakisan. Those devilled eggs...!!! — @adelaidearchitect
+Ying Chow,"114 Gouger St, Adelaide SA 5000",classic,,1994,"Unchanged in three decades: laminate tables, walls papered with awards, a queue for the BBC",,,,,,Y,-34.930089,138.59511,"Ying Chow BBC and Crispy Beef — @juzzzzza
 Our order is a tsing tao beer each to drink, shallot pancakes, salt and pepper eggplant, salt and pepper tofu, BBC, garlic beans, shredded beef, steamed rice for the table — Maddie & Conor"
