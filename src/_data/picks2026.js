@@ -21,6 +21,8 @@
 //   link            website
 //   socials         @handle or a URL
 //   show            N hides the row without deleting it
+//   recommended     friends of ADW on their go-to order. One per line, as
+//                   "what they said — who said it". Any number per place.
 //
 //   lat, lng        optional. Filled in by the Google Sheet's Publish button,
 //                   which geocodes any row whose address has no position yet
@@ -40,7 +42,7 @@ const { parseCsv } = require("./program2026.js");
 
 const COLUMNS = ["name", "address", "kind", "designer", "year", "why",
                  "hannah_note", "designer_words", "designer_name",
-                 "link", "socials", "show", "lat", "lng"];
+                 "link", "socials", "show", "lat", "lng", "recommended"];
 
 // A position outside South Australia is a geocoder that matched the wrong
 // Adelaide, or a typo. Either way it is refused rather than drawn.
@@ -72,6 +74,18 @@ function parseSocials(value) {
   }
   const handle = raw.replace(/^@/, "").replace(/\/$/, "");
   return { url: `https://www.instagram.com/${handle}/`, handle: `@${handle}` };
+}
+
+// One recommendation per line: "what they said — who said it". The name is
+// split off the LAST dash with spaces round it, so a hyphen inside the words
+// ("Exeter, exeter lager - cheap") stays put. A line with no dash is shown
+// unsigned rather than dropped.
+function parseRecommended(value) {
+  return (value || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean)
+    .map((line) => {
+      const m = line.match(/^(.*\S)\s+[—–]\s+(\S.*)$/);
+      return m ? { text: m[1], by: m[2] } : { text: line, by: null };
+    });
 }
 
 // Eleventy's entry point: the sheet if one is configured, else the committed
@@ -171,6 +185,7 @@ function build(text) {
       note: at(row.cells, "hannah_note") || null,
       // Kept together: a quote with no one behind it is not a quote.
       words: words ? { text: words, by: at(row.cells, "designer_name") || null } : null,
+      recommended: parseRecommended(at(row.cells, "recommended")),
       link: at(row.cells, "link") || null,
       socials: parseSocials(at(row.cells, "socials")),
       lat: place ? place.lat : null,

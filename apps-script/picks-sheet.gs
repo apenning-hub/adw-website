@@ -20,7 +20,8 @@ const DEPLOY_HOOK = "PASTE_DEPLOY_HOOK_HERE";
 
 const PICKS = {
   columns: ["name", "address", "kind", "designer", "year", "why", "hannah_note",
-            "designer_words", "designer_name", "link", "socials", "show", "lat", "lng"],
+            "designer_words", "designer_name", "link", "socials", "show", "lat", "lng",
+            "recommended"],
   kinds: ["bar", "pub", "cafe", "restaurant", "fine dining", "cellar door",
           "brewery", "classic"],
   // Greater Adelaide, generously. The build's own bound is all of SA; this is

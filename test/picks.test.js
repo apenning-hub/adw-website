@@ -110,6 +110,24 @@ test("no words at all is null, not an empty quote", () => {
   });
 });
 
+test("recommendations are one per line, signed after the last spaced dash", () => {
+  const cell = '"Exeter, exeter lager - cheap, simple — @lara_merrington\n' +
+               'Steak sandwich for lunch! — Calum Hurley\n\nNo name on this one"';
+  withSheet(`${HEAD},recommended\nA,,pub,,,,,,,,,,${cell}`, { venues: [] }, (build) => {
+    assert.deepStrictEqual(build().picks[0].recommended, [
+      { text: "Exeter, exeter lager - cheap, simple", by: "@lara_merrington" },
+      { text: "Steak sandwich for lunch!", by: "Calum Hurley" },
+      { text: "No name on this one", by: null },
+    ]);
+  });
+});
+
+test("no recommended column is an empty list, not an error", () => {
+  withSheet(`${HEAD}\nA,,bar,,,,,,,,,`, { venues: [] }, (build) => {
+    assert.deepStrictEqual(build().picks[0].recommended, []);
+  });
+});
+
 test("the same place twice is named, with both row numbers", () => {
   withSheet(`${HEAD}\nA,,bar,,,,,,,,,\nA,,pub,,,,,,,,,`, { venues: [] }, (build) => {
     assert.throws(() => build(), (err) => {

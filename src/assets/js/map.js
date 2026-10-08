@@ -350,6 +350,13 @@
              (p.words.by ? '<cite>' + esc(p.words.by) + "</cite>" : "") +
              "</blockquote>";
     }
+    // Friends of ADW on what to order, each signed.
+    if (p.recommended && p.recommended.length) {
+      out += '<ul class="pick-recs">' + p.recommended.map(function (r) {
+        return "<li><q>" + esc(r.text) + "</q>" +
+               (r.by ? "<cite>" + esc(r.by) + "</cite>" : "") + "</li>";
+      }).join("") + "</ul>";
+    }
     if (!p.designer) {
       out += '<p class="pick-open">Designer unknown. If this was your work, ' +
              'we would like to credit it.</p>';

@@ -46,6 +46,7 @@ There are 37 places in it to start with.
 | `link` | Website |
 | `socials` | `@handle`, or a full URL |
 | `show` | `N` hides a row without deleting it |
+| `recommended` | Friends of ADW on their go-to order. One per line, as `what they said — who said it` (a dash with a space each side). Any number per place; each shows with the name under it. New line inside a cell: Ctrl+Enter, or ⌘+Enter on a Mac |
 
 Everything except `name` can be empty. A row with only a name still
 publishes — it just says less.
