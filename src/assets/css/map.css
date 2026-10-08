@@ -543,8 +543,7 @@
 .pick-recs cite::before { content: "— "; }
 
 /* An empty credit is a standing invitation, not an error. */
-.pick-open,
-.pick-unmapped {
+.pick-open {
     font-size: 0.8125rem;
     line-height: 1.4;
     color: var(--ink-soft);

@@ -370,10 +370,6 @@
     if (p.socials) links.push('<li><a href="' + esc(p.socials.url) +
       '" target="_blank" rel="noopener noreferrer">' + esc(p.socials.handle) + "</a></li>");
     if (links.length) out += '<ul class="pick-links">' + links.join("") + "</ul>";
-    if (!p.mapped) {
-      out += '<p class="pick-unmapped">Not on the map yet &mdash; we do not have ' +
-             'an address exact enough to place it honestly.</p>';
-    }
     return out;
   }
 
