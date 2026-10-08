@@ -386,6 +386,24 @@
     .map-days { gap: 0.3rem; }
     }
 
+/* Landscape on a phone or tablet: a square map, as big as the screen is
+   tall, with the list beside it. The wide layout's fixed-height slice is
+   a letterbox there, and the stacked phone layout is a thin strip. */
+@media (orientation: landscape) and (pointer: coarse) {
+    .map-wrap {
+        /* Below the sticky masthead, so no part of the square hides under it. */
+        --map-square: min(calc(100svh - var(--header-h) - 1rem), 58vw, 46rem);
+        grid-template-columns: var(--map-square) minmax(0, 1fr);
+        grid-template-rows: none;
+        height: var(--map-square);
+    }
+
+    .map-side {
+        border-top: 0;
+        border-inline-start: 1px solid var(--line);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .map-panel { transition: none; }
 }
