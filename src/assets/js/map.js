@@ -357,10 +357,6 @@
                (r.by ? "<cite>" + esc(r.by) + "</cite>" : "") + "</li>";
       }).join("") + "</ul>";
     }
-    if (!p.designer) {
-      out += '<p class="pick-open">Designer unknown. If this was your work, ' +
-             'we would like to credit it.</p>';
-    }
 
     var links = [];
     if (p.address) links.push('<li class="pick-addr">' + esc(p.address) + "</li>");

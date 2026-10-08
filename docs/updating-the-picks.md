@@ -58,10 +58,10 @@ Lucia's, the Exeter, Grace Emily — these were never designed by anyone with
 a letterhead, and some of the others have credits nobody has written down
 yet.
 
-A blank shows on the page as *"Designer unknown. If this was your work, we
-would like to credit it."* That is an invitation, and it is how the list is
-meant to fill in. **Please do not fill a blank with a guess** — a wrong
-credit is much worse than an honest gap, and harder to notice later.
+A blank simply shows no designer on the map, which is the right answer for a
+market bun stall or a pub that grew up over a century. **Please do not fill a
+blank with a guess** — a wrong credit is much worse than an honest gap, and
+harder to notice later.
 
 ### The two kinds of quote
 
