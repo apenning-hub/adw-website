@@ -686,9 +686,12 @@
       var err = e.error || {};
       var note = document.createElement("p");
       note.className = "map-tile-error";
+      // Path only: the query string is where the token lives.
+      var what = "";
+      try { what = new URL(err.url).pathname.split("/").slice(0, 3).join("/"); } catch (x) { /* no url */ }
       note.textContent = "The street map did not load (Mapbox: " +
         (err.status !== undefined ? err.status + " " : "") +
-        (err.message || "no reason given") + ").";
+        (err.message || "no reason given") + (what ? ", " + what : "") + ").";
       root.appendChild(note);
     }
   });
